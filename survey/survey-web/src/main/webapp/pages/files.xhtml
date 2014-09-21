@@ -1,0 +1,104 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="../templates/masterLayout.xhtml">
+	<ui:define name="title">#{messages.files}</ui:define>
+	<ui:define name="content">
+		<f:view>
+			<rich:panel header="#{messages.files}" style="width: 600px">
+				<h:form id="openUploadDialogForm">
+					<h:commandButton id="openUploadDialog" value="Upload file">
+						<rich:componentControl target="popup" operation="show" />
+					</h:commandButton>
+				</h:form>
+				<h:form id="fileTableForm">
+					<rich:dataTable value="#{filesBean.files}" var="file"
+						id="fileTable">
+						<rich:column sortBy="#{file.filename}" id="filename">
+							<f:facet name="header">
+								<a4j:commandLink value="#{messages.filename}"
+									onclick="#{rich:component('fileTable')}.sort('filename')" />
+							</f:facet>
+							<h:outputText value="#{file.filename}" />
+						</rich:column>
+						<rich:column sortBy="#{file.mimeType}" id="mimeType">
+							<f:facet name="header">
+								<a4j:commandLink value="#{messages.mimeType}"
+									onclick="#{rich:component('fileTable')}.sort('mimeType')" />
+							</f:facet>
+							<h:outputText value="#{file.mimeType}" />
+						</rich:column>
+						<rich:column sortBy="#{file.createTime}" id="createTime">
+							<f:facet name="header">
+								<a4j:commandLink value="#{messages.createTime}"
+									onclick="#{rich:component('fileTable')}.sort('createTime')" />
+							</f:facet>
+							<h:outputText value="#{file.createTime}" />
+						</rich:column>
+						<rich:column sortBy="#{file.size}" id="size">
+							<f:facet name="header">
+								<a4j:commandLink value="#{messages.size}"
+									onclick="#{rich:component('fileTable')}.sort('size')" />
+							</f:facet>
+							<h:outputText value="#{file.size}" />
+						</rich:column>
+						<rich:column sortBy="#{file.owner}" id="owner">
+							<f:facet name="header">
+								<a4j:commandLink value="#{messages.owner}"
+									onclick="#{rich:component('fileTable')}.sort('owner')" />
+							</f:facet>
+							<h:outputText value="#{file.owner}" />
+						</rich:column>
+						<rich:column sortBy="#{file.url}" id="url">
+							<f:facet name="header">
+								<a4j:commandLink value="#{messages.url}"
+									onclick="#{rich:component('fileTable')}.sort('url')" />
+							</f:facet>
+							<h:outputText value="#{file.url}" />
+						</rich:column>
+						<rich:column id="preview">
+							<f:facet name="header">
+								<h:outputText value="#{messages.preview}" />
+							</f:facet>
+							<a4j:mediaOutput element="img" cacheable="false" session="false"
+								createContent="#{filesBean.paint}" value="#{file.id}"
+								style="width:50px; height:50px;" mimeType="image/jpeg" />
+						</rich:column>
+					</rich:dataTable>
+					<a4j:poll interval="20000" render="fileTable" />
+				</h:form>
+				<h:form id="files">
+					<h:outputLink id="logout"
+						value="#{request.contextPath}/j_spring_security_logout">#{messages.logout}</h:outputLink>
+				</h:form>
+			</rich:panel>
+		</f:view>
+		<rich:popupPanel id="popup" modal="true" autosized="true"
+			resizeable="false" moveable="false">
+			<f:facet name="header">
+				<h:outputText value="#{messages.fileUpload}" />
+			</f:facet>
+			<f:facet name="controls">
+				<h:outputLink id="close" value="#"
+					onclick="#{rich:component('popup')}.hide(); return false;">
+					<h:outputText value="X" />
+				</h:outputLink>
+			</f:facet>
+			<h:form id="fileUploadForm">
+				<rich:fileUpload id="upload"
+					fileUploadListener="#{fileUploadBean.uploadFile}"
+					acceptedTypes="#{fileUploadBean.acceptedTypes}"
+					maxFilesQuantity="10"
+					onuploadcomplete="#{rich:component('popup')}.hide(); return true;">
+					<a4j:ajax event="uploadcomplete" execute="@none"
+						render="fileTableForm" />
+				</rich:fileUpload>
+				<h:commandButton id="done" value="#{messages.cancel}"
+					onclick="#{rich:component('popup')}.hide(); return false;" />
+			</h:form>
+		</rich:popupPanel>
+	</ui:define>
+</ui:composition>

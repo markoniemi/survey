@@ -1,0 +1,47 @@
+<html>
+<body>
+	<h1>user-management</h1>
+	<p>user-management implements a simple user management. It contains
+		Spring-JPA based user-repository, CXF based user-service WebService,
+		and a JSF2/Richfaces based user-managemet-web web application.</p>
+	<p>Project has been tested with Tomcat and JBoss.</p>
+	<h3>Development environment</h3>
+	<p>Download sources from
+		http://niemimac.googlecode.com/svn/user-management.</p>
+	<h3>Building project</h3>
+	<p>Run mvn clean install in user-management directory, or run
+		user-management/pom.xml as Maven build in Eclipse, using goals clean
+		install.</p>
+	<p>Maven build:</p>
+	<ul>
+		<li>compiles projects</li>
+		<li>runs UnitTest suites</li>
+		<li>starts Tomcat</li>
+		<li>deploys user-management-web to Tomcat</li>
+		<li>runs IntegrationTestSuite, which runs HtmlUnit and WebDriver
+			tests for web app.</li>
+	</ul>
+	<p>Test cases can be skipped with -DskipTests=true switch or
+		ignored with TODO: switch name.</p>
+	<p>To increase the version use:</p>
+	<pre>mvn --batch-mode release:update-versions -DautoVersionSubmodules=true -DdevelopmentVersion=1.0.1-SNAPSHOT</pre>
+	<p>Many different static analysis and project reports can be
+		created by running mvn install site.</p>
+	<h3>user-repository</h3>
+	<p>user-repository uses Spring-JPA to create a UserRepositoryImpl
+		class that implements UserRepository interface and contains CRUD
+		methods for reading and writing Users to database.</p>
+	<p>TODO: switch between databases</p>
+	<p>persistence.xml may contain only on persitence unit, due to a
+		bug in JBoss.</p>
+	<p>
+		<a
+			href="http://www.java2s.com/Code/Java/Spring/SetupDataSourceforHSQL.htm">http://www.java2s.com/Code/Java/Spring/SetupDataSourceforHSQL.htm</a>
+		contains settings for different databases.
+	</p>
+	<h3>user-service</h3>
+	<p>user-service creates a WebService using CXF library and EJB3
+		annotations. As a result we have a WebService without application
+		server.</p>
+</body>
+</html>

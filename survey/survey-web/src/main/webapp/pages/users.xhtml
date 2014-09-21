@@ -1,0 +1,63 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags"
+	template="../templates/masterLayout.xhtml">
+	<ui:define name="title">#{messages.users}</ui:define>
+	<ui:define name="content">
+		<f:view>
+			<rich:panel header="#{messages.users}" style="width: 600px">
+				<h:form id="userTableForm">
+					<rich:dataTable value="#{usersBean.users}" var="user"
+						id="userTable">
+						<rich:column sortBy="#{user.username}" id="username">
+							<f:facet name="header">
+								<a4j:commandLink value="#{messages.username}"
+									onclick="#{rich:component('userTable')}.sort('username')" />
+							</f:facet>
+							<h:outputText value="#{user.username}" />
+						</rich:column>
+						<rich:column sortBy="#{user.role}" id="role">
+							<f:facet name="header">
+								<a4j:commandLink value="#{messages.role}"
+									onclick="#{rich:component('userTable')}.sort('role')" />
+							</f:facet>
+							<h:outputText value="#{messages[user.role]}" />
+						</rich:column>
+						<rich:column sortBy="#{user.email}" id="email">
+							<f:facet name="header">
+								<a4j:commandLink value="#{messages.email}"
+									onclick="#{rich:component('userTable')}.sort('email')" />
+							</f:facet>
+							<a4j:mediaOutput element="img" cacheable="false" session="false"
+								createContent="#{mediaBean.paint}" value="#{user.email}"
+								mimeType="image/jpeg" />
+							<!-- <h:outputText value="#{user.email}" /> -->
+						</rich:column>
+						<rich:column>
+							<h:commandButton id="delete" value="#{messages.delete}"
+								action="#{usersBean.deleteUser}"
+								rendered="#{sec:ifAnyGranted('ROLE_ADMIN')}">
+								<f:param name="username" value="#{user.username}" />
+							</h:commandButton>
+							<h:commandButton id="edit" value="#{messages.editUser}"
+								action="#{editUserBean.editUser}" name="#{user.username}" title="#{user.username}">
+								<f:param name="username" value="#{user.username}" />
+							</h:commandButton>
+						</rich:column>
+					</rich:dataTable>
+					<a4j:poll interval="20000" render="userTable" />
+				</h:form>
+				<h:form id="users">
+					<h:commandButton id="addUser" action="#{editUserBean.addUser}"
+						value="#{messages.addUser}" />
+					<h:outputLink id="logout"
+						value="#{request.contextPath}/j_spring_security_logout">#{messages.logout}</h:outputLink>
+				</h:form>
+			</rich:panel>
+		</f:view>
+	</ui:define>
+</ui:composition>

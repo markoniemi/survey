@@ -1,0 +1,29 @@
+<html>
+<body>
+	<h2>Jetty support</h2>
+	<ul>
+		<li>Install <a
+			href="http://wiki.eclipse.org/Jetty_WTP_Plugin/Jetty_WTP_Install">Jetty
+				WTP plugin</a>.
+		</li>
+		<li>Download <a href="http://www.eclipse.org/jetty/downloads.php">Jetty
+				8</a>.
+		</li>
+		<li>Add Jetty server to Eclipse.</li>
+		<li>Open the Servers view</li>
+		<li>Open your server's config (right-click -&gt; Open, or F3)</li>
+		<li>On the Overview tab, click Open launch configuration"</li>
+		<li>Classpath tab -&gt; add external jars</li>
+		<li>Add jars from &lt;jetty&gt;/lib/annotations directory.</li>
+		<li>Add to web.xml: <pre>
+&lt;listener&gt;
+	&lt;listener-class&gt;com.sun.faces.config.ConfigureListener&lt;/listener-class&gt;
+&lt;/listener&gt;
+</pre>
+		</li>
+		<li><a
+			href="http://wiki.eclipse.org/Jetty/Feature/Jetty_Maven_Plugin">Jetty
+				Maven Plugin</a></li>
+	</ul>
+</body>
+</html>

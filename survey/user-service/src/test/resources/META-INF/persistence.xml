@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+	xmlns="http://java.sun.com/xml/ns/persistence" version="1.0">
+	<persistence-unit name="user-service-test" transaction-type="RESOURCE_LOCAL">
+		<class>org.survey.user.model.User</class>
+		<class>org.survey.file.model.File</class>
+		<properties>
+			<property name="hibernate.show_sql" value="false" />
+			<property name="hibernate.format_sql" value="false" />
+			<property name="hibernate.connection.driver_class" value="${database.driver}" />
+			<property name="hibernate.connection.url" value="${database.url}" />
+			<property name="hibernate.connection.username" value="${database.username}" />
+			<property name="hibernate.connection.password" value="${database.password}" />
+			<property name="hibernate.dialect" value="${database.dialect}" />
+			<property name="hibernate.hbm2ddl.auto" value="create" />
+		</properties>
+	</persistence-unit>
+<!-- 	<persistence-unit name="H2" transaction-type="RESOURCE_LOCAL"> -->
+<!-- 		<class>org.survey.user.model.User</class> -->
+<!-- 		<properties> -->
+<!-- 			<property name="hibernate.show_sql" value="false" /> -->
+<!-- 			<property name="hibernate.format_sql" value="false" /> -->
+<!-- 			<property name="hibernate.connection.driver_class" value="org.h2.Driver" /> -->
+<!-- 			<property name="hibernate.connection.url" value="jdbc:h2:mem:database" /> -->
+<!-- 			<property name="hibernate.connection.username" value="sa" /> -->
+<!-- 			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/> -->
+<!-- 			<property name="hibernate.hbm2ddl.auto" value="create" /> -->
+<!-- 		</properties> -->
+<!-- 	</persistence-unit> -->
+</persistence>

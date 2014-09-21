@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:jaxws="http://cxf.apache.org/jaxws" xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+	xmlns:http="http://cxf.apache.org/transports/http/configuration"
+	xmlns:sec="http://cxf.apache.org/configuration/security" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://cxf.apache.org/configuration/security http://cxf.apache.org/schemas/configuration/security.xsd
+	http://cxf.apache.org/transports/http/configuration http://cxf.apache.org/schemas/configuration/http-conf.xsd 
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
+	http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd">
+
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:/configuration.properties" />
+	</bean>
+	<jaxrs:client id="userService" serviceClass="org.survey.user.service.UserService"
+		address="${http.protocol}://localhost:${http.port}/survey-web/api/rest">
+		<jaxrs:headers>
+			<entry key="Accept" value="application/json" />
+<!-- 			<entry key="Accept" value="application/xml" /> -->
+		</jaxrs:headers>
+		<jaxrs:providers>
+			<!-- Use Jackson instead of Jettison -->
+			<bean class="org.codehaus.jackson.jaxrs.JacksonJaxbJsonProvider" />
+		</jaxrs:providers>
+	</jaxrs:client>
+
+	<http:conduit name="https://localhost:8443/.*">
+		<http:tlsClientParameters>
+			<sec:trustManagers>
+				<sec:keyStore type="JKS" password="changeit"
+					file="src/test/resources/survey.jks" />
+			</sec:trustManagers>
+		</http:tlsClientParameters>
+	</http:conduit>
+	<!-- <http:tlsClientParameters disableCNCheck="true"> -->
+</beans>

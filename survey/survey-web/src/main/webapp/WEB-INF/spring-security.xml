@@ -1,0 +1,29 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:sec="http://www.springframework.org/schema/security" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security-3.0.3.xsd">
+	<sec:http auto-config="true">
+		<sec:intercept-url pattern="/pages/**" access="ROLE_USER,ROLE_ADMIN" />
+		<sec:intercept-url pattern="/pages/admin/**" access="ROLE_ADMIN" />
+		<sec:form-login login-page="/login.xhtml"
+			authentication-failure-url="/login.xhtml?loginError=true" />
+		<sec:logout logout-success-url="/pages/users.xhtml" />
+	</sec:http>
+	<bean id="userRepositoryAuthenticationProvider"
+		class="org.survey.user.security.UserRepositoryAuthenticationProvider" />
+	<!-- <sec:authentication-manager alias="authenticationManager"> -->
+	<!-- <sec:authentication-provider> -->
+	<!-- <sec:user-service> -->
+	<!-- <sec:user name="admin" password="admin" authorities="ROLE_USER" /> -->
+	<!-- </sec:user-service> -->
+	<!-- </sec:authentication-provider> -->
+	<!-- </sec:authentication-manager> -->
+	<sec:authentication-manager alias="authenticationManager">
+		<sec:authentication-provider ref="userRepositoryAuthenticationProvider" />
+	</sec:authentication-manager>
+	<!-- business logic security -->
+	<sec:global-method-security
+		secured-annotations="enabled" jsr250-annotations="enabled" />
+</beans>
