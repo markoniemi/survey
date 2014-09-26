@@ -17,10 +17,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.survey.poll.model.Poll;
 import org.survey.poll.model.PollComparator;
 import org.survey.poll.model.PollFactory;
-import org.survey.poll.service.PollService;
 import org.survey.user.model.User;
 import org.survey.user.model.UserFactory;
-import org.survey.user.repository.UserRepository;
+import org.survey.user.service.UserService;
 
 /**
  * Test UserService. Must use SpringJUnit4ClassRunner to enable spring
@@ -37,16 +36,19 @@ public class PollServiceImplTest {
     protected PollService entityService;
     protected PollFactory entityFactory;
     protected PollComparator entityComparator = new PollComparator();
+//    @Autowired
+//    @Qualifier("userRepository")
+//    protected UserRepository userRepository;
     @Autowired
-    @Qualifier("userRepository")
-    protected UserRepository userRepository;
+    protected UserService userService;
     private User user;
 
     @Before
     public void setUp() {
         UserFactory userFactory = new UserFactory();
         user = userFactory.getEntities(1).get(0);
-        user = userRepository.save(user);
+//        user = userRepository.save(user);
+        user = userService.create(user);
         entityFactory = new PollFactory(user);
     }
 
@@ -58,7 +60,7 @@ public class PollServiceImplTest {
                 entityService.delete(pollToDelete.getName());
             }
         }
-        userRepository.delete(user);
+        userService.delete(user.getUsername());
     }
 
     @Test

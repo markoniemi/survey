@@ -322,7 +322,7 @@
 							<cargo.servlet.port>${http.port}</cargo.servlet.port>
 							<cargo.protocol>${http.protocol}</cargo.protocol>
 							<cargo.tomcat.connector.clientAuth>false</cargo.tomcat.connector.clientAuth>
-							<cargo.tomcat.connector.keyAlias>survey</cargo.tomcat.connector.keyAlias>
+							<cargo.tomcat.connector.keyAlias>user-management</cargo.tomcat.connector.keyAlias>
 							<cargo.tomcat.connector.keystoreFile>conf/survey.jks</cargo.tomcat.connector.keystoreFile>
 							<cargo.tomcat.connector.keystorePass>changeit</cargo.tomcat.connector.keystorePass>
 							<cargo.tomcat.connector.sslProtocol>TLS</cargo.tomcat.connector.sslProtocol>

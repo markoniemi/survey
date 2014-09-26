@@ -14,6 +14,7 @@
     <context:annotation-config />
 	<jpa:repositories base-package="org.survey.user.repository" />
 	<jpa:repositories base-package="org.survey.poll.repository" />
+	<jpa:repositories base-package="org.survey.file.repository" />
 	<bean id="pollService" class="org.survey.poll.service.PollServiceImpl" />
-<!-- 	<bean id="userService" class="org.survey.user.service.UserServiceImpl" /> -->
+	<bean id="userService" class="org.survey.user.service.UserServiceImpl" />
 </beans>
