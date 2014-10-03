@@ -3,28 +3,21 @@
 	<h2>HTTPS</h2>
 	<h3>Enable HTTPS for web UI</h3>
 	<ol>
-		<li>Create keystore:
-			<p>
-				<code>keytool -genkeypair -alias user-management -keyalg RSA
-					-keystore user-management.jks -storepass changeit -keypass changeit
-					-validity 365 -dname
-					"CN=*,OU=Tieto,O=Tieto,L=Jyväskylä,S=Länsi-Suomi,C=FI" </code>
-			</p>
-		</li>
-		<li>Copy user-management.jks to Eclipse Servers/Tomcat project.</li>
+		<li>run mvn generate-sources</li>
+		<li>Copy survey-web/target/survey.jks to Eclipse Servers/Tomcat project.</li>
 		<li>Add a section to Servers/Tomcat/server.xml:
 			<p>
 				<code> &lt;Connector SSLEnabled=&quot;true&quot;
 					clientAuth=&quot;false&quot; maxThreads=&quot;150&quot;
 					port=&quot;8443&quot; protocol=&quot;HTTP/1.1&quot;
 					scheme=&quot;https&quot; secure=&quot;true&quot;
-					sslProtocol=&quot;TLS&quot; keyAlias=&quot;user-management&quot;
+					sslProtocol=&quot;TLS&quot; keyAlias=&quot;survey&quot;
 					keystorePass=&quot;changeit&quot;
-					keystoreFile=&quot;conf/user-management.jks&quot;/&gt; </code>
+					keystoreFile=&quot;conf/survey.jks&quot;/&gt; </code>
 			</p>
 		</li>
 		<li>Restart Tomcat.</li>
-		<li>Browse to <a href="https://localhost:8443/user-management">https://localhost:8443/user-management</a></li>
+		<li>Browse to <a href="https://localhost:8443/survey-web">https://localhost:8443/survey-web</a></li>
 	</ol>
 	<h3>Enable HTTPS on the WebService client</h3>
 	<p>

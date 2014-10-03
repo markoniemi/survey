@@ -2,13 +2,13 @@ package org.survey.repository;
 
 import java.io.Serializable;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import org.apache.commons.collections.IteratorUtils;
+import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.data.repository.CrudRepository;
 
 public class CrudRepositoryStub<T, ID extends Serializable> implements CrudRepository<T, ID> {
@@ -16,7 +16,7 @@ public class CrudRepositoryStub<T, ID extends Serializable> implements CrudRepos
     protected Long generatedId = Long.valueOf(1);
 
     @Override
-    public T save(T entity) {
+    public <S extends T> S save(S entity) {
         if (getId(entity) == null) {
             generateId(entity);
         } else {
@@ -28,14 +28,15 @@ public class CrudRepositoryStub<T, ID extends Serializable> implements CrudRepos
 
     @SuppressWarnings("unchecked")
     @Override
-    public Iterable<T> save(Iterable<? extends T> entities) {
-        List<T> entityList = IteratorUtils.toList(entities.iterator());
+    public <S extends T> Iterable<S> save(Iterable<S> entities) {
+        Iterable<S> entityList = IteratorUtils.toList(entities.iterator());
         for (T entity : entityList) {
             if (getId(entity) == null) {
                 generateId(entity);
             }
+            this.entities.add(entity);
         }
-        this.entities.addAll(entityList);
+//        this.entities.addAll(entities.iterator());
         return entityList;
     }
 
@@ -56,7 +57,19 @@ public class CrudRepositoryStub<T, ID extends Serializable> implements CrudRepos
     }
 
     @Override
+    public Iterable<T> findAll(Iterable<ID> ids) {
+        Set<T> foundEntities = new HashSet<T>();
+        for (ID id : ids) {
+            foundEntities.add(findOne(id));
+        }
+        return foundEntities;
+    }
+
+    @Override
     public boolean exists(ID id) {
+        if (id == null) {
+            throw new InvalidDataAccessApiUsageException("The given id must not be null");
+        }
         return findOne(id) != null;
     }
 

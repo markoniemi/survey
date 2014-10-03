@@ -74,6 +74,6 @@ public class Poll {
      @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
 //     @Cascade({org.hibernate.annotations.CascadeType.ALL})
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @XmlTransient
+//    @XmlTransient
     private List<Question> questions;
 }

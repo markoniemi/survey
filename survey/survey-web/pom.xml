@@ -91,6 +91,10 @@
 			<artifactId>spring-web</artifactId>
 			<scope>compile</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+		</dependency>
 		<!-- CXF -->
 <!-- 		<dependency> -->
 <!-- 			<groupId>org.codehaus.jettison</groupId> -->
@@ -251,6 +255,31 @@
 		<finalName>survey-web</finalName>
 		<plugins>
 			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>keytool-maven-plugin</artifactId>
+				<version>1.5</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>generateKeyPair</goal>
+						</goals>
+						<phase>generate-resources</phase>
+					</execution>
+				</executions>
+				<configuration>
+					<keystore>${project.build.directory}/survey.jks</keystore>
+					<storepass>changeit</storepass>
+					<keypass>changeit</keypass>
+					<alias>survey</alias>
+					<dname>CN=*,OU=survey,O=survey,L=city,S=state,C=FI</dname>
+<!-- 					<sigalg>SHA1withDSA</sigalg> -->
+<!-- 					<ext></ext> -->
+					<validity>365</validity>
+					<keyalg>RSA</keyalg>
+<!-- 					<keysize>1024</keysize> -->
+				</configuration>
+			</plugin>
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
 				<version>2.1.1</version>
@@ -310,7 +339,8 @@
 					<configuration>
 						<files>
 							<file>
-								<file>${project.basedir}/src/test/resources/survey.jks</file>
+<!-- 								<file>${project.basedir}/src/test/resources/survey.jks</file> -->
+								<file>${project.build.directory}/survey.jks</file>
 								<todir>conf</todir>
 								<overwrite>true</overwrite>
 							</file>
@@ -322,7 +352,7 @@
 							<cargo.servlet.port>${http.port}</cargo.servlet.port>
 							<cargo.protocol>${http.protocol}</cargo.protocol>
 							<cargo.tomcat.connector.clientAuth>false</cargo.tomcat.connector.clientAuth>
-							<cargo.tomcat.connector.keyAlias>user-management</cargo.tomcat.connector.keyAlias>
+							<cargo.tomcat.connector.keyAlias>survey</cargo.tomcat.connector.keyAlias>
 							<cargo.tomcat.connector.keystoreFile>conf/survey.jks</cargo.tomcat.connector.keystoreFile>
 							<cargo.tomcat.connector.keystorePass>changeit</cargo.tomcat.connector.keystorePass>
 							<cargo.tomcat.connector.sslProtocol>TLS</cargo.tomcat.connector.sslProtocol>

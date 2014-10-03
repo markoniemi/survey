@@ -11,6 +11,10 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -26,6 +30,8 @@ import lombok.ToString;
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="TYPE", discriminatorType=DiscriminatorType.STRING)
 @Table(name = "question")
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 @SuppressWarnings("PMD.UnusedPrivateField")
 public class Question {
     @Id
@@ -42,5 +48,6 @@ public class Question {
      * Poll that owns this question.
      */
     @ManyToOne
+  @XmlTransient
     Poll poll;
 }

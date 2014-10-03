@@ -1,7 +1,9 @@
 package org.survey.user;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URL;
 import java.security.GeneralSecurityException;
 
 import junit.framework.Assert;
@@ -45,13 +47,13 @@ public class HtmlUnitIT {
         httpProtocol = System.getProperty("http.protocol", "http");
         serverURL = httpProtocol + "://localhost:" + httpPort;
         webClient = new WebClient();
-//        webClient.setJavaScriptEnabled(true);
+        webClient.getOptions().setJavaScriptEnabled(true);
+        webClient.getOptions().setTimeout(40000);
         webClient.setJavaScriptTimeout(10000);
-//        webClient.setTimeout(40000);
-//        File keyStore = new File("src/test/resources/survey.jks");
-//        URL url = keyStore.toURL();
-//        webClient.setSSLClientCertificate(url, "changeit", "JKS");
-//        webClient.setUseInsecureSSL(true);
+        File keyStore = new File("target/survey.jks");
+        URL url = keyStore.toURL();
+        webClient.getOptions().setSSLClientCertificate(url, "changeit", "JKS");
+        webClient.getOptions().setUseInsecureSSL(true);
     }
 
     @After

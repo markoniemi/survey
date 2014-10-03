@@ -13,10 +13,8 @@ import org.apache.commons.collections.IteratorUtils;
 import org.dbunit.DatabaseUnitException;
 import org.junit.After;
 import org.junit.Test;
+import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.data.repository.CrudRepository;
-import org.survey.repository.BeanHelper;
-import org.survey.repository.EntityComparator;
-import org.survey.repository.EntityFactory;
 
 public abstract class CrudRepositoryTest<T, ID extends Serializable> {
     protected static int ENTITY_COUNT = 2;
@@ -108,7 +106,8 @@ public abstract class CrudRepositoryTest<T, ID extends Serializable> {
         // Assert.assertFalse(entityRepository.exists((ID) new Object()));
     }
 
-    @Test
+//    @Test(expected=IllegalArgumentException.class)
+    @Test(expected=InvalidDataAccessApiUsageException.class)
     public void existsWithNull() {
         Assert.assertFalse(getEntityRepository().exists(null));
     }
