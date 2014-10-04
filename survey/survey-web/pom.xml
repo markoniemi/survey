@@ -255,19 +255,20 @@
 		<finalName>survey-web</finalName>
 		<plugins>
 			<plugin>
+				<!-- delete survey-web/src/test/resources/survey.jks and run mvn keytool:generateKeyPair -->
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>keytool-maven-plugin</artifactId>
 				<version>1.5</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>generateKeyPair</goal>
-						</goals>
-						<phase>generate-resources</phase>
-					</execution>
-				</executions>
+<!-- 				<executions> -->
+<!-- 					<execution> -->
+<!-- 						<goals> -->
+<!-- 							<goal>generateKeyPair</goal> -->
+<!-- 						</goals> -->
+<!-- 						<phase>generate-resources</phase> -->
+<!-- 					</execution> -->
+<!-- 				</executions> -->
 				<configuration>
-					<keystore>${project.build.directory}/survey.jks</keystore>
+					<keystore>src/test/resources/survey.jks</keystore>
 					<storepass>changeit</storepass>
 					<keypass>changeit</keypass>
 					<alias>survey</alias>
@@ -339,8 +340,8 @@
 					<configuration>
 						<files>
 							<file>
-<!-- 								<file>${project.basedir}/src/test/resources/survey.jks</file> -->
-								<file>${project.build.directory}/survey.jks</file>
+								<file>${project.basedir}/src/test/resources/survey.jks</file>
+<!-- 								<file>${project.build.directory}/survey.jks</file> -->
 								<todir>conf</todir>
 								<overwrite>true</overwrite>
 							</file>

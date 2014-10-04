@@ -50,7 +50,7 @@ public class HtmlUnitIT {
         webClient.getOptions().setJavaScriptEnabled(true);
         webClient.getOptions().setTimeout(40000);
         webClient.setJavaScriptTimeout(10000);
-        File keyStore = new File("target/survey.jks");
+        File keyStore = new File("src/test/resources/survey.jks");
         URL url = keyStore.toURL();
         webClient.getOptions().setSSLClientCertificate(url, "changeit", "JKS");
         webClient.getOptions().setUseInsecureSSL(true);

@@ -23,7 +23,7 @@
 		<http:tlsClientParameters>
 			<sec:trustManagers>
 				<sec:keyStore type="JKS" password="changeit"
-					file="target/survey.jks" />
+					file="src/test/resources/survey.jks" />
 			</sec:trustManagers>
 		</http:tlsClientParameters>
 	</http:conduit>

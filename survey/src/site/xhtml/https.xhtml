@@ -3,8 +3,9 @@
 	<h2>HTTPS</h2>
 	<h3>Enable HTTPS for web UI</h3>
 	<ol>
-		<li>run mvn generate-sources</li>
-		<li>Copy survey-web/target/survey.jks to Eclipse Servers/Tomcat project.</li>
+		<li>delete survey-web/src/test/resources/survey.jks</li>
+		<li>run mvn keytool:generateKeyPair</li>
+		<li>Copy survey-web/src/test/resources/survey.jks to Eclipse Servers/Tomcat project.</li>
 		<li>Add a section to Servers/Tomcat/server.xml:
 			<p>
 				<code> &lt;Connector SSLEnabled=&quot;true&quot;
