@@ -4,37 +4,37 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:a4j="http://richfaces.org/a4j"
-	xmlns:rich="http://richfaces.org/rich"
+	xmlns:p="http://primefaces.org/ui"
 	template="../templates/masterLayout.xhtml">
 	<ui:define name="title">#{messages.fileUpload}</ui:define>
 	<ui:define name="content">
 		<h:form id="openUploadDialogForm">
 			<h:commandButton id="openUploadDialog" value="Upload file">
-				<rich:componentControl target="popup" operation="show" />
+				<p:componentControl target="popup" operation="show" />
 			</h:commandButton>
 		</h:form>
-		<rich:popupPanel id="popup" modal="true" autosized="true"
+		<p:popupPanel id="popup" modal="true" autosized="true"
 			resizeable="false" moveable="false">
 			<f:facet name="header">
 				<h:outputText value="File upload" />
 			</f:facet>
 			<f:facet name="controls">
 				<h:outputLink id="close" value="#"
-					onclick="#{rich:component('popup')}.hide(); return false;">
+					onclick="#{p:component('popup')}.hide(); return false;">
 					<h:outputText value="X" />
 				</h:outputLink>
 			</f:facet>
 			<h:form id="fileUploadForm">
-				<rich:fileUpload id="upload"
+				<p:fileUpload id="upload"
 					fileUploadListener="#{fileUploadBean.listener}"
 					acceptedTypes="#{fileUploadBean.acceptedTypes}"
 					maxFilesQuantity="1"
-					onuploadcomplete="#{rich:component('popup')}.hide(); return true;">
+					onuploadcomplete="#{p:component('popup')}.hide(); return true;">
 					<!-- 			<a4j:ajax event="uploadcomplete" execute="@none" render="info" /> -->
-				</rich:fileUpload>
+				</p:fileUpload>
 				<h:commandButton id="done" value="Cancel"
-					onclick="#{rich:component('popup')}.hide(); return false;" />
+					onclick="#{p:component('popup')}.hide(); return false;" />
 			</h:form>
-		</rich:popupPanel>
+		</p:popupPanel>
 	</ui:define>
 </ui:composition>

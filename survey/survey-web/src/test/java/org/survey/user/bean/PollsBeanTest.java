@@ -1,5 +1,7 @@
 package org.survey.user.bean;
 
+import java.util.List;
+
 import junit.framework.Assert;
 
 import org.junit.After;
@@ -41,16 +43,16 @@ public class PollsBeanTest {
 
 	@Test
 	public void getPolls() {
-	    Poll[] polls = pollsBean.getPolls();
-		Assert.assertEquals(1, polls.length);
+	    List<Poll> polls = pollsBean.getPolls();
+		Assert.assertEquals(1, polls.size());
 		pollsBean.getPolls();
-		Assert.assertEquals(1, polls.length);
+		Assert.assertEquals(1, polls.size());
 	}
 
 	@Test
 	public void getPollsWithUpdate() {
-	    Poll[] polls = pollsBean.getPolls();
-		Assert.assertEquals(1, polls.length);
+	    List<Poll> polls = pollsBean.getPolls();
+		Assert.assertEquals(1, polls.size());
 		Poll createdPoll = new Poll("poll2");
 		pollsBean.getPollService().create(createdPoll);
 		Assert.assertEquals(2, pollsBean.getPollService().findAll().length);
@@ -59,7 +61,7 @@ public class PollsBeanTest {
 		pollsBean.setPollService(pollService);
 		pollsBean.initialize();
 		polls = pollsBean.getPolls();
-		Assert.assertEquals(2, polls.length);
+		Assert.assertEquals(2, polls.size());
 	}
 
 	@Test

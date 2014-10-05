@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:a4j="http://richfaces.org/a4j"
-	xmlns:rich="http://richfaces.org/rich"
+	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:um="http://java.sun.com/jsf/composite/components/um">
@@ -14,11 +14,11 @@
 <h:body>
 <f:view>
 	<h:form id="register">
-		<rich:panel header="#{messages.register}" style="width: 315px">
+		<p:panel header="#{messages.register}" style="width: 500px">
 			<um:user id="editUser" user="#{editUserBean.user}" repeatPassword="#{editUserBean.repeatedPassword}" isRoleEditable="false" />
 				<h:commandButton action="#{editUserBean.saveUser}"
 					value="#{messages.register}" id="registerButton" />
-		</rich:panel>
+		</p:panel>
 	</h:form>
 </f:view>
 </h:body>

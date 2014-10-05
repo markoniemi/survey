@@ -1,5 +1,7 @@
 package org.survey.user.bean;
 
+import java.util.List;
+
 import junit.framework.Assert;
 
 import org.junit.After;
@@ -42,16 +44,16 @@ public class UsersBeanTest {
 
 	@Test
 	public void getUsers() {
-	    User[] users = usersBean.getUsers();
-		Assert.assertEquals(1, users.length);
+	    List<User> users = usersBean.getUsers();
+		Assert.assertEquals(1, users.size());
 		usersBean.getUsers();
-		Assert.assertEquals(1, users.length);
+		Assert.assertEquals(1, users.size());
 	}
 
 	@Test
 	public void getUsersWithUpdate() {
-	    User[] users = usersBean.getUsers();
-		Assert.assertEquals(1, users.length);
+	    List<User> users = usersBean.getUsers();
+		Assert.assertEquals(1, users.size());
 		User createdUser = new User("user", "password", "email", Role.ROLE_USER);
 		usersBean.getUserService().create(createdUser);
 		Assert.assertEquals(2, usersBean.getUserService().findAll().length);
@@ -60,7 +62,7 @@ public class UsersBeanTest {
 		usersBean.setUserService(userService);
 		usersBean.initialize();
 		users = usersBean.getUsers();
-		Assert.assertEquals(2, users.length);
+		Assert.assertEquals(2, users.size());
 	}
 
 	@Test

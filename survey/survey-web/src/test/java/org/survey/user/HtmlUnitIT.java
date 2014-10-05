@@ -114,8 +114,10 @@ public class HtmlUnitIT {
     protected void assertUserRole(String username, String localizedRole) {
         // TODO use MessageFormat and constant for xpath
         // MessageFormat.format()
+//        HtmlElement element = (HtmlElement) page.getFirstByXPath("//tr[td='"
+//                + username + "']//td[contains(@id,'role')]");
         HtmlElement element = (HtmlElement) page.getFirstByXPath("//tr[td='"
-                + username + "']//td[contains(@id,'role')]");
+                + username + "']//span[contains(@id,'role')]");
         Assert.assertNotNull(element);
         System.out.println(element.getTextContent());
         Assert.assertEquals(localizedRole, element.getTextContent());

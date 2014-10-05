@@ -1,5 +1,8 @@
 package org.survey.user.bean;
 
+import java.util.Arrays;
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 
 import lombok.Getter;
@@ -21,11 +24,11 @@ public class PollsBean {
     private PollService pollService;
     @Getter
     @SuppressWarnings("PMD.UnusedPrivateField")
-    private Poll[] polls;
+    private List<Poll> polls;
 
     @PostConstruct
     public void initialize() {
-        polls = pollService.findAll();
+        polls = Arrays.asList(pollService.findAll());
     }
 
     /**

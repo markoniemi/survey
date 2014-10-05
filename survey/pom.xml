@@ -39,7 +39,7 @@
 		<spring.jpa.version>1.2.1.RELEASE</spring.jpa.version>
 		<selenium.version></selenium.version>
 		<cxf.version>2.7.12</cxf.version>
-		<richfaces.version>4.2.3.Final</richfaces.version>
+<!-- 		<richfaces.version>4.2.3.Final</richfaces.version> -->
 		<hibernate.version>4.2.8.Final</hibernate.version>
 		<database.driver>org.hsqldb.jdbcDriver</database.driver>
 		<database.url>jdbc:hsqldb:mem:mem:aname</database.url>
@@ -129,6 +129,11 @@
 						</goals>
 					</execution>
 				</executions>
+				<configuration>
+					<excludes>
+						<exclude>**com.steadystate*</exclude>
+					</excludes>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -546,33 +551,38 @@
 			<dependency>
 				<groupId>com.sun.faces</groupId>
 				<artifactId>jsf-api</artifactId>
-				<version>2.1.7</version>
-				<scope>compile</scope>
+				<version>2.2.8-02</version>
 			</dependency>
 			<dependency>
 				<groupId>com.sun.faces</groupId>
 				<artifactId>jsf-impl</artifactId>
-				<version>2.1.7</version>
-				<scope>compile</scope>
+				<version>2.2.8-02</version>
+			</dependency>
+			<!-- PrimeFaces -->
+			<dependency>
+				<groupId>org.primefaces</groupId>
+				<artifactId>primefaces</artifactId>
+				<version>5.0</version>
 			</dependency>
 			<!-- Richfaces -->
-			<dependency>
-				<groupId>org.richfaces</groupId>
-				<artifactId>richfaces-bom</artifactId>
-				<version>${richfaces.version}</version>
-				<scope>import</scope>
-				<type>pom</type>
-			</dependency>
-			<dependency>
-				<groupId>org.richfaces.ui</groupId>
-				<artifactId>richfaces-components-ui</artifactId>
-				<version>${richfaces.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.richfaces.core</groupId>
-				<artifactId>richfaces-core-impl</artifactId>
-				<version>${richfaces.version}</version>
-			</dependency>
+<!-- 			<dependency> -->
+<!-- 				<groupId>org.richfaces</groupId> -->
+<!-- 				<artifactId>richfaces-bom</artifactId> -->
+<!-- 				<version>${richfaces.version}</version> -->
+<!-- 				<scope>import</scope> -->
+<!-- 				<type>pom</type> -->
+<!-- 			</dependency> -->
+<!-- 			<dependency> -->
+<!-- 				<groupId>org.richfaces.ui</groupId> -->
+<!-- 				<artifactId>richfaces-components-ui</artifactId> -->
+<!-- 				<version>${richfaces.version}</version> -->
+<!-- 			</dependency> -->
+<!-- 			<dependency> -->
+<!-- 				<groupId>org.richfaces.core</groupId> -->
+<!-- 				<artifactId>richfaces-core-impl</artifactId> -->
+<!-- 				<version>${richfaces.version}</version> -->
+<!-- 			</dependency> -->
+			<!-- AngularJS -->
 			<dependency>
 				<groupId>org.webjars</groupId>
 				<artifactId>angularjs</artifactId>
@@ -602,6 +612,11 @@
 				<groupId>org.apache.commons</groupId>
 				<artifactId>commons-lang3</artifactId>
 				<version>3.2.1</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>2.4</version>
 			</dependency>
 			<dependency>
 				<groupId>org.slf4j</groupId>

@@ -1,7 +1,7 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:a4j="http://richfaces.org/a4j"
-	xmlns:rich="http://richfaces.org/rich"
+	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:sec="http://www.springframework.org/security/facelets/tags"
@@ -9,25 +9,23 @@
 	<ui:define name="title">#{messages.polls}</ui:define>
 	<ui:define name="content">
 		<f:view>
-			<rich:panel header="#{messages.polls}" style="width: 600px">
+			<p:panel header="#{messages.polls}">
 				<h:form id="pollTableForm">
-					<rich:dataTable value="#{pollsBean.polls}" var="poll"
+					<p:dataTable value="#{pollsBean.polls}" var="poll"
 						id="pollTable">
-						<rich:column sortBy="#{poll.name}" id="name">
+						<p:column sortBy="#{poll.name}" id="name">
 							<f:facet name="header">
-								<a4j:commandLink value="#{messages.pollName}"
-									onclick="#{rich:component('pollTable')}.sort('name')" />
+								<h:outputText value="#{messages.pollName}" />
 							</f:facet>
 							<h:outputText value="#{poll.name}" />
-						</rich:column>
-						<rich:column sortBy="#{poll.owner.username}" id="owner">
+						</p:column>
+						<p:column sortBy="#{poll.owner.username}" id="owner">
 							<f:facet name="header">
-								<a4j:commandLink value="#{messages.username}"
-									onclick="#{rich:component('pollTable')}.sort('owner')" />
+								<h:outputText value="#{messages.username}" />
 							</f:facet>
 							<h:outputText value="#{poll.owner.username}" />
-						</rich:column>
-						<rich:column>
+						</p:column>
+						<p:column>
 							<h:commandButton id="delete" value="#{messages.delete}"
 								action="#{pollsBean.deletePoll}">
 								<f:param name="name" value="#{poll.name}" />
@@ -36,8 +34,8 @@
 								action="#{editPollBean.editPoll}">
 								<f:param name="name" value="#{poll.name}" />
 							</h:commandButton>
-						</rich:column>
-					</rich:dataTable>
+						</p:column>
+					</p:dataTable>
 					<a4j:poll interval="20000" render="pollTable" />
 				</h:form>
 				<h:form id="polls">
@@ -46,7 +44,7 @@
 					<h:outputLink id="logout"
 						value="#{request.contextPath}/j_spring_security_logout">#{messages.logout}</h:outputLink>
 				</h:form>
-			</rich:panel>
+			</p:panel>
 		</f:view>
 	</ui:define>
 </ui:composition>

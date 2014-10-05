@@ -1,7 +1,7 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:a4j="http://richfaces.org/a4j"
-	xmlns:rich="http://richfaces.org/rich"
+	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 	<style>
@@ -10,28 +10,32 @@
 }
 </style>
 	<h:form id="menu">
-		<rich:toolbar styleClass="menu">
-			<rich:menuItem id="menu-show-users" label="#{messages.users}"
+		<p:toolbar styleClass="menu">
+			<p:toolbarGroup align="left">
+			<p:commandButton id="menu-show-users" value="#{messages.users}"
 				action="users" />
-			<rich:menuItem id="menu-show-files" label="#{messages.files}"
+			<p:commandButton id="menu-show-files" value="#{messages.files}"
 				action="files" />
-			<rich:menuItem id="menu-show-polls" label="#{messages.polls}"
+			<p:commandButton id="menu-show-polls" value="#{messages.polls}"
 				action="polls" />
+			</p:toolbarGroup>
 			<!-- toolbarGroup is needed to move the menu to right -->
-			<rich:toolbarGroup location="right">
+			<p:toolbarGroup align="right">
+<!-- 				<p:commandButton id="logout" value="#{messages.logout}" -->
+<!-- 					action="#{request.contextPath}/j_spring_security_logout"/> -->
 				<!-- logout link does not work as action of menuItem. -->
 				<!-- To fix the look and feel of the menuitem, the outputLink must be outside the menuItem -->
 				<h:outputLink id="logout"
 					value="#{request.contextPath}/j_spring_security_logout">
-					<rich:menuItem id="menu-logout">
+					<p:commandButton id="menu-logout">
 						<f:facet name="icon">
 							<h:graphicImage library="images" name="logout.png" width="16"
 								height="16" />
 						</f:facet>
 						<h:outputText value="#{messages.logout}" />
-					</rich:menuItem>
+					</p:commandButton>
 				</h:outputLink>
-			</rich:toolbarGroup>
-		</rich:toolbar>
+			</p:toolbarGroup>
+		</p:toolbar>
 	</h:form>
 </ui:composition>

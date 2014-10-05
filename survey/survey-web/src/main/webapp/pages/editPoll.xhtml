@@ -1,7 +1,7 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:a4j="http://richfaces.org/a4j"
-	xmlns:rich="http://richfaces.org/rich"
+	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:um="http://java.sun.com/jsf/composite/components/um"
@@ -10,7 +10,7 @@
 	<ui:define name="content">
 		<f:view>
 			<h:form id="addPoll">
-				<rich:panel header="${messages.addPoll}" style="width: 700px">
+				<p:panel header="${messages.addPoll}" style="width: 700px">
 					<h:panelGrid columns="2">
 						<h:outputText value="#{messages.pollName}" styleClass="required" />
 						<h:inputText id="pollName" value="#{editPollBean.poll.name}" />
@@ -44,7 +44,7 @@
 					<h:outputLink id="logout"
 						value="#{request.contextPath}/j_spring_security_logout">#{messages.logout}</h:outputLink>
 					<h:messages id="errorMessages" />
-				</rich:panel>
+				</p:panel>
 			</h:form>
 		</f:view>
 	</ui:define>

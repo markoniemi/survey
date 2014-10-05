@@ -1,5 +1,8 @@
 package org.survey.user.bean;
 
+import java.util.Arrays;
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 
 import lombok.Getter;
@@ -21,11 +24,11 @@ public class UsersBean {
     private UserService userService;
     @Getter
     @SuppressWarnings("checkstyle.com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck")
-    User[] users;
+    List<User> users;
 
     @PostConstruct
     public void initialize() {
-        users = userService.findAll();
+        users = Arrays.asList(userService.findAll());
     }
 
     /**

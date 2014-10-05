@@ -1,7 +1,7 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:a4j="http://richfaces.org/a4j"
-	xmlns:rich="http://richfaces.org/rich"
+	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:um="http://java.sun.com/jsf/composite/components/um"
@@ -10,10 +10,10 @@
 	<ui:define name="content">
 		<f:view>
 			<h:form id="editFile">
-				<rich:panel header="${messages.editFile}" style="width: 315px">
+				<p:panel header="${messages.editFile}" style="width: 315px">
 					<h:form id="openUploadDialogForm">
 						<h:commandButton id="openUploadDialog" value="Upload file">
-							<rich:componentControl target="popup" operation="show" />
+							<p:componentControl target="popup" operation="show" />
 						</h:commandButton>
 					</h:form>
 					<h:panelGrid columns="2">
@@ -26,7 +26,7 @@
 						value="#{messages.cancel}" />
 					<h:outputLink id="logout"
 						value="#{request.contextPath}/j_spring_security_logout">#{messages.logout}</h:outputLink>
-				</rich:panel>
+				</p:panel>
 			</h:form>
 		</f:view>
 	</ui:define>

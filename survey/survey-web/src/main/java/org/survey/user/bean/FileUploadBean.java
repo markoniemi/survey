@@ -1,13 +1,16 @@
 package org.survey.user.bean;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.Serializable;
+
+import javax.servlet.http.Part;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
-import org.richfaces.event.FileUploadEvent;
-import org.richfaces.model.UploadedFile;
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -42,15 +45,34 @@ public class FileUploadBean implements Serializable {
     @Setter
     @Autowired
     private transient UserBean userBean;
-
+    @Getter
+    @Setter
+    private Part file;
+    private byte[] fileContent;
     /**
      * Called when user presses Upload button in file upload dialog. Saves file
      * to FileService.
      */
-    public void uploadFile(FileUploadEvent event) {
-        File file = createFile(event.getUploadedFile());
-        log.debug(file.toString());
-        fileService.create(file);
+//    public void uploadFile(FileUploadEvent event) {
+//        File file = createFile(event.getUploadedFile());
+//        log.debug(file.toString());
+//        fileService.create(file);
+//    }
+
+    // TODO cleanup and refactor
+    public void upload() {
+        log.debug("FileUploadBean.upload()");
+        try {
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            IOUtils.copy(file.getInputStream(), outputStream);
+            fileContent = outputStream.toByteArray();
+            log.debug("fileContent.size: {}", fileContent.length);
+            log.debug("file.name: {} .size: {}", file.getName(), file.getSize());
+            File createdFile = createFile(file, fileContent);
+            fileService.create(createdFile);
+        } catch (IOException e) {
+            // Error handling
+        }
     }
 
     private User getUser() {
@@ -60,11 +82,12 @@ public class FileUploadBean implements Serializable {
     /**
      * Create a File from UploadedFile.
      */
-    private File createFile(UploadedFile uploadedFile) {
+//    private File createFile(UploadedFile uploadedFile) {
+    private File createFile(Part uploadedFile, byte[] fileContent) {
         File file = new File();
         file.setFilename(uploadedFile.getName());
         file.setMimeType(uploadedFile.getContentType());
-        file.setContent(uploadedFile.getData());
+        file.setContent(fileContent);
         file.setOwner(getUser());
         // file.setOwner(userBean.getUsername());
         file.setCreateTime(System.currentTimeMillis());
