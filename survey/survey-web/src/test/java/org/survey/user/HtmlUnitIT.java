@@ -26,6 +26,7 @@ import com.gargoylesoftware.htmlunit.html.HtmlForm;
 import com.gargoylesoftware.htmlunit.html.HtmlInput;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.gargoylesoftware.htmlunit.html.HtmlSelect;
+import com.gargoylesoftware.htmlunit.javascript.host.html.HTMLLinkElement;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:spring-config-test.xml")
@@ -196,10 +197,12 @@ public class HtmlUnitIT {
     }
 
     private void addPoll(String pollName) throws ElementNotFoundException,
-            IOException {
+            IOException, InterruptedException {
 //        HtmlForm form = page.getFormByName("menu");
-        page = page.getHtmlElementById("menu:menu-show-polls").click();
-        Assert.assertEquals("Polls", page.getTitleText());
+//        page = page.getHtmlElementById("menu:menu-show-polls").click();
+        // TODO find out how to press primefaces toolbar button with htmlunit
+        page = webClient.getPage(serverURL + "/" + appName + "/pages/polls.xhtml");
+        Assert.assertEquals(/*page.asXml(),*/ "Polls", page.getTitleText());
         HtmlForm form = page.getFormByName("polls");
         page = form.getInputByName("polls:addPoll").click();
         Assert.assertEquals("Add poll", page.getTitleText());

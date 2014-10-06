@@ -102,7 +102,7 @@ public class WebDriverIT {
 
     protected void assertUserRole(String username, String localizedRole) {
         WebElement element = browser.findElement(By.xpath("//tr[td='"
-                + username + "']//td[contains(@id,'role')]"));
+                + username + "']//span[contains(@id,'role')]"));
         Assert.assertNotNull(element);
         Assert.assertEquals(localizedRole, element.getText());
     }
@@ -200,7 +200,8 @@ public class WebDriverIT {
     }
 
     private void addPoll(String pollName) throws InterruptedException {
-        browser.findElement(By.id("menu:menu-show-polls")).click();
+//        browser.findElement(By.id("menu:menu-show-polls")).click();
+        browser.get(serverURL + "/" + appName + "/pages/polls.xhtml");
         Assert.assertEquals(browser.getPageSource(), "Polls",
                 browser.getTitle());
         browser.findElement(By.id("polls:addPoll")).click();

@@ -11,16 +11,21 @@
 </style>
 	<h:form id="menu">
 		<p:toolbar styleClass="menu">
-			<p:toolbarGroup align="left">
+			<f:facet name="left">
+<!-- 			<p:toolbarGroup align="left"> -->
 			<p:commandButton id="menu-show-users" value="#{messages.users}"
 				action="users" />
 			<p:commandButton id="menu-show-files" value="#{messages.files}"
 				action="files" />
+<!-- 			<p:commandLink id="menu-show-polls" value="#{messages.polls}" -->
+<!-- 				action="polls" /> -->
 			<p:commandButton id="menu-show-polls" value="#{messages.polls}"
 				action="polls" />
-			</p:toolbarGroup>
+<!-- 			</p:toolbarGroup> -->
+			</f:facet>
 			<!-- toolbarGroup is needed to move the menu to right -->
-			<p:toolbarGroup align="right">
+			<f:facet name="right">
+<!-- 			<p:toolbarGroup align="right"> -->
 <!-- 				<p:commandButton id="logout" value="#{messages.logout}" -->
 <!-- 					action="#{request.contextPath}/j_spring_security_logout"/> -->
 				<!-- logout link does not work as action of menuItem. -->
@@ -35,7 +40,8 @@
 						<h:outputText value="#{messages.logout}" />
 					</p:commandButton>
 				</h:outputLink>
-			</p:toolbarGroup>
+<!-- 			</p:toolbarGroup> -->
+			</f:facet>
 		</p:toolbar>
 	</h:form>
 </ui:composition>
