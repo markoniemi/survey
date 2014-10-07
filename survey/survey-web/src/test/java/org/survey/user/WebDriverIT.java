@@ -200,8 +200,7 @@ public class WebDriverIT {
     }
 
     private void addPoll(String pollName) throws InterruptedException {
-//        browser.findElement(By.id("menu:menu-show-polls")).click();
-        browser.get(serverURL + "/" + appName + "/pages/polls.xhtml");
+        browser.findElement(By.id("menu:menu-show-polls")).click();
         Assert.assertEquals(browser.getPageSource(), "Polls",
                 browser.getTitle());
         browser.findElement(By.id("polls:addPoll")).click();

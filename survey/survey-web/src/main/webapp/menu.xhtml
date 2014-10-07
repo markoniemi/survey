@@ -12,35 +12,16 @@
 	<h:form id="menu">
 		<p:toolbar styleClass="menu">
 			<f:facet name="left">
-<!-- 			<p:toolbarGroup align="left"> -->
-			<p:commandButton id="menu-show-users" value="#{messages.users}"
-				action="users" />
-			<p:commandButton id="menu-show-files" value="#{messages.files}"
-				action="files" />
-<!-- 			<p:commandLink id="menu-show-polls" value="#{messages.polls}" -->
-<!-- 				action="polls" /> -->
-			<p:commandButton id="menu-show-polls" value="#{messages.polls}"
-				action="polls" />
-<!-- 			</p:toolbarGroup> -->
+				<p:button id="menu-show-users" value="#{messages.users}"
+					href="users.xhtml" />
+				<p:button id="menu-show-files" value="#{messages.files}"
+					href="files.xhtml" />
+				<p:button id="menu-show-polls" value="#{messages.polls}"
+					href="polls.xhtml" />
 			</f:facet>
-			<!-- toolbarGroup is needed to move the menu to right -->
 			<f:facet name="right">
-<!-- 			<p:toolbarGroup align="right"> -->
-<!-- 				<p:commandButton id="logout" value="#{messages.logout}" -->
-<!-- 					action="#{request.contextPath}/j_spring_security_logout"/> -->
-				<!-- logout link does not work as action of menuItem. -->
-				<!-- To fix the look and feel of the menuitem, the outputLink must be outside the menuItem -->
-				<h:outputLink id="logout"
-					value="#{request.contextPath}/j_spring_security_logout">
-					<p:commandButton id="menu-logout">
-						<f:facet name="icon">
-							<h:graphicImage library="images" name="logout.png" width="16"
-								height="16" />
-						</f:facet>
-						<h:outputText value="#{messages.logout}" />
-					</p:commandButton>
-				</h:outputLink>
-<!-- 			</p:toolbarGroup> -->
+				<p:button id="logout" value="#{messages.logout}"
+					href="#{request.contextPath}/j_spring_security_logout" />
 			</f:facet>
 		</p:toolbar>
 	</h:form>
