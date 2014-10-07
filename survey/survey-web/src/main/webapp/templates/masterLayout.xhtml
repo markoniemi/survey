@@ -6,18 +6,12 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-<!-- 	<h:outputStylesheet name="style.css" library="css" /> -->
+	<h:outputStylesheet name="style.css" library="css" />
 	<title><ui:insert name="title" /></title>
 </h:head>
 <h:body>
 	<h:panelGroup styleClass="body" layout="block">
 		<h:panelGroup styleClass="content" layout="block">
-			<h:form id="banner-form">
-				<h:panelGrid columns="3" styleClass="banner-gradient">
-					<h:panelGroup styleClass="banner-product-name" layout="block">App name</h:panelGroup>
-					<h:panelGroup styleClass="banner-logout" layout="block" />
-				</h:panelGrid>
-			</h:form>
 			<ui:include src="../menu.xhtml" />
 			<ui:insert name="content" id="content" />
 		</h:panelGroup>

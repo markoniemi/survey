@@ -241,6 +241,10 @@
 			<id>org.springframework.security.taglibs.facelets</id>
 			<url>http://spring-security-facelets-taglib.googlecode.com/svn/repo/</url>
 		</repository>
+		<repository>
+			<id>org.primefaces</id>
+			<url>http://repository.primefaces.org/</url>
+		</repository>
 	</repositories>
 	<profiles>
 		<profile>
@@ -564,24 +568,11 @@
 				<artifactId>primefaces</artifactId>
 				<version>5.0</version>
 			</dependency>
-			<!-- Richfaces -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.richfaces</groupId> -->
-<!-- 				<artifactId>richfaces-bom</artifactId> -->
-<!-- 				<version>${richfaces.version}</version> -->
-<!-- 				<scope>import</scope> -->
-<!-- 				<type>pom</type> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.richfaces.ui</groupId> -->
-<!-- 				<artifactId>richfaces-components-ui</artifactId> -->
-<!-- 				<version>${richfaces.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.richfaces.core</groupId> -->
-<!-- 				<artifactId>richfaces-core-impl</artifactId> -->
-<!-- 				<version>${richfaces.version}</version> -->
-<!-- 			</dependency> -->
+			<dependency>
+				<groupId>org.primefaces.themes</groupId>
+				<artifactId>bootstrap</artifactId>
+				<version>1.0.10</version>
+			</dependency>
 			<!-- AngularJS -->
 			<dependency>
 				<groupId>org.webjars</groupId>

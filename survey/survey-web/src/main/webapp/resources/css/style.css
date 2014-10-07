@@ -3,56 +3,6 @@ label.required:after,span.required:after {
 	content: " *"
 }
 
-.banner-gradient {
-	background: #cdeb8e; /* Old browsers */
-	background: -moz-linear-gradient(top, #cdeb8e 0%, #a5c956 100%);
-	/* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #cdeb8e),
-		color-stop(100%, #a5c956)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top, #cdeb8e 0%, #a5c956 100%);
-	/* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top, #cdeb8e 0%, #a5c956 100%);
-	/* Opera 11.10+ */
-	background: -ms-linear-gradient(top, #cdeb8e 0%, #a5c956 100%);
-	/* IE10+ */
-	background: linear-gradient(top, #cdeb8e 0%, #a5c956 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient(   startColorstr='#cdeb8e',
-		endColorstr='#a5c956', GradientType=0); /* IE6-9 */
-	height: 80px;
-	width: 100%;
-}
-
-.banner-product-name,.banner-logout,.banner-logout-text {
-	margin: 0px 0px 0px 0px;
-	font-family: Arial;
-	color: white;
-}
-
-.banner-product-name {
-	font-size: 300%;
-	margin-left: 40px;
-	margin-top: 20px;
-}
-
-.banner-logout {
-	font-size: 150%;
-	margin-left: 40px;
-	margin-top: 30px;
-}
-
-.banner-logout-text {
-	font-size: 150%;
-	margin-left: 5px;
-}
-
-.menu {
-	background: #a0c050;
-}
-
-.rf-ddm-itm-lbl {
-	cursor: pointer;	
-}
-
 /* classes required for footer */
 html,body {
 	margin: 0;
@@ -73,7 +23,7 @@ html,body {
 	bottom: 0;
 	width: 100%;
 	height: 30px; /* Height of the footer */
-	background: #cdeb8e;
+	background: #eee;
 	text-align: center;
 }
 
@@ -81,9 +31,4 @@ html,body {
 	font-size: small;
 	color: graytext;
 	margin-left: 20px;
-}
-
-a {
-	margin-left: 5px;
-	margin-right: 5px;
 }
