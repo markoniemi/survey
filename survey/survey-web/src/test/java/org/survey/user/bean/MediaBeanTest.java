@@ -1,57 +1,50 @@
 package org.survey.user.bean;
 
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-import javax.imageio.ImageIO;
-
 import junit.framework.Assert;
+import lombok.experimental.Delegate;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.survey.user.bean.MediaBean;
+import org.primefaces.model.StreamedContent;
 
 /**
- * Test MediaBean. Must use SpringJUnit4ClassRunner to enable spring injection.
- * Loaded Spring configuration is defined by ContextConfiguration.
+ * Test MediaBean. MediaBean does not need spring config.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:spring-config-test.xml")
 public class MediaBeanTest {
-	@Autowired
-	private MediaBean mediaBean;
-	private ByteArrayOutputStream stream;
-	private Object data;
+	private MediaBeanMock mediaBean;
 
 	@Before
 	public void setUp() {
-		stream = new ByteArrayOutputStream();
-		data = new String("test");
+	    mediaBean = new MediaBeanMock();
 	}
 
 	@Test
-	public void paint() throws IOException {
-		mediaBean.paint(stream, data);
-		Assert.assertNotNull(stream);
-		BufferedImage bufferedImage = ImageIO.read(new ByteArrayInputStream(
-				stream.toByteArray()));
-		Assert.assertNotNull(bufferedImage);
-		Assert.assertNotNull(bufferedImage.getData());
-		Assert.assertNotNull(bufferedImage.getRaster());
+	public void getImage() throws IOException {
+	    mediaBean.setRequestParameter("email");
+		StreamedContent streamedContent = mediaBean.getImage();
+		Assert.assertNotNull(streamedContent);
+		Assert.assertNotNull(streamedContent.getStream());
+		Assert.assertEquals("png", streamedContent.getContentType());
+		Assert.assertEquals("email", streamedContent.getName());
 	}
 
 	@Test
 	public void paintWithNullData() throws IOException {
-		mediaBean.paint(stream, null);
-		Assert.assertNotNull(stream);
-		BufferedImage bufferedImage = ImageIO.read(new ByteArrayInputStream(
-				stream.toByteArray()));
-		Assert.assertNull(bufferedImage);
+	    mediaBean.setRequestParameter(null);
+	    StreamedContent streamedContent = mediaBean.getImage();
+		Assert.assertNull(streamedContent);
+	}
+	
+	
+	public class MediaBeanMock extends MediaBean {
+	    @Delegate
+	    BeanTestHelper beanTestHelper = new BeanTestHelper();
+
+        @Override
+        protected String getRequestParameter(String parameterName) {
+            return beanTestHelper.getRequestParameter(parameterName);
+        }
 	}
 }

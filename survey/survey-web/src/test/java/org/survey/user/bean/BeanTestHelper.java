@@ -14,6 +14,7 @@ import lombok.Setter;
 public class BeanTestHelper {
     String requestParameter;
     String message;
+    boolean renderPhase;
 
     void showMessage(String id, String messageKey) {
         try {
@@ -27,5 +28,8 @@ public class BeanTestHelper {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+    }
+    protected String getRequestParameter(String parameterName) {
+        return requestParameter;
     }
 }

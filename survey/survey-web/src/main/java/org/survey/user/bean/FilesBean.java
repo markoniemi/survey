@@ -14,6 +14,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
+import org.hsqldb.lib.StringUtil;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.survey.file.model.File;
 import org.survey.file.service.FileService;
+import org.survey.user.FacesUtil;
 
 @Slf4j
 @Component
@@ -38,39 +40,28 @@ public class FilesBean {
         files = Arrays.asList(fileService.findAll());
     }
 
-    /**
-     * Called by a4j:mediaOutput component.
-     * 
-     * <pre>
-     * &lt;a4j:mediaOutput element="img" cacheable="false" session="false"
-     * createContent="#{filesBean.paint}" value="#{file.id}"
-     * style="width:50px; height:50px;"
-     * mimeType="image/jpeg" /&gt;
-     * </pre>
-     */
-    public void paint(OutputStream outputStream, Object data)
-            throws IOException {
-        log.debug("paint: {}", data);
-        Long id = (Long) data;
-        if (id != null) {
-            File file = fileService.findOne(id);
-            outputStream.write(file.getContent());
-        }
-    }
-    
     public StreamedContent getImage() throws IOException {
-        FacesContext context = FacesContext.getCurrentInstance();
-
-        if (context.getCurrentPhaseId() == PhaseId.RENDER_RESPONSE) {
-            // So, we're rendering the view. Return a stub StreamedContent so that it will generate right URL.
+        DefaultStreamedContent streamedContent = null;
+        if (isRenderPhase()) {
+            // Return a stub StreamedContent when rendering view
             return new DefaultStreamedContent();
+        } else {
+            // Return a real StreamedContent with the image bytes when not in
+            // render phase.
+            String id = getRequestParameter("id");
+            if (!StringUtil.isEmpty(id)) {
+                File file = fileService.findOne(Long.valueOf(id));
+                streamedContent = new DefaultStreamedContent(new ByteArrayInputStream(file.getContent()));
+            }
         }
-        else {
-            // So, browser is requesting the image. Return a real StreamedContent with the image bytes.
-            String id = context.getExternalContext().getRequestParameterMap().get("id");
-            File file = fileService.findOne(Long.valueOf(id));
-//            Image image = service.find(Long.valueOf(id));
-            return new DefaultStreamedContent(new ByteArrayInputStream(file.getContent()));
-        }
-    }    
+        return streamedContent;
+    }
+    protected boolean isRenderPhase() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        return context.getCurrentPhaseId() == PhaseId.RENDER_RESPONSE;
+    }
+
+    protected String getRequestParameter(String parameterName) {
+        return FacesUtil.getRequestParameter(parameterName);
+    }
 }
