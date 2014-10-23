@@ -9,28 +9,11 @@
 	<ui:define name="content">
 		<f:view>
 			<p:panel header="#{messages.files}">
-		<!-- primefaces -->
-<!-- 			<h:form enctype="multipart/form-data"> -->
-<!-- 				<p:growl id="messages" showDetail="true" /> -->
-<!-- 				<p:fileUpload value="#{fileUploadBean.file}" mode="simple" -->
-<!-- 					disabled="true" /> -->
-<!-- 				<p:commandButton value="Submit" ajax="false" -->
-<!-- 					actionListener="#{fileUploadBean.upload}" disabled="true" /> -->
-<!-- 			</h:form> -->
-
-	<!-- jsf 2.2 -->
 				<h:form id="form" enctype="multipart/form-data">
 					<h:outputText value="Choose file to upload" />
 					<h:inputFile id="file" value="#{fileUploadBean.file}" />
 					<h:commandButton value="Upload" action="#{fileUploadBean.upload}" />
 				</h:form>
-
-	<!-- richfaces -->
-<!-- 				<h:form id="openUploadDialogForm"> -->
-<!-- 					<h:commandButton id="openUploadDialog" value="Upload file"> -->
-<!-- 						<p:componentControl target="popup" operation="show" /> -->
-<!-- 					</h:commandButton> -->
-<!-- 				</h:form> -->
 				<h:form id="fileTableForm">
 					<p:dataTable value="#{filesBean.files}" var="file"
 						id="fileTable">
@@ -77,9 +60,6 @@
 							<p:graphicImage value="#{filesBean.image}" width="50px" height="50px">
 								<f:param name="id" value="#{file.id}" />
 							</p:graphicImage>
-<!-- 							<a4j:mediaOutput element="img" cacheable="false" session="false" -->
-<!-- 								createContent="#{filesBean.paint}" value="#{file.id}" -->
-<!-- 								style="width:50px; height:50px;" mimeType="image/jpeg" /> -->
 						</p:column>
 					</p:dataTable>
 					<a4j:poll interval="20000" render="fileTable" />
