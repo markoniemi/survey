@@ -36,7 +36,7 @@
 		<http.protocol>https</http.protocol>
 		<spring.version>3.2.1.RELEASE</spring.version>
 		<spring.jpa.version>1.2.1.RELEASE</spring.jpa.version>
-		<selenium.version></selenium.version>
+		<selenium.version>2.42.2</selenium.version>
 		<cxf.version>2.7.12</cxf.version>
 <!-- 		<richfaces.version>4.2.3.Final</richfaces.version> -->
 		<hibernate.version>4.2.8.Final</hibernate.version>
@@ -699,20 +699,25 @@
 			<dependency>
 				<groupId>org.seleniumhq.selenium</groupId>
 				<artifactId>selenium-java</artifactId>
-				<version>2.42.2</version>
+				<version>${selenium.version}</version>
 				<scope>test</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.seleniumhq.selenium</groupId>
 				<artifactId>selenium-htmlunit-driver</artifactId>
-				<version>2.42.2</version>
+				<version>${selenium.version}</version>
 				<scope>test</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.seleniumhq.selenium</groupId>
 				<artifactId>selenium-chrome-driver</artifactId>
-				<version>2.42.2</version>
+				<version>${selenium.version}</version>
 				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.seleniumhq.selenium</groupId>
+				<artifactId>selenium-firefox-driver</artifactId>
+				<version>${selenium.version}</version>
 			</dependency>
 			<!-- HtmlUnit -->
 			<dependency>

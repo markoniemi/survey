@@ -34,7 +34,7 @@ public class HtmlUnitIT {
     private String httpPort;
     private String httpProtocol;
     private String serverURL;
-    private String appName = "user-mobile-web";
+    private String appName = "survey-mobile-web";
     private WebClient webClient;
     private HtmlPage page;
     @Autowired
@@ -127,7 +127,7 @@ public class HtmlUnitIT {
 
     protected void openBrowser() throws IOException, MalformedURLException, InterruptedException {
         webClient.waitForBackgroundJavaScriptStartingBefore(10000);
-        page = webClient.getPage(serverURL + "/" + appName + "/pages/main.html");
+        page = webClient.getPage(serverURL + "/" + appName);
         webClient.waitForBackgroundJavaScriptStartingBefore(10000);
         webClient.waitForBackgroundJavaScript(10000);
         Thread.sleep(2000);

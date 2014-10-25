@@ -11,7 +11,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -22,10 +22,11 @@ import org.survey.user.service.UserService;
 @ContextConfiguration(locations = "classpath:spring-config-rest-service-test.xml")
 public class MobileWebIT {
     private WebDriver browser;
+//    private HtmlUnitDriver browser;
     private String httpPort;
     private String httpProtocol;
     private String serverURL;
-    private String appName = "user-mobile-web";
+    private String appName = "survey-mobile-web";
     @Autowired
     protected UserService userService;
 //    @Autowired
@@ -36,8 +37,10 @@ public class MobileWebIT {
         httpPort = System.getProperty("http.port", "8082");
         httpProtocol = System.getProperty("http.protocol", "http");
         serverURL = httpProtocol + "://localhost:" + httpPort;
-//         browser = new FirefoxDriver();
-        browser = new HtmlUnitDriver(true);
+         browser = new FirefoxDriver();
+//        browser = new HtmlUnitDriver(true);
+//        browser = new ChromeDriver();
+//        browser.setJavascriptEnabled(true);
     }
 
     @After
@@ -89,8 +92,9 @@ public class MobileWebIT {
 //        logout();
     }
 
-    protected void openBrowser() {
-        browser.get(serverURL + "/" + appName + "/pages/main.html");
+    protected void openBrowser() throws InterruptedException {
+        browser.get(serverURL + "/" + appName);
+        Thread.sleep(2000);
         Assert.assertEquals(browser.getPageSource(), "Users",
                 browser.getTitle());
     }
