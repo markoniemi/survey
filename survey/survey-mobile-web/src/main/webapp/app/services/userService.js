@@ -5,6 +5,3 @@ app.factory("UserService", function($resource) {
 		update: { method: 'PUT' }
 	});
 });
-app.factory("FileService", function($resource) {
-	return $resource(baseUrl + "files/:id");
-});
