@@ -44,8 +44,7 @@
 					<div class="controls">
 						<select id="role" name="role" class="input-xlarge"
 							ng-model="user.role">
-							<option>ROLE_ADMIN</option>
-							<option>ROLE_USER</option>
+							<option ng-repeat="role in roles" value="{{role.value}}">{{role.name}}</option>
 						</select>
 					</div>
 				</div>
