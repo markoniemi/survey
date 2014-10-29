@@ -19,7 +19,7 @@ public class BeanTestHelper {
     void showMessage(String id, String messageKey) {
         try {
             ResourceBundle resourceBundle = new PropertyResourceBundle(new FileInputStream(
-                    "src/main/resources/usermanagement/MessageResources.properties"));
+                    "src/main/resources/MessageResources.properties"));
             message = resourceBundle.getString(messageKey);
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
