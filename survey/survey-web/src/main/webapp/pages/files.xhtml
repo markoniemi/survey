@@ -9,11 +9,6 @@
 	<ui:define name="content">
 		<f:view>
 			<p:panel header="#{messages.files}">
-				<h:form id="form" enctype="multipart/form-data">
-					<h:outputText value="Choose file to upload" />
-					<h:inputFile id="file" value="#{fileUploadBean.file}" />
-					<h:commandButton value="Upload" action="#{fileUploadBean.upload}" />
-				</h:form>
 				<h:form id="fileTableForm">
 					<p:dataTable value="#{filesBean.files}" var="file"
 						id="fileTable">
@@ -63,36 +58,17 @@
 						</p:column>
 					</p:dataTable>
 					<a4j:poll interval="20000" render="fileTable" />
-				</h:form>
-				<h:form id="files">
-					<h:outputLink id="logout"
-						value="#{request.contextPath}/j_spring_security_logout">#{messages.logout}</h:outputLink>
+					<h:commandButton id="addFile" value="#{messages.addFile}" action="#{fileUploadBean.addFile}" />
 				</h:form>
 			</p:panel>
+<!-- 			<p:panel header="#{messages.addFile}"> -->
+<!-- 				<h:form id="form" enctype="multipart/form-data"> -->
+<!-- 					<h:panelGrid columns="1"> -->
+<!-- 						<h:inputFile id="file" value="#{fileUploadBean.file}" /> -->
+<!-- 						<h:commandButton value="#{messages.fileUpload}" action="#{fileUploadBean.upload}" /> -->
+<!-- 					</h:panelGrid> -->
+<!-- 				</h:form> -->
+<!-- 			</p:panel> -->
 		</f:view>
-<!-- 		<p:popupPanel id="popup" modal="true" autosized="true" -->
-<!-- 			resizeable="false" moveable="false"> -->
-<!-- 			<f:facet name="header"> -->
-<!-- 				<h:outputText value="#{messages.fileUpload}" /> -->
-<!-- 			</f:facet> -->
-<!-- 			<f:facet name="controls"> -->
-<!-- 				<h:outputLink id="close" value="#" -->
-<!-- 					onclick="#{p:component('popup')}.hide(); return false;"> -->
-<!-- 					<h:outputText value="X" /> -->
-<!-- 				</h:outputLink> -->
-<!-- 			</f:facet> -->
-<!-- 			<h:form id="fileUploadForm"> -->
-<!-- 				<p:fileUpload id="upload" -->
-<!-- 					fileUploadListener="#{fileUploadBean.uploadFile}" -->
-<!-- 					acceptedTypes="#{fileUploadBean.acceptedTypes}" -->
-<!-- 					maxFilesQuantity="10" -->
-<!-- 					onuploadcomplete="#{p:component('popup')}.hide(); return true;"> -->
-<!-- 					<a4j:ajax event="uploadcomplete" execute="@none" -->
-<!-- 						render="fileTableForm" /> -->
-<!-- 				</p:fileUpload> -->
-<!-- 				<h:commandButton id="done" value="#{messages.cancel}" -->
-<!-- 					onclick="#{p:component('popup')}.hide(); return false;" /> -->
-<!-- 			</h:form> -->
-<!-- 		</p:popupPanel> -->
 	</ui:define>
 </ui:composition>

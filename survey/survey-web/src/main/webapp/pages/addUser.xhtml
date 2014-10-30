@@ -14,8 +14,6 @@
 					<um:user id="editUser" user="#{editUserBean.user}" repeatPassword="#{editUserBean.repeatedPassword}" roles="#{editUserBean.roles}" />
 					<h:commandButton action="#{editUserBean.saveUser}"
 						value="#{messages.addUser}" id="addUser" />
-					<h:outputLink id="logout"
-						value="#{request.contextPath}/j_spring_security_logout">#{messages.logout}</h:outputLink>
 				</p:panel>
 			</h:form>
 		</f:view>

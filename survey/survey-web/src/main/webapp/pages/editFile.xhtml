@@ -9,25 +9,20 @@
 	<ui:define name="title">${messages.editFile}</ui:define>
 	<ui:define name="content">
 		<f:view>
-			<h:form id="editFile">
-				<p:panel header="${messages.editFile}" style="width: 315px">
-					<h:form id="openUploadDialogForm">
-						<h:commandButton id="openUploadDialog" value="Upload file">
-							<p:componentControl target="popup" operation="show" />
-						</h:commandButton>
-					</h:form>
-					<h:panelGrid columns="2">
-						<h:outputText value="#{messages.pollName}" styleClass="required" />
-						<h:inputText id="pollName" value="#{editPollBean.poll.name}" />
+			<p:panel header="${messages.editFile}">
+				<h:form id="form" enctype="multipart/form-data">
+					<h:panelGrid columns="1">
+						<h:inputFile id="file" value="#{fileUploadBean.file}" />
 					</h:panelGrid>
-					<h:commandButton action="#{editFileBean.saveFile}"
-						value="#{messages.update}" id="update" />
-					<h:commandButton id="cancel" action="#{editFileBean.cancel}"
+					<h:panelGrid columns="2">
+						<h:outputText value="#{messages.filename}" styleClass="required" />
+						<h:inputText id="filename" value="#{fileUploadBean.filename}" />
+					</h:panelGrid>
+					<h:commandButton id="save" value="#{messages.fileUpload}" action="#{fileUploadBean.upload}" />
+					<h:commandButton id="cancel" action="#{fileUploadBean.cancel}"
 						value="#{messages.cancel}" />
-					<h:outputLink id="logout"
-						value="#{request.contextPath}/j_spring_security_logout">#{messages.logout}</h:outputLink>
-				</p:panel>
-			</h:form>
+				</h:form>
+			</p:panel>
 		</f:view>
 	</ui:define>
 </ui:composition>

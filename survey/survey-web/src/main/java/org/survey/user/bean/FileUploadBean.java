@@ -16,6 +16,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.survey.file.model.File;
 import org.survey.file.service.FileService;
+import org.survey.poll.model.Poll;
 import org.survey.user.FacesUtil;
 import org.survey.user.model.User;
 import org.survey.user.service.UserService;
@@ -43,12 +44,18 @@ public class FileUploadBean implements Serializable {
     @Getter
     @Setter
     private Part file;
+    @Getter
+    @Setter
+    private String filename;
 
+    public String addFile() {
+        return "editFile";
+    }
     /**
      * Called when user presses Upload button in file upload dialog. Saves file
      * to FileService.
      */
-    public void upload() {
+    public String upload() {
         try {
             byte[] fileContent = getFileContent();
             File createdFile = createFile(file, fileContent);
@@ -56,6 +63,7 @@ public class FileUploadBean implements Serializable {
         } catch (IOException e) {
             showMessage(null, "fileUploadError");
         }
+        return "fileSaved";
     }
 
     /**

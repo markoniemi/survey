@@ -15,8 +15,6 @@
 						roles="#{editUserBean.roles}" isUsernameEditable="false" />
 					<h:commandButton action="#{editUserBean.saveUser}"
 						value="#{messages.update}" id="update" />
-					<h:outputLink id="logout"
-						value="#{request.contextPath}/j_spring_security_logout">#{messages.logout}</h:outputLink>
 				</p:panel>
 			</h:form>
 		</f:view>

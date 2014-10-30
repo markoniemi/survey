@@ -96,5 +96,15 @@
 			<to-view-id>/pages/polls.xhtml</to-view-id>
 			<redirect/>
 		</navigation-case>
+		<navigation-case>
+			<from-outcome>editFile</from-outcome>
+			<to-view-id>/pages/editFile.xhtml</to-view-id>
+			<redirect/>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>fileSaved</from-outcome>
+			<to-view-id>/pages/files.xhtml</to-view-id>
+			<redirect/>
+		</navigation-case>
 	</navigation-rule>
 </faces-config>
