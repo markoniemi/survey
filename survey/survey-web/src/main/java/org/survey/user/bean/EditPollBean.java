@@ -87,9 +87,9 @@ public class EditPollBean {
         log.info(poll.toString());
         try {
             if (poll.getId() == null) {
-                pollService.create(poll);
+                poll = pollService.create(poll);
             } else {
-                pollService.update(poll);
+                poll = pollService.update(poll);
             }
         } catch (IllegalArgumentException e) {
             log.debug("Unable to create poll, a poll with same name already exists: {]", poll.getName());

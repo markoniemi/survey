@@ -6,6 +6,7 @@ import junit.framework.Assert;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.survey.poll.model.Poll;
 import org.survey.poll.model.Question;
+import org.survey.poll.model.QuestionType;
 import org.survey.poll.service.PollService;
 
 /**
@@ -46,17 +48,22 @@ public class EditPollBeanTest {
         Assert.assertEquals(
                 "editPollBean.register returned an unexpected value",
                 "editPoll", result);
-        Poll createdPoll = new Poll("poll");
-        editPollBean.setPoll(createdPoll);
+//        Poll createdPoll = new Poll("poll");
+//        editPollBean.setPoll(createdPoll);
+        editPollBean.getPoll().setName("poll");
         result = editPollBean.savePoll();
         Assert.assertEquals(
                 "editPollBean.savePoll returned an unexpected value",
                 "pollSaved", result);
-        Poll pollFromDatabase = pollService.findOne(createdPoll.getName());
+        Poll pollFromDatabase = pollService.findOne("poll");
         Assert.assertNotNull("registered poll was not added to database",
                 pollFromDatabase);
         Assert.assertEquals("poll", pollFromDatabase.getName());
-        result = editPollBean.editPoll();
+    }
+    @Test
+    public void addQuestion() {
+        addPoll();
+        String result = editPollBean.editPoll();
         Assert.assertEquals(
                 "editPollBean.editPoll returned an unexpected value",
                 "editPoll", result);
@@ -69,23 +76,29 @@ public class EditPollBeanTest {
         Assert.assertEquals(
                 "editPollBean.savePoll returned an unexpected value",
                 "pollSaved", result);
-        pollFromDatabase = pollService.findOne(createdPoll.getName());
+        Poll pollFromDatabase = pollService.findOne("poll");
         Assert.assertNotNull("registered poll was not added to database",
                 pollFromDatabase);
         Assert.assertEquals(1, pollFromDatabase.getQuestions().size());
         Assert.assertEquals("text1", pollFromDatabase.getQuestions().get(0)
                 .getText());
-        // TODO move to another test case
-//        editPollBean.getPoll().getQuestions().get(0).setType(QuestionType.BOOLEAN.name());
-//        editPollBean.questionTypeChanged(0);
-//        result = editPollBean.savePoll();
-//        Assert.assertEquals(
-//                "editPollBean.savePoll returned an unexpected value",
-//                "pollSaved", result);
-//        pollFromDatabase = pollService.findOne(createdPoll.getName());
-//        String type = pollFromDatabase.getQuestions().get(0)
-//        .getType();
-//        Assert.assertEquals(QuestionType.BOOLEAN.name(), type);
+    }
+    
+    @Ignore
+    @Test
+    public void questionTypeChanged() {
+        // addQuestion calls addPoll
+        addQuestion();
+        editPollBean.getPoll().getQuestions().get(0).setType(QuestionType.BOOLEAN.name());
+        editPollBean.questionTypeChanged(0);
+        String result = editPollBean.savePoll();
+        Assert.assertEquals(
+                "editPollBean.savePoll returned an unexpected value",
+                "pollSaved", result);
+        Poll pollFromDatabase = pollService.findOne("poll");
+        String type = pollFromDatabase.getQuestions().get(0)
+        .getType();
+        Assert.assertEquals(QuestionType.BOOLEAN, type);
     }
 
     @Test
