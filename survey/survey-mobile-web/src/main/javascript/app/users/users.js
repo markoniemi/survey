@@ -1,5 +1,7 @@
+projectVersion = "${project.version}";
 app.controller('UserListController', function($scope, $location, UserService,
 		$timeout) {
+	$scope.projectVersion = projectVersion;
 	// get users from service
 	$scope.users = UserService.query();
 	// called when user presses edit button
