@@ -1,7 +1,9 @@
 projectVersion = "${project.version}";
+httpPort = "${http.port}";
 app.controller('UserListController', function($scope, $location, UserService,
 		$timeout) {
 	$scope.projectVersion = projectVersion;
+	$scope.httpPort = httpPort;
 	// get users from service
 	$scope.users = UserService.query();
 	// called when user presses edit button

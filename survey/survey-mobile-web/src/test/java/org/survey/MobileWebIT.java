@@ -12,6 +12,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -37,7 +38,12 @@ public class MobileWebIT {
         httpPort = System.getProperty("http.port", "8082");
         httpProtocol = System.getProperty("http.protocol", "http");
         serverURL = httpProtocol + "://localhost:" + httpPort;
-         browser = new FirefoxDriver();
+        
+        FirefoxProfile profile = new FirefoxProfile();
+        profile.setAcceptUntrustedCertificates(true);
+        profile.setAssumeUntrustedCertificateIssuer(false);
+        browser = new FirefoxDriver(profile);
+//         browser = new FirefoxDriver();
 //        browser = new HtmlUnitDriver(true);
 //        browser = new ChromeDriver();
 //        browser.setJavascriptEnabled(true);
