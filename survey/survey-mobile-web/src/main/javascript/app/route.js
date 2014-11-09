@@ -15,6 +15,11 @@ app.config([ '$routeProvider', function($routeProvider) {
 		controller : 'UserController',
 		title : 'Edit user'
 	});
+	$routeProvider.when('/about', {
+		templateUrl : 'app/about/about.xhtml',
+		controller : 'AboutController',
+		title : 'About Survey'
+	});
 	$routeProvider.otherwise({
 		redirectTo : '/users'
 	});

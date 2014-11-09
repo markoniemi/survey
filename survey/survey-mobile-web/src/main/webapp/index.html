@@ -6,23 +6,26 @@
 <!-- <title>{{ $root.title }}</title> -->
 <title ng:bind-template="{{pageTitle}}"></title>
 <script type="text/javascript"
-	src="webjars/angularjs/1.3.0-beta.17/angular.js"></script>
+	src="webjars/angularjs/1.2.16/angular.js"></script>
 <script type="text/javascript"
-	src="webjars/angularjs/1.3.0-beta.17/angular-route.js"></script>
+	src="webjars/angularjs/1.2.16/angular-route.js"></script>
 <script type="text/javascript"
-	src="webjars/angularjs/1.3.0-beta.17/angular-resource.js"></script>
+	src="webjars/angularjs/1.2.16/angular-resource.js"></script>
 <script type="text/javascript"
-	src="webjars/angular-ui-bootstrap/0.11.0/ui-bootstrap.min.js"></script>
+	src="webjars/angular-ui-bootstrap/0.11.2/ui-bootstrap.min.js"></script>
 <link rel="stylesheet"
 	href="webjars/bootstrap/3.1.1/css/bootstrap.min.css"></link>
 <script src="app/app.js"></script>
 <script src="app/config.js"></script>
 <script src="app/route.js"></script>
 <script src="app/services/userService.js"></script>
+<script src="app/common/menu.js"></script>
 <script src="app/users/user.js"></script>
 <script src="app/users/users.js"></script>
+<script src="app/about/about.js"></script>
 </head>
 <body>
-	<div ng-view/>
+	<div ng-include="'app/common/menu.xhtml'"></div>
+	<div ng-view />
 </body>
 </html>
