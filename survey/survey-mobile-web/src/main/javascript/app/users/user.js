@@ -1,4 +1,4 @@
-app.controller('UserController', function($scope, $location, UserService,
+app.controller('UserCtrl', function($scope, $location, UserService,
 		$routeParams, $log) {
 	// if editing, get user from service
 	var editing = $routeParams.id != null;
