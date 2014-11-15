@@ -1,10 +1,11 @@
 app.controller('UserController', function($scope, $location, UserService,
 		$routeParams, $log) {
 	// if editing, get user from service
-	var editing = $routeParams.username != null;
+	var editing = $routeParams.id != null;
+	$log.debug("editing user: " + $routeParams.id);
 	if (editing) {
 		$scope.user = UserService.get({
-			username : $routeParams.username
+			username : $routeParams.id
 		});
 	}
 	// values for role select
@@ -14,7 +15,7 @@ app.controller('UserController', function($scope, $location, UserService,
 	function success() {
 		$log.log('success');
 		$scope.users = UserService.query();
-		$location.path('/users');
+		$location.path('/users/users');
 	}
 	// failure callback
 	function failure(httpResponse) {
@@ -30,6 +31,6 @@ app.controller('UserController', function($scope, $location, UserService,
 	};
 	// called when user presses cancel
 	$scope.cancel = function() {
-		$location.path('/users');
+		$location.path('/users/users');
 	};
 });

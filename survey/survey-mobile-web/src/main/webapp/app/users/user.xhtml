@@ -1,68 +1,65 @@
-<!DOCTYPE html>
-<html>
-<head>
-</head>
-<body>
-	<div ng:init="$root.pageTitle = 'User'"/>
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			<h3 class="panel-title">User</h3>
-		</div>
-		<div class="panel-body">
-			<div class="alert alert-danger" role="alert" ng-show="error != null">{{ error }}</div>
-			<form class="form-horizontal">
-				<div class="control-group">
-					<label class="control-label" for="username">Username</label>
-					<div class="controls">
-						<input id="username" name="username" type="text" placeholder=""
-							class="input-xlarge" required="" ng-model="user.username"/>
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label" for="password">Password</label>
-					<div class="controls">
-						<input id="password" name="password" type="password" placeholder=""
-							class="input-xlarge" required="" ng-model="user.password"/>
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label" for="repeatPassword">Repeat password</label>
-					<div class="controls">
-						<input id="repeatPassword" name="repeatPassword" type="password" placeholder=""
-							class="input-xlarge" required="" ng-model="repeatPassword"/>
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label" for="email">Email</label>
-					<div class="controls">
-						<input id="email" name="email" type="text" placeholder=""
-							class="input-xlarge" required="" ng-model="user.email"/>
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label" for="role">Role</label>
-					<div class="controls">
-						<select id="role" name="role" class="input-xlarge"
-							ng-model="user.role">
-							<option ng-repeat="role in roles" value="{{role.value}}">{{role.name}}</option>
-						</select>
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label" for="submit"></label>
-					<div class="controls">
-						<button id="submit" name="submit" class="btn btn-primary"
-							title="Submit" ng-click="saveUser(user)">
-							<span class="glyphicon glyphicon-ok" />
-						</button>
-						<button id="cancel" name="cancel" class="btn btn-default" title="Cancel" ng-click="cancel()" ng-discard>
-							<span class="glyphicon glyphicon-remove" />
-						</button>
-					</div>
-				</div>
-			</form>
-			<div id="messages" class="alert alert-success" data-ng-show="messages" data-ng-bind="messages"/>
-		</div>
+<div ng-controller="UserController" ng:init="$root.pageTitle = 'User'" />
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">User</h3>
 	</div>
-</body>
-</html>
+	<div class="panel-body">
+		<div class="alert alert-danger" role="alert" ng-show="error != null">{{error}}</div>
+		<form class="form-horizontal">
+			<div class="control-group">
+				<label class="control-label" for="username">Username</label>
+				<div class="controls">
+					<input id="username" name="username" type="text" placeholder=""
+						class="input-xlarge" required="" ng-model="user.username" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="password">Password</label>
+				<div class="controls">
+					<input id="password" name="password" type="password" placeholder=""
+						class="input-xlarge" required="" ng-model="user.password" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="repeatPassword">Repeat
+					password</label>
+				<div class="controls">
+					<input id="repeatPassword" name="repeatPassword" type="password"
+						placeholder="" class="input-xlarge" required=""
+						ng-model="repeatPassword" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="email">Email</label>
+				<div class="controls">
+					<input id="email" name="email" type="text" placeholder=""
+						class="input-xlarge" required="" ng-model="user.email" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="role">Role</label>
+				<div class="controls">
+					<select id="role" name="role" class="input-xlarge"
+						ng-model="user.role">
+						<option ng-repeat="role in roles" value="{{role.value}}">{{role.name}}</option>
+					</select>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="submit"></label>
+				<div class="controls">
+					<button id="submit" name="submit" class="btn btn-primary"
+						title="Submit" ng-click="saveUser(user)">
+						<span class="glyphicon glyphicon-ok" />
+					</button>
+					<button id="cancel" name="cancel" class="btn btn-default"
+						title="Cancel" ng-click="cancel()" ng-discard>
+						<span class="glyphicon glyphicon-remove" />
+					</button>
+				</div>
+			</div>
+		</form>
+		<div id="messages" class="alert alert-success" data-ng-show="messages"
+			data-ng-bind="messages" />
+	</div>
+</div>

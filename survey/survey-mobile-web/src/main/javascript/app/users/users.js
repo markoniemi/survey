@@ -1,11 +1,12 @@
-app.controller('UserListController', function($scope, $location, $timeout, UserService, config
+app.controller('UserListController', function($scope, $location, $timeout, $log, UserService, config
 		) {
+	$log.debug('UserListController');
 	$scope.projectVersion = config.projectVersion;
 	// get users from service
 	$scope.users = UserService.query();
 	// called when user presses edit button
 	$scope.editUser = function editUser(user) {
-		$location.path('/user/' + user.username);
+		$location.path('/users/user/' + user.username);
 	};
 	// called when user presses delete button
 	$scope.deleteUser = function deleteUser(user) {

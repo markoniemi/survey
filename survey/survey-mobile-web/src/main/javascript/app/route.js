@@ -1,26 +1,28 @@
 //'use strict';
 app.config([ '$routeProvider', function($routeProvider) {
-	$routeProvider.when('/users', {
-		templateUrl : 'app/users/users.xhtml',
-		controller : 'UserListController',
-		title : 'Users'
+	console.log("route");
+	$routeProvider.when('/:group/:page/:id', {
+		templateUrl: function(routeParams) {
+			return createTemplateUrl(routeParams.group, routeParams.page);
+		}
 	});
-	$routeProvider.when('/user', {
-		templateUrl : 'app/users/user.xhtml',
-		controller : 'UserController',
-		title : 'Create user'
+	$routeProvider.when('/:group/:page', {
+		templateUrl: function(routeParams) {
+			return createTemplateUrl(routeParams.group, routeParams.page);
+		}
 	});
-	$routeProvider.when('/user/:username', {
-		templateUrl : 'app/users/user.xhtml',
-		controller : 'UserController',
-		title : 'Edit user'
-	});
-	$routeProvider.when('/about', {
-		templateUrl : 'app/about/about.xhtml',
-		controller : 'AboutController',
-		title : 'About Survey'
+	$routeProvider.when('/:group', {
+		templateUrl: function(routeParams) {
+			return createTemplateUrl(routeParams.group, routeParams.group);
+		}
 	});
 	$routeProvider.otherwise({
-		redirectTo : '/users'
+		redirectTo: '/users/users'
 	});
 } ]);
+
+function createTemplateUrl(group, page){
+	templateUrl = 'app/' + group + '/' + page + '.xhtml';
+	console.log(templateUrl);
+	return templateUrl;
+}
