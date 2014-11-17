@@ -50,6 +50,7 @@
 		<sonar.jacoco.itReportPath>${env.WORKSPACE}/target/${jacoco.out.file}</sonar.jacoco.itReportPath>
 		<angularjs.version>1.2.16</angularjs.version>
 		<angular-ui-bootstrap.version>0.11.2</angular-ui-bootstrap.version>
+		<angular-translate.version>2.4.2</angular-translate.version>
 	</properties>
 	<build>
 		<defaultGoal>install</defaultGoal>
@@ -588,6 +589,11 @@
 				<groupId>org.webjars</groupId>
 				<artifactId>angular-ui-bootstrap</artifactId>
 				<version>${angular-ui-bootstrap.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.webjars</groupId>
+				<artifactId>angular-translate</artifactId>
+				<version>${angular-translate.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>cglib</groupId>

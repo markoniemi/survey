@@ -1,4 +1,4 @@
-app.controller('UserCtrl', function($scope, $location, UserService,
+app.controller('UserCtrl', function($scope, $location, $translate, UserService,
 		$routeParams, $log) {
 	// if editing, get user from service
 	var editing = $routeParams.id != null;
@@ -9,6 +9,8 @@ app.controller('UserCtrl', function($scope, $location, UserService,
 		});
 	}
 	// values for role select
+//	$scope.roles = [{name: $translate('ROLE_USER'), value: 'ROLE_USER'},
+//	                {name: $translate('ROLE_ADMIN'), value: 'ROLE_ADMIN'}];
 	$scope.roles = [{name: 'User', value: 'ROLE_USER'},
 	                {name: 'Admin', value: 'ROLE_ADMIN'}];
 	// success callback
@@ -19,7 +21,7 @@ app.controller('UserCtrl', function($scope, $location, UserService,
 	}
 	// failure callback
 	function failure(httpResponse) {
-		$scope.error = "Unable to save user.";
+		$scope.error = $translate('ADD_USER_ERROR');
 	};
 	// called when user presses submit button
 	$scope.saveUser = function saveUser(user) {
