@@ -9,10 +9,8 @@ app.controller('UserCtrl', function($scope, $location, $translate, UserService,
 		});
 	}
 	// values for role select
-//	$scope.roles = [{name: $translate('ROLE_USER'), value: 'ROLE_USER'},
-//	                {name: $translate('ROLE_ADMIN'), value: 'ROLE_ADMIN'}];
-	$scope.roles = [{name: 'User', value: 'ROLE_USER'},
-	                {name: 'Admin', value: 'ROLE_ADMIN'}];
+	$scope.roles = [{name: $translate.instant("ROLE_USER"), value: 'ROLE_USER'},
+	                {name: $translate.instant("ROLE_ADMIN"), value: 'ROLE_ADMIN'}];
 	// success callback
 	function success() {
 		$log.log('success');
