@@ -28,7 +28,10 @@ public class PollsBean {
 
     @PostConstruct
     public void initialize() {
-        polls = Arrays.asList(pollService.findAll());
+        Poll[] polls = pollService.findAll();
+        if (polls != null) {
+            this.polls = Arrays.asList(polls);
+        }
     }
 
     /**

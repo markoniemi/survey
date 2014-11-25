@@ -19,7 +19,7 @@ app.controller('UserCtrl', function($scope, $location, $translate, UserService,
 	}
 	// failure callback
 	function failure(httpResponse) {
-		$scope.error = $translate('ADD_USER_ERROR');
+		$scope.error = $translate.instant('ADD_USER_ERROR');
 	};
 	// called when user presses submit button
 	$scope.saveUser = function saveUser(user) {

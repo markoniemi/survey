@@ -28,7 +28,10 @@ public class UsersBean {
 
     @PostConstruct
     public void initialize() {
-        users = Arrays.asList(userService.findAll());
+        User[] users = userService.findAll();
+        if (users != null) {
+            this.users = Arrays.asList(users);
+        }
     }
 
     /**

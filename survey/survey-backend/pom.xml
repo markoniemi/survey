@@ -1,19 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>survey-web</artifactId>
+	<artifactId>survey-backend</artifactId>
 	<packaging>war</packaging>
 	<parent>
-		<artifactId>survey</artifactId>
 		<groupId>org.survey</groupId>
+		<artifactId>survey</artifactId>
 		<version>1.3-SNAPSHOT</version>
 	</parent>
 	<dependencies>
-		<!-- <dependency> -->
-		<!-- <groupId>org.survey</groupId> -->
-		<!-- <artifactId>crud-repository-stub</artifactId> -->
-		<!-- </dependency> -->
+		<dependency>
+			<groupId>org.survey</groupId>
+			<artifactId>crud-repository-stub</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.survey</groupId>
 			<artifactId>user-repository</artifactId>
@@ -96,18 +95,14 @@
 			<artifactId>spring-context</artifactId>
 		</dependency>
 		<!-- CXF -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.apache.cxf</groupId> -->
-		<!-- <artifactId>cxf-rt-rs-client</artifactId> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.codehaus.jackson</groupId> -->
-		<!-- <artifactId>jackson-xc</artifactId> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.codehaus.jackson</groupId> -->
-		<!-- <artifactId>jackson-jaxrs</artifactId> -->
-		<!-- </dependency> -->
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-xc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-jaxrs</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
@@ -117,58 +112,52 @@
 			<artifactId>commons-io</artifactId>
 		</dependency>
 		<!-- test -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.survey</groupId> -->
-		<!-- <artifactId>crud-repository-stub</artifactId> -->
-		<!-- <scope>test</scope> -->
-		<!-- <type>test-jar</type> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.survey</groupId> -->
-		<!-- <artifactId>user-repository</artifactId> -->
-		<!-- <scope>test</scope> -->
-		<!-- <type>test-jar</type> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.survey</groupId> -->
-		<!-- <artifactId>user-service</artifactId> -->
-		<!-- <scope>test</scope> -->
-		<!-- <type>test-jar</type> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.survey</groupId> -->
-		<!-- <artifactId>file-repository</artifactId> -->
-		<!-- <scope>test</scope> -->
-		<!-- <type>test-jar</type> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.survey</groupId> -->
-		<!-- <artifactId>file-service</artifactId> -->
-		<!-- <scope>test</scope> -->
-		<!-- <type>test-jar</type> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.survey</groupId> -->
-		<!-- <artifactId>poll-repository</artifactId> -->
-		<!-- <scope>test</scope> -->
-		<!-- <type>test-jar</type> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.survey</groupId> -->
-		<!-- <artifactId>poll-service</artifactId> -->
-		<!-- <scope>test</scope> -->
-		<!-- <type>test-jar</type> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>javax.el</groupId> -->
-		<!-- <artifactId>javax.el-api</artifactId> -->
-		<!-- <scope>test</scope> -->
-		<!-- </dependency> -->
 		<dependency>
 			<groupId>org.survey</groupId>
-			<artifactId>survey-backend</artifactId>
+			<artifactId>crud-repository-stub</artifactId>
 			<scope>test</scope>
-			<type>war</type>
+			<type>test-jar</type>
+		</dependency>
+		<dependency>
+			<groupId>org.survey</groupId>
+			<artifactId>user-repository</artifactId>
+			<scope>test</scope>
+			<type>test-jar</type>
+		</dependency>
+		<dependency>
+			<groupId>org.survey</groupId>
+			<artifactId>user-service</artifactId>
+			<scope>test</scope>
+			<type>test-jar</type>
+		</dependency>
+		<dependency>
+			<groupId>org.survey</groupId>
+			<artifactId>file-repository</artifactId>
+			<scope>test</scope>
+			<type>test-jar</type>
+		</dependency>
+		<dependency>
+			<groupId>org.survey</groupId>
+			<artifactId>file-service</artifactId>
+			<scope>test</scope>
+			<type>test-jar</type>
+		</dependency>
+		<dependency>
+			<groupId>org.survey</groupId>
+			<artifactId>poll-repository</artifactId>
+			<scope>test</scope>
+			<type>test-jar</type>
+		</dependency>
+		<dependency>
+			<groupId>org.survey</groupId>
+			<artifactId>poll-service</artifactId>
+			<scope>test</scope>
+			<type>test-jar</type>
+		</dependency>
+		<dependency>
+			<groupId>javax.el</groupId>
+			<artifactId>javax.el-api</artifactId>
+			<scope>test</scope>
 		</dependency>
 		<!-- Selenium -->
 		<dependency>
@@ -190,13 +179,13 @@
 		<dependency>
 			<groupId>commons-collections</groupId>
 			<artifactId>commons-collections</artifactId>
-			<!-- <scope>test</scope> -->
+<!-- 			<scope>test</scope> -->
 		</dependency>
-		<!-- <dependency> -->
-		<!-- <groupId>org.apache.commons</groupId> -->
-		<!-- <artifactId>commons-lang3</artifactId> -->
-		<!-- <scope>test</scope> -->
-		<!-- </dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.apache.commons</groupId> -->
+<!-- 			<artifactId>commons-lang3</artifactId> -->
+<!-- 			<scope>test</scope> -->
+<!-- 		</dependency> -->
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
@@ -243,7 +232,7 @@
 		<dependency>
 			<groupId>net.sourceforge.cssparser</groupId>
 			<artifactId>cssparser</artifactId>
-			<!-- <scope>test</scope> -->
+<!-- 			<scope>test</scope> -->
 		</dependency>
 		<dependency>
 			<groupId>commons-logging</groupId>
@@ -301,7 +290,7 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
+   			</plugin>
 			<plugin>
 				<groupId>org.codehaus.cargo</groupId>
 				<artifactId>cargo-maven2-plugin</artifactId>
@@ -309,12 +298,6 @@
 				<configuration>
 					<wait>false</wait>
 					<warName>${finalName}.war</warName>
-					<deployables>
-						<deployable>
-							<artifactId>survey-backend</artifactId>
-							<groupId>org.survey</groupId>
-						</deployable>
-					</deployables>
 					<configuration>
 						<properties>
 							<cargo.jvmargs>argLine</cargo.jvmargs>
@@ -341,7 +324,7 @@
 						<files>
 							<file>
 								<file>${project.basedir}/src/test/resources/survey.jks</file>
-								<!-- <file>${project.build.directory}/survey.jks</file> -->
+<!-- 								<file>${project.build.directory}/survey.jks</file> -->
 								<todir>conf</todir>
 								<overwrite>true</overwrite>
 							</file>
@@ -413,7 +396,7 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
+   			</plugin>
 		</plugins>
 	</build>
 </project>

@@ -2,7 +2,6 @@ package org.survey.user.bean;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,7 +11,6 @@ import javax.faces.event.PhaseId;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.extern.slf4j.Slf4j;
 
 import org.hsqldb.lib.StringUtil;
 import org.primefaces.model.DefaultStreamedContent;
@@ -24,7 +22,6 @@ import org.survey.file.model.File;
 import org.survey.file.service.FileService;
 import org.survey.user.FacesUtil;
 
-@Slf4j
 @Component
 @Scope("request")
 public class FilesBean {
@@ -37,7 +34,10 @@ public class FilesBean {
 
     @PostConstruct
     public void initialize() {
-        files = Arrays.asList(fileService.findAll());
+        File[] files = fileService.findAll();
+        if (files != null) {
+            this.files = Arrays.asList(files);
+        }
     }
 
     public StreamedContent getImage() throws IOException {

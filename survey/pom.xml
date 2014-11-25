@@ -22,6 +22,7 @@
 		<module>poll-service</module>
 		<module>survey-web</module>
 		<module>survey-mobile-web</module>
+		<module>survey-backend</module>
 	</modules>
 	<url>http://niemimac.googlecode.com/svn/survey</url>
 	<properties>
@@ -30,15 +31,15 @@
 		<!-- build.profile is overridden in profiles -->
 		<build.profile>release</build.profile>
 		<maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss</maven.build.timestamp.format>
-<!-- 		<http.port>8082</http.port> -->
-		<http.port>8443</http.port>
-<!-- 		<http.protocol>http</http.protocol> -->
-		<http.protocol>https</http.protocol>
+		<http.port>8082</http.port>
+		<!-- <http.port>8443</http.port> -->
+		<http.protocol>http</http.protocol>
+		<!-- <http.protocol>https</http.protocol> -->
 		<spring.version>3.2.1.RELEASE</spring.version>
 		<spring.jpa.version>1.2.1.RELEASE</spring.jpa.version>
 		<selenium.version>2.42.2</selenium.version>
 		<cxf.version>2.7.12</cxf.version>
-<!-- 		<richfaces.version>4.2.3.Final</richfaces.version> -->
+		<!-- <richfaces.version>4.2.3.Final</richfaces.version> -->
 		<hibernate.version>4.2.8.Final</hibernate.version>
 		<database.driver>org.hsqldb.jdbcDriver</database.driver>
 		<database.url>jdbc:hsqldb:mem:mem:aname</database.url>
@@ -290,10 +291,10 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-expression</artifactId>
 		</dependency>
-<!-- 		<dependency> -->
-<!-- 			<groupId>commons-lang</groupId> -->
-<!-- 			<artifactId>commons-lang</artifactId> -->
-<!-- 		</dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>commons-lang</groupId> -->
+		<!-- <artifactId>commons-lang</artifactId> -->
+		<!-- </dependency> -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
@@ -397,6 +398,12 @@
 				<version>${project.version}</version>
 				<type>test-jar</type>
 			</dependency>
+			<dependency>
+				<groupId>org.survey</groupId>
+				<artifactId>survey-backend</artifactId>
+				<version>${project.version}</version>
+				<type>war</type>
+			</dependency>			
 			<!-- Spring -->
 			<dependency>
 				<groupId>org.springframework</groupId>
@@ -442,7 +449,7 @@
 				<artifactId>spring-context</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
-			
+
 			<!-- spring-security -->
 			<dependency>
 				<groupId>org.springframework.security</groupId>
@@ -580,11 +587,11 @@
 				<artifactId>angularjs</artifactId>
 				<version>${angularjs.version}</version>
 			</dependency>
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.webjars</groupId> -->
-<!-- 				<artifactId>mobile-angular-ui</artifactId> -->
-<!-- 				<version>1.1.0-beta.29-2</version> -->
-<!-- 			</dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.webjars</groupId> -->
+			<!-- <artifactId>mobile-angular-ui</artifactId> -->
+			<!-- <version>1.1.0-beta.29-2</version> -->
+			<!-- </dependency> -->
 			<dependency>
 				<groupId>org.webjars</groupId>
 				<artifactId>angular-ui-bootstrap</artifactId>
@@ -600,11 +607,11 @@
 				<artifactId>cglib</artifactId>
 				<version>2.2.2</version>
 			</dependency>
-<!-- 			<dependency> -->
-<!-- 				<groupId>commons-lang</groupId> -->
-<!-- 				<artifactId>commons-lang</artifactId> -->
-<!-- 				<version>2.6</version> -->
-<!-- 			</dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>commons-lang</groupId> -->
+			<!-- <artifactId>commons-lang</artifactId> -->
+			<!-- <version>2.6</version> -->
+			<!-- </dependency> -->
 			<dependency>
 				<groupId>org.apache.commons</groupId>
 				<artifactId>commons-lang3</artifactId>
@@ -791,11 +798,6 @@
 				<groupId>net.sourceforge.cssparser</groupId>
 				<artifactId>cssparser</artifactId>
 				<version>0.9.14</version>
-			</dependency>
-			<dependency>
-				<groupId>commons-io</groupId>
-				<artifactId>commons-io</artifactId>
-				<version>2.4</version>
 			</dependency>
 			<dependency>
 				<groupId>commons-logging</groupId>

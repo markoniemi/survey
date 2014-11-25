@@ -8,12 +8,6 @@ import org.junit.runners.Suite;
     UnitTestSuite.class, 
     HtmlUnitIT.class, 
     WebDriverIT.class,
-    UserServiceWebDriverIT.class,
-    UserServiceIT.class,
-    UserServiceRestIT.class,
-    FileServiceWebDriverIT.class,
-    PollServiceWebDriverIT.class,
-    FileServiceIT.class
 // need to re-write the service tests so that they do not use repositories
 //    PollServiceIT.class
 })

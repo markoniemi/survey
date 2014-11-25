@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="survey-web">
-        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
-        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+    <wb-module deploy-name="survey-backend">
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-        <dependent-module archiveName="user-repository-1.3-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/user-repository/user-repository">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <dependent-module archiveName="crud-repository-stub-1.3-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/crud-repository-stub/crud-repository-stub">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="crud-repository-stub-1.3-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/crud-repository-stub/crud-repository-stub">
+        <dependent-module archiveName="user-repository-1.3-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/user-repository/user-repository">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="user-service-1.3-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/user-service/user-service">
@@ -25,7 +25,7 @@
         <dependent-module archiveName="poll-service-1.3-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/poll-service/poll-service">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <property name="java-output-path" value="/survey-web/target/classes"/>
+        <property name="java-output-path" value="/survey-backend/target/classes"/>
         <property name="context-root" value="survey-web"/>
     </wb-module>
 </project-modules>

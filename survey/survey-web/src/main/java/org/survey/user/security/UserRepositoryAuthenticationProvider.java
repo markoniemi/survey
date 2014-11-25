@@ -13,7 +13,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.GrantedAuthorityImpl;
 import org.survey.user.model.User;
-import org.survey.user.repository.UserRepository;
+import org.survey.user.service.UserService;
 
 /**
  * Spring security AuthenticationProvider which authenticates using
@@ -28,7 +28,7 @@ import org.survey.user.repository.UserRepository;
 public class UserRepositoryAuthenticationProvider implements
         AuthenticationProvider {
     @Autowired
-    UserRepository userRepository;
+    UserService userService;
 
     /**
      * Authenticate using UserRepository.
@@ -37,7 +37,7 @@ public class UserRepositoryAuthenticationProvider implements
     public Authentication authenticate(Authentication authentication)
             throws AuthenticationException {
         log.debug("authenticate");
-        User user = userRepository.findByUsername(authentication.getName());
+        User user = userService.findOne(authentication.getName());
         return authenticateUser(user, authentication);
     }
 

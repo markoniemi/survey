@@ -14,8 +14,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.survey.user.model.Role;
 import org.survey.user.model.User;
-import org.survey.user.repository.UserRepository;
-import org.survey.user.security.UserRepositoryAuthenticationProvider;
+import org.survey.user.service.UserService;
 
 /**
  * Test UserRepositoryAuthenticationProvider. Must use SpringJUnit4ClassRunner
@@ -26,23 +25,23 @@ import org.survey.user.security.UserRepositoryAuthenticationProvider;
 @ContextConfiguration(locations = "classpath:spring-config-test.xml")
 public class UserRepositoryAuthenticationProviderTest {
 	@Autowired
-	UserRepository userRepository;
+	UserService userService;
 
 	@Before
 	public void setUp() {
-		userRepository
-				.save(new User("test", "test", "test", Role.ROLE_ADMIN));
+		userService
+				.create(new User("test", "test", "test", Role.ROLE_ADMIN));
 	}
 
 	@After
 	public void tearDown() {
-		userRepository.deleteAll();
+		userService.delete("test");
 	}
 
 	@Test
 	public void authenticate() {
 		UserRepositoryAuthenticationProvider authenticationProvider = new UserRepositoryAuthenticationProvider();
-		authenticationProvider.userRepository = userRepository;
+		authenticationProvider.userService = userService;
 		Authentication authentication = new UsernamePasswordAuthenticationToken(
 				"test", "test");
 		Authentication authenticationFromProvider = authenticationProvider
@@ -58,7 +57,7 @@ public class UserRepositoryAuthenticationProviderTest {
 	@Test
 	public void authenticateWithInvalidUsername() {
 		UserRepositoryAuthenticationProvider authenticationProvider = new UserRepositoryAuthenticationProvider();
-		authenticationProvider.userRepository = userRepository;
+		authenticationProvider.userService = userService;
 		Authentication authentication = new UsernamePasswordAuthenticationToken(
 				"invalid", "invalid");
 		Authentication authenticationFromProvider = authenticationProvider
@@ -69,7 +68,7 @@ public class UserRepositoryAuthenticationProviderTest {
 	@Test
 	public void authenticateWithInvalidPassword() {
 		UserRepositoryAuthenticationProvider authenticationProvider = new UserRepositoryAuthenticationProvider();
-		authenticationProvider.userRepository = userRepository;
+		authenticationProvider.userService = userService;
 		Authentication authentication = new UsernamePasswordAuthenticationToken(
 				"test", "invalid");
 		Authentication authenticationFromProvider = authenticationProvider

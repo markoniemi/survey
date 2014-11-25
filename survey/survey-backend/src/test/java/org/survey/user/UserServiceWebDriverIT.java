@@ -31,7 +31,7 @@ public class UserServiceWebDriverIT {
 	public void testWsdl() {
 		// load WSDL page
 		browser.get(httpProtocol + "://localhost:" + httpPort
-				+ "/survey-web/api/soap/userService?wsdl");
+				+ "/survey-backend/api/soap/userService?wsdl");
 		// check that the page contains some valid WSDL
 		Assert.assertTrue(browser.getPageSource(), browser.getPageSource()
 				.contains("wsdl:operation name=\"findAll\""));
@@ -40,7 +40,7 @@ public class UserServiceWebDriverIT {
 	public void testWadl() {
 	    // load WADL page
 	    browser.get(httpProtocol + "://localhost:" + httpPort
-	            + "/survey-web/api/rest?_wadl");
+	            + "/survey-backend/api/rest?_wadl");
 	    // check that the page contains some valid WADL
 	    Assert.assertTrue(browser.getPageSource(), browser.getPageSource()
 	            .contains("resource path=\"/users\""));

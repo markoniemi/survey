@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import junit.framework.Assert;
+import lombok.extern.slf4j.Slf4j;
 
 import org.junit.After;
 import org.junit.Before;
@@ -28,6 +29,7 @@ import com.gargoylesoftware.htmlunit.html.HtmlInput;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.gargoylesoftware.htmlunit.html.HtmlSelect;
 
+@Slf4j
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:spring-config-rest-service-test.xml")
 public class HtmlUnitIT {
@@ -49,7 +51,7 @@ public class HtmlUnitIT {
         serverURL = httpProtocol + "://localhost:" + httpPort;
         
 //        webClient = new WebClient();
-        webClient = new WebClient(BrowserVersion.FIREFOX_24);
+        webClient = new WebClient(BrowserVersion.FIREFOX_17);
         final List<String> collectedAlerts = new ArrayList<String>();
         webClient.setAlertHandler(new CollectingAlertHandler(collectedAlerts));
 //        webClient.setAjaxController(new NicelyResynchronizingAjaxController());
@@ -127,7 +129,7 @@ public class HtmlUnitIT {
 
     protected void openBrowser() throws IOException, MalformedURLException, InterruptedException {
         webClient.waitForBackgroundJavaScriptStartingBefore(10000);
-        page = webClient.getPage(serverURL + "/" + appName);
+        page = webClient.getPage(serverURL + "/" + appName + "/index.html");
         webClient.waitForBackgroundJavaScriptStartingBefore(10000);
         webClient.waitForBackgroundJavaScript(10000);
         Thread.sleep(2000);
@@ -175,7 +177,7 @@ public class HtmlUnitIT {
         page = addUsersLink.click();
         Thread.sleep(2000);
         Assert.assertEquals(page.asXml(), "User", page.getTitleText());
-        HtmlForm form = page.getFormByName("addUser");
+        HtmlForm form = page.getFormByName("editUser");
         HtmlInput usernameInput = form
                 .getInputByName("username");
         usernameInput.setValueAttribute(username);
@@ -188,6 +190,7 @@ public class HtmlUnitIT {
         HtmlInput emailInput = form.getInputByName("email");
         emailInput.setValueAttribute(email);
         HtmlSelect roleSelect = form.getSelectByName("role");
+        log.debug(roleSelect.asXml());
         roleSelect.getOptionByValue(role.name()).click();
         Assert.assertEquals(role.name(), roleSelect.getSelectedOptions().get(0)
                 .getValueAttribute());
