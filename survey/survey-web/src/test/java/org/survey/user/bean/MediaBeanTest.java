@@ -29,6 +29,14 @@ public class MediaBeanTest {
 		Assert.assertEquals("png", streamedContent.getContentType());
 		Assert.assertEquals("email", streamedContent.getName());
 	}
+	@Test
+	public void getImageInRenderPhase() throws IOException {
+	    mediaBean.setRequestParameter("email");
+	    mediaBean.setRenderPhase(true);
+	    StreamedContent streamedContent = mediaBean.getImage();
+	    Assert.assertNotNull(streamedContent);
+	    Assert.assertNull(streamedContent.getStream());
+	}
 
 	@Test
 	public void paintWithNullData() throws IOException {

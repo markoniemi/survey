@@ -51,8 +51,14 @@ public class FilesBeanTest {
         StreamedContent streamedContent = filesBean.getImage();
         Assert.assertNotNull(streamedContent);
         Assert.assertNotNull(streamedContent.getStream());
-//        Assert.assertEquals("png", streamedContent.getContentType());
-//        Assert.assertEquals("email", streamedContent.getName());
+    }
+    @Test
+    public void getImageInRenderPhase() throws IOException {
+        filesBean.setRequestParameter(savedFile.getId().toString());
+        filesBean.setRenderPhase(true);
+        StreamedContent streamedContent = filesBean.getImage();
+        Assert.assertNotNull(streamedContent);
+        Assert.assertNull(streamedContent.getStream());
     }
 
     @Test
