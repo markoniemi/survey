@@ -22,8 +22,7 @@
 		</jaxrs:headers>
 	</jaxrs:client>
 
-	<!-- TODO use variables for port and protocol -->
-	<http:conduit name="https://localhost:8443/.*">
+	<http:conduit name="*.http-conduit">
 		<http:tlsClientParameters>
 			<sec:trustManagers>
 				<sec:keyStore type="JKS" password="changeit"

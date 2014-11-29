@@ -19,13 +19,13 @@
 		address="${http.protocol}://localhost:${http.port}/survey-backend/api/soap/fileService" />
 	<jaxws:client id="pollService" serviceClass="org.survey.poll.service.PollService"
 		address="${http.protocol}://localhost:${http.port}/survey-backend/api/soap/pollService" />
-<!-- 	<http:conduit name="https://localhost:8443/.*"> -->
-<!-- 		<http:tlsClientParameters> -->
-<!-- 			<sec:trustManagers> -->
-<!-- 				<sec:keyStore type="JKS" password="changeit" -->
-<!-- 					file="classpath:/survey.jks" /> -->
-<!-- 			</sec:trustManagers> -->
-<!-- 		</http:tlsClientParameters> -->
-<!-- 	</http:conduit> -->
-<!-- 		<http:tlsClientParameters disableCNCheck="true"> -->
+	<http:conduit name="*.http-conduit">
+<!-- 	<http:tlsClientParameters disableCNCheck="true"> -->
+		<http:tlsClientParameters>
+			<sec:trustManagers>
+				<sec:keyStore type="JKS" password="changeit"
+					resource="survey.jks" />
+			</sec:trustManagers>
+		</http:tlsClientParameters>
+	</http:conduit>
 </beans>

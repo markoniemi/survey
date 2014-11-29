@@ -31,10 +31,10 @@
 		<!-- build.profile is overridden in profiles -->
 		<build.profile>release</build.profile>
 		<maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss</maven.build.timestamp.format>
-		<http.port>8082</http.port>
-		<!-- <http.port>8443</http.port> -->
-		<http.protocol>http</http.protocol>
-		<!-- <http.protocol>https</http.protocol> -->
+<!-- 		<http.port>8082</http.port> -->
+		<http.port>8443</http.port>
+<!-- 		<http.protocol>http</http.protocol> -->
+		<http.protocol>https</http.protocol>
 		<spring.version>3.2.1.RELEASE</spring.version>
 		<spring.jpa.version>1.2.1.RELEASE</spring.jpa.version>
 		<selenium.version>2.42.2</selenium.version>
@@ -56,10 +56,23 @@
 	<build>
 		<defaultGoal>install</defaultGoal>
 		<resources>
+			<!-- resource filtering replaces variables with values in resource file -->
 			<resource>
-				<!-- resource filtering replaces variables with values in resource file -->
 				<directory>src/main/resources</directory>
 				<filtering>true</filtering>
+				<includes>
+					<include>**/*</include>
+				</includes>
+				<excludes>
+					<exclude>**/*.jks</exclude>
+				</excludes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>false</filtering>
+				<includes>
+					<include>**/*.jks</include>
+				</includes>
 			</resource>
 		</resources>
 		<plugins>

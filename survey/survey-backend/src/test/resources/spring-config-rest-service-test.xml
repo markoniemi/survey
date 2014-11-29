@@ -24,8 +24,7 @@
 			<bean class="org.codehaus.jackson.jaxrs.JacksonJaxbJsonProvider" />
 		</jaxrs:providers>
 	</jaxrs:client>
-
-	<http:conduit name="https://localhost:8443/.*">
+	<http:conduit name="*.http-conduit">
 		<http:tlsClientParameters>
 			<sec:trustManagers>
 				<sec:keyStore type="JKS" password="changeit"
@@ -33,5 +32,4 @@
 			</sec:trustManagers>
 		</http:tlsClientParameters>
 	</http:conduit>
-	<!-- <http:tlsClientParameters disableCNCheck="true"> -->
 </beans>
