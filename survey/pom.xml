@@ -38,7 +38,7 @@
 		<spring.version>3.2.1.RELEASE</spring.version>
 		<spring.jpa.version>1.2.1.RELEASE</spring.jpa.version>
 		<selenium.version>2.42.2</selenium.version>
-		<cxf.version>2.7.12</cxf.version>
+		<cxf.version>3.0.2</cxf.version>
 		<!-- <richfaces.version>4.2.3.Final</richfaces.version> -->
 		<hibernate.version>4.2.8.Final</hibernate.version>
 		<database.driver>org.hsqldb.jdbcDriver</database.driver>
@@ -562,9 +562,19 @@
 				<artifactId>jackson-jaxrs</artifactId>
 				<version>1.9.13</version>
 			</dependency>
+<!-- 			<dependency> -->
+<!-- 				<groupId>org.apache.cxf</groupId> -->
+<!-- 				<artifactId>cxf-bundle-jaxrs</artifactId> -->
+<!-- 				<version>${cxf.version}</version> -->
+<!-- 			</dependency> -->
 			<dependency>
 				<groupId>org.apache.cxf</groupId>
-				<artifactId>cxf-bundle-jaxrs</artifactId>
+				<artifactId>cxf-core</artifactId>
+				<version>${cxf.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-rt-frontend-jaxrs</artifactId>
 				<version>${cxf.version}</version>
 			</dependency>
 			<dependency>
@@ -582,6 +592,11 @@
 				<groupId>com.sun.faces</groupId>
 				<artifactId>jsf-impl</artifactId>
 				<version>2.2.8-02</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>javax.servlet-api</artifactId>
+				<version>3.0.1</version>
 			</dependency>
 			<!-- PrimeFaces -->
 			<dependency>

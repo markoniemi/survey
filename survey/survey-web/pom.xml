@@ -49,6 +49,10 @@
 			<artifactId>jsf-impl</artifactId>
 			<scope>compile</scope>
 		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+		</dependency>
 		<!-- PrimeFaces -->
 		<dependency>
 			<groupId>org.primefaces</groupId>
@@ -95,19 +99,6 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 		</dependency>
-		<!-- CXF -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.apache.cxf</groupId> -->
-		<!-- <artifactId>cxf-rt-rs-client</artifactId> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.codehaus.jackson</groupId> -->
-		<!-- <artifactId>jackson-xc</artifactId> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.codehaus.jackson</groupId> -->
-		<!-- <artifactId>jackson-jaxrs</artifactId> -->
-		<!-- </dependency> -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
@@ -117,53 +108,6 @@
 			<artifactId>commons-io</artifactId>
 		</dependency>
 		<!-- test -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.survey</groupId> -->
-		<!-- <artifactId>crud-repository-stub</artifactId> -->
-		<!-- <scope>test</scope> -->
-		<!-- <type>test-jar</type> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.survey</groupId> -->
-		<!-- <artifactId>user-repository</artifactId> -->
-		<!-- <scope>test</scope> -->
-		<!-- <type>test-jar</type> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.survey</groupId> -->
-		<!-- <artifactId>user-service</artifactId> -->
-		<!-- <scope>test</scope> -->
-		<!-- <type>test-jar</type> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.survey</groupId> -->
-		<!-- <artifactId>file-repository</artifactId> -->
-		<!-- <scope>test</scope> -->
-		<!-- <type>test-jar</type> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.survey</groupId> -->
-		<!-- <artifactId>file-service</artifactId> -->
-		<!-- <scope>test</scope> -->
-		<!-- <type>test-jar</type> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.survey</groupId> -->
-		<!-- <artifactId>poll-repository</artifactId> -->
-		<!-- <scope>test</scope> -->
-		<!-- <type>test-jar</type> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.survey</groupId> -->
-		<!-- <artifactId>poll-service</artifactId> -->
-		<!-- <scope>test</scope> -->
-		<!-- <type>test-jar</type> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>javax.el</groupId> -->
-		<!-- <artifactId>javax.el-api</artifactId> -->
-		<!-- <scope>test</scope> -->
-		<!-- </dependency> -->
 		<dependency>
 			<groupId>org.survey</groupId>
 			<artifactId>survey-backend</artifactId>
@@ -329,25 +273,15 @@
 						</zipUrlInstaller>
 						<timeout>120000</timeout>
 					</container>
-					<!-- <container> -->
-					<!-- <containerId>jetty8x</containerId> -->
-					<!-- <zipUrlInstaller> -->
-					<!-- <url>http://download.eclipse.org/jetty/stable-8/dist/jetty-distribution-8.1.7.v20120910.zip</url> -->
-					<!-- <downloadDir>${appsDir}</downloadDir> -->
-					<!-- <extractDir>${appsDir}</extractDir> -->
-					<!-- </zipUrlInstaller> -->
-					<!-- </container> -->
 					<configuration>
 						<files>
 							<file>
 								<file>${project.basedir}/src/test/resources/survey.jks</file>
-								<!-- <file>${project.build.directory}/survey.jks</file> -->
 								<todir>conf</todir>
 								<overwrite>true</overwrite>
 							</file>
 						</files>
 						<properties>
-							<cargo.servlet.port>${http.port}</cargo.servlet.port>
 							<cargo.servlet.users>admin:admin:User</cargo.servlet.users>
 							<!-- testing properties for ssl -->
 							<cargo.servlet.port>${http.port}</cargo.servlet.port>

@@ -23,7 +23,7 @@
         </dependency>
         <dependency>
             <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-transports-http</artifactId>
+            <artifactId>cxf-rt-frontend-jaxrs</artifactId>
         </dependency>
         <!-- Spring Dependencies -->
         <dependency>

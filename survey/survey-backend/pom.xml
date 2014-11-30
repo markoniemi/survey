@@ -37,26 +37,6 @@
 			<groupId>org.survey</groupId>
 			<artifactId>poll-service</artifactId>
 		</dependency>
-		<!-- JSF -->
-		<dependency>
-			<groupId>com.sun.faces</groupId>
-			<artifactId>jsf-api</artifactId>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.faces</groupId>
-			<artifactId>jsf-impl</artifactId>
-			<scope>compile</scope>
-		</dependency>
-		<!-- PrimeFaces -->
-		<dependency>
-			<groupId>org.primefaces</groupId>
-			<artifactId>primefaces</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.primefaces.themes</groupId>
-			<artifactId>bootstrap</artifactId>
-		</dependency>
 		<!-- spring-security -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
@@ -69,14 +49,6 @@
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>facelets-taglib-jsf20-spring-3</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>cglib</groupId>
-			<artifactId>cglib</artifactId>
 		</dependency>
 		<!-- security annotations -->
 		<!-- <dependency> -->
@@ -246,7 +218,7 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<finalName>survey-web</finalName>
+		<finalName>survey-backend</finalName>
 		<plugins>
 			<plugin>
 				<!-- delete survey-web/src/test/resources/survey.jks and run mvn keytool:generateKeyPair -->
@@ -330,7 +302,6 @@
 							</file>
 						</files>
 						<properties>
-							<cargo.servlet.port>${http.port}</cargo.servlet.port>
 							<cargo.servlet.users>admin:admin:User</cargo.servlet.users>
 							<!-- testing properties for ssl -->
 							<cargo.servlet.port>${http.port}</cargo.servlet.port>
