@@ -21,20 +21,37 @@
 			<groupId>org.webjars</groupId>
 			<artifactId>angular-translate</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.survey</groupId>
+			<artifactId>poll-service</artifactId>
+		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.survey</groupId> -->
+<!-- 			<artifactId>file-service</artifactId> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.apache.cxf</groupId> -->
+<!-- 			<artifactId>cxf-rt-rs-client</artifactId> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.apache.cxf</groupId> -->
+<!-- 			<artifactId>cxf-rt-frontend-jaxrs</artifactId> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.apache.cxf</groupId> -->
+<!-- 			<artifactId>cxf-rt-frontend-jaxws</artifactId> -->
+<!-- 		</dependency> -->
 		<!-- Test -->
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-rs-client</artifactId>
+			<scope>test</scope>
+		</dependency>
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.survey</groupId>
-			<artifactId>user-service</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.survey</groupId>
-			<artifactId>file-service</artifactId>
 		</dependency>
 		<!-- Selenium -->
 		<dependency>

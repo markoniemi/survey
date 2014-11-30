@@ -11,10 +11,10 @@
 			<groupId>org.survey</groupId>
 			<artifactId>crud-repository-stub</artifactId>
 		</dependency>
-        <dependency>
-            <groupId>org.survey</groupId>
-            <artifactId>user-repository</artifactId>
-        </dependency>
+<!--         <dependency> -->
+<!--             <groupId>org.survey</groupId> -->
+<!--             <artifactId>user-repository</artifactId> -->
+<!--         </dependency> -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-beans</artifactId>
@@ -28,6 +28,10 @@
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -90,12 +94,12 @@
 			<scope>test</scope>
 			<type>test-jar</type>
 		</dependency>
-		<dependency>
-			<groupId>org.survey</groupId>
-			<artifactId>user-repository</artifactId>
-			<scope>test</scope>
-			<type>test-jar</type>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.survey</groupId> -->
+<!-- 			<artifactId>user-repository</artifactId> -->
+<!-- 			<scope>test</scope> -->
+<!-- 			<type>test-jar</type> -->
+<!-- 		</dependency> -->
 		<dependency>
 			<groupId>org.dbunit</groupId>
 			<artifactId>dbunit</artifactId>

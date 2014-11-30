@@ -14,10 +14,6 @@
 	</scm>
 	<modules>
 		<module>crud-repository-stub</module>
-		<module>user-repository</module>
-		<module>user-service</module>
-		<module>file-repository</module>
-		<module>file-service</module>
 		<module>poll-repository</module>
 		<module>poll-service</module>
 		<module>survey-web</module>
@@ -561,6 +557,11 @@
 				<groupId>org.codehaus.jackson</groupId>
 				<artifactId>jackson-jaxrs</artifactId>
 				<version>1.9.13</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-rt-rs-client</artifactId>
+				<version>${cxf.version}</version>
 			</dependency>
 <!-- 			<dependency> -->
 <!-- 				<groupId>org.apache.cxf</groupId> -->

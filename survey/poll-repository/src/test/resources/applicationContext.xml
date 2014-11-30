@@ -23,5 +23,5 @@
 
   <jdbc:embedded-database id="dataSource" type="HSQL" />
 
-  <jpa:repositories base-package="org.survey.poll" />
+  <jpa:repositories base-package="org.survey" />
 </beans>

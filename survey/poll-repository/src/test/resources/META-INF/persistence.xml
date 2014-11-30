@@ -4,6 +4,7 @@
 	xmlns="http://java.sun.com/xml/ns/persistence" version="1.0">
 	<persistence-unit name="poll-repository-test" transaction-type="RESOURCE_LOCAL">
 		<class>org.survey.user.model.User</class>
+		<class>org.survey.file.model.File</class>
 		<class>org.survey.poll.model.Poll</class>
 		<class>org.survey.poll.model.Question</class>
 		<class>org.survey.poll.model.BooleanQuestion</class>

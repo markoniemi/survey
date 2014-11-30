@@ -5,7 +5,7 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({ 
-//    UnitTestSuite.class, 
+//    RepositoryTestSuite.class, 
     UserServiceWebDriverIT.class,
     UserServiceIT.class,
     UserServiceRestIT.class,
