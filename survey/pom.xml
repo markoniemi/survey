@@ -184,11 +184,6 @@
 					</systemPropertyVariables>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>sonar-maven-plugin</artifactId>
-				<version>2.2</version>
-			</plugin>
 		</plugins>
 	</build>
 	<reporting>
@@ -280,15 +275,6 @@
 				<appsDir>c:\apps</appsDir>
 			</properties>
 		</profile>
-		<profile>
-			<id>sonar</id>
-			<properties>
-				<sonar.host.url>http://192.168.1.99:9000</sonar.host.url>
-				<sonar.jdbc.url>jdbc:h2:tcp://192.168.1.99:9092/sonar</sonar.jdbc.url>
-				<sonar.jdbc.username>sonar</sonar.jdbc.username>
-				<sonar.jdbc.password>sonar</sonar.jdbc.password>
-			</properties>
-		</profile>
 	</profiles>
 	<dependencies>
 		<dependency>
@@ -329,61 +315,6 @@
 				<groupId>org.survey</groupId>
 				<artifactId>crud-repository-stub</artifactId>
 				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.survey</groupId>
-				<artifactId>user-repository</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.survey</groupId>
-				<artifactId>user-repository</artifactId>
-				<version>${project.version}</version>
-				<type>test-jar</type>
-			</dependency>
-			<dependency>
-				<groupId>org.survey</groupId>
-				<artifactId>user-service</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.survey</groupId>
-				<artifactId>user-service</artifactId>
-				<version>${project.version}</version>
-				<type>test-jar</type>
-			</dependency>
-			<dependency>
-				<groupId>org.survey</groupId>
-				<artifactId>file-repository</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.survey</groupId>
-				<artifactId>file-repository</artifactId>
-				<version>${project.version}</version>
-				<type>test-jar</type>
-			</dependency>
-			<dependency>
-				<groupId>org.survey</groupId>
-				<artifactId>file-repository</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.survey</groupId>
-				<artifactId>file-repository</artifactId>
-				<version>${project.version}</version>
-				<type>test-jar</type>
-			</dependency>
-			<dependency>
-				<groupId>org.survey</groupId>
-				<artifactId>file-service</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.survey</groupId>
-				<artifactId>file-service</artifactId>
-				<version>${project.version}</version>
-				<type>test-jar</type>
 			</dependency>
 			<dependency>
 				<groupId>org.survey</groupId>
@@ -458,7 +389,6 @@
 				<artifactId>spring-context</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
-
 			<!-- spring-security -->
 			<dependency>
 				<groupId>org.springframework.security</groupId>
@@ -519,19 +449,6 @@
 				<artifactId>h2</artifactId>
 				<version>1.3.168</version>
 			</dependency>
-			<!-- <dependency> -->
-			<!-- <groupId>org.apache.derby</groupId> -->
-			<!-- <artifactId>derby</artifactId> -->
-			<!-- <version>10.6.1.0</version> -->
-			<!-- <scope>compile</scope> -->
-			<!-- </dependency> -->
-			<!-- <dependency> -->
-			<!-- <groupId>org.apache.derby</groupId> -->
-			<!-- <artifactId>derbyclient</artifactId> -->
-			<!-- <version>10.6.1.0</version> -->
-			<!-- <scope>compile</scope> -->
-			<!-- </dependency> -->
-
 			<!-- Apache CXF dependencies -->
 			<dependency>
 				<groupId>org.apache.cxf</groupId>
@@ -543,11 +460,6 @@
 				<artifactId>cxf-rt-transports-http</artifactId>
 				<version>${cxf.version}</version>
 			</dependency>
-			<!-- <dependency> -->
-			<!-- <groupId>org.codehaus.jettison</groupId> -->
-			<!-- <artifactId>jettison</artifactId> -->
-			<!-- <version>1.3</version> -->
-			<!-- </dependency> -->
 			<dependency>
 				<groupId>org.codehaus.jackson</groupId>
 				<artifactId>jackson-xc</artifactId>
@@ -563,11 +475,6 @@
 				<artifactId>cxf-rt-rs-client</artifactId>
 				<version>${cxf.version}</version>
 			</dependency>
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.apache.cxf</groupId> -->
-<!-- 				<artifactId>cxf-bundle-jaxrs</artifactId> -->
-<!-- 				<version>${cxf.version}</version> -->
-<!-- 			</dependency> -->
 			<dependency>
 				<groupId>org.apache.cxf</groupId>
 				<artifactId>cxf-core</artifactId>

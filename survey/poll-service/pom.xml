@@ -12,10 +12,6 @@
             <groupId>org.survey</groupId>
             <artifactId>poll-repository</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.survey</groupId>
-            <artifactId>user-repository</artifactId>
-        </dependency>
         <!-- Apache CXF dependencies -->
         <dependency>
             <groupId>org.apache.cxf</groupId>
@@ -42,17 +38,6 @@
             <scope>test</scope>
             <type>test-jar</type>
 		</dependency>
-        <dependency>
-            <groupId>org.survey</groupId>
-            <artifactId>user-repository</artifactId>
-            <scope>test</scope>
-            <type>test-jar</type>
-        </dependency>
-        <dependency>
-            <groupId>org.survey</groupId>
-            <artifactId>user-service</artifactId>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>org.survey</groupId>
             <artifactId>poll-repository</artifactId>

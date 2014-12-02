@@ -15,12 +15,14 @@
 		<property name="location" value="classpath:/configuration.properties" />
 	</bean>
 	<jaxrs:client id="userService" serviceClass="org.survey.user.service.UserService"
-		address="${http.protocol}://localhost:${http.port}/survey-web/api/rest">
+		address="${http.protocol}://localhost:${http.port}/survey-backend/api/rest">
 		<jaxrs:headers>
 			<entry key="Accept" value="application/json" />
-<!-- 			<entry key="Accept" value="application/xml" /> -->
-<!-- 			<entry key="Accept" value="text/xml" /> -->
 		</jaxrs:headers>
+		<jaxrs:providers>
+			<!-- Use Jackson instead of Jettison -->
+			<bean class="org.codehaus.jackson.jaxrs.JacksonJaxbJsonProvider" />
+		</jaxrs:providers>
 	</jaxrs:client>
 
 	<http:conduit name="*.http-conduit">

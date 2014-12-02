@@ -5,15 +5,6 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/javascript"/>
-        <dependent-module archiveName="poll-service-1.3-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/poll-service/poll-service">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="poll-repository-1.3-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/poll-repository/poll-repository">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="crud-repository-stub-1.3-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/crud-repository-stub/crud-repository-stub">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <property name="java-output-path" value="/survey-mobile-web/target/classes"/>
         <property name="context-root" value="survey-mobile-web"/>
     </wb-module>

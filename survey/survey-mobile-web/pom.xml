@@ -21,30 +21,25 @@
 			<groupId>org.webjars</groupId>
 			<artifactId>angular-translate</artifactId>
 		</dependency>
+		<!-- Test -->
 		<dependency>
 			<groupId>org.survey</groupId>
 			<artifactId>poll-service</artifactId>
+			<scope>test</scope>
 		</dependency>
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.survey</groupId> -->
-<!-- 			<artifactId>file-service</artifactId> -->
-<!-- 		</dependency> -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.apache.cxf</groupId> -->
-<!-- 			<artifactId>cxf-rt-rs-client</artifactId> -->
-<!-- 		</dependency> -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.apache.cxf</groupId> -->
-<!-- 			<artifactId>cxf-rt-frontend-jaxrs</artifactId> -->
-<!-- 		</dependency> -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.apache.cxf</groupId> -->
-<!-- 			<artifactId>cxf-rt-frontend-jaxws</artifactId> -->
-<!-- 		</dependency> -->
-		<!-- Test -->
 		<dependency>
 			<groupId>org.apache.cxf</groupId>
 			<artifactId>cxf-rt-rs-client</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-xc</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-jaxrs</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<!-- Spring -->
@@ -83,7 +78,7 @@
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
-			<!-- <scope>test</scope> -->
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
