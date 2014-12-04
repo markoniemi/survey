@@ -33,12 +33,15 @@ public class FileFactory implements EntityFactory<File, Long> {
 
     @Override
     public File getUpdatedEntity(File entity) {
-        File file = new File(entity.getFilename() + "_updated", MediaType.HTML_UTF_8.toString(),
-                (entity.getContent() + "updated").getBytes());
-        file.setCreateTime(entity.getCreateTime() + 1);
-        file.setSize(entity.getSize() + 1);
-        file.setOwner(entity.getOwner());
-        file.setUrl(file.getUrl() + "_updated");
-        return file;
+//        File file = new File(entity.getFilename() + "_updated", MediaType.HTML_UTF_8.toString(),
+//                (entity.getContent() + "updated").getBytes());
+        entity.setFilename(entity.getFilename() + "_updated");
+        entity.setMimeType(MediaType.HTML_UTF_8.toString());
+        entity.setContent((entity.getContent() + "updated").getBytes());
+        entity.setCreateTime(entity.getCreateTime() + 1);
+        entity.setSize(entity.getSize() + 1);
+        entity.setOwner(entity.getOwner());
+        entity.setUrl(entity.getUrl() + "_updated");
+        return entity;
     }
 }

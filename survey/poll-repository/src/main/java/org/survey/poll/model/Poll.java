@@ -14,7 +14,6 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -64,7 +63,10 @@ public class Poll {
      * "http://stackoverflow.com/questions/16326916/spring-data-jpa-causes-entityexistsexception-with-cascading-save"
      * />
      */
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "poll", cascade = {
+    @OneToMany(fetch = FetchType.EAGER, 
+            mappedBy = "poll", 
+//            orphanRemoval=true, 
+            cascade = {
 //     CascadeType.PERSIST,
 //     CascadeType.MERGE,
 //     CascadeType.REMOVE,

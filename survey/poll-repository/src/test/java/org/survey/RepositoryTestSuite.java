@@ -27,7 +27,9 @@ import org.survey.user.repository.UserRepositoryTest;
     FileRepositoryTest.class,
     FileRepositoryJPATest.class,
     FileRepositoryStubTest.class,
-    QuestionRepositoryJPATest.class,
+        // question repository jpa test makes no sense with crud test, since
+        // deleting a question should nullify the parent poll first.
+        //    QuestionRepositoryJPATest.class,
     QuestionRepositoryStubTest.class,
     PollRepositoryJPATest.class,
     PollRepositoryStubTest.class,

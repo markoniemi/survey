@@ -74,30 +74,6 @@
 			<scope>test</scope>
 			<type>test-jar</type>
 		</dependency>
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.survey</groupId> -->
-<!-- 			<artifactId>user-repository</artifactId> -->
-<!-- 			<scope>test</scope> -->
-<!-- 			<type>test-jar</type> -->
-<!-- 		</dependency> -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.survey</groupId> -->
-<!-- 			<artifactId>user-service</artifactId> -->
-<!-- 			<scope>test</scope> -->
-<!-- 			<type>test-jar</type> -->
-<!-- 		</dependency> -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.survey</groupId> -->
-<!-- 			<artifactId>file-repository</artifactId> -->
-<!-- 			<scope>test</scope> -->
-<!-- 			<type>test-jar</type> -->
-<!-- 		</dependency> -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.survey</groupId> -->
-<!-- 			<artifactId>file-service</artifactId> -->
-<!-- 			<scope>test</scope> -->
-<!-- 			<type>test-jar</type> -->
-<!-- 		</dependency> -->
 		<dependency>
 			<groupId>org.survey</groupId>
 			<artifactId>poll-repository</artifactId>
@@ -109,6 +85,11 @@
 			<artifactId>poll-service</artifactId>
 			<scope>test</scope>
 			<type>test-jar</type>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-rs-client</artifactId>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>javax.el</groupId>

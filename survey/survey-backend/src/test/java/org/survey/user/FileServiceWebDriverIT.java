@@ -22,19 +22,19 @@ public class FileServiceWebDriverIT {
         httpPort = System.getProperty("http.port", "8082");
         httpProtocol = System.getProperty("http.protocol", "http");
     }
-    
+
     @After
     public void tearDown() {
         browser.close();
     }
 
-    @Ignore
+    // @Ignore
     @Test
     public void testWsdl() {
         // load WSDL page
-        browser.get(httpProtocol + "://localhost:" + httpPort
-                + "/survey-web/api/soap/fileService?wsdl");
+        browser.get(httpProtocol + "://localhost:" + httpPort + "/survey-backend/api/soap/fileService?wsdl");
         // check that the page contains some valid WSDL
-        Assert.assertTrue(browser.getPageSource(), browser.getPageSource()
-                .contains("resource path=\"/files\""));    }
+//        Assert.assertTrue(browser.getPageSource(), browser.getPageSource().contains("resource path=\"/files\""));
+        Assert.assertTrue(browser.getPageSource(), browser.getPageSource().contains("wsdl:operation name=\"findAll\""));
+    }
 }

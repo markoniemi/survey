@@ -35,9 +35,9 @@ public class PollFactory implements EntityFactory<Poll, Long> {
     @Override
     public Poll getUpdatedEntity(Poll entity) {
         // cannot update name, since it is the the natural id
-        Poll poll = new Poll(entity.getName());
-        poll.setOwner(entity.getOwner());
-        poll.setQuestions(entity.getQuestions());
-        return poll;
+//        Poll poll = new Poll(entity.getName());
+        entity.setOwner(entity.getOwner());
+        entity.setQuestions(entity.getQuestions());
+        return entity;
     }
 }

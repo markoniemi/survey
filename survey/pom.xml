@@ -173,7 +173,7 @@
 				</executions>
 				<configuration>
 					<includes>
-						<include>**/IntegrationTestSuite.java</include>
+						<include>**/*IntegrationTestSuite.java</include>
 					</includes>
 					<configuration>
 						<argLine>argLine</argLine>
