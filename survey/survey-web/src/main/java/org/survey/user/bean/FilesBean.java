@@ -12,7 +12,7 @@ import javax.faces.event.PhaseId;
 import lombok.Getter;
 import lombok.Setter;
 
-import org.hsqldb.lib.StringUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +49,7 @@ public class FilesBean {
             // Return a real StreamedContent with the image bytes when not in
             // render phase.
             String id = getRequestParameter("id");
-            if (!StringUtil.isEmpty(id)) {
+            if (!StringUtils.isEmpty(id)) {
                 File file = fileService.findOne(Long.valueOf(id));
                 streamedContent = new DefaultStreamedContent(new ByteArrayInputStream(file.getContent()));
             }

@@ -31,7 +31,8 @@
 		<http.port>8443</http.port>
 <!-- 		<http.protocol>http</http.protocol> -->
 		<http.protocol>https</http.protocol>
-		<spring.version>3.2.1.RELEASE</spring.version>
+		<spring.version>3.2.6.RELEASE</spring.version>
+		<spring.security.version>3.2.5.RELEASE</spring.security.version>
 		<spring.jpa.version>1.2.1.RELEASE</spring.jpa.version>
 		<selenium.version>2.42.2</selenium.version>
 		<cxf.version>3.0.2</cxf.version>
@@ -276,38 +277,25 @@
 			</properties>
 		</profile>
 	</profiles>
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-expression</artifactId>
-		</dependency>
-		<!-- <dependency> -->
-		<!-- <groupId>commons-lang</groupId> -->
-		<!-- <artifactId>commons-lang</artifactId> -->
-		<!-- </dependency> -->
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>commons-collections</groupId>
-			<artifactId>commons-collections</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-		</dependency>
-	</dependencies>
+<!-- 	<dependencies> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework</groupId> -->
+<!-- 			<artifactId>spring-test</artifactId> -->
+<!-- 			<scope>test</scope> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework</groupId> -->
+<!-- 			<artifactId>spring-expression</artifactId> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.apache.commons</groupId> -->
+<!-- 			<artifactId>commons-lang3</artifactId> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>commons-collections</groupId> -->
+<!-- 			<artifactId>commons-collections</artifactId> -->
+<!-- 		</dependency> -->
+<!-- 	</dependencies> -->
 	<dependencyManagement>
 		<dependencies>
 			<!-- survey -->
@@ -347,64 +335,28 @@
 			<!-- Spring -->
 			<dependency>
 				<groupId>org.springframework</groupId>
-				<artifactId>spring-test</artifactId>
+				<artifactId>spring-framework-bom</artifactId>
 				<version>${spring.version}</version>
-				<scope>test</scope>
+				<type>pom</type>
+				<scope>import</scope>
 			</dependency>
 			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-expression</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-beans</artifactId>
-				<version>${spring.version}</version>
-				<scope>compile</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-core</artifactId>
-				<version>${spring.version}</version>
-				<scope>compile</scope>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-bom</artifactId>
+				<version>${spring.security.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework.data</groupId>
 				<artifactId>spring-data-jpa</artifactId>
 				<version>${spring.jpa.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-jdbc</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-orm</artifactId>
-				<version>${spring.version}</version>
-				<scope>compile</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-context</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<!-- spring-security -->
-			<dependency>
-				<groupId>org.springframework.security</groupId>
-				<artifactId>spring-security-web</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework.security</groupId>
-				<artifactId>spring-security-core</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework.security</groupId>
-				<artifactId>spring-security-config</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
+<!-- 			<dependency> -->
+<!-- 				<groupId>org.springframework.security</groupId> -->
+<!-- 				<artifactId>spring-security-web</artifactId> -->
+<!-- 				<version>${spring.security.version}</version> -->
+<!-- 			</dependency> -->
 			<dependency>
 				<groupId>org.springframework.security</groupId>
 				<artifactId>facelets-taglib-jsf20-spring-3</artifactId>
@@ -557,17 +509,6 @@
 				<groupId>commons-io</groupId>
 				<artifactId>commons-io</artifactId>
 				<version>2.4</version>
-			</dependency>
-			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-simple</artifactId>
-				<version>1.7.5</version>
-				<exclusions>
-					<exclusion>
-						<artifactId>slf4j-api</artifactId>
-						<groupId>org.slf4j</groupId>
-					</exclusion>
-				</exclusions>
 			</dependency>
 			<dependency>
 				<groupId>org.slf4j</groupId>
