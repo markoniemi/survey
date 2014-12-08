@@ -14,7 +14,7 @@ import javax.imageio.ImageIO;
 
 import lombok.extern.slf4j.Slf4j;
 
-import org.hsqldb.lib.StringUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 import org.springframework.context.annotation.Scope;
@@ -48,7 +48,7 @@ public class MediaBean {
 
     private DefaultStreamedContent getImageAsStreamedContent(String email) throws IOException {
         DefaultStreamedContent streamedContent = null;
-        if (!StringUtil.isEmpty(email)) {
+        if (!StringUtils.isEmpty(email)) {
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             BufferedImage image = createImage(email);
             ImageIO.write(image, IMAGE_FORMAT_NAME, outputStream);
