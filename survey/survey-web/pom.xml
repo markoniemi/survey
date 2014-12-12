@@ -45,19 +45,6 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
 		</dependency>
-		<!-- Spring security tags -->		
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-taglibs</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.webflow</groupId>
-			<artifactId>spring-faces</artifactId>
-		</dependency>
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.springframework.security</groupId> -->
-<!-- 			<artifactId>facelets-taglib-jsf20-spring-3</artifactId> -->
-<!-- 		</dependency> -->
 		<!-- security annotations -->
 		<!-- <dependency> -->
 		<!-- <groupId>javax.annotation</groupId> -->

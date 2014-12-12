@@ -36,7 +36,6 @@
 		<spring.jpa.version>1.2.1.RELEASE</spring.jpa.version>
 		<selenium.version>2.42.2</selenium.version>
 		<cxf.version>3.0.2</cxf.version>
-		<!-- <richfaces.version>4.2.3.Final</richfaces.version> -->
 		<hibernate.version>4.2.8.Final</hibernate.version>
 		<database.driver>org.hsqldb.jdbcDriver</database.driver>
 		<database.url>jdbc:hsqldb:mem:mem:aname</database.url>
@@ -311,11 +310,6 @@
 				<version>${spring.security.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework.webflow</groupId>
-				<artifactId>spring-faces</artifactId>
-				<version>2.4.1.RELEASE</version>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework.data</groupId>

@@ -3,7 +3,6 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:sec="http://www.springframework.org/security/tags"
 	template="../templates/masterLayout.xhtml">
 	<ui:define name="title">#{messages.users}</ui:define>
 	<ui:define name="content">
@@ -35,12 +34,12 @@
 						<p:column>
 							<h:commandButton id="delete" value="#{messages.delete}"
 								action="#{usersBean.deleteUser}"
-								rendered="#{sec:areAnyGranted('ROLE_ADMIN')}">
+								rendered="#{request.isUserInRole('ROLE_ADMIN')}">
 								<f:param name="username" value="#{user.username}" />
 							</h:commandButton>
 							<h:commandButton id="edit" value="#{messages.editUser}"
 								action="#{editUserBean.editUser}" name="#{user.username}" title="#{user.username}"
-								rendered="#{sec:areAnyGranted('ROLE_ADMIN')}">
+								rendered="#{request.isUserInRole('ROLE_ADMIN')}">
 								<f:param name="username" value="#{user.username}" />
 							</h:commandButton>
 						</p:column>
