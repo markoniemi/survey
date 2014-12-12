@@ -7,7 +7,7 @@
 	<parent>
 		<artifactId>survey</artifactId>
 		<groupId>org.survey</groupId>
-		<version>1.3-SNAPSHOT</version>
+		<version>1.4-SNAPSHOT</version>
 	</parent>
 	<dependencies>
 		<dependency>

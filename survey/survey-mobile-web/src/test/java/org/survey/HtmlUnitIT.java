@@ -216,7 +216,7 @@ public class HtmlUnitIT {
     }
 
     protected void checkVersion() {
-        Assert.assertTrue(page.asXml(), page.asXml().contains("1.3-SNAPSHOT"));
+        Assert.assertTrue(page.asXml(), page.asXml().contains("1.4-SNAPSHOT"));
     }
 
     private void addPoll(String pollName) throws ElementNotFoundException,

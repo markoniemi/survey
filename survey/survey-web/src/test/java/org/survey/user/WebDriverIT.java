@@ -196,7 +196,7 @@ public class WebDriverIT {
     }
 
     protected void checkVersion() {
-        Assert.assertTrue(browser.getPageSource(), browser.getPageSource().contains("1.3-SNAPSHOT"));
+        Assert.assertTrue(browser.getPageSource(), browser.getPageSource().contains("1.4-SNAPSHOT"));
     }
 
     private void addPoll(String pollName) throws InterruptedException {

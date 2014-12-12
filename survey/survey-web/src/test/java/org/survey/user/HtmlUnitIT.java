@@ -6,9 +6,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.security.GeneralSecurityException;
 
-import junit.framework.Assert;
-
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -192,7 +191,7 @@ public class HtmlUnitIT {
     }
 
     protected void checkVersion() {
-        Assert.assertTrue(page.asXml(), page.asXml().contains("1.3-SNAPSHOT"));
+        Assert.assertTrue(page.asXml(), page.asXml().contains("1.4-SNAPSHOT"));
     }
 
     private void addPoll(String pollName) throws ElementNotFoundException,
