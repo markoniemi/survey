@@ -51,7 +51,12 @@
 	</listener>
 	<listener>
 		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
-	</listener>	
+	</listener>
+	<!-- spring security taglib -->	
+	<context-param>
+		<param-name>javax.faces.FACELETS_LIBRARIES</param-name>
+		<param-value>/WEB-INF/springsecurity.taglib.xml</param-value>
+	</context-param>	
 	<!-- Jetty -->
 	<listener>
 		<listener-class>com.sun.faces.config.ConfigureListener</listener-class>

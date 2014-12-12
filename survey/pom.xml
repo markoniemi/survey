@@ -31,7 +31,7 @@
 		<http.port>8443</http.port>
 <!-- 		<http.protocol>http</http.protocol> -->
 		<http.protocol>https</http.protocol>
-		<spring.version>3.2.6.RELEASE</spring.version>
+		<spring.version>3.2.8.RELEASE</spring.version>
 		<spring.security.version>3.2.5.RELEASE</spring.security.version>
 		<spring.jpa.version>1.2.1.RELEASE</spring.jpa.version>
 		<selenium.version>2.42.2</selenium.version>
@@ -232,23 +232,6 @@
 		</plugins>
 	</reporting>
 	<repositories>
-<!-- 		<repository> -->
-<!-- 			<id>jboss-public-repository-group</id> -->
-<!-- 			<name>JBoss Public Maven Repository Group</name> -->
-<!-- 			<url>https://repository.jboss.org/nexus/content/groups/public-jboss/</url> -->
-<!-- 		</repository> -->
-<!-- 		<repository> -->
-<!-- 			<id>Apache</id> -->
-<!-- 			<url>http://ftp.cica.es/mirrors/maven2</url> -->
-<!-- 		</repository> -->
-<!-- 		<repository> -->
-<!-- 			<id>openqa</id> -->
-<!-- 			<url>http://maven.openqa.org</url> -->
-<!-- 		</repository> -->
-		<repository>
-			<id>org.springframework.security.taglibs.facelets</id>
-			<url>http://spring-security-facelets-taglib.googlecode.com/svn/repo/</url>
-		</repository>
 		<repository>
 			<id>org.primefaces</id>
 			<url>http://repository.primefaces.org/</url>
@@ -330,14 +313,14 @@
 				<scope>import</scope>
 			</dependency>
 			<dependency>
+				<groupId>org.springframework.webflow</groupId>
+				<artifactId>spring-faces</artifactId>
+				<version>2.4.1.RELEASE</version>
+			</dependency>
+			<dependency>
 				<groupId>org.springframework.data</groupId>
 				<artifactId>spring-data-jpa</artifactId>
 				<version>${spring.jpa.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework.security</groupId>
-				<artifactId>facelets-taglib-jsf20-spring-3</artifactId>
-				<version>0.5</version>
 			</dependency>
 			<dependency>
 				<groupId>javax.el</groupId>
@@ -452,11 +435,6 @@
 				<artifactId>angularjs</artifactId>
 				<version>${angularjs.version}</version>
 			</dependency>
-			<!-- <dependency> -->
-			<!-- <groupId>org.webjars</groupId> -->
-			<!-- <artifactId>mobile-angular-ui</artifactId> -->
-			<!-- <version>1.1.0-beta.29-2</version> -->
-			<!-- </dependency> -->
 			<dependency>
 				<groupId>org.webjars</groupId>
 				<artifactId>angular-ui-bootstrap</artifactId>
@@ -467,11 +445,6 @@
 				<artifactId>angular-translate</artifactId>
 				<version>${angular-translate.version}</version>
 			</dependency>
-<!-- 			<dependency> -->
-<!-- 				<groupId>cglib</groupId> -->
-<!-- 				<artifactId>cglib</artifactId> -->
-<!-- 				<version>2.2.2</version> -->
-<!-- 			</dependency> -->
 			<dependency>
 				<groupId>org.apache.commons</groupId>
 				<artifactId>commons-lang3</artifactId>
@@ -487,11 +460,6 @@
 				<artifactId>commons-collections</artifactId>
 				<version>3.2.1</version>
 			</dependency>
-<!-- 			<dependency> -->
-<!-- 				<groupId>commons-logging</groupId> -->
-<!-- 				<artifactId>commons-logging</artifactId> -->
-<!-- 				<version>1.1.1</version> -->
-<!-- 			</dependency> -->
 			<dependency>
 				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-api</artifactId>
@@ -637,16 +605,6 @@
 				<artifactId>cssparser</artifactId>
 				<version>0.9.14</version>
 			</dependency>
-<!-- 			<dependency> -->
-<!-- 				<groupId>commons-logging</groupId> -->
-<!-- 				<artifactId>commons-logging</artifactId> -->
-<!-- 				<version>1.1.3</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.jetty</groupId> -->
-<!-- 				<artifactId>jetty-websocket</artifactId> -->
-<!-- 				<version>8.1.15.v20140411</version> -->
-<!-- 			</dependency> -->
 		</dependencies>
 	</dependencyManagement>
 </project>
