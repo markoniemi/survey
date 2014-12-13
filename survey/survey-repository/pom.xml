@@ -5,7 +5,7 @@
     <artifactId>survey</artifactId>
     <version>1.4-SNAPSHOT</version>
   </parent>
-  <artifactId>poll-repository</artifactId>
+  <artifactId>survey-repository</artifactId>
 	<dependencies>
 		<dependency>
 			<groupId>org.survey</groupId>

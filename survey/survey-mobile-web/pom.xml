@@ -24,7 +24,7 @@
 		<!-- Test -->
 		<dependency>
 			<groupId>org.survey</groupId>
-			<artifactId>poll-service</artifactId>
+			<artifactId>survey-service</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>

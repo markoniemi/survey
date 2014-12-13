@@ -12,7 +12,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.survey</groupId>
-			<artifactId>poll-service</artifactId>
+			<artifactId>survey-service</artifactId>
 		</dependency>
 		<!-- JSF -->
 		<dependency>

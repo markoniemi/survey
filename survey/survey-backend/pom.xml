@@ -15,11 +15,11 @@
 		</dependency>
 		<dependency>
 			<groupId>org.survey</groupId>
-			<artifactId>poll-repository</artifactId>
+			<artifactId>survey-repository</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.survey</groupId>
-			<artifactId>poll-service</artifactId>
+			<artifactId>survey-service</artifactId>
 		</dependency>
 		<!-- spring-security -->
 		<dependency>
@@ -67,13 +67,13 @@
 		</dependency>
 		<dependency>
 			<groupId>org.survey</groupId>
-			<artifactId>poll-repository</artifactId>
+			<artifactId>survey-repository</artifactId>
 			<scope>test</scope>
 			<type>test-jar</type>
 		</dependency>
 		<dependency>
 			<groupId>org.survey</groupId>
-			<artifactId>poll-service</artifactId>
+			<artifactId>survey-service</artifactId>
 			<scope>test</scope>
 			<type>test-jar</type>
 		</dependency>
