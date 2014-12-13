@@ -93,7 +93,7 @@ public class EditPollBean {
             }
         } catch (IllegalArgumentException e) {
             log.debug("Unable to create poll, a poll with same name already exists: {]", poll.getName());
-            showMessage(null, "pollExists");
+            showMessage(null, "pollExists", e);
             return null;
         }
         return "pollSaved";
@@ -110,7 +110,8 @@ public class EditPollBean {
     /**
      * showMessage is package private to enable overriding in a test case.
      */
-    void showMessage(String id, String messageKey) {
+    void showMessage(String id, String messageKey, Exception e) {
+        log.error(messageKey, e);
         FacesUtil.showMessage(id, messageKey);
     }
 }

@@ -90,7 +90,7 @@ public class FileUploadBeanTest {
         BeanTestHelper beanTestHelper = new BeanTestHelper();
 
         @Override
-        void showMessage(String id, String messageKey) {
+        void showMessage(String id, String messageKey, Exception e) {
             beanTestHelper.showMessage(id, messageKey);
         }
     }

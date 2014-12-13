@@ -7,11 +7,10 @@ import java.util.List;
 
 import javax.persistence.Id;
 
-import junit.framework.Assert;
-
 import org.apache.commons.collections.IteratorUtils;
 import org.dbunit.DatabaseUnitException;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.data.repository.CrudRepository;

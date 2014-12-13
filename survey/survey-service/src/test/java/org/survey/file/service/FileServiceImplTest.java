@@ -4,9 +4,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import junit.framework.Assert;
-
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,7 +16,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.survey.file.model.File;
 import org.survey.file.model.FileComparator;
 import org.survey.file.model.FileFactory;
-import org.survey.file.service.FileService;
 import org.survey.user.model.User;
 import org.survey.user.model.UserFactory;
 import org.survey.user.service.UserService;

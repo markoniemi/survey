@@ -5,13 +5,11 @@ import java.lang.reflect.Method;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-import junit.framework.Assert;
-
+import org.junit.Assert;
 import org.junit.Test;
 import org.survey.entity.TestEntityWithAnnotatedField;
 import org.survey.entity.TestEntityWithAnnotatedGetter;
 import org.survey.entity.TestEntityWithGeneratedId;
-import org.survey.repository.BeanHelper;
 
 public class BeanHelperTest {
 

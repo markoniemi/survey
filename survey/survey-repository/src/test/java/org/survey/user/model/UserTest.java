@@ -1,10 +1,7 @@
 package org.survey.user.model;
 
-import junit.framework.Assert;
-
+import org.junit.Assert;
 import org.junit.Test;
-import org.survey.user.model.Role;
-import org.survey.user.model.User;
 
 public class UserTest {
 

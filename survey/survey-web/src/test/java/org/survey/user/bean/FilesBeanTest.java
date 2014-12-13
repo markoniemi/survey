@@ -2,10 +2,10 @@ package org.survey.user.bean;
 
 import java.io.IOException;
 
-import junit.framework.Assert;
 import lombok.experimental.Delegate;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

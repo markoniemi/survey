@@ -2,9 +2,8 @@ package org.survey.user.bean;
 
 import java.net.MalformedURLException;
 
-import junit.framework.Assert;
-
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -129,7 +128,7 @@ public class EditPollBeanTest {
     private class EditPollBeanMock extends EditPollBean {
         BeanTestHelper beanTestHelper = new BeanTestHelper();
         @Override
-        void showMessage(String id, String messageKey) {
+        void showMessage(String id, String messageKey, Exception e) {
             beanTestHelper.showMessage(id, messageKey);
         }
         public String getMessage() {

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<appender name="console" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%t %-5p %c{1} - %m%n" />
+		</layout>
+	</appender>
+	<appender name="file" class="org.apache.log4j.FileAppender">
+		<param name="File" value="survey.log" />
+		<param name="Append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%t %-5p %c{1} - %m%n" />
+		</layout>
+	</appender>
+	<logger name="org.survey">
+		<level value="debug" />
+	</logger>
+	<logger name="DefaultCssErrorHandler">
+		<level value="off" />
+	</logger>
+	<logger name="com.gargoylesoftware">
+		<level value="off" />
+	</logger>
+	<!-- Root Logger -->
+	<root>
+		<priority value="warn" />
+		<appender-ref ref="console" />
+	</root>
+</log4j:configuration>

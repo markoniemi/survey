@@ -61,7 +61,7 @@ public class FileUploadBean implements Serializable {
             File createdFile = createFile(file, fileContent);
             fileService.create(createdFile);
         } catch (IOException e) {
-            showMessage(null, "fileUploadError");
+            showMessage(null, "fileUploadError", e);
         }
         return "fileSaved";
     }
@@ -96,7 +96,8 @@ public class FileUploadBean implements Serializable {
     /**
      * showMessage is package private to enable overriding in a test case.
      */
-    void showMessage(String id, String messageKey) {
+    void showMessage(String id, String messageKey, Exception e) {
+        log.error(messageKey, e);
         FacesUtil.showMessage(id, messageKey);
     }
 }

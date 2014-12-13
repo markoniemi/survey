@@ -4,9 +4,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import junit.framework.Assert;
-
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.survey.user.model.User;
 import org.survey.user.model.UserComparator;
 import org.survey.user.model.UserFactory;
-import org.survey.user.service.UserService;
 
 /**
  * Test UserService. Must use SpringJUnit4ClassRunner to enable spring

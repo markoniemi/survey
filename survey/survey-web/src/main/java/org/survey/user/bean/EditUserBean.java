@@ -55,7 +55,7 @@ public class EditUserBean {
     public String saveUser() {
         log.info(user.toString());
         if (!repeatedPassword.equals(user.getPassword())) {
-            showMessage(null, "repeatedPasswordError");
+            showMessage(null, "repeatedPasswordError", null);
             return null;
         }
         try {
@@ -66,7 +66,7 @@ public class EditUserBean {
             }
         } catch (IllegalArgumentException e) {
             log.debug("Unable to create user, a user with same name already exists: {]", user.getUsername());
-            showMessage(null, "userExists");
+            showMessage(null, "userExists", e);
             return null;
         }
         return "userSaved";
@@ -79,7 +79,8 @@ public class EditUserBean {
     /**
      * showMessage is package private to enable overriding in a test case.
      */
-    void showMessage(String id, String messageKey) {
+    void showMessage(String id, String messageKey, Exception e) {
+        log.error(messageKey, e);
         FacesUtil.showMessage(id, messageKey);
     }
 

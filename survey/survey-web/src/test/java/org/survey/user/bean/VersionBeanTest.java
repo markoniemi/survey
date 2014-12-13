@@ -5,10 +5,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.jar.Manifest;
 
-import junit.framework.Assert;
-
+import org.junit.Assert;
 import org.junit.Test;
-import org.survey.user.bean.VersionBean;
 
 public class VersionBeanTest {
 	private VersionBean versionBean;

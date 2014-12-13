@@ -2,9 +2,8 @@ package org.survey.user.bean;
 
 import java.net.MalformedURLException;
 
-import junit.framework.Assert;
-
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -12,7 +11,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.survey.user.bean.EditUserBean;
 import org.survey.user.model.Role;
 import org.survey.user.model.User;
 import org.survey.user.repository.UserRepository;
@@ -115,7 +113,7 @@ public class EditUserBeanTest {
         }
 
         @Override
-        void showMessage(String id, String messageKey) {
+        void showMessage(String id, String messageKey, Exception e) {
             beanTestHelper.showMessage(id, messageKey);
         }
     }
