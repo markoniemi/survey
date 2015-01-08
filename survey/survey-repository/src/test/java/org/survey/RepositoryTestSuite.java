@@ -7,11 +7,9 @@ import org.survey.file.repository.FileRepositoryStubTest;
 import org.survey.file.repository.FileRepositoryTest;
 import org.survey.poll.repository.PollRepositoryJPATest;
 import org.survey.poll.repository.PollRepositoryStubTest;
-import org.survey.poll.repository.QuestionRepositoryJPATest;
 import org.survey.poll.repository.QuestionRepositoryStubTest;
 import org.survey.user.model.UserComparatorTest;
 import org.survey.user.model.UserTest;
-import org.survey.user.repository.UserRepositoryH2Test;
 import org.survey.user.repository.UserRepositoryJPATest;
 import org.survey.user.repository.UserRepositoryStubTest;
 import org.survey.user.repository.UserRepositoryTest;
@@ -23,7 +21,6 @@ import org.survey.user.repository.UserRepositoryTest;
     UserRepositoryStubTest.class,
     UserRepositoryTest.class,
     UserRepositoryJPATest.class,
-    UserRepositoryH2Test.class,
     FileRepositoryTest.class,
     FileRepositoryJPATest.class,
     FileRepositoryStubTest.class,

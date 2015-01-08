@@ -2,6 +2,8 @@ package org.survey.file.repository;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.apache.commons.collections.IteratorUtils;
 import org.junit.After;
 import org.junit.Assert;
@@ -28,11 +30,11 @@ import org.survey.user.repository.UserRepository;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:spring-config-FileRepositoryTest.xml")
 public class FileRepositoryTest extends CrudRepositoryTest<File, Long> {
-	@Autowired
-	@Qualifier("fileRepository")
+	@Resource
+//	@Qualifier("fileRepository")
 	protected FileRepository fileRepository;
-    @Autowired
-    @Qualifier("userRepository")
+	@Resource
+//    @Qualifier("userRepository")
     protected UserRepository userRepository;
     private User user;
 

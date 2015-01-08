@@ -1,5 +1,7 @@
 package org.survey.user.repository;
 
+import javax.annotation.Resource;
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -22,11 +24,11 @@ import org.survey.user.repository.UserRepository;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:spring-config-UserRepositoryTest.xml")
 public class UserRepositoryTest extends CrudRepositoryTest<User, Long> {
-	@Autowired
+	@Resource
 	protected UserRepository userRepository;
 
 	@Override
-	public CrudRepository<User, Long> getEntityRepository() {
+	public UserRepository getEntityRepository() {
 		return userRepository;
 	}
 

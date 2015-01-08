@@ -7,7 +7,6 @@ import javax.jws.WebService;
 import org.apache.commons.collections.IteratorUtils;
 import org.apache.commons.lang3.Validate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 import org.survey.poll.model.Poll;
 import org.survey.poll.model.Question;
 import org.survey.poll.repository.PollRepository;
@@ -21,7 +20,6 @@ import com.google.common.collect.Iterables;
  * Implementation of PollService. endpointInterface and serviceName are probably
  * unneccessary.
  */
-@Transactional
 @WebService(endpointInterface = "org.survey.poll.service.PollService", serviceName = "pollService")
 public class PollServiceImpl implements PollService {
     @Autowired

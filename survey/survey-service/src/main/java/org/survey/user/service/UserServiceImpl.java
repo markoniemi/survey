@@ -8,7 +8,6 @@ import lombok.extern.slf4j.Slf4j;
 
 import org.apache.commons.lang3.Validate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 import org.survey.file.model.File;
 import org.survey.file.repository.FileRepository;
 import org.survey.user.model.User;
@@ -26,7 +25,6 @@ import com.google.common.collect.Iterables;
  * are probably unneccessary.
  */
 @Slf4j
-@Transactional
 @WebService(endpointInterface = "org.survey.user.service.UserService", serviceName = "userService")
 public class UserServiceImpl implements UserService {
     @Autowired
@@ -41,6 +39,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+//    @Transactional(readOnly=false)
     public User create(User user) {
         Validate.notNull(user, "Tried to create null user.");
         Validate.notBlank(user.getUsername(), "Username must not be blank.");

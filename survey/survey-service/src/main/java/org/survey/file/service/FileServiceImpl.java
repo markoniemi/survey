@@ -4,13 +4,11 @@ import javax.jws.WebParam;
 import javax.jws.WebService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 import org.survey.file.model.File;
 import org.survey.file.repository.FileRepository;
 
 import com.google.common.collect.Iterables;
 
-@Transactional
 @WebService(endpointInterface = "org.survey.file.service.FileService", serviceName = "fileService")
 public class FileServiceImpl implements FileService {
     @Autowired

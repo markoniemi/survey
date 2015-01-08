@@ -13,4 +13,5 @@
     <context:component-scan base-package="org.survey" />
     <context:annotation-config />
 	<jpa:repositories base-package="org.survey.file.repository" />
+	<jpa:repositories base-package="org.survey.user.repository" />
 </beans>

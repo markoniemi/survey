@@ -14,18 +14,18 @@
 	</bean>
 	<!-- cxf config for https -->
 	<jaxws:client id="userService" serviceClass="org.survey.user.service.UserService"
-		address="${http.protocol}://localhost:${http.port}/survey-web/api/soap/userService" />
+		address="${http.protocol}://localhost:${http.port}/survey-backend/api/soap/userService" />
 	<jaxws:client id="fileService" serviceClass="org.survey.file.service.FileService"
-		address="${http.protocol}://localhost:${http.port}/survey-web/api/soap/fileService" />
+		address="${http.protocol}://localhost:${http.port}/survey-backend/api/soap/fileService" />
 	<jaxws:client id="pollService" serviceClass="org.survey.poll.service.PollService"
-		address="${http.protocol}://localhost:${http.port}/survey-web/api/soap/pollService" />
-	<http:conduit name="https://localhost:8443/.*">
+		address="${http.protocol}://localhost:${http.port}/survey-backend/api/soap/pollService" />
+	<http:conduit name="*.http-conduit">
+<!-- 	<http:tlsClientParameters disableCNCheck="true"> -->
 		<http:tlsClientParameters>
 			<sec:trustManagers>
 				<sec:keyStore type="JKS" password="changeit"
-					file="src/test/resources/survey.jks" />
+					resource="survey.jks" />
 			</sec:trustManagers>
 		</http:tlsClientParameters>
 	</http:conduit>
-<!-- 		<http:tlsClientParameters disableCNCheck="true"> -->
 </beans>

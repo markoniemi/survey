@@ -2,23 +2,26 @@
 <persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
 	xmlns="http://java.sun.com/xml/ns/persistence" version="1.0">
-	<persistence-unit name="survey-web" transaction-type="RESOURCE_LOCAL">
+	<persistence-unit name="survey-web" transaction-type="JTA">
+<!-- 	<persistence-unit name="survey-web" transaction-type="RESOURCE_LOCAL"> -->
 		<class>org.survey.user.model.User</class>
 		<class>org.survey.file.model.File</class>
 		<class>org.survey.poll.model.Poll</class>
 		<class>org.survey.poll.model.Question</class>
 		<class>org.survey.poll.model.BooleanQuestion</class>
 		<class>org.survey.poll.model.TextQuestion</class>
-		<properties>
-			<property name="hibernate.show_sql" value="false" />
-			<property name="hibernate.format_sql" value="false" />
-			<property name="hibernate.connection.driver_class" value="${database.driver}" />
-			<property name="hibernate.connection.url" value="${database.url}" />
-			<property name="hibernate.connection.username" value="${database.username}" />
-			<property name="hibernate.connection.password" value="${database.password}" />
-			<property name="hibernate.dialect" value="${database.dialect}" />
-			<property name="hibernate.hbm2ddl.auto" value="create" />
-		</properties>
+<!-- 		<properties> -->
+<!-- 			<property name="hibernate.show_sql" value="true" /> -->
+<!-- 			<property name="hibernate.format_sql" value="true" /> -->
+<!-- 			<property name="hibernate.connection.driver_class" value="${database.driver}" /> -->
+<!-- 			<property name="hibernate.connection.url" value="${database.url}" /> -->
+<!-- 			<property name="hibernate.connection.username" value="${database.username}" /> -->
+<!-- 			<property name="hibernate.connection.password" value="${database.password}" /> -->
+<!-- 			<property name="hibernate.dialect" value="${database.dialect}" /> -->
+<!-- 			<property name="hibernate.hbm2ddl.auto" value="create" /> -->
+<!-- 			<property name="hibernate.connection.autocommit" value="true"/> -->
+<!-- 			<property name="hibernate.transaction.flush_before_completion" value="true" /> -->
+<!-- 		</properties> -->
 	</persistence-unit>
 <!-- 	<persistence-unit name="H2" transaction-type="RESOURCE_LOCAL"> -->
 <!-- 		<class>org.survey.user.model.User</class> -->

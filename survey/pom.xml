@@ -37,11 +37,19 @@
 		<selenium.version>2.42.2</selenium.version>
 		<cxf.version>3.0.2</cxf.version>
 		<hibernate.version>4.2.8.Final</hibernate.version>
+<!-- 		<database>MYSQL</database> -->
+<!-- 		<database.driver>com.mysql.jdbc.Driver</database.driver> -->
+<!-- 		<database.url>jdbc:mysql://localhost/test</database.url> -->
+<!-- 		<database.username>root</database.username> -->
+<!-- 		<database.password>root</database.password> -->
+<!-- 		<database.dialect>org.hibernate.dialect.MySQLDialect</database.dialect> -->
+		<database>HSQL</database>
 		<database.driver>org.hsqldb.jdbcDriver</database.driver>
 		<database.url>jdbc:hsqldb:mem:mem:aname</database.url>
 		<database.username>sa</database.username>
 		<database.password></database.password>
 		<database.dialect>org.hibernate.dialect.HSQLDialect</database.dialect>
+
 		<jacoco.out.path>${session.executionRootDirectory}/target</jacoco.out.path>
 		<jacoco.out.file>jacoco.exec</jacoco.out.file>
 		<sonar.jacoco.itReportPath>${env.WORKSPACE}/target/${jacoco.out.file}</sonar.jacoco.itReportPath>
@@ -72,6 +80,18 @@
 				</includes>
 			</resource>
 		</resources>
+		<testResources>
+			<testResource>
+				<directory>src/test/resources</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>**/*</include>
+				</includes>
+				<excludes>
+					<exclude>**/*.jks</exclude>
+				</excludes>
+			</testResource>
+		</testResources>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -354,6 +374,11 @@
 				<groupId>com.h2database</groupId>
 				<artifactId>h2</artifactId>
 				<version>1.4.177</version>
+			</dependency>
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>5.1.34</version>
 			</dependency>
 			<!-- Apache CXF dependencies -->
 			<dependency>
