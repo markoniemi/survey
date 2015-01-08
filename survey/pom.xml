@@ -27,9 +27,9 @@
 		<!-- build.profile is overridden in profiles -->
 		<build.profile>release</build.profile>
 		<maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss</maven.build.timestamp.format>
-<!-- 		<http.port>8082</http.port> -->
+		<!-- <http.port>8082</http.port> -->
 		<http.port>8443</http.port>
-<!-- 		<http.protocol>http</http.protocol> -->
+		<!-- <http.protocol>http</http.protocol> -->
 		<http.protocol>https</http.protocol>
 		<spring.version>3.2.8.RELEASE</spring.version>
 		<spring.security.version>3.2.5.RELEASE</spring.security.version>
@@ -37,19 +37,6 @@
 		<selenium.version>2.42.2</selenium.version>
 		<cxf.version>3.0.2</cxf.version>
 		<hibernate.version>4.2.8.Final</hibernate.version>
-<!-- 		<database>MYSQL</database> -->
-<!-- 		<database.driver>com.mysql.jdbc.Driver</database.driver> -->
-<!-- 		<database.url>jdbc:mysql://localhost/test</database.url> -->
-<!-- 		<database.username>root</database.username> -->
-<!-- 		<database.password>root</database.password> -->
-<!-- 		<database.dialect>org.hibernate.dialect.MySQLDialect</database.dialect> -->
-		<database>HSQL</database>
-		<database.driver>org.hsqldb.jdbcDriver</database.driver>
-		<database.url>jdbc:hsqldb:mem:mem:aname</database.url>
-		<database.username>sa</database.username>
-		<database.password></database.password>
-		<database.dialect>org.hibernate.dialect.HSQLDialect</database.dialect>
-
 		<jacoco.out.path>${session.executionRootDirectory}/target</jacoco.out.path>
 		<jacoco.out.file>jacoco.exec</jacoco.out.file>
 		<sonar.jacoco.itReportPath>${env.WORKSPACE}/target/${jacoco.out.file}</sonar.jacoco.itReportPath>
@@ -279,6 +266,39 @@
 				<appsDir>c:\apps</appsDir>
 			</properties>
 		</profile>
+		<profile>
+			<id>hsqldb</id>
+			<properties>
+				<database>HSQL</database>
+				<database.driver>org.hsqldb.jdbcDriver</database.driver>
+				<database.url>jdbc:hsqldb:mem:mem:aname</database.url>
+				<database.username>sa</database.username>
+				<database.password></database.password>
+				<database.dialect>org.hibernate.dialect.HSQLDialect</database.dialect>
+			</properties>
+		</profile>
+		<profile>
+			<id>mysql</id>
+			<properties>
+				<database>MYSQL</database>
+				<database.driver>com.mysql.jdbc.Driver</database.driver>
+				<database.url>jdbc:mysql://localhost/test</database.url>
+				<database.username>root</database.username>
+				<database.password>root</database.password>
+				<database.dialect>org.hibernate.dialect.MySQLDialect</database.dialect>
+			</properties>
+		</profile>
+		<profile>
+			<id>h2</id>
+			<properties>
+				<database>H2</database>
+				<database.driver>org.h2.Driver</database.driver>
+				<database.url>jdbc:h2:mem:foo_db</database.url>
+				<database.username>sa</database.username>
+				<database.password></database.password>
+				<database.dialect>org.hibernate.dialect.H2Dialect</database.dialect>
+			</properties>
+		</profile>
 	</profiles>
 	<dependencyManagement>
 		<dependencies>
@@ -315,7 +335,7 @@
 				<artifactId>survey-backend</artifactId>
 				<version>${project.version}</version>
 				<type>war</type>
-			</dependency>			
+			</dependency>
 			<!-- Spring -->
 			<dependency>
 				<groupId>org.springframework</groupId>

@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-    xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
-	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="
 	http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
@@ -22,12 +20,12 @@
 				<property name="database" value="${database}" />
 			</bean>
 		</property>
-		<!-- <property name="jpaProperties"> -->
-		<!-- <props> -->
-		<!-- <prop key="hibernate.hbm2ddl.auto">create-drop</prop> -->
-		<!-- <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop> -->
-		<!-- </props> -->
-		<!-- </property> -->
+		<property name="jpaProperties">
+			<props>
+				<prop key="hibernate.hbm2ddl.auto">create-drop</prop>
+				<prop key="hibernate.dialect">${database.dialect}</prop>
+			</props>
+		</property>
 		<property name="persistenceUnitName" value="survey-backend" />
 	</bean>
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
@@ -35,16 +33,18 @@
 	</bean>
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<!-- <property name="driverClassName" value="com.mysql.jdbc.Driver" /> -->
-		<!-- <property name="url" value="jdbc:mysql://localhost/test" /> -->
-		<!-- <property name="username" value="root" /> -->
-		<!-- <property name="password" value="root" /> -->
 		<property name="driverClassName" value="${database.driver}" />
 		<property name="url" value="${database.url}" />
 		<property name="username" value="${database.username}" />
 		<property name="password" value="${database.password}" />
-
-		<!-- <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/> -->
 	</bean>
+<!-- 	<bean id="h2Server" class="org.h2.tools.Server" factory-method="createTcpServer" -->
+<!-- 		init-method="start" destroy-method="stop" depends-on="h2WebServer"> -->
+<!-- 		<constructor-arg value="-tcp,-tcpAllowOthers,true,-tcpPort,9092" /> -->
+<!-- 	</bean> -->
+<!-- 	<bean id="h2WebServer" class="org.h2.tools.Server" factory-method="createWebServer" -->
+<!-- 		init-method="start" destroy-method="stop"> -->
+<!-- 		<constructor-arg value="-web,-webAllowOthers,true,-webPort,8081" /> -->
+<!-- 	</bean> -->
 	<bean id="databaseInitializer" class="org.survey.DatabaseInitializer" />
 </beans>
