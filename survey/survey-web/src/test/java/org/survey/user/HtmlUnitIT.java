@@ -58,10 +58,10 @@ public class HtmlUnitIT {
     @After
     public void tearDown() throws Exception {
         webClient.closeAllWindows();
+        deletePollFromRepository("poll");
         deleteUserFromRepository("registered_user");
         deleteUserFromRepository("admin_user");
         deleteUserFromRepository("user_user");
-        deletePollFromRepository("poll");
     }
 
     private void deletePollFromRepository(String pollName) {

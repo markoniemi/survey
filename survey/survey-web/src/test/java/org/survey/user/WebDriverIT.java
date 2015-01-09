@@ -49,10 +49,10 @@ public class WebDriverIT {
     @After
     public void tearDown() {
         browser.close();
+        deletePollFromRepository("poll");
         deleteUserFromRepository("registered_user");
         deleteUserFromRepository("admin_user");
         deleteUserFromRepository("user_user");
-        deletePollFromRepository("poll");
     }
 
     private void deletePollFromRepository(String pollName) {

@@ -9,7 +9,7 @@
            http://www.springframework.org/schema/context/spring-context-3.0.xsd
            http://www.springframework.org/schema/data/jpa 
            http://www.springframework.org/schema/data/jpa/spring-jpa-1.0.xsd">
-    <import resource="spring-config-database.xml"/>
+    <import resource="classpath:spring-config-database.xml"/>
     <context:component-scan base-package="org.survey" />
     <context:annotation-config />
 	<jpa:repositories base-package="org.survey.user.repository" />
