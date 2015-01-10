@@ -6,10 +6,16 @@
 	http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
 	<import resource="classpath:META-INF/cxf/cxf.xml" />
 	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
-	<!-- Spring manage ServiceBean -->
-	<!-- bean id must not clash with jaxws bean id -->
+	<!-- Spring managed ServiceBeans -->
+	<!-- bean ids must not clash with jaxws bean ids -->
+	<bean id="userServiceBean" class="org.survey.user.service.UserServiceImpl" />
 	<bean id="fileServiceBean" class="org.survey.file.service.FileServiceImpl" />
-	<!-- JAX-WS Service Endpoint -->
+	<bean id="pollServiceBean" class="org.survey.poll.service.PollServiceImpl" />
+	<!-- JAX-WS Service Endpoints -->
+	<jaxws:endpoint id="userService" implementor="#userServiceBean"
+		address="/soap/userService" />
 	<jaxws:endpoint id="fileService" implementor="#fileServiceBean"
 		address="/soap/fileService" />
+	<jaxws:endpoint id="pollService" implementor="#pollServiceBean"
+		address="/soap/pollService" />
 </beans>

@@ -13,5 +13,7 @@
     <context:component-scan base-package="org.survey" />
     <context:annotation-config />
 	<jpa:repositories base-package="org.survey" />
+	<bean id="fileService" class="org.survey.file.service.FileServiceImpl" />
 	<bean id="userService" class="org.survey.user.service.UserServiceImpl" />
+	<bean id="pollService" class="org.survey.poll.service.PollServiceImpl" />
 </beans>

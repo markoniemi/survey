@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @see org.survey.user.repository.UserRepositoryTest
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:spring-config-UserRepositoryJPATest.xml", inheritLocations=false)
+@ContextConfiguration(locations = "classpath:spring-config-test-jpa.xml", inheritLocations=false)
 @Transactional
 @TransactionConfiguration(defaultRollback=false)
 public class UserRepositoryJPATest extends UserRepositoryTest {

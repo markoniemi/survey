@@ -29,7 +29,7 @@ import org.survey.user.repository.UserRepository;
  * injection. Loaded Spring configuration is defined by ContextConfiguration.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:spring-config-PollRepositoryTest.xml")
+@ContextConfiguration(locations = "classpath:spring-config-test-stub.xml")
 public class QuestionRepositoryTest extends CrudRepositoryTest<Question, Long> {
     @Autowired
     @Qualifier("questionRepository")

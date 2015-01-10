@@ -9,12 +9,8 @@
            http://www.springframework.org/schema/context/spring-context-3.0.xsd
            http://www.springframework.org/schema/data/jpa 
            http://www.springframework.org/schema/data/jpa/spring-jpa-1.0.xsd">
-<!--     <import resource="classpath:spring-config-database.xml"/> -->
-    <!-- read service config from user-service jar -->
-<!--     <import resource="classpath:spring-config-service.xml"/> -->
-    <import resource="spring-config-service.xml"/>
+    <import resource="spring-config-service-client.xml"/>
     <import resource="spring-security.xml"/>
 	<context:component-scan base-package="org.survey" />
 	<context:annotation-config />
-<!-- 	<jpa:repositories base-package="org.survey" /> -->
 </beans>

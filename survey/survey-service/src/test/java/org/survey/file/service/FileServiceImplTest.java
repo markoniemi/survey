@@ -25,7 +25,7 @@ import org.survey.user.service.UserService;
  * injection. Loaded Spring configuration is defined by ContextConfiguration.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:file-service-test.xml")
+@ContextConfiguration(locations = "classpath:spring-config-service-test.xml")
 public class FileServiceImplTest {
     protected static int ENTITY_COUNT = 2;
     protected List<File> orginalEntities = new ArrayList<File>();;

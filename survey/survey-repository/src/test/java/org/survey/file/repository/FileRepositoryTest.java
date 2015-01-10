@@ -28,7 +28,7 @@ import org.survey.user.repository.UserRepository;
  * injection. Loaded Spring configuration is defined by ContextConfiguration.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:spring-config-FileRepositoryTest.xml")
+@ContextConfiguration(locations = "classpath:spring-config-test-stub.xml")
 public class FileRepositoryTest extends CrudRepositoryTest<File, Long> {
 	@Resource
 //	@Qualifier("fileRepository")

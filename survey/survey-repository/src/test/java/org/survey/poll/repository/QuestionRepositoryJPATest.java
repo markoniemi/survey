@@ -14,7 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * @see org.survey.poll.repository.PollRepositoryTest
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:spring-config-PollRepositoryJPATest.xml")
+@ContextConfiguration(locations = "classpath:spring-config-test-jpa.xml")
 public class QuestionRepositoryJPATest 
 //extends QuestionRepositoryTest 
 {

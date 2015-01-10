@@ -8,9 +8,7 @@
 	http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd">
 	<import resource="classpath:META-INF/cxf/cxf.xml" />
 	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
-	<import resource="classpath:user-service.xml" />
-	<import resource="classpath:file-service.xml" />
-	<import resource="classpath:poll-service.xml" />
+	<import resource="classpath:spring-config-service.xml" />
 
 	<!-- JAX-RS RESTful service -->
 	<jaxrs:server id="userServiceRest" address="/rest">
