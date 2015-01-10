@@ -44,6 +44,24 @@
 		<angular-ui-bootstrap.version>0.12.0</angular-ui-bootstrap.version>
 		<angular-translate.version>2.4.2</angular-translate.version>
 		<jsf.version>2.2.8-04</jsf.version>
+		<database>HSQL</database>
+		<database.driver>org.hsqldb.jdbcDriver</database.driver>
+		<database.url>jdbc:hsqldb:mem:mem:aname</database.url>
+		<database.username>sa</database.username>
+		<database.password></database.password>
+		<database.dialect>org.hibernate.dialect.HSQLDialect</database.dialect>
+<!-- 		<database>MYSQL</database> -->
+<!-- 		<database.driver>com.mysql.jdbc.Driver</database.driver> -->
+<!-- 		<database.url>jdbc:mysql://localhost/test</database.url> -->
+<!-- 		<database.username>root</database.username> -->
+<!-- 		<database.password>root</database.password> -->
+<!-- 		<database.dialect>org.hibernate.dialect.MySQLDialect</database.dialect> -->
+<!-- 		<database>H2</database> -->
+<!-- 		<database.driver>org.h2.Driver</database.driver> -->
+<!-- 		<database.url>jdbc:h2:mem:foo_db</database.url> -->
+<!-- 		<database.username>sa</database.username> -->
+<!-- 		<database.password></database.password> -->
+<!-- 		<database.dialect>org.hibernate.dialect.H2Dialect</database.dialect> -->
 	</properties>
 	<build>
 		<defaultGoal>install</defaultGoal>
@@ -264,39 +282,6 @@
 			</activation>
 			<properties>
 				<appsDir>c:\apps</appsDir>
-			</properties>
-		</profile>
-		<profile>
-			<id>hsqldb</id>
-			<properties>
-				<database>HSQL</database>
-				<database.driver>org.hsqldb.jdbcDriver</database.driver>
-				<database.url>jdbc:hsqldb:mem:mem:aname</database.url>
-				<database.username>sa</database.username>
-				<database.password></database.password>
-				<database.dialect>org.hibernate.dialect.HSQLDialect</database.dialect>
-			</properties>
-		</profile>
-		<profile>
-			<id>mysql</id>
-			<properties>
-				<database>MYSQL</database>
-				<database.driver>com.mysql.jdbc.Driver</database.driver>
-				<database.url>jdbc:mysql://localhost/test</database.url>
-				<database.username>root</database.username>
-				<database.password>root</database.password>
-				<database.dialect>org.hibernate.dialect.MySQLDialect</database.dialect>
-			</properties>
-		</profile>
-		<profile>
-			<id>h2</id>
-			<properties>
-				<database>H2</database>
-				<database.driver>org.h2.Driver</database.driver>
-				<database.url>jdbc:h2:mem:foo_db</database.url>
-				<database.username>sa</database.username>
-				<database.password></database.password>
-				<database.dialect>org.hibernate.dialect.H2Dialect</database.dialect>
 			</properties>
 		</profile>
 	</profiles>

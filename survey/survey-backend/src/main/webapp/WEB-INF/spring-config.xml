@@ -19,15 +19,4 @@
 	<context:annotation-config />
 	<jpa:repositories base-package="org.survey" />
 	<bean id="databaseInitializer" class="org.survey.DatabaseInitializer" />
-<!-- 	<bean id="userRepository" class="org.survey.user.repository.UserRepositoryJPA" /> -->
-	<!-- <context:load-time-weaver /> -->
-	<!-- <bean id="myEmf" -->
-	<!-- class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean"> -->
-	<!-- <property name="persistenceUnitName" value="SRS-EM" /> -->
-	<!-- </bean> -->
-	<!-- <bean name="userManagement" class="org.survey.user.repository.UserRepositoryJPA"> -->
-	<!-- <property name="entityManagerFactory"> -->
-	<!-- <ref bean="myEmf" /> -->
-	<!-- </property> -->
-	<!-- </bean> -->
 </beans>
