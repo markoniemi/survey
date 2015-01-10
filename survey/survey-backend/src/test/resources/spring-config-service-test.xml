@@ -10,7 +10,7 @@
 	http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
 
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-    	<property name="location" value="classpath:/configuration.properties"/>
+    	<property name="location" value="classpath:/server.properties"/>
 	</bean>
 	<!-- cxf config for https -->
 	<jaxws:client id="userService" serviceClass="org.survey.user.service.UserService"
