@@ -9,9 +9,9 @@
 	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 	http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
 
-	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-    	<property name="location" value="classpath:/server.properties"/>
-	</bean>
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+		p:location="classpath:/server.properties" />
 	<!-- cxf config for https -->
 	<jaxws:client id="userService" serviceClass="org.survey.user.service.UserService"
 		address="${http.protocol}://localhost:${http.port}/survey-backend/api/soap/userService" />
