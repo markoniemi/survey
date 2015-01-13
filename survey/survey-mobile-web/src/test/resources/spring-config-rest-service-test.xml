@@ -14,7 +14,7 @@
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="location" value="classpath:/server.properties" />
 	</bean>
-	<jaxrs:client id="userService" serviceClass="org.survey.user.service.UserService"
+	<jaxrs:client id="userService" serviceClass="org.survey.service.user.UserService"
 		address="${http.protocol}://localhost:${http.port}/survey-backend/api/rest">
 		<jaxrs:headers>
 			<entry key="Accept" value="application/json" />

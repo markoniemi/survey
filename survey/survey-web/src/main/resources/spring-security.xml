@@ -13,7 +13,7 @@
 		<sec:logout logout-success-url="/pages/users.xhtml" />
 	</sec:http>
 	<bean id="userRepositoryAuthenticationProvider"
-		class="org.survey.user.security.UserRepositoryAuthenticationProvider" />
+		class="org.survey.security.UserRepositoryAuthenticationProvider" />
 	<!-- <sec:authentication-manager alias="authenticationManager"> -->
 	<!-- <sec:authentication-provider> -->
 	<!-- <sec:user-service> -->

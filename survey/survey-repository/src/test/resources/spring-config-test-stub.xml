@@ -11,8 +11,8 @@
            http://www.springframework.org/schema/data/jpa/spring-jpa-1.0.xsd">
 	<context:component-scan base-package="org.survey" />
 	<context:annotation-config />
-    <bean id="userRepository" class="org.survey.user.repository.UserRepositoryStub" />
-    <bean id="fileRepository" class="org.survey.file.repository.FileRepositoryStub" />
-    <bean id="pollRepository" class="org.survey.poll.repository.PollRepositoryStub" />
-    <bean id="questionRepository" class="org.survey.poll.repository.QuestionRepositoryStub" />
+    <bean id="userRepository" class="org.survey.repository.user.UserRepositoryStub" />
+    <bean id="fileRepository" class="org.survey.repository.file.FileRepositoryStub" />
+    <bean id="pollRepository" class="org.survey.repository.poll.PollRepositoryStub" />
+    <bean id="questionRepository" class="org.survey.repository.poll.QuestionRepositoryStub" />
 </beans>

@@ -7,5 +7,5 @@
            http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 	<context:component-scan base-package="org.survey" />
 	<context:annotation-config />
-	<bean id="userRepository" class="org.survey.user.repository.UserRepositoryStub" />
+	<bean id="userRepository" class="org.survey.repository.user.UserRepositoryStub" />
 </beans>

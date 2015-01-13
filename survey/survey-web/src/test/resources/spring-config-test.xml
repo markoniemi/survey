@@ -13,9 +13,9 @@
 	<context:component-scan base-package="org.survey" />
 	<context:annotation-config />
 	<jpa:repositories base-package="org.survey" />
-	<bean id="fileService" class="org.survey.file.service.FileServiceImpl"/>
-	<bean id="userService" class="org.survey.user.service.UserServiceImpl"/>
-    <bean id="pollService" class="org.survey.poll.service.PollServiceImpl" />
+	<bean id="fileService" class="org.survey.service.file.FileServiceImpl"/>
+	<bean id="userService" class="org.survey.service.user.UserServiceImpl"/>
+    <bean id="pollService" class="org.survey.service.poll.PollServiceImpl" />
 	<bean class="org.springframework.beans.factory.config.CustomScopeConfigurer">
 		<property name="scopes">
 			<map>

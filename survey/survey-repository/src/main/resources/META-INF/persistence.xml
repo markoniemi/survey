@@ -4,12 +4,12 @@
 	xmlns="http://java.sun.com/xml/ns/persistence" version="1.0">
 	<persistence-unit name="survey-repository" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<class>org.survey.user.model.User</class>
-		<class>org.survey.file.model.File</class>
-		<class>org.survey.poll.model.Poll</class>
-		<class>org.survey.poll.model.Question</class>
-		<class>org.survey.poll.model.BooleanQuestion</class>
-		<class>org.survey.poll.model.TextQuestion</class>
+		<class>org.survey.model.user.User</class>
+		<class>org.survey.model.file.File</class>
+		<class>org.survey.model.poll.Poll</class>
+		<class>org.survey.model.poll.Question</class>
+		<class>org.survey.model.poll.BooleanQuestion</class>
+		<class>org.survey.model.poll.TextQuestion</class>
 <!-- 		<properties> -->
 <!-- 			<property name="hibernate.show_sql" value="true" /> -->
 <!-- 			<property name="hibernate.format_sql" value="true" /> -->

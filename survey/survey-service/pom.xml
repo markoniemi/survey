@@ -69,7 +69,7 @@
                         <id>process-classes</id>
                         <phase>process-classes</phase>
                         <configuration>
-                            <className>org.survey.poll.service.PollService</className>
+                            <className>org.survey.service.poll.PollService</className>
                             <genWsdl>true</genWsdl>
                             <verbose>false</verbose>
                         </configuration>

@@ -5,7 +5,7 @@ Specification-Title: survey-web
 Specification-Version: 1.1-SNAPSHOT
 Implementation-Title: survey-web
 Implementation-Version: 1.1-SNAPSHOT
-Implementation-Vendor-Id: org.survey.user
+Implementation-Vendor-Id: org.survey
 Created-By: Maven Integration for Eclipse
 Implementation-Build: 
 

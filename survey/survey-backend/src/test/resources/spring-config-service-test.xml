@@ -13,11 +13,11 @@
     	<property name="location" value="classpath:/server.properties"/>
 	</bean>
 	<!-- cxf config for https -->
-	<jaxws:client id="userService" serviceClass="org.survey.user.service.UserService"
+	<jaxws:client id="userService" serviceClass="org.survey.service.user.UserService"
 		address="${http.protocol}://localhost:${http.port}/survey-backend/api/soap/userService" />
-	<jaxws:client id="fileService" serviceClass="org.survey.file.service.FileService"
+	<jaxws:client id="fileService" serviceClass="org.survey.service.file.FileService"
 		address="${http.protocol}://localhost:${http.port}/survey-backend/api/soap/fileService" />
-	<jaxws:client id="pollService" serviceClass="org.survey.poll.service.PollService"
+	<jaxws:client id="pollService" serviceClass="org.survey.service.poll.PollService"
 		address="${http.protocol}://localhost:${http.port}/survey-backend/api/soap/pollService" />
 	<http:conduit name="*.http-conduit">
 		<http:tlsClientParameters>

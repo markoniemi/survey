@@ -2,14 +2,14 @@ package org.survey;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
-import org.survey.file.repository.FileRepositoryJPATest;
-import org.survey.file.repository.FileRepositoryTest;
-import org.survey.poll.repository.PollRepositoryJPATest;
-import org.survey.poll.repository.QuestionRepositoryTest;
-import org.survey.user.model.UserComparatorTest;
-import org.survey.user.model.UserTest;
-import org.survey.user.repository.UserRepositoryJPATest;
-import org.survey.user.repository.UserRepositoryTest;
+import org.survey.model.user.UserComparatorTest;
+import org.survey.model.user.UserTest;
+import org.survey.repository.file.FileRepositoryJPATest;
+import org.survey.repository.file.FileRepositoryTest;
+import org.survey.repository.poll.PollRepositoryJPATest;
+import org.survey.repository.poll.QuestionRepositoryTest;
+import org.survey.repository.user.UserRepositoryJPATest;
+import org.survey.repository.user.UserRepositoryTest;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({

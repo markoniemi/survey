@@ -12,8 +12,8 @@
     <import resource="classpath:spring-config-database.xml"/>
     <context:component-scan base-package="org.survey" />
     <context:annotation-config />
-	<jpa:repositories base-package="org.survey.user.repository" />
-	<jpa:repositories base-package="org.survey.file.repository" />
-	<jpa:repositories base-package="org.survey.poll.repository" />
+	<jpa:repositories base-package="org.survey.repository.user" />
+	<jpa:repositories base-package="org.survey.repository.file" />
+	<jpa:repositories base-package="org.survey.repository.poll" />
 	<jpa:repositories base-package="org.survey.question.repository" />
 </beans>

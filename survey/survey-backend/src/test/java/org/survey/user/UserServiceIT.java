@@ -4,7 +4,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.survey.user.service.UserServiceImplTest;
+import org.survey.service.user.UserServiceImplTest;
 
 /**
  * Test PersonManagement using WebService. Spring injects userService with
