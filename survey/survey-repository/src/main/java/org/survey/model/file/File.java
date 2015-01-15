@@ -44,7 +44,7 @@ public class File {
     private Long createTime;
     private Long size;
     @ManyToOne(optional = true)
-    @JoinColumn(name = "username")
+    @JoinColumn(name = "user_id")
     private User owner;
     private String url;
     /**

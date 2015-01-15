@@ -44,7 +44,7 @@ public class Poll {
     @NonNull
     private String name;
     @ManyToOne(optional = true)
-    @JoinColumn(name = "username")
+    @JoinColumn(name = "user_id")
     private User owner;
     /**
      * <p>

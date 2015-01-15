@@ -9,13 +9,16 @@ import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.survey.FacesUtil;
 import org.survey.model.poll.Poll;
 import org.survey.model.poll.Question;
 import org.survey.model.poll.QuestionFactory;
 import org.survey.model.poll.QuestionType;
+import org.survey.model.user.User;
 import org.survey.service.poll.PollService;
+import org.survey.service.user.UserService;
 
 @Component
 @ViewScoped
@@ -32,12 +35,15 @@ public class EditPollBean {
     @Setter
     @Autowired
     PollService pollService;
+    @Autowired
+    private UserService userService;
     @SuppressWarnings("pmd.UnusedPrivateField")
     @Getter
     private QuestionType[] questionTypes = QuestionType.values();
 
     public String addPoll() {
         poll = new Poll();
+        poll.setOwner(getCurrentUser());
         return "editPoll";
     }
 
@@ -75,8 +81,7 @@ public class EditPollBean {
         log.debug("oldQuestion.type: {}", question.getType());
         QuestionType questionType = QuestionType.valueOf(QuestionType.class, question.getType());
         log.debug("questionType: {}", questionType);
-        Question newQuestion = QuestionFactory.createQuestionFrom(question,
-                questionType, poll);
+        Question newQuestion = QuestionFactory.createQuestionFrom(question, questionType, poll);
         poll.getQuestions().set(index, newQuestion);
     }
 
@@ -101,6 +106,10 @@ public class EditPollBean {
 
     public void cancel() {
         poll = new Poll();
+    }
+
+    protected User getCurrentUser() {
+        return userService.findOne(SecurityContextHolder.getContext().getAuthentication().getName());
     }
 
     protected String getRequestParameter(String parameterName) {

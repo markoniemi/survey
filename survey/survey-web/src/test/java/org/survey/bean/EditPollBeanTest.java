@@ -11,11 +11,13 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.survey.bean.EditPollBean;
 import org.survey.model.poll.Poll;
 import org.survey.model.poll.Question;
 import org.survey.model.poll.QuestionType;
+import org.survey.model.user.Role;
+import org.survey.model.user.User;
 import org.survey.service.poll.PollService;
+import org.survey.service.user.UserService;
 
 /**
  * Test EditPollBean. Must use SpringJUnit4ClassRunner to enable spring
@@ -27,11 +29,15 @@ public class EditPollBeanTest {
     EditPollBeanMock editPollBean;
     @Autowired
     private PollService pollService;
+    @Autowired
+    private UserService userService;
+    private User user;
 
     @Before
     public void setUp() throws MalformedURLException {
         editPollBean = new EditPollBeanMock();
         editPollBean.setPollService(pollService);
+        this.user = userService.create(new User("username", "password", "email", Role.ROLE_USER));
     }
 
     @After
@@ -40,6 +46,7 @@ public class EditPollBeanTest {
         for (Poll poll : polls) {
             pollService.delete(poll.getName());
         }
+        userService.delete(this.user.getUsername());
     }
 
     @Test
@@ -134,6 +141,10 @@ public class EditPollBeanTest {
         }
         public String getMessage() {
             return beanTestHelper.getMessage();
+        }
+        @Override
+        protected User getCurrentUser() {
+            return user;
         }
     }
 }
