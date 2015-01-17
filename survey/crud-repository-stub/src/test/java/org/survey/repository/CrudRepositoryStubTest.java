@@ -4,7 +4,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.survey.entity.TestEntity;
 import org.survey.entity.TestEntityWithGeneratedId;
-import org.survey.repository.CrudRepositoryStub;
 
 public class CrudRepositoryStubTest {
 

@@ -2,6 +2,8 @@ package org.survey.bean;
 
 import java.io.IOException;
 
+import javax.annotation.Resource;
+
 import lombok.experimental.Delegate;
 
 import org.junit.After;
@@ -10,10 +12,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.primefaces.model.StreamedContent;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.survey.bean.FilesBean;
 import org.survey.model.file.File;
 import org.survey.repository.file.FileRepository;
 import org.survey.service.file.FileService;
@@ -25,11 +25,11 @@ import org.survey.service.file.FileService;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:spring-config-test.xml")
 public class FilesBeanTest {
-//	@Autowired
+//	@Resource
 	FilesBeanMock filesBean;
-	@Autowired
+	@Resource
 	FileRepository fileRepository;
-	@Autowired
+	@Resource
 	private FileService fileService;
 	private File savedFile;
 

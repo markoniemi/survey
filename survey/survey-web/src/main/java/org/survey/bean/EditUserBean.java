@@ -1,12 +1,12 @@
 package org.survey.bean;
 
+import javax.annotation.Resource;
 import javax.faces.bean.ViewScoped;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.survey.FacesUtil;
 import org.survey.model.user.Role;
@@ -28,7 +28,7 @@ public class EditUserBean {
     @Setter
     private String repeatedPassword;
     @Setter
-    @Autowired
+    @Resource
     UserService userService;
 
     public String addUser() {

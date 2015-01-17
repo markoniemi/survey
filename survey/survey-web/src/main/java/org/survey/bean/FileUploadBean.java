@@ -4,6 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.Serializable;
 
+import javax.annotation.Resource;
 import javax.servlet.http.Part;
 
 import lombok.Getter;
@@ -11,12 +12,10 @@ import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 import org.apache.commons.io.IOUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.survey.FacesUtil;
 import org.survey.model.file.File;
-import org.survey.model.poll.Poll;
 import org.survey.model.user.User;
 import org.survey.service.file.FileService;
 import org.survey.service.user.UserService;
@@ -33,13 +32,13 @@ public class FileUploadBean implements Serializable {
     @Getter
     private String acceptedTypes = "jpg, gif, png, bmp";
     @Setter
-    @Autowired
+    @Resource
     private transient FileService fileService;
     @Setter
-    @Autowired
+    @Resource
     private transient UserService userService;
     @Setter
-    @Autowired
+    @Resource
     transient UserBean userBean;
     @Getter
     @Setter

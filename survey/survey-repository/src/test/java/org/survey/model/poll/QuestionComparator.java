@@ -1,7 +1,6 @@
 package org.survey.model.poll;
 
 import org.apache.commons.lang3.builder.CompareToBuilder;
-import org.survey.model.poll.Question;
 import org.survey.repository.EntityComparator;
 
 public class QuestionComparator extends EntityComparator<Question, Long> {

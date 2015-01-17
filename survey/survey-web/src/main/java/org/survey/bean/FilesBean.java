@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import javax.faces.context.FacesContext;
 import javax.faces.event.PhaseId;
 
@@ -15,7 +16,6 @@ import lombok.Setter;
 import org.apache.commons.lang3.StringUtils;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.survey.FacesUtil;
@@ -26,7 +26,7 @@ import org.survey.service.file.FileService;
 @Scope("request")
 public class FilesBean {
     @Setter
-    @Autowired
+    @Resource
     private FileService fileService;
     @Getter
     @SuppressWarnings("PMD.UnusedPrivateField")

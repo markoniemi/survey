@@ -1,11 +1,11 @@
 package org.survey;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.survey.model.user.Role;
 import org.survey.model.user.User;
 import org.survey.service.user.UserService;
@@ -14,7 +14,7 @@ import org.survey.service.user.UserService;
 public class DatabaseInitializer {
 
     @Setter
-    @Autowired
+    @Resource(name="userServiceBean")
     private transient UserService userService;
 
     @PostConstruct

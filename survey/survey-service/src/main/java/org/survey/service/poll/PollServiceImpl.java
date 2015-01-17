@@ -2,11 +2,11 @@ package org.survey.service.poll;
 
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.jws.WebService;
 
 import org.apache.commons.collections.IteratorUtils;
 import org.apache.commons.lang3.Validate;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.survey.model.poll.Poll;
 import org.survey.model.poll.Question;
 import org.survey.model.user.User;
@@ -22,11 +22,11 @@ import com.google.common.collect.Iterables;
  */
 @WebService(endpointInterface = "org.survey.service.poll.PollService", serviceName = "pollService")
 public class PollServiceImpl implements PollService {
-    @Autowired
+    @Resource
     private UserRepository userRepository;
-    @Autowired
+    @Resource
     private PollRepository pollRepository;
-    @Autowired
+    @Resource
     private QuestionRepository questionRepository;
     private static final Poll[] EMPTY_POLL_ARRAY = new Poll[0];
 

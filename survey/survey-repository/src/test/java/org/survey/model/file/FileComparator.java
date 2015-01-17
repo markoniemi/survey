@@ -1,7 +1,6 @@
 package org.survey.model.file;
 
 import org.apache.commons.lang3.builder.CompareToBuilder;
-import org.survey.model.file.File;
 import org.survey.repository.EntityComparator;
 
 public class FileComparator extends EntityComparator<File, Long> {

@@ -4,11 +4,11 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 
 import lombok.Getter;
 import lombok.Setter;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.survey.FacesUtil;
@@ -20,7 +20,7 @@ import org.survey.service.poll.PollService;
 public class PollsBean {
     @Getter
     @Setter
-    @Autowired
+    @Resource
     private PollService pollService;
     @Getter
     @SuppressWarnings("PMD.UnusedPrivateField")

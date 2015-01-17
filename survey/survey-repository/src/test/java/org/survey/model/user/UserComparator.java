@@ -1,7 +1,6 @@
 package org.survey.model.user;
 
 import org.apache.commons.lang3.builder.CompareToBuilder;
-import org.survey.model.user.User;
 import org.survey.repository.EntityComparator;
 
 public class UserComparator extends EntityComparator<User, Long> {

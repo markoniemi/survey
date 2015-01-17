@@ -1,11 +1,12 @@
 package org.survey.security;
 
+import javax.annotation.Resource;
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.GrantedAuthorityImpl;
@@ -13,7 +14,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.survey.model.user.Role;
 import org.survey.model.user.User;
-import org.survey.security.UserRepositoryAuthenticationProvider;
 import org.survey.service.user.UserService;
 
 /**
@@ -24,7 +24,7 @@ import org.survey.service.user.UserService;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:spring-config-test.xml")
 public class UserRepositoryAuthenticationProviderTest {
-	@Autowired
+	@Resource
 	UserService userService;
 
 	@Before

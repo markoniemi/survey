@@ -7,7 +7,6 @@ import org.springframework.data.repository.query.Param;
 import org.survey.model.file.File;
 import org.survey.model.user.User;
 import org.survey.repository.CrudRepositoryStub;
-import org.survey.repository.file.FileRepository;
 
 public class FileRepositoryStub extends CrudRepositoryStub<File, Long>
         implements FileRepository {

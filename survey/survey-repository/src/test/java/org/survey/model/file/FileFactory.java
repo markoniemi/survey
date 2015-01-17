@@ -3,7 +3,6 @@ package org.survey.model.file;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.survey.model.file.File;
 import org.survey.model.user.User;
 import org.survey.repository.EntityFactory;
 

@@ -7,7 +7,6 @@ import org.springframework.data.repository.query.Param;
 import org.survey.model.poll.Poll;
 import org.survey.model.user.User;
 import org.survey.repository.CrudRepositoryStub;
-import org.survey.repository.poll.PollRepository;
 
 public class PollRepositoryStub extends CrudRepositoryStub<Poll, Long> implements PollRepository {
     @Override

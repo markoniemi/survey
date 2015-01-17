@@ -5,7 +5,6 @@ import javax.faces.validator.ValidatorException;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.survey.validator.EmailValidator;
 
 public class EmailValidatorTest {
 

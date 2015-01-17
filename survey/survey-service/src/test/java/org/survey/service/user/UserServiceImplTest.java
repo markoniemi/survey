@@ -4,18 +4,18 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.survey.model.user.User;
 import org.survey.model.user.UserComparator;
 import org.survey.model.user.UserFactory;
-import org.survey.service.user.UserService;
 
 /**
  * Test UserService. Must use SpringJUnit4ClassRunner to enable spring
@@ -27,8 +27,7 @@ public class UserServiceImplTest {
     protected static int ENTITY_COUNT = 2;
     protected List<User> orginalEntities = new ArrayList<User>();
     protected List<User> savedEntities = new ArrayList<User>();
-    @Autowired
-    @Qualifier("userService")
+    @Resource(name="userService")
     protected UserService entityService;
     protected UserFactory entityFactory = new UserFactory();
     protected UserComparator entityComparator = new UserComparator();

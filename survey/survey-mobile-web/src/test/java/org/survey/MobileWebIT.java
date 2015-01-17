@@ -2,6 +2,8 @@ package org.survey;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -13,7 +15,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.survey.model.user.Role;
@@ -28,9 +29,9 @@ public class MobileWebIT {
     private String httpProtocol;
     private String serverURL;
     private String appName = "survey-mobile-web";
-    @Autowired
+    @Resource
     protected UserService userService;
-//    @Autowired
+//    @Resource
 //    protected PollService pollService;
 
     @Before

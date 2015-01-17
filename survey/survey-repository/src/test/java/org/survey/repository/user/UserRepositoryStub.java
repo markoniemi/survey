@@ -2,7 +2,6 @@ package org.survey.repository.user;
 
 import org.survey.model.user.User;
 import org.survey.repository.CrudRepositoryStub;
-import org.survey.repository.user.UserRepository;
 
 /**
  * UserRepository stub for testing purposes.

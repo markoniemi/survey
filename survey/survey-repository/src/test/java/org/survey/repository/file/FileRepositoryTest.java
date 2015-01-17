@@ -10,8 +10,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.survey.model.file.File;
@@ -20,7 +18,6 @@ import org.survey.model.file.FileFactory;
 import org.survey.model.user.User;
 import org.survey.model.user.UserFactory;
 import org.survey.repository.CrudRepositoryTest;
-import org.survey.repository.file.FileRepository;
 import org.survey.repository.user.UserRepository;
 
 /**
@@ -31,10 +28,8 @@ import org.survey.repository.user.UserRepository;
 @ContextConfiguration(locations = "classpath:spring-config-test-stub.xml")
 public class FileRepositoryTest extends CrudRepositoryTest<File, Long> {
 	@Resource
-//	@Qualifier("fileRepository")
 	protected FileRepository fileRepository;
 	@Resource
-//    @Qualifier("userRepository")
     protected UserRepository userRepository;
     private User user;
 

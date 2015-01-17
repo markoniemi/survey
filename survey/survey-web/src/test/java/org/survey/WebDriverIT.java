@@ -2,6 +2,8 @@ package org.survey;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -11,7 +13,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.survey.model.user.Role;
@@ -27,9 +28,9 @@ public class WebDriverIT {
     private String httpProtocol;
     private String serverURL;
     private String appName = "survey-web";
-    @Autowired
+    @Resource
     protected UserService userService;
-    @Autowired
+    @Resource
     protected PollService pollService;
 
     @Before

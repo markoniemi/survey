@@ -7,7 +7,6 @@ import java.util.jar.Manifest;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.survey.bean.VersionBean;
 
 public class VersionBeanTest {
 	private VersionBean versionBean;

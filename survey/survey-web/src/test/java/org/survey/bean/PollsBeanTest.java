@@ -2,15 +2,15 @@ package org.survey.bean;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.survey.bean.PollsBean;
 import org.survey.model.poll.Poll;
 import org.survey.service.poll.PollService;
 
@@ -22,7 +22,7 @@ import org.survey.service.poll.PollService;
 @ContextConfiguration(locations = "classpath:spring-config-test.xml")
 public class PollsBeanTest {
 	PollsBean pollsBean;
-	@Autowired
+	@Resource
 	PollService pollService;
 
 	@Before

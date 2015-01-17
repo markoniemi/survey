@@ -7,15 +7,12 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.survey.model.user.User;
 import org.survey.model.user.UserComparator;
 import org.survey.model.user.UserFactory;
 import org.survey.repository.CrudRepositoryTest;
-import org.survey.repository.user.UserRepository;
 
 /**
  * Test UserRepository. Must use SpringJUnit4ClassRunner to enable spring

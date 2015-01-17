@@ -6,6 +6,8 @@ import java.security.GeneralSecurityException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import lombok.extern.slf4j.Slf4j;
 
 import org.junit.After;
@@ -13,7 +15,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.survey.model.user.Role;
@@ -39,9 +40,9 @@ public class HtmlUnitIT {
     private String appName = "survey-mobile-web";
     private WebClient webClient;
     private HtmlPage page;
-    @Autowired
+    @Resource
     protected UserService userService;
-//    @Autowired
+//    @Resource
 //    protected PollService pollService;
 
     @Before

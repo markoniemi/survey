@@ -1,9 +1,9 @@
 package org.survey.service.file;
 
+import javax.annotation.Resource;
 import javax.jws.WebParam;
 import javax.jws.WebService;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.survey.model.file.File;
 import org.survey.repository.file.FileRepository;
 
@@ -11,7 +11,7 @@ import com.google.common.collect.Iterables;
 
 @WebService(endpointInterface = "org.survey.service.file.FileService", serviceName = "fileService")
 public class FileServiceImpl implements FileService {
-    @Autowired
+    @Resource
     FileRepository fileRepository;
     private static final File[] EMPTY_FILE_ARRAY = new File[0];
 

@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collection;
 
+import javax.annotation.Resource;
 import javax.servlet.http.Part;
 
 import lombok.Data;
@@ -20,11 +21,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.survey.bean.FileUploadBean;
-import org.survey.bean.UserBean;
 import org.survey.model.file.File;
 import org.survey.model.user.Role;
 import org.survey.model.user.User;
@@ -40,11 +38,11 @@ import org.survey.service.file.FileService;
 @ContextConfiguration(locations = "classpath:spring-config-test.xml")
 public class FileUploadBeanTest {
     private FileUploadBeanMock fileUploadBean;
-    @Autowired
+    @Resource
     private FileRepository fileRepository;
-    @Autowired
+    @Resource
     private UserRepository userRepository;
-    @Autowired
+    @Resource
     private FileService fileService;
 
     @Before

@@ -2,8 +2,6 @@ package org.survey.model.user;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.survey.model.user.Role;
-import org.survey.model.user.User;
 
 public class UserTest {
 

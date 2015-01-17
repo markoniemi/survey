@@ -2,12 +2,12 @@ package org.survey.service.user;
 
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.jws.WebService;
 
 import lombok.extern.slf4j.Slf4j;
 
 import org.apache.commons.lang3.Validate;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.survey.model.file.File;
 import org.survey.model.user.User;
 import org.survey.repository.file.FileRepository;
@@ -27,9 +27,9 @@ import com.google.common.collect.Iterables;
 @Slf4j
 @WebService(endpointInterface = "org.survey.service.user.UserService", serviceName = "userService")
 public class UserServiceImpl implements UserService {
-    @Autowired
+    @Resource
     private UserRepository userRepository;
-    @Autowired
+    @Resource
     private FileRepository fileRepository;
     
     @Override

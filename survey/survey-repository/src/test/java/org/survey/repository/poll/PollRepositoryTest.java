@@ -2,13 +2,14 @@ package org.survey.repository.poll;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.apache.commons.collections.IteratorUtils;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -18,7 +19,6 @@ import org.survey.model.poll.PollFactory;
 import org.survey.model.user.User;
 import org.survey.model.user.UserFactory;
 import org.survey.repository.CrudRepositoryTest;
-import org.survey.repository.poll.PollRepository;
 import org.survey.repository.user.UserRepository;
 
 /**
@@ -28,11 +28,9 @@ import org.survey.repository.user.UserRepository;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:spring-config-test-stub.xml")
 public class PollRepositoryTest extends CrudRepositoryTest<Poll, Long> {
-	@Autowired
-	@Qualifier("pollRepository")
+	@Resource
 	protected PollRepository pollRepository;
-    @Autowired
-    @Qualifier("userRepository")
+    @Resource
     protected UserRepository userRepository;
     private User user;
 

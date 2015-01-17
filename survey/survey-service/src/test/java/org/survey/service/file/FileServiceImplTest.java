@@ -4,12 +4,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -18,7 +19,6 @@ import org.survey.model.file.FileComparator;
 import org.survey.model.file.FileFactory;
 import org.survey.model.user.User;
 import org.survey.model.user.UserFactory;
-import org.survey.service.file.FileService;
 import org.survey.service.user.UserService;
 
 /**
@@ -31,13 +31,11 @@ public class FileServiceImplTest {
     protected static int ENTITY_COUNT = 2;
     protected List<File> orginalEntities = new ArrayList<File>();;
     protected List<File> savedEntities = new ArrayList<File>();;
-    @Autowired
-    @Qualifier("fileService")
+    @Resource(name="fileService")
     protected FileService entityService;
     protected FileFactory entityFactory;
     protected FileComparator entityComparator = new FileComparator();
-    @Autowired
-    @Qualifier("userService")
+    @Resource
     protected UserService userService;
     private User user;
 

@@ -2,16 +2,16 @@ package org.survey.bean;
 
 import java.net.MalformedURLException;
 
+import javax.annotation.Resource;
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.survey.bean.EditUserBean;
 import org.survey.model.user.Role;
 import org.survey.model.user.User;
 import org.survey.repository.user.UserRepository;
@@ -25,9 +25,9 @@ import org.survey.service.user.UserService;
 @ContextConfiguration(locations = "classpath:spring-config-test.xml")
 public class EditUserBeanTest {
     EditUserBean editUserBean;
-    @Autowired
+    @Resource
     UserRepository userRepository;
-    @Autowired
+    @Resource
     UserService userService;
 
     @Before

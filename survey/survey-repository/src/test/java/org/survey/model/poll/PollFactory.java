@@ -3,8 +3,6 @@ package org.survey.model.poll;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.survey.model.poll.Poll;
-import org.survey.model.poll.Question;
 import org.survey.model.user.User;
 import org.survey.repository.EntityFactory;
 

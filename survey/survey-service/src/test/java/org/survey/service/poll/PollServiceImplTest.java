@@ -4,12 +4,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -18,7 +19,6 @@ import org.survey.model.poll.PollComparator;
 import org.survey.model.poll.PollFactory;
 import org.survey.model.user.User;
 import org.survey.model.user.UserFactory;
-import org.survey.service.poll.PollService;
 import org.survey.service.user.UserService;
 
 /**
@@ -31,15 +31,11 @@ public class PollServiceImplTest {
     protected static int ENTITY_COUNT = 2;
     protected List<Poll> orginalEntities = new ArrayList<Poll>();
     protected List<Poll> savedEntities = new ArrayList<Poll>();
-    @Autowired
-    @Qualifier("pollService")
+    @Resource(name="pollService")
     protected PollService entityService;
     protected PollFactory entityFactory;
     protected PollComparator entityComparator = new PollComparator();
-//    @Autowired
-//    @Qualifier("userRepository")
-//    protected UserRepository userRepository;
-    @Autowired
+    @Resource
     protected UserService userService;
     private User user;
 

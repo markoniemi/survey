@@ -3,8 +3,6 @@ package org.survey.model.user;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.survey.model.user.Role;
-import org.survey.model.user.User;
 import org.survey.repository.EntityFactory;
 
 public class UserFactory implements EntityFactory<User, Long> {

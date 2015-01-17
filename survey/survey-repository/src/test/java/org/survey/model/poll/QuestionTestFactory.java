@@ -3,10 +3,6 @@ package org.survey.model.poll;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.survey.model.poll.BooleanQuestion;
-import org.survey.model.poll.Poll;
-import org.survey.model.poll.Question;
-import org.survey.model.poll.TextQuestion;
 import org.survey.repository.EntityFactory;
 
 public class QuestionTestFactory implements EntityFactory<Question, Long> {

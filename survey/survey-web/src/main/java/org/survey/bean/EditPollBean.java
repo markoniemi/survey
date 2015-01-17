@@ -2,13 +2,13 @@ package org.survey.bean;
 
 import java.util.ArrayList;
 
+import javax.annotation.Resource;
 import javax.faces.bean.ViewScoped;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.survey.FacesUtil;
@@ -33,9 +33,9 @@ public class EditPollBean {
     @Setter
     private Poll poll;
     @Setter
-    @Autowired
+    @Resource
     PollService pollService;
-    @Autowired
+    @Resource
     private UserService userService;
     @SuppressWarnings("pmd.UnusedPrivateField")
     @Getter
