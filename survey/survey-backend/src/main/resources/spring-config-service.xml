@@ -25,6 +25,7 @@
 		<jaxrs:serviceBeans>
 			<ref bean="userServiceBean" />
 			<ref bean="fileServiceBean" />
+			<ref bean="pollServiceBean" />
 		</jaxrs:serviceBeans>
 		<jaxrs:providers>
 			<!-- Use Jackson instead of Jettison -->

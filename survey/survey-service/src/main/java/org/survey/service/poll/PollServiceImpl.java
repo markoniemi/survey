@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.jws.WebService;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.IteratorUtils;
 import org.apache.commons.lang3.Validate;
 import org.survey.model.poll.Poll;
@@ -66,8 +67,13 @@ public class PollServiceImpl implements PollService {
     @Override
     public Poll update(Poll poll) {
         Poll savedPoll = pollRepository.save(poll);
-        Iterable<Question> savedQuestions = questionRepository.save(poll.getQuestions());
-        poll.setQuestions(IteratorUtils.toList(savedQuestions.iterator()));
+        if (CollectionUtils.isNotEmpty(poll.getQuestions())) {
+            for (Question question : poll.getQuestions()) {
+                question.setPoll(savedPoll);
+            }
+            Iterable<Question> savedQuestions = questionRepository.save(poll.getQuestions());
+            poll.setQuestions(IteratorUtils.toList(savedQuestions.iterator()));
+        }
         return savedPoll;
     }
 

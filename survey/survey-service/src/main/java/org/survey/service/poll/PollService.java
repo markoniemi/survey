@@ -2,6 +2,14 @@ package org.survey.service.poll;
 
 import javax.jws.WebParam;
 import javax.jws.WebService;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 import org.survey.model.poll.Poll;
 
@@ -14,13 +22,15 @@ import org.survey.model.poll.Poll;
  * are not necessary, but adds proper names to parameters in WSDL.
  */
 @WebService
+//@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+@Produces({MediaType.APPLICATION_JSON})
+@Path("/polls")
 public interface PollService {
     /**
      * Returns all polls from repository.
      */
+    @GET
     Poll[] findAll();
-
-    Poll[] findByOwner(String username);
 
     /**
      * Creates a poll to repository.
@@ -30,30 +40,44 @@ public interface PollService {
      * @throws IllegalArgumentException
      *             if poll with same name already exists
      */
+    @POST
     Poll create(@WebParam(name = "poll") Poll poll);
-
+    
     /**
      * Updates a poll in repository.
      */
+    @PUT
     Poll update(@WebParam(name = "poll") Poll poll);
+    
+    @GET
+    @Path("/{username}")
+    Poll[] findByOwner(@PathParam("username") @WebParam(name = "username") String username);
 
     /**
      * Returns a poll by name.
      */
+    @GET
+    @Path("/{name}")
     Poll findOne(@WebParam(name = "name") String name);
 
     /**
      * Returns true if a poll by name exists.
      */
+    @GET
+    @Path("/exists/{name}")
     boolean exists(@WebParam(name = "name") String name);
 
     /**
      * Deletes a poll by name.
      */
+    @DELETE
+    @Path("/{name}")
     void delete(@WebParam(name = "name") String name);
 
     /**
      * Returns the count of polls in repository.
      */
+    @GET
+    @Path("/count")
     long count();
 }
