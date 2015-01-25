@@ -224,7 +224,7 @@
 					<container>
 						<containerId>tomcat7x</containerId>
 						<zipUrlInstaller>
-							<url>http://mirror.netinch.com/pub/apache/tomcat/tomcat-7/v7.0.57/bin/apache-tomcat-7.0.57.zip</url>
+							<url>http://mirror.netinch.com/pub/apache/tomcat/tomcat-7/v${tomcat.version}/bin/apache-tomcat-${tomcat.version}.zip</url>
 							<downloadDir>${appsDir}</downloadDir>
 							<extractDir>${appsDir}</extractDir>
 						</zipUrlInstaller>
