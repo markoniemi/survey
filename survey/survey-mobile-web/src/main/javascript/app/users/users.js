@@ -1,7 +1,6 @@
 app.controller('UsersCtrl', function($scope, $location, $timeout, $log, UserService, config
 		) {
 	$log.debug('UsersCtrl');
-	$scope.projectVersion = config.projectVersion;
 	// get users from service
 	$scope.users = UserService.query();
 	// called when user presses edit button

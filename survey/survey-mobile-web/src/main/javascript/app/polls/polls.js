@@ -1,7 +1,6 @@
 app.controller('PollsCtrl', function($scope, $location, $timeout, $log, PollService, config
 		) {
 	$log.debug('PollsCtrl');
-	$scope.projectVersion = config.projectVersion;
 	// get polls from service
 	$scope.polls = PollService.query();
 	// called when poll presses edit button

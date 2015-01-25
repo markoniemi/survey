@@ -49,30 +49,30 @@ public interface PollService {
     @PUT
     Poll update(@WebParam(name = "poll") Poll poll);
     
-    @GET
-    @Path("/{username}")
-    Poll[] findByOwner(@PathParam("username") @WebParam(name = "username") String username);
-
     /**
      * Returns a poll by name.
      */
     @GET
     @Path("/{name}")
-    Poll findOne(@WebParam(name = "name") String name);
+    Poll findOne(@PathParam("name") @WebParam(name = "name") String name);
+    
+    @GET
+    @Path("/{username}")
+    Poll[] findByOwner(@PathParam("username") @WebParam(name = "username") String username);
 
     /**
      * Returns true if a poll by name exists.
      */
     @GET
     @Path("/exists/{name}")
-    boolean exists(@WebParam(name = "name") String name);
+    boolean exists(@PathParam("name") @WebParam(name = "name") String name);
 
     /**
      * Deletes a poll by name.
      */
     @DELETE
     @Path("/{name}")
-    void delete(@WebParam(name = "name") String name);
+    void delete(@PathParam("name") @WebParam(name = "name") String name);
 
     /**
      * Returns the count of polls in repository.
