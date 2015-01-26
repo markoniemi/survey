@@ -1,11 +1,11 @@
-app.controller('UserCtrl', function($scope, $location, $translate, UserService,
+app.controller('PollCtrl', function($scope, $location, $translate, PollService,
 		$routeParams, $log) {
-	// if editing, get user from service
+	// if editing, get poll from service
 	var editing = $routeParams.id != null;
-	$log.debug("editing user: " + $routeParams.id);
+	$log.debug("editing poll: " + $routeParams.id);
 	if (editing) {
-		$scope.user = UserService.get({
-			username : $routeParams.id
+		$scope.poll = PollService.get({
+			name : $routeParams.id
 		});
 	}
 	// values for role select
@@ -14,23 +14,23 @@ app.controller('UserCtrl', function($scope, $location, $translate, UserService,
 	// success callback
 	function success() {
 		$log.log('success');
-		$scope.users = UserService.query();
-		$location.path('/users/users');
+		$scope.polls = PollService.query();
+		$location.path('/polls/polls');
 	}
 	// failure callback
 	function failure(httpResponse) {
 		$scope.error = $translate.instant('ADD_USER_ERROR');
 	};
 	// called when user presses submit button
-	$scope.saveUser = function saveUser(user) {
+	$scope.savePoll = function savePoll(poll) {
 		if (editing) {
-			UserService.update(user, success, failure);
+			PollService.update(poll, success, failure);
 		} else {
-			UserService.save(user, success, failure);
+			PollService.save(poll, success, failure);
 		}
 	};
 	// called when user presses cancel
 	$scope.cancel = function() {
-		$location.path('/users/users');
+		$location.path('/polls/polls');
 	};
 });

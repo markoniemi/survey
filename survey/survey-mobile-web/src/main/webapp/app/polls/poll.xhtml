@@ -1,54 +1,62 @@
-<div ng-controller="UserCtrl" ng:init="$root.pageTitle = 'User'" />
+<div ng-controller="PollCtrl" ng:init="$root.pageTitle = 'Poll'" />
 <div class="panel panel-default">
 	<div class="panel-heading">
-		<h3 class="panel-title" translate>USER</h3>
+		<h3 class="panel-title" translate>POLL</h3>
 	</div>
 	<div class="panel-body">
 		<div class="alert alert-danger" role="alert" ng-show="error != null">{{error}}</div>
-		<form class="form-horizontal" name="editUser">
+		<form class="form-horizontal" name="editPoll">
 			<div class="control-group">
-				<label class="control-label" for="username" translate>USERNAME</label>
+				<label class="control-label" for="name" translate>POLL_NAME</label>
 				<div class="controls">
-					<input id="username" name="username" type="text"
-						class="input-xlarge" required="" ng-model="user.username" />
+					<input id="name" name="name" type="text"
+						class="input-xlarge" required="" ng-model="poll.name" />
 				</div>
 			</div>
+<!-- 			<div class="control-group"> -->
+<!-- 				<label class="control-label" for="password" translate>PASSWORD</label> -->
+<!-- 				<div class="controls"> -->
+<!-- 					<input id="password" name="password" type="password" -->
+<!-- 						class="input-xlarge" required="" ng-model="poll.password" /> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 			<div class="control-group"> -->
+<!-- 				<label class="control-label" for="repeatPassword" translate>REPEAT_PASSWORD</label> -->
+<!-- 				<div class="controls"> -->
+<!-- 					<input id="repeatPassword" name="repeatPassword" type="password" -->
+<!-- 						class="input-xlarge" required="" -->
+<!-- 						ng-model="repeatPassword" /> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 			<div class="control-group"> -->
+<!-- 				<label class="control-label" for="email" translate>EMAIL</label> -->
+<!-- 				<div class="controls"> -->
+<!-- 					<input id="email" name="email" type="text" -->
+<!-- 						class="input-xlarge" required="" ng-model="poll.email" /> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 			<div class="control-group"> -->
+<!-- 				<label class="control-label" for="role" translate>ROLE</label> -->
+<!-- 				<div class="controls"> -->
+<!-- 					<select id="role" name="role" class="input-xlarge" -->
+<!-- 						ng-model="poll.role"> -->
+<!-- 						<option ng-repeat="role in roles" value="{{role.value}}">{{role.name}}</option> -->
+<!-- 					</select> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
 			<div class="control-group">
-				<label class="control-label" for="password" translate>PASSWORD</label>
+				<label class="control-label" for="addQuestion"></label>
 				<div class="controls">
-					<input id="password" name="password" type="password"
-						class="input-xlarge" required="" ng-model="user.password" />
-				</div>
-			</div>
-			<div class="control-group">
-				<label class="control-label" for="repeatPassword" translate>REPEAT_PASSWORD</label>
-				<div class="controls">
-					<input id="repeatPassword" name="repeatPassword" type="password"
-						class="input-xlarge" required=""
-						ng-model="repeatPassword" />
-				</div>
-			</div>
-			<div class="control-group">
-				<label class="control-label" for="email" translate>EMAIL</label>
-				<div class="controls">
-					<input id="email" name="email" type="text"
-						class="input-xlarge" required="" ng-model="user.email" />
-				</div>
-			</div>
-			<div class="control-group">
-				<label class="control-label" for="role" translate>ROLE</label>
-				<div class="controls">
-					<select id="role" name="role" class="input-xlarge"
-						ng-model="user.role">
-						<option ng-repeat="role in roles" value="{{role.value}}">{{role.name}}</option>
-					</select>
+					<button id="addQuestion" name="addQuestion" class="btn btn-default"
+						title="{{'ADD_QUESTION'|translate}}" ng-click="addQuestion"
+						translate>ADD_QUESTION</button>
 				</div>
 			</div>
 			<div class="control-group">
 				<label class="control-label" for="submit"></label>
 				<div class="controls">
 					<button id="submit" name="submit" class="btn btn-primary"
-						title="{{'SUBMIT'|translate}}" ng-click="saveUser(user)">
+						title="{{'SUBMIT'|translate}}" ng-click="savePoll(poll)">
 						<span class="glyphicon glyphicon-ok" />
 					</button>
 					<button id="cancel" name="cancel" class="btn btn-default"

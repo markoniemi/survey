@@ -23,6 +23,10 @@ app.config(function($translateProvider) {
 		FILES : 'Files',
 		// polls
 		POLLS : 'Polls',
+		POLL : 'Poll',
+		POLL_NAME : 'Name',
+		ADD_POLL : 'Add Poll',
+		ADD_QUESTION : 'Add Question',
 		// about
 		ABOUT : 'About',
 		COMPONENT : 'Component',
