@@ -7,10 +7,12 @@ app.controller('PollCtrl', function($scope, $location, $translate, PollService,
 		$scope.poll = PollService.get({
 			name : $routeParams.id
 		});
+	} else {
+		$scope.poll = {
+			name : "",
+			questions : new Array()
+		};
 	}
-	// values for role select
-	$scope.roles = [{name: $translate.instant("ROLE_USER"), value: 'ROLE_USER'},
-	                {name: $translate.instant("ROLE_ADMIN"), value: 'ROLE_ADMIN'}];
 	// success callback
 	function success() {
 		$log.log('success');
@@ -20,6 +22,12 @@ app.controller('PollCtrl', function($scope, $location, $translate, PollService,
 	// failure callback
 	function failure(httpResponse) {
 		$scope.error = $translate.instant('ADD_USER_ERROR');
+	};
+	// called when user presses add question button
+	$scope.addQuestion = function addQuestion() {
+		$scope.poll.questions.push({
+			text : ""
+		});
 	};
 	// called when user presses submit button
 	$scope.savePoll = function savePoll(poll) {

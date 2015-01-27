@@ -13,6 +13,13 @@
 						class="input-xlarge" required="" ng-model="poll.name" />
 				</div>
 			</div>
+			<div class="control-group" ng-repeat="question in poll.questions">
+				<label class="control-label" for="text" translate>TEXT</label>
+				<div class="controls">
+					<input id="text" name="text" type="text"
+						class="input-xlarge" required="" ng-model="question.text" />
+				</div>
+			</div>
 <!-- 			<div class="control-group"> -->
 <!-- 				<label class="control-label" for="password" translate>PASSWORD</label> -->
 <!-- 				<div class="controls"> -->
@@ -48,7 +55,7 @@
 				<label class="control-label" for="addQuestion"></label>
 				<div class="controls">
 					<button id="addQuestion" name="addQuestion" class="btn btn-default"
-						title="{{'ADD_QUESTION'|translate}}" ng-click="addQuestion"
+						title="{{'ADD_QUESTION'|translate}}" ng-click="addQuestion()"
 						translate>ADD_QUESTION</button>
 				</div>
 			</div>

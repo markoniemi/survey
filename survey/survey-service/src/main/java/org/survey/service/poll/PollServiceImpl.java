@@ -79,8 +79,8 @@ public class PollServiceImpl implements PollService {
 
     @Override
     // TODO change to id
-    public Poll findOne(String username) {
-        return pollRepository.findByName(username);
+    public Poll findOne(String name) {
+        return pollRepository.findByName(name);
     }
 
     @Override

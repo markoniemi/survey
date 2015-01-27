@@ -57,7 +57,7 @@ public interface PollService {
     Poll findOne(@PathParam("name") @WebParam(name = "name") String name);
     
     @GET
-    @Path("/{username}")
+    @Path("/username/{username}")
     Poll[] findByOwner(@PathParam("username") @WebParam(name = "username") String username);
 
     /**
