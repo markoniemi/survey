@@ -14,43 +14,23 @@
 				</div>
 			</div>
 			<div class="control-group" ng-repeat="question in poll.questions">
-				<label class="control-label" for="text" translate>TEXT</label>
-				<div class="controls">
-					<input id="text" name="text" type="text"
-						class="input-xlarge" required="" ng-model="question.text" />
+				<div class="control-group">
+					<label class="control-label" for="type" translate>QUESTION_TYPE</label>
+					<div class="controls">
+						<select id="type" name="type" class="input-xlarge"
+							ng-model="question.type">
+							<option ng-repeat="type in types" value="{{type.value}}">{{type.name}}</option>
+						</select>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="text" translate>QUESTION_TEXT</label>
+					<div class="controls">
+						<input id="text" name="text" type="text"
+							class="input-xlarge" ng-model="question.text" />
+					</div>
 				</div>
 			</div>
-<!-- 			<div class="control-group"> -->
-<!-- 				<label class="control-label" for="password" translate>PASSWORD</label> -->
-<!-- 				<div class="controls"> -->
-<!-- 					<input id="password" name="password" type="password" -->
-<!-- 						class="input-xlarge" required="" ng-model="poll.password" /> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 			<div class="control-group"> -->
-<!-- 				<label class="control-label" for="repeatPassword" translate>REPEAT_PASSWORD</label> -->
-<!-- 				<div class="controls"> -->
-<!-- 					<input id="repeatPassword" name="repeatPassword" type="password" -->
-<!-- 						class="input-xlarge" required="" -->
-<!-- 						ng-model="repeatPassword" /> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 			<div class="control-group"> -->
-<!-- 				<label class="control-label" for="email" translate>EMAIL</label> -->
-<!-- 				<div class="controls"> -->
-<!-- 					<input id="email" name="email" type="text" -->
-<!-- 						class="input-xlarge" required="" ng-model="poll.email" /> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 			<div class="control-group"> -->
-<!-- 				<label class="control-label" for="role" translate>ROLE</label> -->
-<!-- 				<div class="controls"> -->
-<!-- 					<select id="role" name="role" class="input-xlarge" -->
-<!-- 						ng-model="poll.role"> -->
-<!-- 						<option ng-repeat="role in roles" value="{{role.value}}">{{role.name}}</option> -->
-<!-- 					</select> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
 			<div class="control-group">
 				<label class="control-label" for="addQuestion"></label>
 				<div class="controls">

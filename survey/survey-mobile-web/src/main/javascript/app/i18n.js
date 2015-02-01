@@ -26,7 +26,13 @@ app.config(function($translateProvider) {
 		POLL : 'Poll',
 		POLL_NAME : 'Name',
 		ADD_POLL : 'Add Poll',
+		QUESTION_TYPE : 'Type',
+		QUESTION_TEXT : 'Text',
 		ADD_QUESTION : 'Add Question',
+		TYPE_LABEL : 'Label',
+		TYPE_TEXT : 'Text',
+		TYPE_BOOLEAN : 'Boolean',
+		ADD_POLL_ERROR : 'Unable to save poll.',
 		// about
 		ABOUT : 'About',
 		COMPONENT : 'Component',
