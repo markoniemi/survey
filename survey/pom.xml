@@ -37,6 +37,7 @@
 		<selenium.version>2.42.2</selenium.version>
 		<cxf.version>3.0.2</cxf.version>
 		<hibernate.version>4.2.8.Final</hibernate.version>
+<!-- 		<hibernate.version>4.3.5.Final</hibernate.version> -->
 		<jacoco.out.path>${session.executionRootDirectory}/target</jacoco.out.path>
 		<jacoco.out.file>jacoco.exec</jacoco.out.file>
 		<sonar.jacoco.itReportPath>${env.WORKSPACE}/target/${jacoco.out.file}</sonar.jacoco.itReportPath>
@@ -44,7 +45,7 @@
 		<angular-ui-bootstrap.version>0.12.0</angular-ui-bootstrap.version>
 		<angular-translate.version>2.4.2</angular-translate.version>
 		<jsf.version>2.2.8-04</jsf.version>
-		<tomcat.version>7.0.57</tomcat.version>
+		<tomcat.version>7.0.59</tomcat.version>
 	</properties>
 	<build>
 		<defaultGoal>install</defaultGoal>
