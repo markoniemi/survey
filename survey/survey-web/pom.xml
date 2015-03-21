@@ -243,7 +243,7 @@
 							<!-- testing properties for ssl -->
 							<cargo.servlet.port>${http.port}</cargo.servlet.port>
 							<cargo.protocol>${http.protocol}</cargo.protocol>
-							<cargo.container.tomcat.ajp.port>${ajp.port}</cargo.container.tomcat.ajp.port>
+							<cargo.tomcat.ajp.port>${ajp.port}</cargo.tomcat.ajp.port>
 							<cargo.container.rmi.port>${rmi.port}</cargo.container.rmi.port>
 							<cargo.tomcat.connector.clientAuth>false</cargo.tomcat.connector.clientAuth>
 							<cargo.tomcat.connector.keyAlias>survey</cargo.tomcat.connector.keyAlias>
