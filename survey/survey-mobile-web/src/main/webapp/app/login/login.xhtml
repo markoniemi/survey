@@ -1,0 +1,43 @@
+<div class="col-sm-6 col-md-4 col-md-offset-4">
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<form role="form" ng-controller="loginCtrl" ng:init="$root.pageTitle = 'Login'">
+				<fieldset>
+					<div class="col-sm-12 col-md-10  col-md-offset-1 ">
+						<div class="form-group">
+							<div class="input-group">
+								<span class="input-group-addon"> <i
+									class="glyphicon glyphicon-user"></i>
+								</span> <input id="j_username" class="form-control" placeholder="Username"
+									name="usename" type="text" autofocus ng-model="username">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="input-group">
+								<span class="input-group-addon"> <i
+									class="glyphicon glyphicon-lock"></i>
+								</span> <input id="j_password" class="form-control" placeholder="Password"
+									name="password" type="password" value="" ng-model="password">
+							</div>
+						</div>
+						<div class="form-group">
+							<input id="loginButton" type="submit" value="Log In"
+								class="btn btn-lg btn-primary btn-block" ng-click="login()" />
+						</div>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-sm" ng-if="$storage.authenticationToken">
+			<p class="alert alert-info">Authenticated</p>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-md-6" ng-if="errorMessage">
+			<p class="alert alert-error">{{errorMessage}}</p>
+		</div>
+	</div>
+</div>
+</html>

@@ -21,6 +21,16 @@
 			<groupId>org.webjars</groupId>
 			<artifactId>angular-translate</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>ngStorage</artifactId>
+			<version>0.3.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>angular-jwt</artifactId>
+			<version>0.0.6</version>
+		</dependency>
 		<!-- Test -->
 		<dependency>
 			<groupId>org.survey</groupId>

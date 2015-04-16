@@ -13,6 +13,7 @@
 	<bean id="userServiceBean" class="org.survey.service.user.UserServiceImpl" />
 	<bean id="fileServiceBean" class="org.survey.service.file.FileServiceImpl" />
 	<bean id="pollServiceBean" class="org.survey.service.poll.PollServiceImpl" />
+	<bean id="loginServiceBean" class="org.survey.service.login.LoginServiceImpl" />
 	<!-- JAX-WS Service Endpoints -->
 	<jaxws:endpoint id="userService" implementor="#userServiceBean"
 		address="/soap/userService" />
@@ -26,6 +27,7 @@
 			<ref bean="userServiceBean" />
 			<ref bean="fileServiceBean" />
 			<ref bean="pollServiceBean" />
+			<ref bean="loginServiceBean" />
 		</jaxrs:serviceBeans>
 		<jaxrs:providers>
 			<!-- Use Jackson instead of Jettison -->

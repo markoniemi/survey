@@ -27,10 +27,10 @@
 		<!-- build.profile is overridden in profiles -->
 		<build.profile>release</build.profile>
 		<maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss</maven.build.timestamp.format>
-		<!-- <http.port>8082</http.port> -->
-		<http.port>8443</http.port>
-		<!-- <http.protocol>http</http.protocol> -->
-		<http.protocol>https</http.protocol>
+		<http.port>8082</http.port>
+<!-- 		<http.port>8443</http.port> -->
+		<http.protocol>http</http.protocol>
+<!-- 		<http.protocol>https</http.protocol> -->
 		<ajp.port>8019</ajp.port>
 		<rmi.port>8206</rmi.port>
 		<spring.version>3.2.8.RELEASE</spring.version>

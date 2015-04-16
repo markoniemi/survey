@@ -16,9 +16,10 @@ app.config([ '$routeProvider', function($routeProvider) {
 			return createTemplateUrl(routeParams.group, routeParams.group);
 		}
 	});
-	$routeProvider.otherwise({
-		redirectTo: '/users/users'
-	});
+    $routeProvider.otherwise({
+//        redirectTo: '/login/login'
+        redirectTo: '/users/users'
+    });
 } ]);
 
 function createTemplateUrl(group, page){
