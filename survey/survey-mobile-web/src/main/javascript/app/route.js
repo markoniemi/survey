@@ -17,8 +17,8 @@ app.config([ '$routeProvider', function($routeProvider) {
 		}
 	});
     $routeProvider.otherwise({
-//        redirectTo: '/login/login'
-        redirectTo: '/users/users'
+        redirectTo: '/login/login'
+//        redirectTo: '/users/users'
     });
 } ]);
 

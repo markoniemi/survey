@@ -5,7 +5,7 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({ 
-//    MobileWebIT.class
+    MobileWebIT.class
 })
-public class MobileWebITSuite {
+public class MobileWebIntegrationTestSuite {
 }
