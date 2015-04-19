@@ -18,9 +18,12 @@
 				<li><a href="#/polls" translate>POLLS</a></li>
 				<li class="divider"></li>
 				<li><a href="#/about" translate>ABOUT</a></li>
-                <li><input id="logout" type="submit" ng-controller="loginCtrl" ng-click="logout()" value="Log out"
-                    class="btn btn-secondary" /></li>
             </ul>
-		</div>
+            <form class="navbar-form navbar-right" ng-controller="loginCtrl">
+                <button id="logout" type="submit" class="btn btn-default" ng-click="logout()">
+                    <span class="glyphicon glyphicon-log-out" title="{{'LOG_OUT'|translate}}" />
+                </button>
+            </form>
+        </div>
 	</nav>
 </div>

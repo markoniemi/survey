@@ -10,6 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -41,11 +42,16 @@ public class MobileWebIT {
         httpProtocol = System.getProperty("http.protocol", "http");
         serverURL = httpProtocol + "://localhost:" + httpPort;
         
+//        FirefoxProfile profile = new FirefoxProfile();
+//        profile.setAcceptUntrustedCertificates(true);
+//        profile.setAssumeUntrustedCertificateIssuer(false);
+//        browser = new FirefoxDriver(profile);
         String phantomJsPath = System.getProperty(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,
                 "c:/apps/phantomjs-1.9.7-windows/phantomjs.exe");
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, phantomJsPath);
         browser = new PhantomJSDriver(capabilities);
+        browser.manage().window().setSize(new Dimension(1920, 1080));
     }
 
     @After
@@ -83,11 +89,11 @@ public class MobileWebIT {
         addUser("user_user", "user_user@test.com", "another", Role.ROLE_USER);
 //        assertUserRole("user_user", "User");
         deleteUser("user_user");
-//        logout();
-//        login("admin_user", "another");
+        logout();
+        login("admin_user", "another");
         editUser("admin_user", "newpassword");
-//        logout();
-//        login("admin_user", "newpassword");
+        logout();
+        login("admin_user", "newpassword");
         deleteUser("admin_user");
 //        checkVersion();
 //         addPoll("poll");
@@ -121,10 +127,12 @@ public class MobileWebIT {
         Thread.sleep(2000);
         Assert.assertEquals(browser.getPageSource(), "User",
                 browser.getTitle());
-        browser.findElement(By.id("password")).sendKeys(
-                password);
-        browser.findElement(By.id("repeatPassword"))
-                .sendKeys(password);
+        WebElement passwordElement = browser.findElement(By.id("password"));
+        passwordElement.clear();
+        passwordElement.sendKeys(password);
+        WebElement repeatPasswordElement = browser.findElement(By.id("repeatPassword"));
+        repeatPasswordElement.clear();
+        repeatPasswordElement.sendKeys(password);
         selectItemInList("role", Role.ROLE_USER.name());
         browser.findElement(By.id("submit")).click();
         Assert.assertEquals(browser.getPageSource(), "Users",
@@ -266,8 +274,9 @@ public class MobileWebIT {
                 browser.getTitle());
     }
 
-    public void logout() {
-        browser.findElement(By.id("menu:logout")).click();
+    public void logout() throws InterruptedException {
+        browser.findElement(By.id("logout")).click();
+        Thread.sleep(1000);
         Assert.assertEquals(browser.getPageSource(), "Login",
                 browser.getTitle());
     }

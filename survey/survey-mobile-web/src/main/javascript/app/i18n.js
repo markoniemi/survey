@@ -6,6 +6,7 @@ app.config(function($translateProvider) {
 		EDIT : 'Edit',
 		SUBMIT : 'Submit',
 		CANCEL : 'Cancel',
+		LOG_OUT : 'Log out',
 		// users
 		USERS : 'Users',
 		USER : 'User',
