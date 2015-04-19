@@ -7,26 +7,26 @@
 		<div class="alert alert-danger" role="alert" ng-show="error != null">{{error}}</div>
 		<form class="form-horizontal" name="editPoll">
 			<div class="control-group">
-				<label class="control-label" for="name" translate>POLL_NAME</label>
+				<label class="control-label" for="pollName" translate>POLL_NAME</label>
 				<div class="controls">
-					<input id="name" name="name" type="text"
+					<input id="pollName" type="text"
 						class="input-xlarge" required="" ng-model="poll.name" />
 				</div>
 			</div>
 			<div class="control-group" ng-repeat="question in poll.questions">
 				<div class="control-group">
-					<label class="control-label" for="type" translate>QUESTION_TYPE</label>
+					<label class="control-label" for="questionType" translate>QUESTION_TYPE</label>
 					<div class="controls">
-						<select id="type" name="type" class="input-xlarge"
+						<select id="questionType" class="input-xlarge"
 							ng-model="question.type">
 							<option ng-repeat="type in types" value="{{type.value}}">{{type.name}}</option>
 						</select>
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label" for="text" translate>QUESTION_TEXT</label>
+					<label class="control-label" for="questionText" translate>QUESTION_TEXT</label>
 					<div class="controls">
-						<input id="text" name="text" type="text"
+						<input id="questionText" type="text"
 							class="input-xlarge" ng-model="question.text" />
 					</div>
 				</div>
@@ -34,7 +34,7 @@
 			<div class="control-group">
 				<label class="control-label" for="addQuestion"></label>
 				<div class="controls">
-					<button id="addQuestion" name="addQuestion" class="btn btn-default"
+					<button id="addQuestion" class="btn btn-default"
 						title="{{'ADD_QUESTION'|translate}}" ng-click="addQuestion()"
 						translate>ADD_QUESTION</button>
 				</div>
@@ -42,11 +42,11 @@
 			<div class="control-group">
 				<label class="control-label" for="submit"></label>
 				<div class="controls">
-					<button id="submit" name="submit" class="btn btn-primary"
+					<button id="savePoll" class="btn btn-primary"
 						title="{{'SUBMIT'|translate}}" ng-click="savePoll(poll)">
 						<span class="glyphicon glyphicon-ok" />
 					</button>
-					<button id="cancel" name="cancel" class="btn btn-default"
+					<button id="cancel" class="btn btn-default"
 						title="{{'CANCEL'|translate}}" ng-click="cancel()" ng-discard>
 						<span class="glyphicon glyphicon-remove" />
 					</button>

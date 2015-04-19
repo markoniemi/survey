@@ -20,21 +20,21 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.survey.model.user.Role;
+import org.survey.service.poll.PollService;
 import org.survey.service.user.UserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:spring-config-rest-service-test.xml")
 public class MobileWebIT {
     private WebDriver browser;
-//    private HtmlUnitDriver browser;
     private String httpPort;
     private String httpProtocol;
     private String serverURL;
     private String appName = "survey-mobile-web";
     @Resource
     protected UserService userService;
-//    @Resource
-//    protected PollService pollService;
+    @Resource
+    protected PollService pollService;
 
     @Before
     public void setUp() {
@@ -51,6 +51,7 @@ public class MobileWebIT {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, phantomJsPath);
         browser = new PhantomJSDriver(capabilities);
+        // increase size to make navigation visible
         browser.manage().window().setSize(new Dimension(1920, 1080));
     }
 
@@ -61,13 +62,13 @@ public class MobileWebIT {
 //        deleteUserFromRepository("registered_user");
         deleteUserFromRepository("admin_user");
         deleteUserFromRepository("user_user");
-//        deletePollFromRepository("poll");
+        deletePollFromRepository("poll");
     }
 
-//    private void deletePollFromRepository(String pollName) {
-//        pollService.delete(pollName);
-//    }
-//
+    private void deletePollFromRepository(String pollName) {
+        pollService.delete(pollName);
+    }
+
     private void deleteUserFromRepository(String username) {
         userService.delete(username);
     }
@@ -96,11 +97,11 @@ public class MobileWebIT {
         login("admin_user", "newpassword");
         deleteUser("admin_user");
 //        checkVersion();
-//         addPoll("poll");
-//         editPoll("poll");
-//         addQuestion("question1");
-//        deletePoll("poll");
-//        logout();
+         addPoll("poll");
+         editPoll("poll");
+         addQuestion("question1");
+        deletePoll("poll");
+        logout();
     }
 
     protected void openBrowser() throws InterruptedException {
@@ -211,41 +212,42 @@ public class MobileWebIT {
     }
 
     private void addPoll(String pollName) throws InterruptedException {
-        browser.findElement(By.id("menu:menu-show-polls")).click();
+        browser.findElement(By.id("menu-polls")).click();
         Assert.assertEquals(browser.getPageSource(), "Polls",
                 browser.getTitle());
-        browser.findElement(By.id("polls:addPoll")).click();
-        Assert.assertEquals(browser.getPageSource(), "Add poll",
+        browser.findElement(By.id("addPoll")).click();
+        Assert.assertEquals(browser.getPageSource(), "Poll",
                 browser.getTitle());
-        browser.findElement(By.id("addPoll:pollName")).sendKeys(pollName);
-        browser.findElement(By.id("addPoll:savePoll")).click();
+        browser.findElement(By.id("pollName")).sendKeys(pollName);
+        browser.findElement(By.id("savePoll")).click();
+        Thread.sleep(1000);
         Assert.assertEquals(browser.getPageSource(), "Polls",
                 browser.getTitle());
     }
 
     private void editPoll(String pollName) {
         WebElement button = browser.findElement(By.xpath("//tr[td='" + pollName
-                + "']//input[@value='Edit poll']"));
+                + "']//button[@id='edit']"));
         Assert.assertNotNull(browser.getPageSource(), button);
         button.click();
-        Assert.assertEquals(browser.getPageSource(), "Add poll",
+        Assert.assertEquals(browser.getPageSource(), "Poll",
                 browser.getTitle());
     }
 
     private void addQuestion(String questionText) {
-        browser.findElement(By.id("addPoll:addQuestion")).click();
-        Assert.assertEquals(browser.getPageSource(), "Add poll",
+        browser.findElement(By.id("addQuestion")).click();
+        Assert.assertEquals(browser.getPageSource(), "Poll",
                 browser.getTitle());
-        browser.findElement(By.id("addPoll:questions:0:questionText"))
+        browser.findElement(By.id("questionText"))
                 .sendKeys(questionText);
-        browser.findElement(By.id("addPoll:savePoll")).click();
+        browser.findElement(By.id("savePoll")).click();
         Assert.assertEquals(browser.getPageSource(), "Polls",
                 browser.getTitle());
     }
 
     protected void deletePoll(String pollName) throws InterruptedException {
         WebElement button = browser.findElement(By.xpath("//tr[td='" + pollName
-                + "']//input[@value='Delete']"));
+                + "']//button[@id='delete']"));
         Assert.assertNotNull(browser.getPageSource(), button);
         button.click();
         Thread.sleep(2000);

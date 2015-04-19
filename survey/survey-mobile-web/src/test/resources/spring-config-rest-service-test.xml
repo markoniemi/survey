@@ -24,6 +24,16 @@
 			<bean class="org.codehaus.jackson.jaxrs.JacksonJaxbJsonProvider" />
 		</jaxrs:providers>
 	</jaxrs:client>
+	<jaxrs:client id="pollService" serviceClass="org.survey.service.poll.PollService"
+		address="${http.protocol}://localhost:${http.port}/survey-backend/api/rest">
+		<jaxrs:headers>
+			<entry key="Accept" value="application/json" />
+		</jaxrs:headers>
+		<jaxrs:providers>
+			<!-- Use Jackson instead of Jettison -->
+			<bean class="org.codehaus.jackson.jaxrs.JacksonJaxbJsonProvider" />
+		</jaxrs:providers>
+	</jaxrs:client>
 
 	<http:conduit name="*.http-conduit">
 		<http:tlsClientParameters>
