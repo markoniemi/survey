@@ -17,7 +17,7 @@
 				<tr ng-repeat="user in users">
 					<td>{{user.username}}</td>
 					<td>{{user.email}}</td>
-					<td translate>{{user.role|translate}}</td>
+					<td id="role" translate>{{user.role|translate}}</td>
 					<td>
 						<button id="edit" name="edit" class="btn btn-primary"
 							ng-click="editUser(user)" title="{{'EDIT'|translate}} {{user.username}}">

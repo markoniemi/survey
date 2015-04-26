@@ -26,6 +26,7 @@ import org.survey.service.user.UserService;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:spring-config-rest-service-test.xml")
 public class MobileWebIT {
+    private static final int SLEEP_TIME = 500;
     private WebDriver browser;
     private String httpPort;
     private String httpProtocol;
@@ -47,12 +48,12 @@ public class MobileWebIT {
 //        profile.setAssumeUntrustedCertificateIssuer(false);
 //        browser = new FirefoxDriver(profile);
         String phantomJsPath = System.getProperty(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,
-                "c:/apps/phantomjs-1.9.7-windows/phantomjs.exe");
+                "c:/apps/phantomjs-2.0.0-windows/bin/phantomjs.exe");
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, phantomJsPath);
         browser = new PhantomJSDriver(capabilities);
         // increase size to make navigation visible
-        browser.manage().window().setSize(new Dimension(1920, 1080));
+        browser.manage().window().setSize(new Dimension(800, 600));
     }
 
     @After
@@ -77,7 +78,7 @@ public class MobileWebIT {
     public void integrationTest() throws InterruptedException {
         openBrowser();
 
-//        loginError();
+        loginError();
 //        registerNewUser("registered_user", "registered_user@test.com", "test");
 //        login("registered_user", "test");
 //        assertUserRole("registered_user", "User");
@@ -86,9 +87,9 @@ public class MobileWebIT {
         login("admin", "admin");
 //        deleteUser("registered_user");
         addUser("admin_user", "admin_user@test.com", "another", Role.ROLE_ADMIN);
-//        assertUserRole("admin_user", "Admin");
+        assertUserRole("admin_user", "Admin");
         addUser("user_user", "user_user@test.com", "another", Role.ROLE_USER);
-//        assertUserRole("user_user", "User");
+        assertUserRole("user_user", "User");
         deleteUser("user_user");
         logout();
         login("admin_user", "another");
@@ -106,7 +107,7 @@ public class MobileWebIT {
 
     protected void openBrowser() throws InterruptedException {
         browser.get(serverURL + "/" + appName);
-        Thread.sleep(2000);
+        Thread.sleep(SLEEP_TIME);
         Assert.assertEquals(browser.getPageSource(), "Login",
                 browser.getTitle());
     }
@@ -125,7 +126,7 @@ public class MobileWebIT {
                         + "')]//button[contains(@id,'edit')]"));
         Assert.assertNotNull(browser.getPageSource(), button);
         button.click();
-        Thread.sleep(2000);
+        Thread.sleep(SLEEP_TIME);
         Assert.assertEquals(browser.getPageSource(), "User",
                 browser.getTitle());
         WebElement passwordElement = browser.findElement(By.id("password"));
@@ -136,7 +137,7 @@ public class MobileWebIT {
         repeatPasswordElement.sendKeys(password);
         selectItemInList("role", Role.ROLE_USER.name());
         browser.findElement(By.id("submit")).click();
-        Assert.assertEquals(browser.getPageSource(), "Users",
+        Assert.assertEquals(/*browser.getPageSource(),*/ "Users",
                 browser.getTitle());
     }
 
@@ -155,7 +156,7 @@ public class MobileWebIT {
             Role role) throws InterruptedException {
 //        browser.findElement(By.id("addUser")).click();
         browser.get(serverURL + "/" + appName + "/#/users/user");
-        Thread.sleep(2000);
+        Thread.sleep(SLEEP_TIME);
         Assert.assertEquals(browser.getPageSource(), "User",
                 browser.getTitle());
         browser.findElement(By.id("username")).sendKeys(
@@ -167,8 +168,8 @@ public class MobileWebIT {
         browser.findElement(By.id("email")).sendKeys(email);
         selectItemInList("role", role.name());
         browser.findElement(By.id("submit")).click();
-        Thread.sleep(2000);
-        Assert.assertEquals(browser.getPageSource(), "Users",
+        Thread.sleep(SLEEP_TIME);
+        Assert.assertEquals(/*browser.getPageSource(),*/ "Users",
                 browser.getTitle());
     }
 
@@ -177,7 +178,7 @@ public class MobileWebIT {
                 + "']//button[@id='delete']"));
         Assert.assertNotNull(browser.getPageSource(), button);
         button.click();
-        Thread.sleep(2000);
+        Thread.sleep(SLEEP_TIME);
         Assert.assertEquals(browser.getPageSource(), "Users",
                 browser.getTitle());
     }
@@ -219,12 +220,12 @@ public class MobileWebIT {
         // TODO find a fix for click not working with maven build
 //        browser.findElement(By.id("addPoll")).click();
         browser.get(serverURL + "/" + appName + "/#/polls/poll");
-        Thread.sleep(1000);
+        Thread.sleep(SLEEP_TIME);
         Assert.assertEquals(browser.getPageSource(), "Poll",
                 browser.getTitle());
         browser.findElement(By.id("pollName")).sendKeys(pollName);
         browser.findElement(By.id("savePoll")).click();
-        Thread.sleep(1000);
+        Thread.sleep(SLEEP_TIME);
         Assert.assertEquals(browser.getPageSource(), "Polls",
                 browser.getTitle());
     }
@@ -254,17 +255,18 @@ public class MobileWebIT {
                 + "']//button[@id='delete']"));
         Assert.assertNotNull(browser.getPageSource(), button);
         button.click();
-        Thread.sleep(2000);
+        Thread.sleep(SLEEP_TIME);
         Assert.assertEquals(browser.getPageSource(), "Polls",
                 browser.getTitle());
     }    
 
-    protected void loginError() {
+    protected void loginError() throws InterruptedException {
         browser.findElement(By.id("j_username")).clear();
         browser.findElement(By.id("j_username")).sendKeys("");
         browser.findElement(By.id("j_password")).clear();
         browser.findElement(By.id("j_password")).sendKeys("");
         browser.findElement(By.id("loginButton")).click();
+        Thread.sleep(SLEEP_TIME);
         Assert.assertEquals("Login", browser.getTitle());
 // TODO add Login error to page        
 //        Assert.assertTrue(browser.getPageSource().contains("Login error"));
@@ -282,7 +284,7 @@ public class MobileWebIT {
 
     public void logout() throws InterruptedException {
         browser.findElement(By.id("logout")).click();
-        Thread.sleep(1000);
+        Thread.sleep(SLEEP_TIME);
         Assert.assertEquals(browser.getPageSource(), "Login",
                 browser.getTitle());
     }
