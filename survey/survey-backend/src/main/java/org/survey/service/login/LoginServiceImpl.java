@@ -1,6 +1,5 @@
 package org.survey.service.login;
 
-import javax.annotation.Resource;
 import javax.naming.AuthenticationException;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.POST;

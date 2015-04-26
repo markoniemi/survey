@@ -24,13 +24,13 @@
 <script src="app/polls/poll.js"></script>
 <script src="app/polls/polls.js"></script>
 <script src="app/about/about.js"></script>
-<title ng:bind-template="{{pageTitle}}"></title>
+<title ng-bind-template="{{pageTitle}}"></title>
 </head>
 <body>
     <div ng-include="'app/common/menu.xhtml'"></div>
     <!-- use deprecated way of bootstrapping to enable htmlunit -->
     <!-- <html id="ng-app" class="ng-app: user-mobile;"> -->
-    <div id="ng-view" class="ng-view: survey-mobile-web"></div>
-    <!-- 	<div ng-view ></div> -->
+<!--     <div id="ng-view" class="ng-view: survey-mobile-web"></div> -->
+    	<div ng-view></div>
 </body>
 </html>

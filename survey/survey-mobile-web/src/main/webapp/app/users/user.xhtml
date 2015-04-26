@@ -1,4 +1,4 @@
-<div ng-controller="UserCtrl" ng:init="$root.pageTitle = 'User'" />
+<div ng-controller="UserCtrl" ng-init="$root.pageTitle = 'User'" />
 <div class="panel panel-default">
 	<div class="panel-heading">
 		<h3 class="panel-title" translate>USER</h3>
@@ -10,21 +10,21 @@
 				<label class="control-label" for="username" translate>USERNAME</label>
 				<div class="controls">
 					<input id="username" name="username" type="text"
-						class="input-xlarge" required="" ng-model="user.username" />
+						class="input-xlarge" required ng-model="user.username" />
 				</div>
 			</div>
 			<div class="control-group">
 				<label class="control-label" for="password" translate>PASSWORD</label>
 				<div class="controls">
 					<input id="password" name="password" type="password"
-						class="input-xlarge" required="" ng-model="user.password" />
+						class="input-xlarge" required ng-model="user.password" />
 				</div>
 			</div>
 			<div class="control-group">
 				<label class="control-label" for="repeatPassword" translate>REPEAT_PASSWORD</label>
 				<div class="controls">
 					<input id="repeatPassword" name="repeatPassword" type="password"
-						class="input-xlarge" required=""
+						class="input-xlarge" required
 						ng-model="repeatPassword" />
 				</div>
 			</div>
@@ -32,7 +32,7 @@
 				<label class="control-label" for="email" translate>EMAIL</label>
 				<div class="controls">
 					<input id="email" name="email" type="text"
-						class="input-xlarge" required="" ng-model="user.email" />
+						class="input-xlarge" required ng-model="user.email" />
 				</div>
 			</div>
 			<div class="control-group">
