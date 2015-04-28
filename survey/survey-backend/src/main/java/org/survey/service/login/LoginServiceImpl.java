@@ -1,7 +1,7 @@
 package org.survey.service.login;
 
-import javax.naming.AuthenticationException;
 import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.NotAuthorizedException;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -31,16 +31,16 @@ public class LoginServiceImpl implements LoginService {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/login")
-    public String login(User userToLogin) throws AuthenticationException {
+    public String login(User userToLogin) {
         User user = userService.findOne(userToLogin.getUsername());
         if (user == null) {
-            throw new AuthenticationException("Login error");
+            throw new NotAuthorizedException("Login error");
         }
         if (user.getPassword().equals(userToLogin.getPassword())) {
             log.debug("Username: {} logged in.", user.getUsername());
             return new JwtToken(user).getToken();
         } else {
-            throw new AuthenticationException("Login error");
+            throw new NotAuthorizedException("Login error");
         }
     }
 
