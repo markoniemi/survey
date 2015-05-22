@@ -9,7 +9,7 @@
 	<artifactId>survey-mobile-web</artifactId>
 	<packaging>war</packaging>
 	<properties>
-		<phantomjs-version>2.0.0</phantomjs-version>
+		<phantomjs-version>1.9.7</phantomjs-version>
 	</properties>
 	<dependencies>
 		<dependency>
