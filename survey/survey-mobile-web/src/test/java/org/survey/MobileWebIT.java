@@ -26,7 +26,7 @@ import org.survey.service.user.UserService;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:spring-config-rest-service-test.xml")
 public class MobileWebIT {
-    private static final int SLEEP_TIME = 500;
+    private static final int SLEEP_TIME = 1000;
     private WebDriver browser;
     private String httpPort;
     private String httpProtocol;
@@ -78,7 +78,7 @@ public class MobileWebIT {
     public void integrationTest() throws InterruptedException {
         openBrowser();
 
-        loginError();
+//        loginError();
 //        registerNewUser("registered_user", "registered_user@test.com", "test");
 //        login("registered_user", "test");
 //        assertUserRole("registered_user", "User");
@@ -137,6 +137,7 @@ public class MobileWebIT {
         repeatPasswordElement.sendKeys(password);
         selectItemInList("role", Role.ROLE_USER.name());
         browser.findElement(By.id("submit")).click();
+        Thread.sleep(SLEEP_TIME);
         Assert.assertEquals(/*browser.getPageSource(),*/ "Users",
                 browser.getTitle());
     }
@@ -268,16 +269,16 @@ public class MobileWebIT {
         browser.findElement(By.id("loginButton")).click();
         Thread.sleep(SLEEP_TIME);
         Assert.assertEquals("Login", browser.getTitle());
-// TODO add Login error to page        
-//        Assert.assertTrue(browser.getPageSource().contains("Login error"));
+        Assert.assertTrue(browser.getPageSource().contains("Login error"));
     }
     
-    protected void login(String username, String password) {
+    protected void login(String username, String password) throws InterruptedException {
         browser.findElement(By.id("j_username")).clear();
         browser.findElement(By.id("j_username")).sendKeys(username);
         browser.findElement(By.id("j_password")).clear();
         browser.findElement(By.id("j_password")).sendKeys(password);
         browser.findElement(By.id("loginButton")).click();
+        Thread.sleep(SLEEP_TIME);
         Assert.assertEquals(browser.getPageSource(), "Users",
                 browser.getTitle());
     }

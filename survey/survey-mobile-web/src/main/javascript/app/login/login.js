@@ -5,15 +5,15 @@ function loginCtrl($location, $scope, $localStorage, loginService) {
             username : $scope.username,
             password : $scope.password
         }, success, error);
-        $location.path("/users/users");
+//        $location.path("/users/users");
     };
     success = function() {
         $scope.authenticationToken = $localStorage.authenticationToken;
         $location.path("/users/users");
     };
     error = function() {
-        $location.path("/login/login");
         $scope.errorMessage = "Login error";
+//        $location.path("/login/login");
     };
     $scope.logout = function() {
         loginService.logout();
