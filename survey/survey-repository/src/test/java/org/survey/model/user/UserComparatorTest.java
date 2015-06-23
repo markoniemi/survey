@@ -19,13 +19,4 @@ public class UserComparatorTest {
         User user1 = UserFactory.createUser1();
         Assert.assertTrue(userComparator.compare(user1, null) > 0);
     }
-
-    @Ignore("all fields are now @NonNull")
-    @Test
-    public void compareToWithNullField() {
-        UserComparator userComparator = new UserComparator();
-        User user1 = UserFactory.createUser1();
-        User user2 = new User("username", "password", null, Role.ROLE_USER);
-        Assert.assertTrue(userComparator.compare(user1, user2) > 0);
-    }
 }
