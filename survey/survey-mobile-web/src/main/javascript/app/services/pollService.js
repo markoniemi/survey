@@ -9,9 +9,9 @@ app.factory("PollService", function(config, $resource, $location, $translate) {
 		}
 	});
 	service.getRoles = function() {
-		return [{name: $translate.instant("TYPE_LABEL"), value: 'Question'},
-                {name: $translate.instant("TYPE_TEXT"), value: 'TextQuestion'},
-                {name: $translate.instant("TYPE_BOOLEAN"), value: 'BooleanQuestion'}];
+		return [{name: $translate.instant("TYPE_LABEL"), value: 'LABEL'},
+                {name: $translate.instant("TYPE_TEXT"), value: 'TEXT'},
+                {name: $translate.instant("TYPE_BOOLEAN"), value: 'BOOLEAN'}];
 	}
 	return service;
 });
