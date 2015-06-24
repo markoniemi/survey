@@ -9,7 +9,7 @@
                                 <span class="input-group-addon">
                                     <i class="glyphicon glyphicon-user"></i>
                                 </span>
-                                <input id="j_username" class="form-control" placeholder="Username" name="username"
+                                <input id="j_username" class="form-control" placeholder="{{'USERNAME'|translate}}" name="username"
                                     type="text" autofocus ng-model="username" />
                             </div>
                         </div>
@@ -18,13 +18,13 @@
                                 <span class="input-group-addon">
                                     <i class="glyphicon glyphicon-lock"></i>
                                 </span>
-                                <input id="j_password" class="form-control" placeholder="Password" name="password"
+                                <input id="j_password" class="form-control" placeholder="{{'PASSWORD'|translate}}" name="password"
                                     type="password" value="" ng-model="password" />
                             </div>
                         </div>
                         <div class="form-group">
-                            <button id="loginButton" type="submit" value="Log In"
-                                class="btn btn-lg btn-primary btn-block" ng-click="login()" />
+                            <button id="loginButton" type="submit" title="{{'LOGIN'|translate}}"
+                                class="btn btn-lg btn-primary btn-block" ng-click="login()" >{{'LOGIN'|translate}}</button>
                         </div>
                         <div class="form-group">
                             <div ng-if="errorMessage" class="alert alert-danger" role="alert">{{errorMessage}}</div>
