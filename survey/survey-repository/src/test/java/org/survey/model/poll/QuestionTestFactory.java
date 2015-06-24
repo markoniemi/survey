@@ -16,19 +16,17 @@ private Poll poll;
     public List<Question> getEntities(int count) {
         List<Question> entities = new ArrayList<Question>();
         for (int i = 0; i < count; i++) {
-            Question question = null;
+            Question question = new Question();
             switch (i % 3) {
             case 0:
-                question = new BooleanQuestion();
+                question.setType(QuestionType.BOOLEAN);
                 break;
             case 1:
-                question = new TextQuestion();
+                question.setType(QuestionType.TEXT);
                 break;
-
             case 2:
-                question = new Question();
+                question.setType(QuestionType.LABEL);
                 break;
-
             default:
                 break;
             }
@@ -42,18 +40,18 @@ private Poll poll;
 
     @Override
     public Question getUpdatedEntity(Question entity) {
-        Question question = null;
-        if (entity instanceof BooleanQuestion) {
-            question = new BooleanQuestion();
-        } else if (entity instanceof TextQuestion) {
-            question = new TextQuestion();
-        } else if (entity instanceof Question) {
-            question = new Question();
-        }
-        question.setType(entity.getType());
-        question.setText(entity.getText() + "_updated");
-        question.setDescription(entity.getDescription() + "_updated");
-        question.setPoll(entity.getPoll());
-        return question;
+//        Question question = null;
+//        if (entity instanceof BooleanQuestion) {
+//            question = new BooleanQuestion();
+//        } else if (entity instanceof TextQuestion) {
+//            question = new TextQuestion();
+//        } else if (entity instanceof Question) {
+//            question = new Question();
+//        }
+        entity.setType(QuestionType.BOOLEAN);
+        entity.setText(entity.getText() + "_updated");
+        entity.setDescription(entity.getDescription() + "_updated");
+        entity.setPoll(entity.getPoll());
+        return entity;
     }
 }

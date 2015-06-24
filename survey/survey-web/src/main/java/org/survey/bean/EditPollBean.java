@@ -14,7 +14,6 @@ import org.springframework.stereotype.Component;
 import org.survey.FacesUtil;
 import org.survey.model.poll.Poll;
 import org.survey.model.poll.Question;
-import org.survey.model.poll.QuestionFactory;
 import org.survey.model.poll.QuestionType;
 import org.survey.model.user.User;
 import org.survey.service.poll.PollService;
@@ -66,6 +65,7 @@ public class EditPollBean {
             poll.setQuestions(new ArrayList<Question>());
         }
         Question question = new Question();
+        question.setType(QuestionType.LABEL);
         question.setPoll(poll);
         poll.getQuestions().add(question);
     }
@@ -79,10 +79,10 @@ public class EditPollBean {
         log.debug("index: {}", index);
         Question question = poll.getQuestions().get(index);
         log.debug("oldQuestion.type: {}", question.getType());
-        QuestionType questionType = QuestionType.valueOf(QuestionType.class, question.getType());
-        log.debug("questionType: {}", questionType);
-        Question newQuestion = QuestionFactory.createQuestionFrom(question, questionType, poll);
-        poll.getQuestions().set(index, newQuestion);
+//        QuestionType questionType = QuestionType.valueOf(QuestionType.class, question.getType());
+//        log.debug("questionType: {}", questionType);
+//        Question newQuestion = QuestionFactory.createQuestionFrom(question, questionType, poll);
+//        poll.getQuestions().set(index, newQuestion);
     }
 
     /**

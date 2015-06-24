@@ -67,13 +67,14 @@ public class PollServiceImpl implements PollService {
     @Override
     public Poll update(Poll poll) {
         Poll savedPoll = pollRepository.save(poll);
-        if (CollectionUtils.isNotEmpty(poll.getQuestions())) {
-            for (Question question : poll.getQuestions()) {
-                question.setPoll(savedPoll);
-            }
-            Iterable<Question> savedQuestions = questionRepository.save(poll.getQuestions());
-            poll.setQuestions(IteratorUtils.toList(savedQuestions.iterator()));
-        }
+//        if (CollectionUtils.isNotEmpty(poll.getQuestions())) {
+//            for (Question question : poll.getQuestions()) {
+////                question.setPoll(savedPoll);
+//                question.setPoll(poll);
+//            }
+//            Iterable<Question> savedQuestions = questionRepository.save(poll.getQuestions());
+//            poll.setQuestions(IteratorUtils.toList(savedQuestions.iterator()));
+//        }
         return savedPoll;
     }
 

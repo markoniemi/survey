@@ -17,6 +17,7 @@ public class QuestionComparator extends EntityComparator<Question, Long> {
             return 1;
         }
         return new CompareToBuilder()
+                .append(question1.getType(), question2.getType())
                 .append(question1.getText(), question2.getText())
                 .append(question1.getDescription(), question2.getDescription())
                 .toComparison();

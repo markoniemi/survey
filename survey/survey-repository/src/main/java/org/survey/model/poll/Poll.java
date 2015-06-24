@@ -2,6 +2,7 @@ package org.survey.model.poll;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -67,13 +68,14 @@ public class Poll {
             mappedBy = "poll", 
 //            orphanRemoval=true, 
             cascade = {
-//     CascadeType.PERSIST,
-//     CascadeType.MERGE,
+//     CascadeType.ALL,
+     CascadeType.PERSIST,
+     CascadeType.MERGE,
 //     CascadeType.REMOVE,
-//     CascadeType.REFRESH,
+     CascadeType.REFRESH,
 //     CascadeType.DETACH
     })
-     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+//     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
 //     @Cascade({org.hibernate.annotations.CascadeType.ALL})
     @OnDelete(action = OnDeleteAction.CASCADE)
 //    @XmlTransient

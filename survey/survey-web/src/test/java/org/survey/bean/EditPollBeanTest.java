@@ -92,19 +92,18 @@ public class EditPollBeanTest {
                 .getText());
     }
     
-    @Ignore
     @Test
     public void questionTypeChanged() {
         // addQuestion calls addPoll
         addQuestion();
-        editPollBean.getPoll().getQuestions().get(0).setType(QuestionType.BOOLEAN.name());
+        editPollBean.getPoll().getQuestions().get(0).setType(QuestionType.BOOLEAN);
         editPollBean.questionTypeChanged(0);
         String result = editPollBean.savePoll();
         Assert.assertEquals(
                 "editPollBean.savePoll returned an unexpected value",
                 "pollSaved", result);
         Poll pollFromDatabase = pollService.findOne("poll");
-        String type = pollFromDatabase.getQuestions().get(0)
+        QuestionType type = pollFromDatabase.getQuestions().get(0)
         .getType();
         Assert.assertEquals(QuestionType.BOOLEAN, type);
     }

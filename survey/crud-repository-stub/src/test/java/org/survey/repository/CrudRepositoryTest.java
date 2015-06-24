@@ -16,7 +16,7 @@ import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.data.repository.CrudRepository;
 
 public abstract class CrudRepositoryTest<T, ID extends Serializable> {
-    protected static int ENTITY_COUNT = 2;
+    protected static int ENTITY_COUNT = 5;
     protected List<T> orginalEntities = new ArrayList<T>();;
     protected List<T> savedEntities = new ArrayList<T>();;
     protected CrudRepository<T, ID> entityRepository;

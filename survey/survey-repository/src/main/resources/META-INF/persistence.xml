@@ -8,8 +8,6 @@
 		<class>org.survey.model.file.File</class>
 		<class>org.survey.model.poll.Poll</class>
 		<class>org.survey.model.poll.Question</class>
-		<class>org.survey.model.poll.BooleanQuestion</class>
-		<class>org.survey.model.poll.TextQuestion</class>
 <!-- 		<properties> -->
 <!-- 			<property name="hibernate.show_sql" value="true" /> -->
 <!-- 			<property name="hibernate.format_sql" value="true" /> -->
