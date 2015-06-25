@@ -15,7 +15,7 @@ app.controller('PollCtrl', function($scope, $location, $translate, PollService,
 		};
 	}
 	// values for role select
-	$scope.types = PollService.getRoles();
+	$scope.types = PollService.getTypes();
 	// success callback
 	function success() {
 		$log.log('success');
@@ -29,9 +29,10 @@ app.controller('PollCtrl', function($scope, $location, $translate, PollService,
 	// called when user presses add question button
 	$scope.addQuestion = function addQuestion() {
 		// values for role select
-		$scope.types = PollService.getRoles();
+		$scope.types = PollService.getTypes();
 		// add a question to poll.questions
 		$scope.poll.questions.push({
+		    type : "LABEL",
 			text : ""
 		});
 	};

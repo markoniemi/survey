@@ -167,6 +167,8 @@ public class PollServiceImplTest {
         Assert.assertNotNull(originalEntity.getQuestions());
         Assert.assertNotNull(entity.getQuestions());
         Assert.assertEquals(originalEntity.getQuestions().size(),
-                originalEntity.getQuestions().size());
+                entity.getQuestions().size());
+        Assert.assertEquals(originalEntity.getQuestions().get(0).getType(),
+                entity.getQuestions().get(0).getType());
     }
 }

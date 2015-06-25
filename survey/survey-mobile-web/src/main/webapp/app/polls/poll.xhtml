@@ -17,9 +17,9 @@
 				<div class="control-group">
 					<label class="control-label" for="questionType" translate>QUESTION_TYPE</label>
 					<div class="controls">
-						<select id="questionType" class="input-xlarge"
+						<select id="questionType" name="questionType" class="input-xlarge"
 							ng-model="question.type">
-							<option ng-repeat="type in types" value="{{type.value}}">{{type.name}}</option>
+							<option ng-repeat="type in types" value="{{type.value}}" ng-selected="question.type == type.value">{{type.name}}</option>
 						</select>
 					</div>
 				</div>

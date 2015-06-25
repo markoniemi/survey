@@ -8,7 +8,7 @@ app.factory("PollService", function(config, $resource, $location, $translate) {
 			method : 'PUT'
 		}
 	});
-	service.getRoles = function() {
+	service.getTypes = function() {
 		return [{name: $translate.instant("TYPE_LABEL"), value: 'LABEL'},
                 {name: $translate.instant("TYPE_TEXT"), value: 'TEXT'},
                 {name: $translate.instant("TYPE_BOOLEAN"), value: 'BOOLEAN'}];
