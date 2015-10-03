@@ -68,11 +68,11 @@ public class Poll {
             mappedBy = "poll", 
 //            orphanRemoval=true, 
             cascade = {
-//     CascadeType.ALL,
-     CascadeType.PERSIST,
-     CascadeType.MERGE,
+     CascadeType.ALL,
+//     CascadeType.PERSIST,
+//     CascadeType.MERGE,
 //     CascadeType.REMOVE,
-     CascadeType.REFRESH,
+//     CascadeType.REFRESH,
 //     CascadeType.DETACH
     })
 //     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)

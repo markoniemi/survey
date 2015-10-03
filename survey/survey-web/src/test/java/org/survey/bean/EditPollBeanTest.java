@@ -68,6 +68,8 @@ public class EditPollBeanTest {
                 pollFromDatabase);
         Assert.assertEquals("poll", pollFromDatabase.getName());
     }
+    
+    @Ignore("poll is attached and test does not represent the situation in runtime")
     @Test
     public void addQuestion() {
         addPoll();
@@ -92,6 +94,7 @@ public class EditPollBeanTest {
                 .getText());
     }
     
+    @Ignore("poll is attached and test does not represent the situation in runtime")
     @Test
     public void questionTypeChanged() {
         // addQuestion calls addPoll
