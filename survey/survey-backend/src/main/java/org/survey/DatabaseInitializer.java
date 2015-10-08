@@ -4,13 +4,13 @@ import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 
 import lombok.Setter;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 
 import org.survey.model.user.Role;
 import org.survey.model.user.User;
 import org.survey.service.user.UserService;
 
-@Slf4j
+@Log4j2
 public class DatabaseInitializer {
 
     @Setter

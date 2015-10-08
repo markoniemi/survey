@@ -9,7 +9,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;
 
 import lombok.Getter;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Scope("request")
-@Slf4j
+@Log4j2
 @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
 public class VersionBean {
     private static final String IMPLEMENTATION_VERSION = "Implementation-Version";

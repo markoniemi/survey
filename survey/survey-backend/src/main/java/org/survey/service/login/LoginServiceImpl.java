@@ -10,14 +10,14 @@ import javax.ws.rs.core.MediaType;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.survey.model.user.User;
 import org.survey.security.JwtToken;
 import org.survey.service.user.UserService;
 
-@Slf4j
+@Log4j2
 @Path("/")
 public class LoginServiceImpl implements LoginService {
 // TODO use either userRepository or autowired

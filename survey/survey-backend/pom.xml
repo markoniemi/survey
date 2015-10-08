@@ -24,7 +24,6 @@
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
-			<version>3.0.1</version>
 			<scope>provided</scope>
 		</dependency>
 		<!-- spring-security -->
@@ -179,16 +178,6 @@
 			<artifactId>cssparser</artifactId>
 			<scope>test</scope>
 		</dependency>
-<!-- 		<dependency> -->
-<!-- 			<groupId>commons-logging</groupId> -->
-<!-- 			<artifactId>commons-logging</artifactId> -->
-<!-- 			<scope>test</scope> -->
-<!-- 		</dependency> -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.eclipse.jetty</groupId> -->
-<!-- 			<artifactId>jetty-websocket</artifactId> -->
-<!-- 			<scope>test</scope> -->
-<!-- 		</dependency> -->
 	</dependencies>
 	<build>
 		<finalName>survey-backend</finalName>

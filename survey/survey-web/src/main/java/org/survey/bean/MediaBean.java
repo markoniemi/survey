@@ -12,7 +12,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.PhaseId;
 import javax.imageio.ImageIO;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 
 import org.apache.commons.lang3.StringUtils;
 import org.primefaces.model.DefaultStreamedContent;
@@ -23,7 +23,7 @@ import org.survey.FacesUtil;
 
 @Component
 @Scope("request")
-@Slf4j
+@Log4j2
 public class MediaBean {
     private static final String IMAGE_FORMAT_NAME = "png";
     private static final Color FOREGROUND_COLOR = new Color(0, 0, 0);

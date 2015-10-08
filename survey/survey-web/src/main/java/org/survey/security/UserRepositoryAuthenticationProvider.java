@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -25,7 +25,7 @@ import org.survey.service.user.UserService;
  *      ://samerabdelkafi.wordpress.com/2011/01/16/secure-your-web-application
  *      -with-spring-security/
  */
-@Slf4j
+@Log4j2
 public class UserRepositoryAuthenticationProvider implements
         AuthenticationProvider {
     @Resource

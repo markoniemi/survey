@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import lombok.Getter;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 
 import org.survey.model.user.User;
 
@@ -21,7 +21,7 @@ import com.auth0.jwt.JWTVerifyException;
 /**
  * Utility class for handling JWT tokens.
  */
-@Slf4j
+@Log4j2
 public class JwtToken {
     public static final String AUTHORIZATION_HEADER = "Authorization";
     protected static int expirySeconds = 600;

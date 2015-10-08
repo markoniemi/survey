@@ -6,14 +6,14 @@ import java.lang.reflect.Method;
 
 import javax.persistence.Id;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 
 import com.google.common.base.Preconditions;
 
 /**
  * Utility class for getting and setting values of annotated field of a bean.
  */
-@Slf4j
+@Log4j2
 public class BeanHelper {
     private static final String SETTER_PREFIX = "set";
     private static final String GETTER_PREFIX = "get";
