@@ -46,6 +46,12 @@ public class FilesBeanTest {
 		fileRepository.deleteAll();
 	}
 
+	@Test
+	public void initialize() throws IOException {
+	    filesBean.initialize();
+	    Assert.assertNotNull(filesBean.getFiles());
+	}
+	
     @Test
     public void getImage() throws IOException {
         filesBean.setRequestParameter(savedFile.getId().toString());
