@@ -6,17 +6,11 @@
         </Console>
     </Appenders>
     <Loggers>
-        <Root level="debug">
+        <Root level="DEBUG">
             <AppenderRef ref="Console" />
         </Root>
-		<Logger name="org.survey">
-			<level value="debug" />
-		</Logger>
-		<Logger name="DefaultCssErrorHandler">
-			<level value="off" />
-		</Logger>
-		<Logger name="com.gargoylesoftware">
-			<level value="off" />
-		</Logger>
+		<Logger name="org.survey" level="DEBUG"/>
+		<Logger name="DefaultCssErrorHandler" level="OFF" />
+		<Logger name="com.gargoylesoftware" level="OFF" />
     </Loggers>
 </Configuration>
