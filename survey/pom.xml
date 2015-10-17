@@ -446,6 +446,12 @@
 				<artifactId>spring-web</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-web-api</artifactId>
+            <version>6.0</version>
+            <scope>provided</scope>
+        </dependency>			
 			<!-- JSF -->
 			<dependency>
 				<groupId>com.sun.faces</groupId>

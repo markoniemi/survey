@@ -1,7 +1,11 @@
 package org.survey.service.file;
 
+import java.util.List;
+
 import javax.jws.WebParam;
 import javax.jws.WebService;
+import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -9,8 +13,11 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
+import org.apache.cxf.jaxrs.ext.multipart.Attachment;
 import org.survey.model.file.File;
 
 @WebService
@@ -42,8 +49,25 @@ public interface FileService {
      */
     @PUT
     File update(@WebParam(name = "file") File file);
-
+    
     /**
+     * @see http://www.javatips.net/blog/2013/05/cxf-rest-file-upload?page=2
+     */
+    @GET
+    @Path("/downloadFile")
+    @Produces("application/pdf")
+    public Response downloadFile();
+    
+    /**
+     * @see http://www.javatips.net/blog/2013/05/cxf-rest-file-upload?page=2
+     */
+    @POST
+    @Path("/uploadFile")
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    public void uploadFile(List<Attachment> attachments);     
+//    public Response uploadFile(List<Attachment> attachments);     
+//    public Response uploadFile(List<Attachment> attachments, @Context HttpServletRequest request);     
+     /**
      * Returns a file by id.
      */
     @GET
