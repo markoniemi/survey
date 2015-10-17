@@ -4,12 +4,15 @@ import javax.annotation.Resource;
 import javax.jws.WebParam;
 import javax.jws.WebService;
 
+import lombok.extern.log4j.Log4j2;
+
 import org.survey.model.file.File;
 import org.survey.repository.file.FileRepository;
 
 import com.google.common.collect.Iterables;
 
 @WebService(endpointInterface = "org.survey.service.file.FileService", serviceName = "fileService")
+@Log4j2
 public class FileServiceImpl implements FileService {
     @Resource
     FileRepository fileRepository;
@@ -28,6 +31,7 @@ public class FileServiceImpl implements FileService {
 
     @Override
     public File create(@WebParam(name = "file") File file) {
+        log.debug(file);
         return fileRepository.save(file);
     }
 

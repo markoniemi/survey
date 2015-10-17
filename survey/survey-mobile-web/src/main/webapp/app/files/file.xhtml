@@ -1,0 +1,29 @@
+<div ng-controller="FileCtrl" ng-init="$root.pageTitle = 'File'" />
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title" translate>FILE</h3>
+	</div>
+	<div class="panel-body">
+		<div class="alert alert-danger" role="alert" ng-show="error != null">{{error}}</div>
+		<form class="form-horizontal" name="editFile">
+			<span class="control-group" class="btn btn-default btn-file">
+                <input type="file" ngf-select ng-model="file" name="file" accept="image/*" required>
+			</span>
+			<div class="control-group">
+				<label class="control-label" for="submit"></label>
+				<div class="controls">
+					<button id="submit" name="submit" class="btn btn-primary"
+						title="{{'SUBMIT'|translate}}" ng-click="uploadFile(file)">
+						<span class="glyphicon glyphicon-ok" />
+					</button>
+					<button id="cancel" name="cancel" class="btn btn-default"
+						title="{{'CANCEL'|translate}}" ng-click="cancel()" ng-discard>
+						<span class="glyphicon glyphicon-remove" />
+					</button>
+				</div>
+			</div>
+		</form>
+		<div id="messages" class="alert alert-success" data-ng-show="messages"
+			data-ng-bind="messages" />
+	</div>
+</div>

@@ -61,7 +61,7 @@ public interface FileService {
      * Deletes a file by id.
      */
     @DELETE
-    @Path("/{username}")
+    @Path("/{id}")
     void delete(@PathParam("id") @WebParam(name = "id") long id);
 
     /**

@@ -13,6 +13,7 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -45,6 +46,7 @@ public class File {
     private Long size;
     @ManyToOne(optional = true)
     @JoinColumn(name = "user_id")
+    @XmlTransient
     private User owner;
     private String url;
     /**
@@ -54,5 +56,6 @@ public class File {
     @Lob
     @Basic(fetch = FetchType.LAZY)
     @NonNull
+    @XmlTransient
     private byte[] content;
 }

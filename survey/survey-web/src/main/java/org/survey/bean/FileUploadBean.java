@@ -43,12 +43,17 @@ public class FileUploadBean implements Serializable {
     @Getter
     @Setter
     private Part file;
-    @Getter
-    @Setter
-    private String filename;
 
     public String addFile() {
         return "editFile";
+    }
+//    public void fileSelected() {
+//        filename = getFilename(file);
+//    }
+    private String getFilename(Part file) {
+        String disposition = file.getHeader("content-disposition");
+        log.debug(disposition);
+        return disposition.replaceFirst("(?i)^.*filename=\"([^\"]+)\".*$", "$1");
     }
     /**
      * Called when user presses Upload button in file upload dialog. Saves file
@@ -57,7 +62,7 @@ public class FileUploadBean implements Serializable {
     public String upload() {
         try {
             byte[] fileContent = getFileContent();
-            File createdFile = createFile(file, fileContent);
+            File createdFile = createFile(file, getFilename(file), fileContent);
             fileService.create(createdFile);
         } catch (IOException e) {
             showMessage(null, "fileUploadError", e);
@@ -81,14 +86,16 @@ public class FileUploadBean implements Serializable {
     /**
      * Create a File from Part.
      */
-    private File createFile(Part uploadedFile, byte[] fileContent) {
+    private File createFile(Part uploadedFile, String filename, byte[] fileContent) {
         File file = new File();
-        file.setFilename(uploadedFile.getName());
+        file.setFilename(filename);
         file.setMimeType(uploadedFile.getContentType());
         file.setContent(fileContent);
         file.setOwner(getUser());
         file.setCreateTime(System.currentTimeMillis());
         file.setSize(uploadedFile.getSize());
+        // TODO change files rest to files/:user/:filename
+        file.setUrl("/survery-web/api/rest/files/");
         return file;
     }
 

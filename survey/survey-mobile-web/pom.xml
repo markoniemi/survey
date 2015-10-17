@@ -39,6 +39,10 @@
 			<artifactId>angular-file-upload</artifactId>
 			<version>3.2.4</version>
 		</dependency>		
+		<dependency>
+			<groupId>org.webjars.bower</groupId>
+			<artifactId>ng-file-upload</artifactId>
+		</dependency>
 		<!-- Test -->
 		<dependency>
 			<groupId>org.survey</groupId>

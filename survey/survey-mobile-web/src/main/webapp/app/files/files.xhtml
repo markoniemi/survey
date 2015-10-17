@@ -1,0 +1,41 @@
+<div class="panel panel-default" ng-controller="FilesCtrl"
+    ng-init="$root.pageTitle = 'Files'">
+	<div class="panel-heading">
+		<h3 class="panel-title" translate>FILES</h3>
+	</div>
+	<div class="panel-body">
+		<table id="files" class="table table-striped table-bordered">
+			<thead>
+				<tr>
+					<th translate>FILENAME</th>
+					<th translate>CREATE_TIME</th>
+					<th translate>SIZE</th>
+					<th translate>OWNER</th>
+					<th translate>URL</th>
+					<th translate>PREVIEW</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="file in files">
+					<td>{{file.filename}}</td>
+					<td>{{file.createTime}}</td>
+					<td>{{file.size}}</td>
+					<td>{{file.owner.username}}</td>
+					<td>{{file.url}}</td>
+					<td>
+						<button id="edit" name="edit" class="btn btn-primary"
+							ng-click="editFile(file)" title="{{'EDIT'|translate}} {{file.filename}}">
+							<span class="glyphicon glyphicon-pencil" />
+						</button>
+						<button id="delete" name="delete" class="btn btn-primary"
+							ng-click="deleteFile(file)" title="{{'DELETE'|translate}} {{file.filename}}">
+							<span class="glyphicon glyphicon-remove" />
+						</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<a id="addFile" name="addFile" class="btn btn-primary"
+			href="#/files/file" title="{{'ADD_FILE'|translate}}" translate>ADD_FILE</a>
+	</div>
+</div>

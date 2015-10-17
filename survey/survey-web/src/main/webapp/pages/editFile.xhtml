@@ -12,12 +12,14 @@
 			<p:panel header="${messages.editFile}">
 				<h:form id="form" enctype="multipart/form-data">
 					<h:panelGrid columns="1">
-						<h:inputFile id="file" value="#{fileUploadBean.file}" />
+						<h:inputFile id="file" value="#{fileUploadBean.file}" >
+<!--                             <f:ajax listener="#{fileUploadBean.fileSelected}" render="filename"/> -->
+                        </h:inputFile>
 					</h:panelGrid>
-					<h:panelGrid columns="2">
-						<h:outputText value="#{messages.filename}" styleClass="required" />
-						<h:inputText id="filename" value="#{fileUploadBean.filename}" />
-					</h:panelGrid>
+<!-- 					<h:panelGrid columns="2"> -->
+<!-- 						<h:outputText value="#{messages.filename}" styleClass="required" /> -->
+<!-- 						<h:inputText id="filename" value="#{fileUploadBean.filename}" /> -->
+<!-- 					</h:panelGrid> -->
 					<h:commandButton id="save" value="#{messages.fileUpload}" action="#{fileUploadBean.upload}" />
 					<h:commandButton id="cancel" action="#{fileUploadBean.cancel}"
 						value="#{messages.cancel}" />

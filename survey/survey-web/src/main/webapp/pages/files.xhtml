@@ -18,17 +18,13 @@
 							</f:facet>
 							<h:outputText value="#{file.filename}" />
 						</p:column>
-						<p:column sortBy="#{file.mimeType}" id="mimeType">
-							<f:facet name="header">
-								<h:outputText value="#{messages.mimeType}" />
-							</f:facet>
-							<h:outputText value="#{file.mimeType}" />
-						</p:column>
 						<p:column sortBy="#{file.createTime}" id="createTime">
 							<f:facet name="header">
 								<h:outputText value="#{messages.createTime}" />
 							</f:facet>
-							<h:outputText value="#{file.createTime}" />
+							<h:outputText value="#{file.createTime}" >
+                                <f:convertDateTime pattern="dd.MM.yyyy HH:mm" />
+                            </h:outputText>
 						</p:column>
 						<p:column sortBy="#{file.size}" id="size">
 							<f:facet name="header">
@@ -36,11 +32,11 @@
 							</f:facet>
 							<h:outputText value="#{file.size}" />
 						</p:column>
-						<p:column sortBy="#{file.owner}" id="owner">
+						<p:column sortBy="#{file.owner.username}" id="owner">
 							<f:facet name="header">
 								<h:outputText value="#{messages.owner}" />
 							</f:facet>
-							<h:outputText value="#{file.owner}" />
+							<h:outputText value="#{file.owner.username}" />
 						</p:column>
 						<p:column sortBy="#{file.url}" id="url">
 							<f:facet name="header">

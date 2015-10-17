@@ -46,6 +46,7 @@
 		<angularjs.version>1.2.16</angularjs.version>
 		<angular-ui-bootstrap.version>0.12.0</angular-ui-bootstrap.version>
 		<angular-translate.version>2.4.2</angular-translate.version>
+		<ng-file-upload-version>9.0.8</ng-file-upload-version>
 		<jsf.version>2.2.8-04</jsf.version>
 		<tomcat.version>7.0.59</tomcat.version>
 	</properties>
@@ -487,6 +488,11 @@
 				<groupId>org.webjars</groupId>
 				<artifactId>angular-translate</artifactId>
 				<version>${angular-translate.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.webjars.bower</groupId>
+				<artifactId>ng-file-upload</artifactId>
+				<version>${ng-file-upload-version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.commons</groupId>
