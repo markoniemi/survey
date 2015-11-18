@@ -58,7 +58,7 @@ public class FileUploadBeanTest {
         fileRepository.deleteAll();
         userRepository.deleteAll();
     }
-
+    
     @Test
     public void upload() throws Exception {
         PartMock uploadedFile = new PartMock("filename", "mimeType", "content".getBytes());
@@ -112,7 +112,7 @@ public class FileUploadBeanTest {
 
         @Override
         public String getHeader(String headerName) {
-            return null;
+            return "filename=\"" + name + "\"";
         }
 
         @Override

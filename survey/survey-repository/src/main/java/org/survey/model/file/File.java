@@ -46,7 +46,7 @@ public class File {
     private Long size;
     @ManyToOne(optional = true)
     @JoinColumn(name = "user_id")
-    @XmlTransient
+//    @XmlTransient
     private User owner;
     private String url;
     /**
@@ -56,6 +56,6 @@ public class File {
     @Lob
     @Basic(fetch = FetchType.LAZY)
     @NonNull
-    @XmlTransient
+//    @XmlTransient
     private byte[] content;
 }
