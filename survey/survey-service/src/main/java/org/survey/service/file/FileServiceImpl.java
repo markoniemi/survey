@@ -76,30 +76,27 @@ public class FileServiceImpl implements FileService {
     // HttpServletRequest request) {
     public void uploadFile(List<Attachment> attachments) {
         for (Attachment attachment : attachments) {
-            DataHandler handler = attachment.getDataHandler();
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             try {
-                InputStream stream = handler.getInputStream();
                 MultivaluedMap<String, String> map = attachment.getHeaders();
-                System.out.println("fileName Here" + getFileName(map));
-                ByteArrayOutputStream out = new ByteArrayOutputStream();
-                IOUtils.copy(stream, out);
-                File file = createFile(getFileName(map), "mimeType", "owner", out.toByteArray());
-//                OutputStream out = new FileOutputStream(new java.io.File("C:/uploads/" + getFileName(map)));
-//
-//                int read = 0;
-//                byte[] bytes = new byte[1024];
-//                while ((read = stream.read(bytes)) != -1) {
-//                    out.write(bytes, 0, read);
-//                }
-//                stream.close();
-//                out.flush();
-//                out.close();
-                fileRepository.save(file);
+                String fileName = getFileName(map);
+                log.debug("uploadFile: {}", fileName);
+                DataHandler handler = attachment.getDataHandler();
+                InputStream inputStream = handler.getInputStream();
+                IOUtils.copy(inputStream, outputStream);
+                File file = createFile(fileName, "mimeType", "owner", outputStream.toByteArray());
+                // TODO move to finally block
+                inputStream.close();
+                outputStream.flush();
+                outputStream.close();
+                // TODO for some reason there is an extra file with 0 size
+                if (file.getSize() > 0) {
+                    fileRepository.save(file);
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-
 //        return Response.ok("file uploaded").build();
     }
 
@@ -123,7 +120,7 @@ public class FileServiceImpl implements FileService {
         file.setCreateTime(System.currentTimeMillis());
         file.setSize(Long.valueOf(fileContent.length));
         // TODO change files rest to files/:user/:filename
-        file.setUrl("/survery-web/api/rest/files/");
+        file.setUrl("/survey-web/api/rest/files/");
         return file;
     }
     @Override

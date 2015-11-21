@@ -1,13 +1,5 @@
 app.controller('FileCtrl', function($scope, $location, $translate, FileService,
 		$routeParams, $log) {
-	// if editing, get file from service
-//	var editing = $routeParams.id != null;
-//	$log.debug("editing file: " + $routeParams.id);
-//	if (editing) {
-//		$scope.file = FileService.get({
-//			filename : $routeParams.id
-//		});
-//	}
 	// success callback
 	function success() {
 		$log.log('success');
@@ -18,27 +10,9 @@ app.controller('FileCtrl', function($scope, $location, $translate, FileService,
 	function failure(httpResponse) {
 		$scope.error = $translate.instant('ADD_FILE_ERROR');
 	};
-	// called when user presses submit button
-//	$scope.saveFile = function saveFile(file) {
-//	    if (editing) {
-//	        FileService.update(file, success, failure);
-//	    } else {
-//	        FileService.save(file, success, failure);
-//	    }
-//	};
-	// TODO add success and error handling
 	$scope.uploadFile = function uploadFile(file) {
-	    FileService.upload(file);
+	    FileService.upload(file, success, failure);
 	}
-//	$scope.uploadFile = function uploadFile(file) {
-//        FileService.update({
-//            filename: file.name,
-//            mimeType: file.type,
-//            content: file,
-//            createTime: file.lastModified,
-//            size : file.size
-//        }, success, failure);
-//	};
 	// called when user presses cancel
 	$scope.cancel = function() {
 		$location.path('/files/files');

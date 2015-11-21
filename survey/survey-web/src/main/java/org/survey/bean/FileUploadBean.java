@@ -50,7 +50,7 @@ public class FileUploadBean implements Serializable {
 //    public void fileSelected() {
 //        filename = getFilename(file);
 //    }
-    private String getFilename(Part file) {
+    protected String getFilename(Part file) {
         String disposition = file.getHeader("content-disposition");
         log.debug(disposition);
         return disposition.replaceFirst("(?i)^.*filename=\"([^\"]+)\".*$", "$1");
