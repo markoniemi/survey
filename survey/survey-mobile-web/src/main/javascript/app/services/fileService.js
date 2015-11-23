@@ -7,6 +7,7 @@ app.factory("FileService", function(config, $resource, $location, $translate, Up
       method : 'PUT'
     }
   });
+  // ng-file-upload uses FileService.create method
   service.upload = function upload(file, success, failure) {
     $log.debug('FileService.upload');
     Upload.http({

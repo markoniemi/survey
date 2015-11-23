@@ -12,6 +12,7 @@ import javax.jws.WebParam;
 import javax.jws.WebService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
@@ -19,6 +20,7 @@ import javax.ws.rs.core.Response.ResponseBuilder;
 
 import lombok.extern.log4j.Log4j2;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.cxf.helpers.IOUtils;
 import org.apache.cxf.jaxrs.ext.multipart.Attachment;
 import org.survey.model.file.File;
@@ -81,17 +83,19 @@ public class FileServiceImpl implements FileService {
                 MultivaluedMap<String, String> map = attachment.getHeaders();
                 String fileName = getFileName(map);
                 log.debug("uploadFile: {}", fileName);
-                DataHandler handler = attachment.getDataHandler();
-                InputStream inputStream = handler.getInputStream();
-                IOUtils.copy(inputStream, outputStream);
-                File file = createFile(fileName, "mimeType", "owner", outputStream.toByteArray());
-                // TODO move to finally block
-                inputStream.close();
-                outputStream.flush();
-                outputStream.close();
-                // TODO for some reason there is an extra file with 0 size
-                if (file.getSize() > 0) {
-                    fileRepository.save(file);
+                if (StringUtils.isNotEmpty(fileName)) {
+                    DataHandler handler = attachment.getDataHandler();
+                    InputStream inputStream = handler.getInputStream();
+                    IOUtils.copy(inputStream, outputStream);
+                    File file = createFile(fileName, "mimeType", "owner", outputStream.toByteArray());
+                    // TODO move to finally block
+                    inputStream.close();
+                    outputStream.flush();
+                    outputStream.close();
+                    // TODO for some reason there is an extra file with 0 size
+                    if (file.getSize() > 0) {
+                        fileRepository.save(file);
+                    }
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -109,7 +113,7 @@ public class FileServiceImpl implements FileService {
                 return exactFileName;
             }
         }
-        return "unknown";
+        return null;
     }
     private File createFile(String filename, String mimeType, String owner, byte[] fileContent) {
         File file = new File();

@@ -9,7 +9,7 @@ app.controller('FilesCtrl', function($scope, $location, $timeout, $log, FileServ
 	};
 	// called when file presses delete button
 	$scope.deleteFile = function deleteFile(file) {
-		FileService.remove(file.id);
+		FileService.remove(file);
 		// delay is needed since service is yet deleting the file
 		$timeout(function() {
 			$scope.files = FileService.query();

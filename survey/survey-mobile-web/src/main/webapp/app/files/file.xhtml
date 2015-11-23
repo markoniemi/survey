@@ -5,7 +5,9 @@
 	</div>
 	<div class="panel-body">
 		<div class="alert alert-danger" role="alert" ng-show="error != null">{{error}}</div>
-        <form class="form-horizontal" name="editFile" action="http://localhost:8082/survey-backend/api/rest/files/uploadFile" method="post" enctype="multipart/form-data">
+        <form class="form-horizontal" name="editFile">
+            <!-- can also use direct submit, which uses FileService.uploadFile method -->
+<!--         <form class="form-horizontal" name="editFile" action="http://localhost:8082/survey-backend/api/rest/files/uploadFile" method="post" enctype="multipart/form-data"> -->
 			<span class="control-group" class="btn btn-default btn-file">
                 <input type="file" ngf-select ng-model="file" name="file" accept="image/*" required>
 			</span>
