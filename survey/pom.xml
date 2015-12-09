@@ -48,7 +48,7 @@
 		<angular-translate.version>2.4.2</angular-translate.version>
 		<ng-file-upload-version>9.0.8</ng-file-upload-version>
 		<jsf.version>2.2.8-04</jsf.version>
-		<tomcat.version>7.0.59</tomcat.version>
+		<tomcat.version>7.0.65</tomcat.version>
 	</properties>
 	<build>
 		<defaultGoal>install</defaultGoal>
