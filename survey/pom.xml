@@ -20,6 +20,7 @@
 		<module>survey-web</module>
 		<module>survey-mobile-web</module>
 		<module>survey-backend</module>
+		<module>survey-spring-web</module>
 	</modules>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
