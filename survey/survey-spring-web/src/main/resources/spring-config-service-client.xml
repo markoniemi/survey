@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:jaxws="http://cxf.apache.org/jaxws" 
+	xmlns:http="http://cxf.apache.org/transports/http/configuration"
+	xmlns:sec="http://cxf.apache.org/configuration/security" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://cxf.apache.org/configuration/security http://cxf.apache.org/schemas/configuration/security.xsd
+	http://cxf.apache.org/transports/http/configuration http://cxf.apache.org/schemas/configuration/http-conf.xsd 
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
+
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+		p:location="classpath:/server.properties" />
+	<!-- cxf config for https -->
+	<jaxws:client id="userService" serviceClass="org.survey.service.user.UserService"
+		address="${http.protocol}://localhost:${http.port}/survey-backend/api/soap/userService" />
+	<jaxws:client id="fileService" serviceClass="org.survey.service.file.FileService"
+		address="${http.protocol}://localhost:${http.port}/survey-backend/api/soap/fileService" />
+	<jaxws:client id="pollService" serviceClass="org.survey.service.poll.PollService"
+		address="${http.protocol}://localhost:${http.port}/survey-backend/api/soap/pollService" />
+	<http:conduit name="*.http-conduit">
+<!-- 	<http:tlsClientParameters disableCNCheck="true"> -->
+		<http:tlsClientParameters>
+			<sec:trustManagers>
+				<sec:keyStore type="JKS" password="changeit"
+					resource="survey.jks" />
+			</sec:trustManagers>
+		</http:tlsClientParameters>
+	</http:conduit>
+</beans>
