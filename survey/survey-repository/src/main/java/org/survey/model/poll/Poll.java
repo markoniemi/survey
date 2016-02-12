@@ -78,5 +78,6 @@ public class Poll {
 //     @Cascade({org.hibernate.annotations.CascadeType.ALL})
     @OnDelete(action = OnDeleteAction.CASCADE)
 //    @XmlTransient
+    // TODO init questions
     private List<Question> questions;
 }
