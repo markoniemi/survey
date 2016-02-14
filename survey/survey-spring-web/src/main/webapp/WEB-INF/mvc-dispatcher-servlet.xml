@@ -39,4 +39,9 @@
 		class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basename" value="MessageResources" /> 
 	</bean>
+    <!-- Configure the multipart resolver -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- one of the properties available; the maximum file size in bytes -->
+        <property name="maxUploadSize" value="100000"/>
+    </bean>	
 </beans>
