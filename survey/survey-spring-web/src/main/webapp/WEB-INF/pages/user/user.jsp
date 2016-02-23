@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<title><spring:message code="user"/></title>
 <link rel='stylesheet'
 	href='/survey-spring-web/webjars/bootstrap/3.3.6/css/bootstrap.min.css'></link>
 </head>
@@ -11,6 +12,9 @@
 	<script type="text/javascript"
 		src="/survey-spring-web/webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<!-- <script type="text/javascript" src="webjars/jquery/2.1.1/jquery.min.js"></script> -->
+
+    <c:import url="/WEB-INF/pages/common/menu.jsp"></c:import>
+    
 	<form:form class="form-horizontal" action="save"
 		modelAttribute="user" method="post">
 			<input name="id" type="hidden" value="${user.id}"/>
@@ -55,7 +59,7 @@
 			<div class="form-group">
 				<label class="col-md-4 control-label" for=""></label>
 				<div class="col-md-4">
-					<button id="" name="" class="btn btn-primary"><spring:message code="update"/></button>
+					<button id="submit" name="" class="btn btn-primary"><spring:message code="update"/></button>
 				</div>
 			</div>
 <!-- 		</fieldset> -->

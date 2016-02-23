@@ -33,8 +33,8 @@ public class DatabaseInitializer {
         log.debug("DatabaseInitializer.initialize");
         try {
             userService.create(new User("admin", "admin", "admin@test.com", Role.ROLE_ADMIN));
-            pollService.create(new Poll("poll"));
-            fileService.create(new File("file", "mimetype", "content".getBytes()));
+//            pollService.create(new Poll("poll"));
+//            fileService.create(new File("file", "mimetype", "content".getBytes()));
         } catch (Exception e) {
             log.warn(e.getLocalizedMessage());
         }

@@ -50,6 +50,7 @@
 		<ng-file-upload-version>9.0.8</ng-file-upload-version>
 		<jsf.version>2.2.8-04</jsf.version>
 		<tomcat.version>7.0.67</tomcat.version>
+		<phantomjs-version>1.9.7</phantomjs-version>
 	</properties>
 	<build>
 		<defaultGoal>install</defaultGoal>

@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<title><spring:message code="poll"/></title>
 <link rel='stylesheet'
 	href='/survey-spring-web/webjars/bootstrap/3.3.6/css/bootstrap.min.css'></link>
 </head>
@@ -11,6 +12,9 @@
 	<script type="text/javascript"
 		src="/survey-spring-web/webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<!-- <script type="text/javascript" src="webjars/jquery/2.1.1/jquery.min.js"></script> -->
+
+    <c:import url="/WEB-INF/pages/common/menu.jsp"></c:import>
+    
 	<form:form class="form-horizontal" action="save"
 		modelAttribute="poll" method="post">
 			<input name="id" type="hidden" value="${poll.id}"/>
@@ -21,7 +25,7 @@
 			<div class="form-group">
 				<label class="col-md-4 control-label" for="name"><spring:message code="pollName"/></label>
 				<div class="col-md-4">
-                    <form:input path="name" class="form-control input-md"/>
+                    <form:input id="pollName" path="name" class="form-control input-md"/>
 				</div>
 			</div>
 			<fieldset>
@@ -53,7 +57,7 @@
 			<div class="form-group">
 				<label class="col-md-4 control-label" for=""></label>
 				<div class="col-md-4">
-					<button id="" name="" class="btn btn-primary"><spring:message code="update"/></button>
+					<button id="savePoll" name="" class="btn btn-primary"><spring:message code="update"/></button>
 				</div>
 			</div>
 <!-- 		</fieldset> -->

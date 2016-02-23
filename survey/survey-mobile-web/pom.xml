@@ -8,9 +8,6 @@
 	</parent>
 	<artifactId>survey-mobile-web</artifactId>
 	<packaging>war</packaging>
-	<properties>
-		<phantomjs-version>1.9.7</phantomjs-version>
-	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.webjars</groupId>

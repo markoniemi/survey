@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<title><spring:message code="users"/></title>
 <link rel='stylesheet'
 	href='/survey-spring-web/webjars/bootstrap/3.3.6/css/bootstrap.min.css'></link>
 </head>
@@ -12,6 +13,8 @@
 		src="/survey-spring-web/webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<!-- <script type="text/javascript" src="webjars/jquery/2.1.1/jquery.min.js"></script> -->
 
+    <c:import url="/WEB-INF/pages/common/menu.jsp"></c:import>
+    
 	<table class="table table-striped">
 		<thead>
 			<tr>
@@ -23,13 +26,13 @@
 		<tbody>
 			<c:forEach items="${users}" var="user" varStatus="status">
 				<tr>
-					<td>${user.username}</td>
-					<td>${user.email}</td>
-					<td>${user.role}</td>
+					<td id="username">${user.username}</td>
+					<td id="email">${user.email}</td>
+					<td id="role"><spring:message code="${user.role}"/></td>
 					<td>
 						<form:form class="form-horizontal" method="POST"> 
-							<a class="btn btn-primary" href="/survey-spring-web/user/${user.username}">Edit</a>
-							<input class="btn btn-primary" type="submit" value="Delete" formaction="/survey-spring-web/user/delete/${user.username}"/>
+							<a id="edit" class="btn btn-primary" href="/survey-spring-web/user/${user.username}">Edit</a>
+							<input id="delete" class="btn btn-primary" type="submit" value="Delete" formaction="/survey-spring-web/user/delete/${user.username}"/>
 						</form:form>
 					</td>
 				</tr>
@@ -37,7 +40,7 @@
 		</tbody>
 	</table>
 	<form:form action="/survey-spring-web/user/new" method="GET">
-		<input class="btn btn-primary" type="submit" value="Add User" />
+		<input id="addUser" class="btn btn-primary" type="submit" value="<spring:message code="addUser"/>" />
 	</form:form>
 </body>
 </html>
