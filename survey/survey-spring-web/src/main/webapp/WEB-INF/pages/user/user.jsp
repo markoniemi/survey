@@ -50,16 +50,15 @@
                     <form:select id="role" name="role" path="role" class="form-control input-md">
                         <form:options items="${roles}" />
                     </form:select>
-<!-- 					<input id="role" name="role" type="text" -->
-<%-- 						class="form-control input-md" value="${user.role}"> --%>
-
 				</div>
 			</div>
 			<!-- Button -->
 			<div class="form-group">
 				<label class="col-md-4 control-label" for=""></label>
 				<div class="col-md-4">
-					<button id="submit" name="" class="btn btn-primary"><spring:message code="update"/></button>
+					<button id="submit" name="" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-ok" ></span>
+                    </button>
 				</div>
 			</div>
 <!-- 		</fieldset> -->

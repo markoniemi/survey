@@ -29,8 +29,10 @@
 <%--                    <td>${file.owner}</td> --%>
                     <td>
                         <form:form class="form-horizontal" method="POST"> 
-                            <a class="btn btn-primary" href="/survey-spring-web/file/${file.id}">Edit</a>
-                            <input class="btn btn-primary" type="submit" value="Delete" formaction="/survey-spring-web/file/delete/${file.id}"/>
+                            <a class="btn btn-primary" href="/survey-spring-web/file/${file.id}"><span class="glyphicon glyphicon-pencil" ></span></a>
+                            <button id="delete" class="btn btn-primary" type="submit" formaction="/survey-spring-web/file/delete/${file.id}">
+                            <span class="glyphicon glyphicon-remove" ></span>
+                            </button>
                         </form:form>
                     </td>
                 </tr>
@@ -38,7 +40,7 @@
         </tbody>
     </table>
     <form:form action="/survey-spring-web/file/new" method="GET">
-        <input class="btn btn-primary" type="submit" value="Add File" />
+        <input class="btn btn-primary" type="submit" value="<spring:message code="addFile" />" />
     </form:form>
 </body>
 </html>

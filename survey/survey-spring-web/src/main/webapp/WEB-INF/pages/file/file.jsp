@@ -15,7 +15,7 @@
     <c:import url="/WEB-INF/pages/common/menu.jsp"></c:import>
 
     <form method="POST" enctype="multipart/form-data" action="save">
-        File to upload: <input type="file" name="file" /> <input type="submit">
+        <spring:message code="fileToUpload" /> <input type="file" name="file" /> <input type="submit">
         <spring:message code="fileUpload" />
     </form>
 </body>

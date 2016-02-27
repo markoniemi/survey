@@ -9,7 +9,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Survey</a>
+        <a class="navbar-brand" href="#"><spring:message code="survey"/></a>
         </div>
         <div class="navbar-collapse collapse">  
           <ul class="nav navbar-nav">

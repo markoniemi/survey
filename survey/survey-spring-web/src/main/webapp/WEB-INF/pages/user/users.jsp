@@ -31,8 +31,10 @@
 					<td id="role"><spring:message code="${user.role}"/></td>
 					<td>
 						<form:form class="form-horizontal" method="POST"> 
-							<a id="edit" class="btn btn-primary" href="/survey-spring-web/user/${user.username}">Edit</a>
-							<input id="delete" class="btn btn-primary" type="submit" value="Delete" formaction="/survey-spring-web/user/delete/${user.username}"/>
+							<a id="edit" class="btn btn-primary" href="/survey-spring-web/user/${user.username}"><span class="glyphicon glyphicon-pencil" ></span></a>
+							<button id="delete" class="btn btn-primary" type="submit" formaction="/survey-spring-web/user/delete/${user.username}">
+                            <span class="glyphicon glyphicon-remove" ></span>
+                            </button>
 						</form:form>
 					</td>
 				</tr>

@@ -57,7 +57,9 @@
 			<div class="form-group">
 				<label class="col-md-4 control-label" for=""></label>
 				<div class="col-md-4">
-					<button id="savePoll" name="" class="btn btn-primary"><spring:message code="update"/></button>
+					<button id="savePoll" name="" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-ok" ></span>
+                    </button>
 				</div>
 			</div>
 <!-- 		</fieldset> -->
