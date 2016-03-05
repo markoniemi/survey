@@ -14,5 +14,5 @@
     <bean id="userRepository" class="org.survey.repository.user.UserRepositoryStub" />
     <bean id="fileRepository" class="org.survey.repository.file.FileRepositoryStub" />
     <bean id="pollRepository" class="org.survey.repository.poll.PollRepositoryStub" />
-    <bean id="questionRepository" class="org.survey.repository.poll.QuestionRepositoryStub" />
+<!--     <bean id="questionRepository" class="org.survey.repository.poll.QuestionRepositoryStub" /> -->
 </beans>

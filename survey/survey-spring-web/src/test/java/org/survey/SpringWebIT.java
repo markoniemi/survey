@@ -7,12 +7,12 @@ import javax.annotation.Resource;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriverService;
@@ -25,9 +25,17 @@ import org.survey.service.user.UserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:spring-config-test.xml")
-public class MobileWebIT {
+public class SpringWebIT {
     private static final int SLEEP_TIME = 1000;
-    private WebDriver browser;
+//    DesiredCapabilities capabilities;
+//    {
+//        String phantomJsPath = System.getProperty(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,
+//                "c:/apps/phantomjs-2.0.0-windows/bin/phantomjs.exe");
+//        capabilities = new DesiredCapabilities();
+//        capabilities.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, phantomJsPath);
+//    }
+//    private PhantomJSDriver browser = new PhantomJSDriver(capabilities);
+    private PhantomJSDriver browser;
     private String httpPort;
     private String httpProtocol;
     private String serverURL;
@@ -36,6 +44,8 @@ public class MobileWebIT {
     protected UserService userService;
     @Resource
     protected PollService pollService;
+//    @Rule
+//    public SeleniumTestRule screenshotTestRule = new SeleniumTestRule(browser);
 
     @Before
     public void setUp() {
@@ -52,6 +62,7 @@ public class MobileWebIT {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, phantomJsPath);
         browser = new PhantomJSDriver(capabilities);
+//        screenshotTestRule.setBrowser(browser);
         // increase size to make navigation visible
         browser.manage().window().setSize(new Dimension(800, 600));
     }
@@ -100,7 +111,7 @@ public class MobileWebIT {
 //        checkVersion();
          addPoll("poll");
          editPoll("poll");
-//         addQuestion("question1");
+         addQuestion("question1");
         deletePoll("poll");
         logout();
     }
@@ -176,7 +187,7 @@ public class MobileWebIT {
 
     protected void deleteUser(String username) throws InterruptedException {
         WebElement button = browser.findElement(By.xpath("//tr[td='" + username
-                + "']//input[@id='delete']"));
+                + "']//button[@id='delete']"));
         Assert.assertNotNull(browser.getPageSource(), button);
         button.click();
         Thread.sleep(SLEEP_TIME);
@@ -186,7 +197,7 @@ public class MobileWebIT {
 
     protected void assertNoDeleteOrAdd() {
         try {
-            browser.findElement(By.xpath("//tr//input[@value='Delete']"));
+            browser.findElement(By.xpath("//tr//button[@id='delete']"));
             Assert.fail();
         } catch (NoSuchElementException e) {
             // expected
@@ -239,9 +250,9 @@ public class MobileWebIT {
         Assert.assertEquals(browser.getPageSource(), "Poll",
                 browser.getTitle());
         // TODO remove when addQuestion works
-        browser.findElement(By.id("savePoll")).click();
-        Assert.assertEquals(browser.getPageSource(), "Polls",
-                browser.getTitle());
+//        browser.findElement(By.id("savePoll")).click();
+//        Assert.assertEquals(browser.getPageSource(), "Polls",
+//                browser.getTitle());
     }
 
     private void addQuestion(String questionText) {
@@ -257,7 +268,7 @@ public class MobileWebIT {
 
     protected void deletePoll(String pollName) throws InterruptedException {
         WebElement button = browser.findElement(By.xpath("//tr[td='" + pollName
-                + "']//input[@id='delete']"));
+                + "']//button[@id='delete']"));
         Assert.assertNotNull(browser.getPageSource(), button);
         button.click();
         Thread.sleep(SLEEP_TIME);

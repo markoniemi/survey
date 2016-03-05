@@ -71,7 +71,9 @@ public class PollController {
             if (poll.getQuestions() == null) {
                 poll.setQuestions(new ArrayList<Question>());
             }
-            poll.getQuestions().add(new Question());
+            Question question = new Question();
+            question.setPoll(poll);
+            poll.getQuestions().add(question);
         }
         ModelAndView model = new ModelAndView();
         model.setViewName("poll/poll");

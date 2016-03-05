@@ -65,7 +65,7 @@ public class Poll {
      */
     @OneToMany(fetch = FetchType.EAGER, 
             mappedBy = "poll", 
-//            orphanRemoval=true, 
+            orphanRemoval=true, 
             cascade = {
      CascadeType.ALL,
 //     CascadeType.PERSIST,
@@ -76,7 +76,7 @@ public class Poll {
     })
 //     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
 //     @Cascade({org.hibernate.annotations.CascadeType.ALL})
-    @OnDelete(action = OnDeleteAction.CASCADE)
+//    @OnDelete(action = OnDeleteAction.CASCADE)
 //    @XmlTransient
     // TODO init questions
     private List<Question> questions;
