@@ -23,8 +23,6 @@ public class PollServiceImpl implements PollService {
     private UserRepository userRepository;
     @Resource
     private PollRepository pollRepository;
-//    @Resource
-//    private QuestionRepository questionRepository;
     private static final Poll[] EMPTY_POLL_ARRAY = new Poll[0];
 
     @Override
@@ -66,8 +64,6 @@ public class PollServiceImpl implements PollService {
             for (Question question : poll.getQuestions()) {
                 question.setPoll(poll);
             }
-//            Iterable<Question> savedQuestions = questionRepository.save(poll.getQuestions());
-//            poll.setQuestions(IteratorUtils.toList(savedQuestions.iterator()));
         }
         Poll savedPoll = pollRepository.save(poll);
         return savedPoll;
@@ -92,8 +88,6 @@ public class PollServiceImpl implements PollService {
         }
         poll.getQuestions().clear();
         pollRepository.save(poll);
-//        List<Question> questions = questionRepository.findAllByPoll(poll);
-//        questionRepository.delete(questions);
         pollRepository.delete(poll.getId());
     }
 

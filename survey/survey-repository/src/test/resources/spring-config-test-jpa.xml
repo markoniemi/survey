@@ -15,5 +15,4 @@
 	<jpa:repositories base-package="org.survey.repository.user" />
 	<jpa:repositories base-package="org.survey.repository.file" />
 	<jpa:repositories base-package="org.survey.repository.poll" />
-	<jpa:repositories base-package="org.survey.question.repository" />
 </beans>
