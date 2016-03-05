@@ -11,6 +11,7 @@
 		<f:view>
 			<h:form id="addPoll">
 				<p:panel header="${messages.addPoll}" style="width: 700px">
+                    <h:inputHidden value="#{editPollBean.poll.id}"/>
 					<h:panelGrid columns="2">
 						<h:outputText value="#{messages.pollName}" styleClass="required" />
 						<h:inputText id="pollName" value="#{editPollBean.poll.name}" />
@@ -18,6 +19,7 @@
 					<hr />
 					<ui:repeat id="questions" value="#{editPollBean.poll.questions}"
 						varStatus="status" var="question">
+                        <h:inputHidden value="#{editPollBean.poll.questions[status.index].id}"/>
 						<h:panelGrid columns="4">
 							<h:outputText value="#{messages.questionType}" />
 							<h:selectOneMenu id="questionType"

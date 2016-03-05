@@ -21,6 +21,7 @@
 		<module>survey-mobile-web</module>
 		<module>survey-backend</module>
 		<module>survey-spring-web</module>
+<!-- 		<module>selenium-test-rule</module> -->
 	</modules>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -505,7 +506,7 @@
 			<dependency>
 				<groupId>org.apache.commons</groupId>
 				<artifactId>commons-lang3</artifactId>
-				<version>3.3.2</version>
+				<version>3.4</version>
 			</dependency>
 			<dependency>
 				<groupId>commons-io</groupId>

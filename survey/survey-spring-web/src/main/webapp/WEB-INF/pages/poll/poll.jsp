@@ -34,7 +34,7 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="text"><spring:message code="questionText"/></label>
 					<div class="col-md-4">
-	                    <form:input path="questions[${status.index}].text" class="form-control input-md"/>
+	                    <form:input id="questionText" path="questions[${status.index}].text" class="form-control input-md"/>
 					</div>
 				</div>
 				<div class="form-group">
@@ -49,7 +49,7 @@
 			<div class="form-group">
 				<label class="col-md-4 control-label" for=""></label>
 				<div class="col-md-4">
-					<button formaction="/survey-spring-web/poll/addQuestion" id="" name="" class="btn btn-primary"><spring:message code="addQuestion"/></button>
+					<button id="addQuestion" name="" formaction="/survey-spring-web/poll/addQuestion" class="btn btn-primary"><spring:message code="addQuestion"/></button>
 				</div>
 			</div>
 			</fieldset>

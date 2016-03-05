@@ -1,18 +1,14 @@
 package org.survey.service.poll;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 import javax.jws.WebService;
 
 import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.collections.IteratorUtils;
 import org.apache.commons.lang3.Validate;
 import org.survey.model.poll.Poll;
 import org.survey.model.poll.Question;
 import org.survey.model.user.User;
 import org.survey.repository.poll.PollRepository;
-import org.survey.repository.poll.QuestionRepository;
 import org.survey.repository.user.UserRepository;
 
 import com.google.common.collect.Iterables;
@@ -27,8 +23,8 @@ public class PollServiceImpl implements PollService {
     private UserRepository userRepository;
     @Resource
     private PollRepository pollRepository;
-    @Resource
-    private QuestionRepository questionRepository;
+//    @Resource
+//    private QuestionRepository questionRepository;
     private static final Poll[] EMPTY_POLL_ARRAY = new Poll[0];
 
     @Override
@@ -66,14 +62,14 @@ public class PollServiceImpl implements PollService {
     @SuppressWarnings("unchecked")
     @Override
     public Poll update(Poll poll) {
-        Poll savedPoll = pollRepository.save(poll);
         if (CollectionUtils.isNotEmpty(poll.getQuestions())) {
             for (Question question : poll.getQuestions()) {
-                question.setPoll(savedPoll);
+                question.setPoll(poll);
             }
-            Iterable<Question> savedQuestions = questionRepository.save(poll.getQuestions());
-            poll.setQuestions(IteratorUtils.toList(savedQuestions.iterator()));
+//            Iterable<Question> savedQuestions = questionRepository.save(poll.getQuestions());
+//            poll.setQuestions(IteratorUtils.toList(savedQuestions.iterator()));
         }
+        Poll savedPoll = pollRepository.save(poll);
         return savedPoll;
     }
 
@@ -94,8 +90,10 @@ public class PollServiceImpl implements PollService {
         if (poll == null) {
             return;
         }
-        List<Question> questions = questionRepository.findAllByPoll(poll);
-        questionRepository.delete(questions);
+        poll.getQuestions().clear();
+        pollRepository.save(poll);
+//        List<Question> questions = questionRepository.findAllByPoll(poll);
+//        questionRepository.delete(questions);
         pollRepository.delete(poll.getId());
     }
 
