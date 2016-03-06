@@ -92,7 +92,6 @@
 		<dependency>
 			<groupId>com.github.detro</groupId>
 			<artifactId>phantomjsdriver</artifactId>
-			<version>1.2.0</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>

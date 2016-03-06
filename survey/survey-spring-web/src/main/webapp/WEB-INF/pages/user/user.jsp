@@ -9,9 +9,9 @@
 	href='/survey-spring-web/webjars/bootstrap/3.3.6/css/bootstrap.min.css'></link>
 </head>
 <body>
-	<script type="text/javascript"
-		src="/survey-spring-web/webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	<!-- <script type="text/javascript" src="webjars/jquery/2.1.1/jquery.min.js"></script> -->
+	<script type="text/javascript" src="/survey-spring-web/webjars/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript"
+        src="/survey-spring-web/webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
     <c:import url="/WEB-INF/pages/common/menu.jsp"></c:import>
     

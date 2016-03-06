@@ -50,6 +50,8 @@
 		<angular-translate.version>2.4.2</angular-translate.version>
 		<ng-file-upload-version>9.0.8</ng-file-upload-version>
 		<jsf.version>2.2.8-04</jsf.version>
+		<bootstrap-version>3.3.6</bootstrap-version>
+		<jquery-version>2.1.1</jquery-version>
 		<tomcat.version>7.0.67</tomcat.version>
 		<phantomjs-version>1.9.7</phantomjs-version>
 	</properties>
@@ -449,12 +451,17 @@
 				<artifactId>spring-web</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
-        <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-web-api</artifactId>
-            <version>6.0</version>
-            <scope>provided</scope>
-        </dependency>			
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>jstl</artifactId>
+				<version>1.2</version>
+			</dependency>
+	        <dependency>
+	            <groupId>javax</groupId>
+	            <artifactId>javaee-web-api</artifactId>
+	            <version>6.0</version>
+	            <scope>provided</scope>
+	        </dependency>			
 			<!-- JSF -->
 			<dependency>
 				<groupId>com.sun.faces</groupId>
@@ -518,6 +525,23 @@
 				<artifactId>commons-collections</artifactId>
 				<version>3.2.1</version>
 			</dependency>
+			<!-- file upload support -->
+			<dependency>
+				<groupId>commons-fileupload</groupId>
+				<artifactId>commons-fileupload</artifactId>
+				<version>1.2.1</version>
+			</dependency>
+			<!-- Bootstrap -->
+			<dependency>
+				<groupId>org.webjars</groupId>
+				<artifactId>bootstrap</artifactId>
+				<version>3.3.6</version>
+			</dependency>
+			<dependency>
+				<groupId>org.webjars</groupId>
+				<artifactId>jquery</artifactId>
+				<version>2.1.1</version>
+			</dependency>			
 			<dependency>
 				<groupId>org.apache.logging.log4j</groupId>
 				<artifactId>log4j-web</artifactId>
@@ -584,6 +608,12 @@
 				<groupId>org.seleniumhq.selenium</groupId>
 				<artifactId>selenium-java</artifactId>
 				<version>${selenium.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.github.detro</groupId>
+				<artifactId>phantomjsdriver</artifactId>
+				<version>1.2.0</version>
 				<scope>test</scope>
 			</dependency>
 			<dependency>
