@@ -11,19 +11,23 @@ import org.apache.commons.collections.IteratorUtils;
 import org.dbunit.DatabaseUnitException;
 import org.junit.After;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
 public abstract class CrudRepositoryTest<T, ID extends Serializable> {
     protected static int ENTITY_COUNT = 5;
     protected List<T> orginalEntities = new ArrayList<T>();;
     protected List<T> savedEntities = new ArrayList<T>();;
-    protected CrudRepository<T, ID> entityRepository;
+    protected PagingAndSortingRepository<T, ID> entityRepository;
     protected EntityFactory<T, ID> entityFactory;
     protected EntityComparator<T, ID> entityComparator;
 
-    public abstract CrudRepository<T, ID> getEntityRepository();
+    public abstract PagingAndSortingRepository<T, ID> getEntityRepository();
 
     @After
     public void tearDown() throws DatabaseUnitException, SQLException {
@@ -78,6 +82,24 @@ public abstract class CrudRepositoryTest<T, ID extends Serializable> {
         save();
         @SuppressWarnings("unchecked")
         List<T> entities = IteratorUtils.toList(getEntityRepository().findAll().iterator());
+        Assert.assertEquals(ENTITY_COUNT, entities.size());
+    }
+    @Ignore
+    @Test
+    public void findAllWithSort() {
+        save();
+        // how to get property names
+        Sort sort = new Sort("property");
+        @SuppressWarnings("unchecked")
+        List<T> entities = IteratorUtils.toList(getEntityRepository().findAll(sort).iterator());
+        Assert.assertEquals(ENTITY_COUNT, entities.size());
+    }
+    @Test
+    public void findAllWithPageable() {
+        save();
+        PageRequest pageRequest = new PageRequest(0, ENTITY_COUNT);
+        @SuppressWarnings("unchecked")
+        List<T> entities = IteratorUtils.toList(getEntityRepository().findAll(pageRequest).iterator());
         Assert.assertEquals(ENTITY_COUNT, entities.size());
     }
 

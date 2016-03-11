@@ -1,7 +1,9 @@
 package org.survey.repository;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.GeneratedValue;
@@ -9,9 +11,15 @@ import javax.persistence.Id;
 
 import org.apache.commons.collections.IteratorUtils;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
-public class CrudRepositoryStub<T, ID extends Serializable> implements CrudRepository<T, ID> {
+import com.google.common.collect.Lists;
+
+public class CrudRepositoryStub<T, ID extends Serializable> implements PagingAndSortingRepository<T, ID> {
     protected Set<T> entities = new HashSet<T>();
     protected Long generatedId = Long.valueOf(1);
 
@@ -117,5 +125,15 @@ public class CrudRepositoryStub<T, ID extends Serializable> implements CrudRepos
     void generateId(T entity) {
         BeanHelper.setValueOfAnnotatedField(entity, GeneratedValue.class, (ID) generatedId);
         generatedId++;
+    }
+
+    @Override
+    public Iterable<T> findAll(Sort sort) {
+        return findAll();
+    }
+
+    @Override
+    public Page<T> findAll(Pageable pageable) {
+        return new PageImpl<T>(Lists.newArrayList(findAll()));
     }
 }
