@@ -53,8 +53,8 @@ public interface FileService {
      */
     @GET
     @Path("/downloadFile")
-    @Produces("application/pdf")
-    public Response downloadFile();
+//    @Produces("application/pdf")
+    public Response downloadFile(Long id);
     
     /**
      * @see http://www.javatips.net/blog/2013/05/cxf-rest-file-upload?page=2

@@ -25,7 +25,7 @@
         <tbody>
             <c:forEach items="${files}" var="file" varStatus="status">
                 <tr>
-                    <td>${file.filename}</td>
+                    <td><a href="${file.id}">${file.filename}</a></td>
 <%--                    <td>${file.owner}</td> --%>
                     <td>
                         <form:form class="form-horizontal" method="POST"> 

@@ -1,9 +1,7 @@
 package org.survey.service.file;
 
 import java.io.ByteArrayOutputStream;
-import java.io.FileOutputStream;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.List;
 
 import javax.activation.DataHandler;
@@ -11,14 +9,10 @@ import javax.annotation.Resource;
 import javax.jws.WebParam;
 import javax.jws.WebService;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.Part;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
-
-import lombok.extern.log4j.Log4j2;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.cxf.helpers.IOUtils;
@@ -27,6 +21,8 @@ import org.survey.model.file.File;
 import org.survey.repository.file.FileRepository;
 
 import com.google.common.collect.Iterables;
+
+import lombok.extern.log4j.Log4j2;
 
 @WebService(endpointInterface = "org.survey.service.file.FileService", serviceName = "fileService")
 @Log4j2
@@ -63,10 +59,11 @@ public class FileServiceImpl implements FileService {
     // @GET
     // @Path("/downloadFile")
     // @Produces("application/pdf")
-    public Response downloadFile() {
-        java.io.File file = new java.io.File("test.pdf");
-        ResponseBuilder response = Response.ok((Object) file);
-        response.header("Content-Disposition", "attachment; filename=test.pdf");
+    public Response downloadFile(Long id) {
+        File file = fileRepository.findOne(id);
+//        java.io.File file = new java.io.File("test.pdf");
+        ResponseBuilder response = Response.ok((Object) file, file.getMimeType());
+        response.header("Content-Disposition", "attachment; filename="+file.getFilename());
         return response.build();
     }
 

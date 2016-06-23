@@ -14,7 +14,6 @@ import lombok.Setter;
 public class FilesController {
     @Getter
     @Setter
-    // @Resource
     @Autowired
     private FileService fileService;
 
