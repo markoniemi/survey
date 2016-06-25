@@ -44,5 +44,6 @@
 	<form:form action="/survey-spring-web/user/new" method="GET">
 		<input id="addUser" class="btn btn-primary" type="submit" value="<spring:message code="addUser"/>" />
 	</form:form>
+	<c:import url="/WEB-INF/pages/common/footer.jsp"></c:import>
 </body>
 </html>

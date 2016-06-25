@@ -19,14 +19,14 @@
         <thead>
             <tr>
                 <th><spring:message code="filename" /></th>
-<%--                <th><spring:message code="owner" /></th> --%>
+               <th><spring:message code="owner" /></th>
             </tr>
         </thead>
         <tbody>
             <c:forEach items="${files}" var="file" varStatus="status">
                 <tr>
                     <td><a href="${file.id}">${file.filename}</a></td>
-<%--                    <td>${file.owner}</td> --%>
+                   <td>${file.owner.username}</td>
                     <td>
                         <form:form class="form-horizontal" method="POST"> 
                             <a class="btn btn-primary" href="/survey-spring-web/file/${file.id}"><span class="glyphicon glyphicon-pencil" ></span></a>

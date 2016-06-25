@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.survey.model.file.File;
+import org.survey.security.SecurityUtil;
 import org.survey.service.file.FileService;
+import org.survey.service.user.UserService;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -24,6 +26,8 @@ import lombok.extern.log4j.Log4j2;
 public class FileController {
     @Autowired
     private FileService fileService;
+    @Autowired
+    private UserService userService;
 
     @RequestMapping(value = "/file/save", method = RequestMethod.POST)
     public String handleFileUpload(@RequestParam("file") MultipartFile file) throws IOException {
@@ -80,8 +84,7 @@ public class FileController {
         file.setFilename(filename);
         file.setMimeType(uploadedFile.getContentType());
         file.setContent(fileContent);
-        // TODO get owner
-        // file.setOwner(getUser());
+         file.setOwner(userService.findOne(SecurityUtil.getUsername()));
         file.setCreateTime(System.currentTimeMillis());
         file.setSize(uploadedFile.getSize());
         // TODO change files rest to files/:user/:filename

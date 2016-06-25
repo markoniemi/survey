@@ -2,6 +2,7 @@ package org.survey.bean;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
@@ -17,9 +18,9 @@ public class UserBean {
     public String getRole() {
         Authentication authentication = SecurityContextHolder.getContext()
                 .getAuthentication();
-        if (authentication.getAuthorities().iterator().hasNext()) {
-            return authentication.getAuthorities().iterator().next().toString();
-        }
+        for (GrantedAuthority grantedAuthority : authentication.getAuthorities()) {
+			return grantedAuthority.getAuthority();
+		}
         return null;
     }
 }
