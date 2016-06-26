@@ -15,14 +15,7 @@
         http://www.springframework.org/schema/util/spring-util-3.0.xsd 
         http://www.springframework.org/schema/data/jpa 
         http://www.springframework.org/schema/data/jpa/spring-jpa-1.0.xsd">
-<!--     <import resource="classpath:spring-config-service.xml"/> -->
-<!--     <import resource="classpath:spring-security.xml"/> -->
-<!-- 	<context:component-scan base-package="org.survey" /> -->
-<!-- 	<context:annotation-config /> -->
-<!-- 	<bean id="databaseInitializer" class="org.survey.DatabaseInitializer" /> -->
-
 	<context:component-scan base-package="org.survey" />
-
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass"
@@ -30,14 +23,10 @@
 		<property name="prefix" value="/WEB-INF/pages/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-
-	<!-- <mvc:resources mapping="/resources/**" location="/resources/" /> -->
+	<mvc:resources mapping="/resources/**" location="/WEB-INF/resources/" />
 	<mvc:resources mapping="/webjars/**"
 		location="classpath:/META-INF/resources/webjars/" />
-
-<!-- 	<context:annotation-config /> -->
 	<mvc:annotation-driven />
-
 	<bean id="messageSource"
 		class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basenames">
