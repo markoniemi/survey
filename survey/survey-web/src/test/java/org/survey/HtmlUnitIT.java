@@ -29,6 +29,7 @@ import com.gargoylesoftware.htmlunit.html.HtmlSelect;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:spring-config-test.xml")
+@SuppressWarnings("squid:S2925")
 public class HtmlUnitIT {
     private String httpPort;
     private String httpProtocol;

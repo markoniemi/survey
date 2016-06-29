@@ -45,7 +45,7 @@ public class VersionBean {
             createdBy = attributes.getValue(CREATED_BY);
             builtBy = attributes.getValue(BUILT_BY);
         } catch (NullPointerException | IOException e ) {
-//            log.error("Unable to read the Manifest file from classpath.", e);
+            log.error("Unable to read the Manifest file from classpath.", e);
         }
     }
 

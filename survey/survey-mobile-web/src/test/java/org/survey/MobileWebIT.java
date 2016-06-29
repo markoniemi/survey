@@ -25,6 +25,7 @@ import org.survey.service.user.UserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:spring-config-rest-service-test.xml")
+@SuppressWarnings("squid:S2925")
 public class MobileWebIT {
     private static final int SLEEP_TIME = 1000;
     private WebDriver browser;

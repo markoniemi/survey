@@ -95,7 +95,7 @@ public class FileServiceImpl implements FileService {
                     }
                 }
             } catch (Exception e) {
-                e.printStackTrace();
+                log.error(e);
             }
         }
 //        return Response.ok("file uploaded").build();

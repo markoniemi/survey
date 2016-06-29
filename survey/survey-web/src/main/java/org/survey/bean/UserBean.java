@@ -10,17 +10,15 @@ import org.springframework.stereotype.Component;
 @Scope("request")
 public class UserBean {
     public String getUsername() {
-        Authentication authentication = SecurityContextHolder.getContext()
-                .getAuthentication();
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         return authentication.getName();
     }
 
     public String getRole() {
-        Authentication authentication = SecurityContextHolder.getContext()
-                .getAuthentication();
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         for (GrantedAuthority grantedAuthority : authentication.getAuthorities()) {
-			return grantedAuthority.getAuthority();
-		}
+            return grantedAuthority.getAuthority();
+        }
         return null;
     }
 }

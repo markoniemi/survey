@@ -25,6 +25,7 @@ import org.survey.service.user.UserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:spring-config-test.xml")
+@SuppressWarnings("squid:S2925")
 public class SpringWebIT {
     private static final int SLEEP_TIME = 1000;
 //    DesiredCapabilities capabilities;

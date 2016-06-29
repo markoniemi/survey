@@ -1,15 +1,10 @@
 package org.survey;
 
-import javax.activation.MimeType;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 
-import org.survey.model.file.File;
-import org.survey.model.poll.Poll;
 import org.survey.model.user.Role;
 import org.survey.model.user.User;
-import org.survey.service.file.FileService;
-import org.survey.service.poll.PollService;
 import org.survey.service.user.UserService;
 
 import lombok.Setter;
@@ -20,23 +15,15 @@ public class DatabaseInitializer {
 
     @Setter
     @Resource(name="userServiceBean")
-    private transient UserService userService;
-    @Setter
-    @Resource(name="pollServiceBean")
-    private transient PollService pollService;
-    @Setter
-    @Resource(name="fileServiceBean")
-    private transient FileService fileService;
+    private UserService userService;
 
     @PostConstruct
     public void initialize() {
         log.debug("DatabaseInitializer.initialize");
         try {
             userService.create(new User("admin", "admin", "admin@test.com", Role.ROLE_ADMIN));
-//            pollService.create(new Poll("poll"));
-//            fileService.create(new File("file", "mimetype", "content".getBytes()));
         } catch (Exception e) {
-            log.warn(e.getLocalizedMessage());
+            log.error(e);
         }
     }
 }

@@ -2,14 +2,9 @@ package org.survey.bean;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.Serializable;
 
 import javax.annotation.Resource;
 import javax.servlet.http.Part;
-
-import lombok.Getter;
-import lombok.Setter;
-import lombok.extern.log4j.Log4j2;
 
 import org.apache.commons.io.IOUtils;
 import org.springframework.context.annotation.Scope;
@@ -20,6 +15,10 @@ import org.survey.model.user.User;
 import org.survey.service.file.FileService;
 import org.survey.service.user.UserService;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.log4j.Log4j2;
+
 /**
  * FileUpload uses JSF 2.2 h:inputFile component.
  */
@@ -27,8 +26,7 @@ import org.survey.service.user.UserService;
 @Component
 @Scope("request")
 @SuppressWarnings("PMD.UnusedPrivateField")
-public class FileUploadBean implements Serializable {
-    private static final long serialVersionUID = -6189250297119147559L;
+public class FileUploadBean {
     @Getter
     private String acceptedTypes = "jpg, gif, png, bmp";
     @Setter
@@ -47,9 +45,6 @@ public class FileUploadBean implements Serializable {
     public String addFile() {
         return "editFile";
     }
-//    public void fileSelected() {
-//        filename = getFilename(file);
-//    }
     protected String getFilename(Part file) {
         String disposition = file.getHeader("content-disposition");
         log.debug(disposition);

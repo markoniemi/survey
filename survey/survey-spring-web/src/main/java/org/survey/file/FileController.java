@@ -71,8 +71,8 @@ public class FileController {
             // URLConnection.guessContentTypeFromName(file.getFilename());
             response.setContentType("application/octet-stream");
             response.flushBuffer();
-        } catch (IOException ex) {
-            throw new RuntimeException("IOError writing file to output stream");
+        } catch (IOException e) {
+            throw new RuntimeException("IOError writing file to output stream", e);
         }
     }
 
