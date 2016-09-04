@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:um="http://java.sun.com/jsf/composite/components/um">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+<title>${messages.register}</title>
+	<h:outputStylesheet name="style.css" library="css" />
+</h:head>
+<h:body>
+<f:view>
+	<h:form id="register">
+		<p:panel header="#{messages.register}" style="width: 500px">
+			<um:user id="editUser" user="#{editUserBean.user}" repeatPassword="#{editUserBean.repeatedPassword}" isRoleEditable="false" />
+				<h:commandButton action="#{editUserBean.saveUser}"
+					value="#{messages.register}" id="registerButton" />
+		</p:panel>
+	</h:form>
+</f:view>
+</h:body>
+</html>

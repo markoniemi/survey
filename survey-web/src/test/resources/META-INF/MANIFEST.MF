@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Built-By: Marko Niemi
+Build-Jdk: 1.6.0_25
+Specification-Title: survey-web
+Specification-Version: 1.1-SNAPSHOT
+Implementation-Title: survey-web
+Implementation-Version: 1.1-SNAPSHOT
+Implementation-Vendor-Id: org.survey
+Created-By: Maven Integration for Eclipse
+Implementation-Build: 
+

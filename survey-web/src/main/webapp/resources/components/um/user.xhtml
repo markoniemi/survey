@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:composite="http://java.sun.com/jsf/composite">
+
+<!-- INTERFACE -->
+<composite:interface>
+	<composite:attribute name="user" type="org.survey.model.user.User"
+		required="true" />
+	<composite:attribute name="repeatPassword" required="true" />
+	<composite:attribute name="roles" required="false" />
+	<composite:attribute name="isUsernameEditable" required="false"
+		default="true" />
+	<composite:attribute name="isRoleEditable" required="false"
+		default="true" />
+</composite:interface>
+
+<!-- IMPLEMENTATION -->
+<composite:implementation>
+	<h:panelGrid columns="2">
+		<h:outputText value="#{messages.username}" styleClass="required"
+			rendered="#{cc.attrs.isUsernameEditable}" />
+		<h:outputText value="#{messages.username}"
+			rendered="#{!cc.attrs.isUsernameEditable}" />
+		<h:inputText id="username" value="#{cc.attrs.user.username}"
+			disabled="#{!cc.attrs.isUsernameEditable}" />
+		<h:outputText value="#{messages.email}" styleClass="required" />
+		<h:inputText id="email" value="#{cc.attrs.user.email}">
+			<f:validator validatorId="emailValidator" />
+			<f:ajax immediate="true" render="errorMessages" />
+		</h:inputText>
+		<h:outputText value="#{messages.password}" styleClass="required" />
+		<h:inputSecret id="password" value="#{cc.attrs.user.password}" required="true"/>
+		<h:outputText value="#{messages.password}" styleClass="required" />
+		<h:inputSecret id="repeatPassword" value="#{cc.attrs.repeatPassword}" required="true"/>
+		<h:outputText value="#{messages.role}" styleClass="required"
+			rendered="#{cc.attrs.isRoleEditable}" />
+		<h:selectOneMenu id="role" value="#{cc.attrs.user.role}"
+			rendered="#{cc.attrs.isRoleEditable}">
+			<f:selectItems value="#{cc.attrs.roles}" var="role"
+				itemLabel="#{messages[role]}" itemValue="#{role}" />
+		</h:selectOneMenu>
+	</h:panelGrid>
+	<!-- Hidden field is a workaround for disabled inputText field, which returns null to bean -->
+	<h:inputHidden value="#{editUserBean.user.username}"
+		rendered="#{!cc.attrs.isUsernameEditable}" />
+	<h:messages id="errorMessages" />
+</composite:implementation>
+</html>

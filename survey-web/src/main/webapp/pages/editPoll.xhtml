@@ -1,0 +1,51 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:um="http://java.sun.com/jsf/composite/components/um"
+	template="../templates/masterLayout.xhtml">
+	<ui:define name="title">${messages.addPoll}</ui:define>
+	<ui:define name="content">
+		<f:view>
+			<h:form id="addPoll">
+				<p:panel header="${messages.addPoll}" style="width: 700px">
+                    <h:inputHidden value="#{editPollBean.poll.id}"/>
+					<h:panelGrid columns="2">
+						<h:outputText value="#{messages.pollName}" styleClass="required" />
+						<h:inputText id="pollName" value="#{editPollBean.poll.name}" />
+					</h:panelGrid>
+					<hr />
+					<ui:repeat id="questions" value="#{editPollBean.poll.questions}"
+						varStatus="status" var="question">
+                        <h:inputHidden value="#{editPollBean.poll.questions[status.index].id}"/>
+						<h:panelGrid columns="4">
+							<h:outputText value="#{messages.questionType}" />
+							<h:selectOneMenu id="questionType"
+								value="#{editPollBean.poll.questions[status.index].type}">
+								<f:ajax listener="#{editPollBean.questionTypeChanged(status.index)}" render="@all"/>
+								<f:selectItems value="#{editPollBean.questionTypes}" var="type"
+									itemLabel="#{messages[type]}" itemValue="#{type}" />
+							</h:selectOneMenu>
+							<h:outputText value="#{messages.questionText}"
+								styleClass="required" />
+							<h:inputText id="questionText"
+								value="#{editPollBean.poll.questions[status.index].text}" />
+						</h:panelGrid>
+					</ui:repeat>
+					<br />
+					<h:commandButton id="addQuestion"
+						action="#{editPollBean.addQuestion}"
+						value="#{messages.addQuestion}" />
+					<hr />
+					<h:commandButton id="cancel" action="#{editPollBean.cancel}"
+						value="#{messages.cancel}" />
+					<h:commandButton id="savePoll" action="#{editPollBean.savePoll}"
+						value="#{messages.savePoll}" />
+					<h:messages id="errorMessages" />
+				</p:panel>
+			</h:form>
+		</f:view>
+	</ui:define>
+</ui:composition>

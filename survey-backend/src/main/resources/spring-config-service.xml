@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+	xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+    http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
+	http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd">
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+	<!-- Spring managed ServiceBeans -->
+	<!-- bean ids must not clash with jaxws bean ids -->
+	<bean id="userServiceBean" class="org.survey.service.user.UserServiceImpl" />
+	<bean id="fileServiceBean" class="org.survey.service.file.FileServiceImpl" />
+	<bean id="pollServiceBean" class="org.survey.service.poll.PollServiceImpl" />
+	<bean id="loginServiceBean" class="org.survey.service.login.LoginServiceImpl" />
+	<!-- JAX-WS Service Endpoints -->
+	<jaxws:endpoint id="userService" implementor="#userServiceBean"
+		address="/soap/userService" />
+	<jaxws:endpoint id="fileService" implementor="#fileServiceBean"
+		address="/soap/fileService" />
+	<jaxws:endpoint id="pollService" implementor="#pollServiceBean"
+		address="/soap/pollService" />
+	<!-- JAX-RS RESTful service -->
+	<jaxrs:server id="userServiceRest" address="/rest">
+		<jaxrs:serviceBeans>
+			<ref bean="userServiceBean" />
+			<ref bean="fileServiceBean" />
+			<ref bean="pollServiceBean" />
+			<ref bean="loginServiceBean" />
+		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<!-- Use Jackson instead of Jettison -->
+			<bean class="org.codehaus.jackson.jaxrs.JacksonJaxbJsonProvider" />
+		</jaxrs:providers>
+	</jaxrs:server>
+</beans>

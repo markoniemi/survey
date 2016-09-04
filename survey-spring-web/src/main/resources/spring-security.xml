@@ -1,0 +1,27 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:sec="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+	<sec:http auto-config="true">
+		<sec:intercept-url pattern="/user/**" access="ROLE_USER,ROLE_ADMIN" />
+		<sec:intercept-url pattern="/file/**" access="ROLE_USER,ROLE_ADMIN" />
+		<sec:intercept-url pattern="/poll/**" access="ROLE_USER,ROLE_ADMIN" />
+		<sec:intercept-url pattern="/about/**" access="ROLE_USER,ROLE_ADMIN" />
+		<sec:intercept-url pattern="/pages/admin/**" access="ROLE_ADMIN" />
+		<sec:form-login login-page="/login"
+			authentication-failure-url="/login?loginError=true" username-parameter="j_username"
+                password-parameter="j_password"/>
+		<sec:logout logout-success-url="/user/users" />
+	</sec:http>
+	<bean id="userRepositoryAuthenticationProvider"
+		class="org.survey.security.UserRepositoryAuthenticationProvider" />
+	<sec:authentication-manager alias="authenticationManager">
+		<sec:authentication-provider ref="userRepositoryAuthenticationProvider" />
+	</sec:authentication-manager>
+	<!-- business logic security -->
+	<sec:global-method-security
+		secured-annotations="enabled" jsr250-annotations="enabled" />
+</beans>

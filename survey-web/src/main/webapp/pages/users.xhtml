@@ -1,0 +1,55 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="../templates/masterLayout.xhtml">
+	<ui:define name="title">#{messages.users}</ui:define>
+	<ui:define name="content">
+		<f:view>
+			<p:panel header="#{messages.users}">
+				<h:form id="userTableForm" prependId="true">
+					<p:dataTable value="#{usersBean.users}" var="user"
+						id="userTable">
+						<p:column sortBy="#{user.username}" id="username">
+							<f:facet name="header">
+								<h:outputText value="#{messages.username}" />
+							</f:facet>
+							<h:outputText value="#{user.username}" />
+						</p:column>
+						<p:column sortBy="#{user.role}">
+							<f:facet name="header">
+								<h:outputText value="#{messages.role}" />
+							</f:facet>
+							<h:outputText id="role" value="#{messages[user.role]}" />
+						</p:column>
+						<p:column sortBy="#{user.email}" id="email">
+							<f:facet name="header">
+								<h:outputText value="#{messages.email}" />
+							</f:facet>
+							<p:graphicImage value="#{mediaBean.image}">
+								<f:param name="email" value="#{user.email}" />
+							</p:graphicImage>
+						</p:column>
+						<p:column>
+							<h:commandButton id="delete" value="#{messages.delete}"
+								action="#{usersBean.deleteUser}"
+								rendered="#{request.isUserInRole('ROLE_ADMIN')}">
+								<f:param name="username" value="#{user.username}" />
+							</h:commandButton>
+							<h:commandButton id="edit" value="#{messages.editUser}"
+								action="#{editUserBean.editUser}" name="#{user.username}" title="#{user.username}"
+								rendered="#{request.isUserInRole('ROLE_ADMIN')}">
+								<f:param name="username" value="#{user.username}" />
+							</h:commandButton>
+						</p:column>
+					</p:dataTable>
+				</h:form>
+				<h:form id="users">
+					<h:commandButton id="addUser" action="#{editUserBean.addUser}"
+						value="#{messages.addUser}" />
+				</h:form>
+			</p:panel>
+		</f:view>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,21 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:um="http://java.sun.com/jsf/composite/components/um"
+	template="../templates/masterLayout.xhtml">
+	<ui:define name="title">${messages.addUser}</ui:define>
+	<ui:define name="content">
+		<f:view>
+			<h:form id="addUser">
+				<p:panel header="${messages.addUser}" style="width: 500px">
+					<um:user id="editUser" user="#{editUserBean.user}" repeatPassword="#{editUserBean.repeatedPassword}" roles="#{editUserBean.roles}" />
+					<h:commandButton action="#{editUserBean.saveUser}"
+						value="#{messages.addUser}" id="addUser" />
+				</p:panel>
+			</h:form>
+		</f:view>
+	</ui:define>
+</ui:composition>

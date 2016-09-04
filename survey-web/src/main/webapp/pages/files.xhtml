@@ -1,0 +1,70 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="../templates/masterLayout.xhtml">
+	<ui:define name="title">#{messages.files}</ui:define>
+	<ui:define name="content">
+		<f:view>
+			<p:panel header="#{messages.files}">
+				<h:form id="fileTableForm">
+					<p:dataTable value="#{filesBean.files}" var="file"
+						id="fileTable">
+						<p:column sortBy="#{file.filename}" id="filename">
+							<f:facet name="header">
+								<h:outputText value="#{messages.filename}" />
+							</f:facet>
+							<h:outputText value="#{file.filename}" />
+						</p:column>
+						<p:column sortBy="#{file.createTime}" id="createTime">
+							<f:facet name="header">
+								<h:outputText value="#{messages.createTime}" />
+							</f:facet>
+							<h:outputText value="#{file.createTime}" >
+                                <f:convertDateTime pattern="dd.MM.yyyy HH:mm" />
+                            </h:outputText>
+						</p:column>
+						<p:column sortBy="#{file.size}" id="size">
+							<f:facet name="header">
+								<h:outputText value="#{messages.size}" />
+							</f:facet>
+							<h:outputText value="#{file.size}" />
+						</p:column>
+						<p:column sortBy="#{file.owner.username}" id="owner">
+							<f:facet name="header">
+								<h:outputText value="#{messages.owner}" />
+							</f:facet>
+							<h:outputText value="#{file.owner.username}" />
+						</p:column>
+						<p:column sortBy="#{file.url}" id="url">
+							<f:facet name="header">
+								<h:outputText value="#{messages.url}" />
+							</f:facet>
+							<h:outputText value="#{file.url}" />
+						</p:column>
+						<p:column id="preview">
+							<f:facet name="header">
+								<h:outputText value="#{messages.preview}" />
+							</f:facet>
+							<p:graphicImage value="#{filesBean.image}" width="50px" height="50px">
+								<f:param name="id" value="#{file.id}" />
+							</p:graphicImage>
+						</p:column>
+					</p:dataTable>
+					<a4j:poll interval="20000" render="fileTable" />
+					<h:commandButton id="addFile" value="#{messages.addFile}" action="#{fileUploadBean.addFile}" />
+				</h:form>
+			</p:panel>
+<!-- 			<p:panel header="#{messages.addFile}"> -->
+<!-- 				<h:form id="form" enctype="multipart/form-data"> -->
+<!-- 					<h:panelGrid columns="1"> -->
+<!-- 						<h:inputFile id="file" value="#{fileUploadBean.file}" /> -->
+<!-- 						<h:commandButton value="#{messages.fileUpload}" action="#{fileUploadBean.upload}" /> -->
+<!-- 					</h:panelGrid> -->
+<!-- 				</h:form> -->
+<!-- 			</p:panel> -->
+		</f:view>
+	</ui:define>
+</ui:composition>

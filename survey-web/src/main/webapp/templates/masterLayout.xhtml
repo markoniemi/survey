@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<h:outputStylesheet name="style.css" library="css" />
+	<title><ui:insert name="title" /></title>
+</h:head>
+<h:body>
+	<h:panelGroup styleClass="body" layout="block">
+		<h:panelGroup styleClass="content" layout="block">
+			<ui:include src="../menu.xhtml" />
+			<ui:insert name="content" id="content" />
+		</h:panelGroup>
+		<h:panelGroup layout="block" styleClass="footer">
+			<h:panelGrid columns="3">
+				<h:outputText value="#{messages.version}: #{versionBean.version}" styleClass="footer-text" />
+				<h:outputText value="#{messages.username}: #{userBean.username}" styleClass="footer-text" />
+				<h:outputText value="#{messages.role}: #{messages[userBean.role]}" styleClass="footer-text" />
+			</h:panelGrid>
+		</h:panelGroup>
+	</h:panelGroup>
+</h:body>
+</html>

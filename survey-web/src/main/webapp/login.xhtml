@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<h:outputStylesheet name="style.css" library="css" />
+	<title>#{messages.login}</title>
+</h:head>
+<h:body>
+	<f:view>
+	   <h:panelGroup style="width:100%;height:100%;">
+			<p:panel header="#{messages.login}" style="width: 500px; horizontal-align: center; vertical-align: center;">
+				<h:outputText value="#{messages.loginError}" rendered="#{param['loginError']}" style="color: red"/>
+				<!-- must use html form instead of h:form for the form based security to work -->
+				<form name="loginForm" action="#{request.contextPath}/j_spring_security_check" method="post">
+					<h:panelGrid columns="2">
+						<h:outputText value="#{messages.username}" styleClass="required" />
+						<h:inputText id="j_username" styleClass="required" />
+						<h:outputText value="#{messages.password}" styleClass="required" />
+						<h:inputSecret id="j_password" styleClass="required" />
+					</h:panelGrid>
+					<h:commandButton id="loginButton" type="submit"
+						value="#{messages.login}"  />
+				</form>
+				<h:form id="register">
+					<h:commandButton id="register" action="#{editUserBean.addUser}"
+						value="#{messages.register}" />
+				</h:form>
+			</p:panel>
+	   </h:panelGroup>
+	</f:view>
+</h:body>
+</html>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+	xmlns="http://java.sun.com/xml/ns/persistence" version="1.0">
+	<persistence-unit name="survey-repository" transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<class>org.survey.model.user.User</class>
+		<class>org.survey.model.file.File</class>
+		<class>org.survey.model.poll.Poll</class>
+		<class>org.survey.model.poll.Question</class>
+<!-- 		<properties> -->
+<!-- 			<property name="hibernate.show_sql" value="true" /> -->
+<!-- 			<property name="hibernate.format_sql" value="true" /> -->
+<!-- 			<property name="hibernate.connection.driver_class" value="${database.driver}" /> -->
+<!-- 			<property name="hibernate.connection.url" value="${database.url}" /> -->
+<!-- 			<property name="hibernate.connection.username" value="${database.username}" /> -->
+<!-- 			<property name="hibernate.connection.password" value="${database.password}" /> -->
+<!-- 			<property name="hibernate.dialect" value="${database.dialect}" /> -->
+<!-- 			<property name="hibernate.hbm2ddl.auto" value="create" /> -->
+<!-- 			<property name="hibernate.transaction.flush_before_completion" value="true" /> -->
+<!-- 		</properties> -->
+	</persistence-unit>
+</persistence>

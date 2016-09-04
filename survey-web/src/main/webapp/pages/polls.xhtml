@@ -1,0 +1,48 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags"
+	template="../templates/masterLayout.xhtml">
+	<ui:define name="title">#{messages.polls}</ui:define>
+	<ui:define name="content">
+		<f:view>
+			<p:panel header="#{messages.polls}">
+				<h:form id="pollTableForm">
+					<p:dataTable value="#{pollsBean.polls}" var="poll"
+						id="pollTable">
+						<p:column sortBy="#{poll.name}" id="name">
+							<f:facet name="header">
+								<h:outputText value="#{messages.pollName}" />
+							</f:facet>
+							<h:outputText value="#{poll.name}" />
+						</p:column>
+						<p:column sortBy="#{poll.owner.username}" id="owner">
+							<f:facet name="header">
+								<h:outputText value="#{messages.username}" />
+							</f:facet>
+							<h:outputText value="#{poll.owner.username}" />
+						</p:column>
+						<p:column>
+							<h:commandButton id="delete" value="#{messages.delete}"
+								action="#{pollsBean.deletePoll}">
+								<f:param name="name" value="#{poll.name}" />
+							</h:commandButton>
+							<h:commandButton id="edit" value="#{messages.editPoll}"
+								action="#{editPollBean.editPoll}">
+								<f:param name="name" value="#{poll.name}" />
+							</h:commandButton>
+						</p:column>
+					</p:dataTable>
+					<a4j:poll interval="20000" render="pollTable" />
+				</h:form>
+				<h:form id="polls">
+					<h:commandButton id="addPoll" action="#{editPollBean.addPoll}"
+						value="#{messages.addPoll}" />
+				</h:form>
+			</p:panel>
+		</f:view>
+	</ui:define>
+</ui:composition>

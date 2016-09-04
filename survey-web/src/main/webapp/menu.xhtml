@@ -1,0 +1,20 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j" xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<h:form id="menu">
+		<p:menubar>
+			<p:menuitem id="menu-show-users" value="#{messages.users}"
+				url="users.xhtml" />
+			<p:menuitem id="menu-show-files" value="#{messages.files}"
+				url="files.xhtml" />
+			<p:menuitem id="menu-show-polls" value="#{messages.polls}"
+				url="polls.xhtml" />
+			<f:facet name="options">
+				<p:button id="logout" value="#{messages.logout}"
+					href="#{request.contextPath}/j_spring_security_logout" />
+			</f:facet>
+		</p:menubar>
+	</h:form>
+</ui:composition>

@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:composite="http://java.sun.com/jsf/composite">
+
+<!-- INTERFACE -->
+<composite:interface>
+	<composite:attribute name="header" default="" required="false" />
+	<composite:attribute name="id" default="panel" required="false" />
+</composite:interface>
+
+<!-- IMPLEMENTATION -->
+<composite:implementation>
+	<h:panelGroup id="#{cc.attrs.id}-panel">
+		<!-- 		<h:outputText value="#{cc.attrs.header}" /> -->
+		<p:panel header="#{cc.attrs.header}" style="width: 350px"
+			id="#{cc.attrs.id}">
+			<composite:insertChildren />
+		</p:panel>
+	</h:panelGroup>
+</composite:implementation>
+</html>
