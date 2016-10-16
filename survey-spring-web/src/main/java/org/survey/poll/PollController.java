@@ -52,7 +52,7 @@ public class PollController {
             poll = new Poll();
         }
         ModelAndView model = new ModelAndView();
-        model.setViewName("poll/poll");
+        model.setViewName("/poll/poll");
         model.addObject("poll", poll);
         return model;
     }
@@ -76,7 +76,7 @@ public class PollController {
             poll.getQuestions().add(question);
         }
         ModelAndView model = new ModelAndView();
-        model.setViewName("poll/poll");
+        model.setViewName("/poll/poll");
         model.addObject("poll", poll);
 //        model.addObject("roles", getRolesAsMap());
         return model;

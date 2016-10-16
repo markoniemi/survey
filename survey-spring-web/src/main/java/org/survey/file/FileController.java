@@ -40,7 +40,7 @@ public class FileController {
     public ModelAndView newFile() {
         File file = new File();
         ModelAndView model = new ModelAndView();
-        model.setViewName("file/file");
+        model.setViewName("/file/file");
         model.addObject("file", file);
         return model;
     }

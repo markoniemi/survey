@@ -50,7 +50,7 @@ public class UserController {
             user = new User();
         }
         ModelAndView model = new ModelAndView();
-        model.setViewName("user/user");
+        model.setViewName("/user/user");
         model.addObject("user", user);
         model.addObject("roles", getRolesAsMap());
         return model;
