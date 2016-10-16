@@ -52,7 +52,7 @@
 		<jsf.version>2.2.8-04</jsf.version>
 		<bootstrap-version>3.3.6</bootstrap-version>
 		<jquery-version>2.1.1</jquery-version>
-		<tomcat.version>7.0.70</tomcat.version>
+		<tomcat.version>7.0.72</tomcat.version>
 		<phantomjs-version>1.9.7</phantomjs-version>
 	</properties>
 	<build>
