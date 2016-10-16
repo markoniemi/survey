@@ -7,12 +7,12 @@ stage 'Build'
    env.JAVA_HOME="${tool 'JDK 1.7'}"
    env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
    sh 'java -version'
-   sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore clean package -DskipTests=true -P hsqldb"
+   sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore clean package -DskipTests=true -P hsqldb,tomcat"
 stage 'Test'
-   sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore package -DskipITs=true -P hsqldb"
+   sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore package -DskipITs=true -P hsqldb,tomcat"
    step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
 stage 'Integration test'
-   sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore install -P hsqldb"
+   sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore install -P hsqldb,tomcat"
    step([$class: 'JUnitResultArchiver', testResults: '**/target/failsafe-reports/TEST-*.xml'])
 stage 'Sonar'
    // sonar plugin requires jdk 1.8
