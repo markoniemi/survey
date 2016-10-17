@@ -21,7 +21,7 @@
 		<module>survey-mobile-web</module>
 		<module>survey-backend</module>
 		<module>survey-spring-web</module>
-<!-- 		<module>selenium-test-rule</module> -->
+		<!-- <module>selenium-test-rule</module> -->
 	</modules>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -30,9 +30,9 @@
 		<build.profile>release</build.profile>
 		<maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss</maven.build.timestamp.format>
 		<http.port>8082</http.port>
-<!-- 		<http.port>8443</http.port> -->
+		<!-- <http.port>8443</http.port> -->
 		<http.protocol>http</http.protocol>
-<!-- 		<http.protocol>https</http.protocol> -->
+		<!-- <http.protocol>https</http.protocol> -->
 		<ajp.port>8019</ajp.port>
 		<rmi.port>8206</rmi.port>
 		<spring.version>3.2.8.RELEASE</spring.version>
@@ -41,7 +41,8 @@
 		<selenium.version>2.42.2</selenium.version>
 		<cxf.version>3.0.2</cxf.version>
 		<hibernate.version>4.2.8.Final</hibernate.version>
-<!-- 		<hibernate.version>4.3.5.Final</hibernate.version> -->
+		<!-- <hibernate.version>4.3.5.Final</hibernate.version> -->
+		<jacoco.maven.plugin.version>0.7.7.201606060606</jacoco.maven.plugin.version>
 		<jacoco.out.path>${session.executionRootDirectory}/target</jacoco.out.path>
 		<jacoco.out.file>jacoco.exec</jacoco.out.file>
 		<sonar.jacoco.itReportPath>${env.WORKSPACE}/target/${jacoco.out.file}</sonar.jacoco.itReportPath>
@@ -147,18 +148,21 @@
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.7.1.201405082137</version>
+				<version>${jacoco.maven.plugin.version}</version>
 				<executions>
 					<execution>
 						<goals>
 							<goal>prepare-agent</goal>
 							<goal>report</goal>
-							<!-- <goal>prepare-agent-integration</goal> -->
-							<!-- <goal>report-integration</goal> -->
+							<goal>prepare-agent-integration</goal>
+							<goal>report-integration</goal>
+							<goal>report-aggregate</goal>
+							<goal>merge</goal>
 						</goals>
 					</execution>
 				</executions>
 				<configuration>
+					<append>true</append>
 					<excludes>
 						<exclude>**com.steadystate*</exclude>
 					</excludes>
@@ -244,6 +248,18 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
 				<version>2.4</version>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<!-- select non-aggregate reports -->
+							<report>report</report>
+						</reports>
+					</reportSet>
+				</reportSets>
 			</plugin>
 		</plugins>
 	</reporting>
@@ -456,12 +472,12 @@
 				<artifactId>jstl</artifactId>
 				<version>1.2</version>
 			</dependency>
-	        <dependency>
-	            <groupId>javax</groupId>
-	            <artifactId>javaee-web-api</artifactId>
-	            <version>6.0</version>
-	            <scope>provided</scope>
-	        </dependency>			
+			<dependency>
+				<groupId>javax</groupId>
+				<artifactId>javaee-web-api</artifactId>
+				<version>6.0</version>
+				<scope>provided</scope>
+			</dependency>
 			<!-- JSF -->
 			<dependency>
 				<groupId>com.sun.faces</groupId>
@@ -541,7 +557,7 @@
 				<groupId>org.webjars</groupId>
 				<artifactId>jquery</artifactId>
 				<version>2.1.1</version>
-			</dependency>			
+			</dependency>
 			<dependency>
 				<groupId>org.apache.logging.log4j</groupId>
 				<artifactId>log4j-web</artifactId>
