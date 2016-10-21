@@ -145,52 +145,6 @@
 					<version>${phantomjs-version}</version>
 				</configuration>
 			</plugin>
-<!-- 			<plugin> -->
-<!-- 				<groupId>org.jacoco</groupId> -->
-<!-- 				<artifactId>jacoco-maven-plugin</artifactId> -->
-<!-- 				<version>${jacoco.maven.plugin.version}</version> -->
-<!-- 				<executions> -->
-<!-- 					<execution> -->
-<!-- 						<goals> -->
-<!-- 							<goal>prepare-agent-integration</goal> -->
-<!-- 							<goal>report-integration</goal> -->
-<!-- 						</goals> -->
-<!-- 					</execution> -->
-<!-- 				</executions> -->
-<!-- 			</plugin> -->
-			
-<!-- 			<plugin> -->
-<!-- 				<groupId>org.jacoco</groupId> -->
-<!-- 				<artifactId>jacoco-maven-plugin</artifactId> -->
-<!-- 				<version>0.7.7.201606060606</version> -->
-<!-- 				<configuration> -->
-<!-- 					<append>true</append> -->
-<!-- 					<excludes> -->
-<!-- 						<exclude>**com.steadystate*</exclude> -->
-<!-- 					</excludes> -->
-<!-- 				</configuration> -->
-<!-- 				<executions> -->
-<!-- 					<execution> -->
-<!-- 						<id>agent-for-ut</id> -->
-<!-- 						<goals> -->
-<!-- 							<goal>prepare-agent</goal> -->
-<!-- 						</goals> -->
-<!-- 					</execution> -->
-<!-- 					<execution> -->
-<!-- 						<id>agent-for-it</id> -->
-<!-- 						<goals> -->
-<!-- 							<goal>prepare-agent-integration</goal> -->
-<!-- 						</goals> -->
-<!-- 					</execution> -->
-<!-- 					<execution> -->
-<!-- 						<id>jacoco-site</id> -->
-<!-- 						<phase>verify</phase> -->
-<!-- 						<goals> -->
-<!-- 							<goal>report</goal> -->
-<!-- 						</goals> -->
-<!-- 					</execution> -->
-<!-- 				</executions> -->
-<!-- 			</plugin> -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
@@ -292,6 +246,7 @@
 <!-- 									</file> -->
 <!-- 								</files> -->
 								<properties>
+									<cargo.jvmargs>${argLine}</cargo.jvmargs>
 									<cargo.servlet.users>admin:admin:User</cargo.servlet.users>
 									<cargo.servlet.port>${http.port}</cargo.servlet.port>
 									<cargo.protocol>${http.protocol}</cargo.protocol>
