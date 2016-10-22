@@ -45,7 +45,6 @@
 		<jacoco.maven.plugin.version>0.7.7.201606060606</jacoco.maven.plugin.version>
 		<jacoco.out.path>${session.executionRootDirectory}/target</jacoco.out.path>
 		<jacoco.out.file>jacoco.exec</jacoco.out.file>
-		<sonar.jacoco.itReportPath>${env.WORKSPACE}/target/${jacoco.out.file}</sonar.jacoco.itReportPath>
 		<angularjs.version>1.2.16</angularjs.version>
 		<angular-ui-bootstrap.version>0.12.0</angular-ui-bootstrap.version>
 		<angular-translate.version>2.4.2</angular-translate.version>
