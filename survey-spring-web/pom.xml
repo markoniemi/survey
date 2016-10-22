@@ -173,16 +173,28 @@
 			<build>
 				<plugins>
 					<plugin>
+						<groupId>org.jacoco</groupId>
+						<artifactId>jacoco-maven-plugin</artifactId>
+						<version>${jacoco.maven.plugin.version}</version>
+						<executions>
+							<execution>
+								<id>dump</id>
+								<goals>
+									<goal>dump</goal>
+								</goals>
+								<configuration>
+									<destFile>${project.build.directory}/jacoco-it.exec</destFile>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
 						<groupId>org.eclipse.jetty</groupId>
 						<artifactId>jetty-maven-plugin</artifactId>
 						<version>9.2.19.v20160908</version>
 						<configuration>
-							<httpConnector>
-								<port>${http.port}</port>
-							</httpConnector>
-							<webApp>
-								<contextPath>/survey-spring-web</contextPath>
-							</webApp>
+							<jvmArgs>${argLine},output=tcpserver,port=6300 -Djetty.port=${http.port}</jvmArgs>
+							<contextXml>${project.basedir}/src/main/resources/context.xml</contextXml>
 							<scanIntervalSeconds>10</scanIntervalSeconds>
 							<stopPort>8005</stopPort>
 							<stopKey>STOP</stopKey>
@@ -192,11 +204,14 @@
 								<id>start-jetty</id>
 								<phase>pre-integration-test</phase>
 								<goals>
-									<goal>start</goal>
+									<goal>stop</goal>
+									<goal>run-forked</goal>
 								</goals>
 								<configuration>
 									<scanIntervalSeconds>0</scanIntervalSeconds>
 									<daemon>true</daemon>
+									<waitForChild>false</waitForChild>
+									<maxStartupLines>200</maxStartupLines>
 								</configuration>
 							</execution>
 							<execution>
