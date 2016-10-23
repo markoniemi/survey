@@ -35,7 +35,7 @@
 		<!-- <http.protocol>https</http.protocol> -->
 		<ajp.port>8019</ajp.port>
 		<rmi.port>8206</rmi.port>
-		<spring.version>3.2.8.RELEASE</spring.version>
+		<spring.version>3.2.10.RELEASE</spring.version>
 		<spring.security.version>3.2.5.RELEASE</spring.security.version>
 		<spring.jpa.version>1.2.1.RELEASE</spring.jpa.version>
 		<selenium.version>2.42.2</selenium.version>
@@ -43,8 +43,6 @@
 		<hibernate.version>4.2.8.Final</hibernate.version>
 		<!-- <hibernate.version>4.3.5.Final</hibernate.version> -->
 		<jacoco.maven.plugin.version>0.7.7.201606060606</jacoco.maven.plugin.version>
-		<jacoco.out.path>${session.executionRootDirectory}/target</jacoco.out.path>
-		<jacoco.out.file>jacoco.exec</jacoco.out.file>
 		<angularjs.version>1.2.16</angularjs.version>
 		<angular-ui-bootstrap.version>0.12.0</angular-ui-bootstrap.version>
 		<angular-translate.version>2.4.2</angular-translate.version>
@@ -95,8 +93,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.4</version>
 				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>1.8</source>
+					<target>1.8</target>
 				</configuration>
 			</plugin>
 			<!-- Exposes build timestamp as Maven property -->
@@ -159,6 +157,11 @@
 						</goals>
 					</execution>
 				</executions>
+			<configuration>
+				<excludes>
+					<exclude>**com.steadystate*</exclude>
+				</excludes>
+			</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
