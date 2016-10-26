@@ -109,12 +109,12 @@
 			<scope>test</scope>
 		</dependency>
 		<!-- selenium-test-rule -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.survey</groupId> -->
-		<!-- <artifactId>selenium-test-rule</artifactId> -->
-		<!-- <version>1.4-SNAPSHOT</version> -->
-		<!-- <scope>test</scope> -->
-		<!-- </dependency> -->
+		<dependency>
+			<groupId>org.selenium</groupId>
+			<artifactId>selenium-test-rule</artifactId>
+			<version>0.2-SNAPSHOT</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>survey-spring-web</finalName>

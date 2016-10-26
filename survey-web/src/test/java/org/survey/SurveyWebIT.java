@@ -14,6 +14,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.selenium.SeleniumTestRule;
 import org.selenium.annotation.PhantomJsDriver;
 import org.springframework.test.context.ContextConfiguration;
@@ -25,8 +26,7 @@ import org.survey.service.user.UserService;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:spring-config-test.xml")
 @SuppressWarnings("squid:S2925")
-public class SpringWebIT {
-    private static final int SLEEP_TIME = 1000;
+public class SurveyWebIT {
     @PhantomJsDriver
     public WebDriver webDriver;
     @Rule
@@ -34,7 +34,7 @@ public class SpringWebIT {
     private String httpPort;
     private String httpProtocol;
     private String serverURL;
-    private String appName = "survey-spring-web";
+    private String appName = "survey-web";
     @Resource
     protected UserService userService;
     @Resource
@@ -49,10 +49,10 @@ public class SpringWebIT {
 
     @After
     public void tearDown() {
-//        deleteUserFromRepository("registered_user");
+        deletePollFromRepository("poll");
+        deleteUserFromRepository("registered_user");
         deleteUserFromRepository("admin_user");
         deleteUserFromRepository("user_user");
-        deletePollFromRepository("poll");
     }
 
     private void deletePollFromRepository(String pollName) {
@@ -67,14 +67,14 @@ public class SpringWebIT {
     public void integrationTest() throws InterruptedException {
         openBrowser();
 
-//        loginError();
-//        registerNewUser("registered_user", "registered_user@test.com", "test");
-//        login("registered_user", "test");
-//        assertUserRole("registered_user", "User");
-//        assertNoDeleteOrAdd();
-//        logout();
+        loginError();
+        registerNewUser("registered_user", "registered_user@test.com", "test");
+        login("registered_user", "test");
+        assertUserRole("registered_user", "User");
+        assertNoDeleteOrAdd();
+        logout();
         login("admin", "admin");
-//        deleteUser("registered_user");
+        deleteUser("registered_user");
         addUser("admin_user", "admin_user@test.com", "another", Role.ROLE_ADMIN);
         assertUserRole("admin_user", "Admin");
         addUser("user_user", "user_user@test.com", "another", Role.ROLE_USER);
@@ -94,16 +94,15 @@ public class SpringWebIT {
         logout();
     }
 
-    protected void openBrowser() throws InterruptedException {
-        webDriver.get(serverURL + "/" + appName);
-        Thread.sleep(SLEEP_TIME);
+    protected void openBrowser() {
+        webDriver.get(serverURL + "/" + appName + "/");
         Assert.assertEquals(webDriver.getPageSource(), "Login",
                 webDriver.getTitle());
     }
 
     protected void assertUserRole(String username, String localizedRole) {
         WebElement element = webDriver.findElement(By.xpath("//tr[td='"
-                + username + "']//td[contains(@id,'role')]"));
+                + username + "']//span[contains(@id,'role')]"));
         Assert.assertNotNull(element);
         Assert.assertEquals(localizedRole, element.getText());
     }
@@ -112,22 +111,22 @@ public class SpringWebIT {
             throws InterruptedException {
         WebElement button = webDriver.findElement(By
                 .xpath("//tr[contains(td/text(),'" + username
-                        + "')]//a[contains(@id,'edit')]"));
+                        + "')]//input[contains(@id,'edit')]"));
+//        WebElement button = browser.findElement(By
+//                .xpath("//input/@title,'" + username + "')]"));
         Assert.assertNotNull(webDriver.getPageSource(), button);
         button.click();
-        Thread.sleep(SLEEP_TIME);
-        Assert.assertEquals(webDriver.getPageSource(), "User",
+        Thread.sleep(2000);
+        Assert.assertEquals(webDriver.getPageSource(), "Edit user",
                 webDriver.getTitle());
-        WebElement passwordElement = webDriver.findElement(By.id("password"));
-        passwordElement.clear();
-        passwordElement.sendKeys(password);
-//        WebElement repeatPasswordElement = webDriver.findElement(By.id("repeatPassword"));
-//        repeatPasswordElement.clear();
-//        repeatPasswordElement.sendKeys(password);
-        selectItemInList("role", Role.ROLE_USER.name());
-        webDriver.findElement(By.id("submit")).click();
-        Thread.sleep(SLEEP_TIME);
-        Assert.assertEquals(/*webDriver.getPageSource(),*/ "Users",
+        Assert.assertEquals(username, webDriver.findElement(By.id("editUser:editUser:username")).getAttribute("value"));
+        webDriver.findElement(By.id("editUser:editUser:password")).sendKeys(
+                password);
+        webDriver.findElement(By.id("editUser:editUser:repeatPassword"))
+                .sendKeys(password);
+        // selectItemInList("editUser:editUser:role", Role.ROLE_USER.name());
+        webDriver.findElement(By.id("editUser:update")).click();
+        Assert.assertEquals(webDriver.getPageSource(), "Users",
                 webDriver.getTitle());
     }
 
@@ -143,39 +142,36 @@ public class SpringWebIT {
     }
 
     protected void addUser(String username, String email, String password,
-            Role role) throws InterruptedException {
-        webDriver.findElement(By.id("addUser")).click();
-//        webDriver.get(serverURL + "/" + appName + "/#/users/user");
-//        Thread.sleep(SLEEP_TIME);
-        Assert.assertEquals(webDriver.getPageSource(), "User",
+            Role role) {
+        webDriver.findElement(By.id("users:addUser")).click();
+        Assert.assertEquals(webDriver.getPageSource(), "Add user",
                 webDriver.getTitle());
-        webDriver.findElement(By.id("username")).sendKeys(
+        webDriver.findElement(By.id("addUser:editUser:username")).sendKeys(
                 username);
-        webDriver.findElement(By.id("password")).sendKeys(
+        webDriver.findElement(By.id("addUser:editUser:password")).sendKeys(
                 password);
-//        webDriver.findElement(By.id("repeatPassword")).sendKeys(
-//                password);
-        webDriver.findElement(By.id("email")).sendKeys(email);
-        selectItemInList("role", role.name());
-        webDriver.findElement(By.id("submit")).click();
-        Thread.sleep(SLEEP_TIME);
-        Assert.assertEquals(/*webDriver.getPageSource(),*/ "Users",
+        webDriver.findElement(By.id("addUser:editUser:repeatPassword")).sendKeys(
+                password);
+        webDriver.findElement(By.id("addUser:editUser:email")).sendKeys(email);
+        selectItemInList("addUser:editUser:role", role.name());
+        webDriver.findElement(By.id("addUser:addUser")).click();
+        Assert.assertEquals(webDriver.getPageSource(), "Users",
                 webDriver.getTitle());
     }
 
     protected void deleteUser(String username) throws InterruptedException {
         WebElement button = webDriver.findElement(By.xpath("//tr[td='" + username
-                + "']//button[@id='delete']"));
+                + "']//input[@value='Delete']"));
         Assert.assertNotNull(webDriver.getPageSource(), button);
         button.click();
-        Thread.sleep(SLEEP_TIME);
+        Thread.sleep(2000);
         Assert.assertEquals(webDriver.getPageSource(), "Users",
                 webDriver.getTitle());
     }
 
     protected void assertNoDeleteOrAdd() {
         try {
-            webDriver.findElement(By.xpath("//tr//button[@id='delete']"));
+            webDriver.findElement(By.xpath("//tr//input[@value='Delete']"));
             Assert.fail();
         } catch (NoSuchElementException e) {
             // expected
@@ -204,81 +200,70 @@ public class SpringWebIT {
     }
 
     private void addPoll(String pollName) throws InterruptedException {
-        webDriver.findElement(By.id("menu-polls")).click();
+        webDriver.findElement(By.id("menu:menu-show-polls")).click();
         Assert.assertEquals(webDriver.getPageSource(), "Polls",
                 webDriver.getTitle());
-        // TODO find a fix for click not working with maven build
-        webDriver.findElement(By.id("addPoll")).click();
-//        webDriver.get(serverURL + "/" + appName + "/#/polls/poll");
-        Thread.sleep(SLEEP_TIME);
-        Assert.assertEquals(webDriver.getPageSource(), "Poll",
+        webDriver.findElement(By.id("polls:addPoll")).click();
+        Assert.assertEquals(webDriver.getPageSource(), "Add poll",
                 webDriver.getTitle());
-        webDriver.findElement(By.id("pollName")).sendKeys(pollName);
-        webDriver.findElement(By.id("savePoll")).click();
-        Thread.sleep(SLEEP_TIME);
+        webDriver.findElement(By.id("addPoll:pollName")).sendKeys(pollName);
+        webDriver.findElement(By.id("addPoll:savePoll")).click();
         Assert.assertEquals(webDriver.getPageSource(), "Polls",
                 webDriver.getTitle());
     }
 
     private void editPoll(String pollName) {
         WebElement button = webDriver.findElement(By.xpath("//tr[td='" + pollName
-                + "']//a[@id='edit']"));
+                + "']//input[@value='Edit poll']"));
         Assert.assertNotNull(webDriver.getPageSource(), button);
         button.click();
-        Assert.assertEquals(webDriver.getPageSource(), "Poll",
+        Assert.assertEquals(webDriver.getPageSource(), "Add poll",
                 webDriver.getTitle());
-        // TODO remove when addQuestion works
-//        webDriver.findElement(By.id("savePoll")).click();
-//        Assert.assertEquals(webDriver.getPageSource(), "Polls",
-//                webDriver.getTitle());
     }
 
     private void addQuestion(String questionText) {
-        webDriver.findElement(By.id("addQuestion")).click();
-        Assert.assertEquals(webDriver.getPageSource(), "Poll",
+        webDriver.findElement(By.id("addPoll:addQuestion")).click();
+        Assert.assertEquals(webDriver.getPageSource(), "Add poll",
                 webDriver.getTitle());
-        webDriver.findElement(By.id("questionText"))
+        webDriver.findElement(By.id("addPoll:questions:0:questionText"))
                 .sendKeys(questionText);
-        webDriver.findElement(By.id("savePoll")).click();
+        webDriver.findElement(By.id("addPoll:savePoll")).click();
         Assert.assertEquals(webDriver.getPageSource(), "Polls",
                 webDriver.getTitle());
     }
 
     protected void deletePoll(String pollName) throws InterruptedException {
         WebElement button = webDriver.findElement(By.xpath("//tr[td='" + pollName
-                + "']//button[@id='delete']"));
+                + "']//input[@value='Delete']"));
         Assert.assertNotNull(webDriver.getPageSource(), button);
         button.click();
-        Thread.sleep(SLEEP_TIME);
+        Thread.sleep(2000);
         Assert.assertEquals(webDriver.getPageSource(), "Polls",
                 webDriver.getTitle());
     }    
 
-    protected void loginError() throws InterruptedException {
+    protected void loginError() {
         webDriver.findElement(By.id("j_username")).clear();
         webDriver.findElement(By.id("j_username")).sendKeys("");
         webDriver.findElement(By.id("j_password")).clear();
         webDriver.findElement(By.id("j_password")).sendKeys("");
         webDriver.findElement(By.id("loginButton")).click();
-        Thread.sleep(SLEEP_TIME);
         Assert.assertEquals("Login", webDriver.getTitle());
         Assert.assertTrue(webDriver.getPageSource().contains("Login error"));
     }
     
-    protected void login(String username, String password) throws InterruptedException {
+    protected void login(String username, String password) {
         webDriver.findElement(By.id("j_username")).clear();
         webDriver.findElement(By.id("j_username")).sendKeys(username);
         webDriver.findElement(By.id("j_password")).clear();
         webDriver.findElement(By.id("j_password")).sendKeys(password);
         webDriver.findElement(By.id("loginButton")).click();
-        Thread.sleep(SLEEP_TIME);
         Assert.assertEquals(webDriver.getPageSource(), "Users",
                 webDriver.getTitle());
     }
 
-    public void logout() throws InterruptedException {
-        webDriver.findElement(By.id("logout")).click();
-        Thread.sleep(SLEEP_TIME);
+    public void logout() {
+        webDriver.findElement(By.id("menu:logout")).click();
         Assert.assertEquals(webDriver.getPageSource(), "Login",
                 webDriver.getTitle());
     }

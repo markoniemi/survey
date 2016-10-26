@@ -88,6 +88,12 @@
 			<artifactId>selenium-java</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.selenium</groupId>
+			<artifactId>selenium-test-rule</artifactId>
+			<version>0.2-SNAPSHOT</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>survey-web</finalName>
