@@ -35,13 +35,12 @@
 		<!-- <http.protocol>https</http.protocol> -->
 		<ajp.port>8019</ajp.port>
 		<rmi.port>8206</rmi.port>
-		<spring.version>3.2.10.RELEASE</spring.version>
-		<spring.security.version>3.2.5.RELEASE</spring.security.version>
-		<spring.jpa.version>1.2.1.RELEASE</spring.jpa.version>
+		<spring.version>4.0.9.RELEASE</spring.version>
+		<spring.security.version>3.2.9.RELEASE</spring.security.version>
+		<spring.jpa.version>1.7.4.RELEASE</spring.jpa.version>
 		<selenium.version>2.42.2</selenium.version>
 		<cxf.version>3.0.2</cxf.version>
-		<hibernate.version>4.2.8.Final</hibernate.version>
-		<!-- <hibernate.version>4.3.5.Final</hibernate.version> -->
+		<hibernate.version>4.3.11.Final</hibernate.version>
 		<jacoco.maven.plugin.version>0.7.7.201606060606</jacoco.maven.plugin.version>
 		<angularjs.version>1.2.16</angularjs.version>
 		<angular-ui-bootstrap.version>0.12.0</angular-ui-bootstrap.version>
@@ -404,6 +403,11 @@
 						<groupId>org.slf4j</groupId>
 					</exclusion>
 				</exclusions>
+			</dependency>
+			<dependency>
+			  <groupId>xml-apis</groupId>
+			  <artifactId>xml-apis</artifactId>
+			  <version>1.4.01</version>
 			</dependency>
 			<!-- databases -->
 			<dependency>
