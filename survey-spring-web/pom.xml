@@ -130,22 +130,6 @@
 		</resources>
 		<plugins>
 			<plugin>
-				<groupId>com.github.klieber</groupId>
-				<artifactId>phantomjs-maven-plugin</artifactId>
-				<version>0.5</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>install</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<outputDirectory>${appsDir}</outputDirectory>
-					<version>${phantomjs-version}</version>
-				</configuration>
-			</plugin>
-			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
 				<version>2.16</version>
@@ -159,7 +143,6 @@
 				</executions>
 				<configuration>
 					<systemPropertyVariables>
-						<phantomjs.binary.path>${phantomjs.binary}</phantomjs.binary.path>
 						<http.port>${http.port}</http.port>
 						<http.protocol>${http.protocol}</http.protocol>
 					</systemPropertyVariables>
@@ -173,56 +156,45 @@
 			<build>
 				<plugins>
 					<plugin>
-						<groupId>org.jacoco</groupId>
-						<artifactId>jacoco-maven-plugin</artifactId>
-						<version>${jacoco.maven.plugin.version}</version>
-						<executions>
-							<execution>
-								<id>dump</id>
-								<goals>
-									<goal>dump</goal>
-								</goals>
-								<configuration>
-									<destFile>${project.build.directory}/jacoco-it.exec</destFile>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-					<plugin>
-						<groupId>org.eclipse.jetty</groupId>
-						<artifactId>jetty-maven-plugin</artifactId>
-						<version>9.2.19.v20160908</version>
+						<groupId>org.codehaus.cargo</groupId>
+						<artifactId>cargo-maven2-plugin</artifactId>
+						<version>${maven.cargo.version}</version>
 						<configuration>
-							<jvmArgs>${argLine},output=tcpserver,port=6300 -Djetty.port=${http.port}</jvmArgs>
-							<contextXml>${project.basedir}/src/main/resources/context.xml</contextXml>
-							<scanIntervalSeconds>10</scanIntervalSeconds>
-							<stopPort>8005</stopPort>
-							<stopKey>STOP</stopKey>
+							<wait>false</wait>
+							<warName>${finalName}.war</warName>
+							<container>
+								<containerId>jetty9x</containerId>
+<!-- 								<zipUrlInstaller> -->
+<!-- 									<url>http://repo1.maven.org/maven2/org/eclipse/jetty/jetty-distribution/9.3.12.v20160915/jetty-distribution-9.3.12.v20160915.tar.gz</url> -->
+<!-- 									<downloadDir>${appsDir}</downloadDir> -->
+<!-- 									<extractDir>${appsDir}</extractDir> -->
+<!-- 								</zipUrlInstaller> -->
+<!-- 								<timeout>120000</timeout> -->
+							</container>
+							<configuration>
+								<properties>
+									<cargo.jvmargs>${argLine}</cargo.jvmargs>
+									<cargo.servlet.port>${http.port}</cargo.servlet.port>
+								</properties>
+							</configuration>
 						</configuration>
 						<executions>
 							<execution>
-								<id>start-jetty</id>
+								<id>start-container</id>
 								<phase>pre-integration-test</phase>
 								<goals>
-									<goal>stop</goal>
-									<goal>run-forked</goal>
+									<goal>start</goal>
 								</goals>
-								<configuration>
-									<scanIntervalSeconds>0</scanIntervalSeconds>
-									<daemon>true</daemon>
-									<waitForChild>false</waitForChild>
-									<maxStartupLines>200</maxStartupLines>
-								</configuration>
 							</execution>
 							<execution>
-								<id>stop-jetty</id>
+								<id>stop-container</id>
 								<phase>post-integration-test</phase>
 								<goals>
 									<goal>stop</goal>
 								</goals>
 							</execution>
 						</executions>
-					</plugin>
+					</plugin>					
 				</plugins>
 			</build>
 		</profile>
@@ -234,7 +206,7 @@
 					<plugin>
 						<groupId>org.codehaus.cargo</groupId>
 						<artifactId>cargo-maven2-plugin</artifactId>
-						<version>1.4.10</version>
+						<version>${maven.cargo.version}</version>
 						<configuration>
 							<wait>false</wait>
 							<warName>${finalName}.war</warName>

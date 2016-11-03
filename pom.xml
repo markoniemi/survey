@@ -21,7 +21,6 @@
 		<module>survey-mobile-web</module>
 		<module>survey-backend</module>
 		<module>survey-spring-web</module>
-		<!-- <module>selenium-test-rule</module> -->
 	</modules>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -50,7 +49,7 @@
 		<bootstrap-version>3.3.6</bootstrap-version>
 		<jquery-version>2.1.1</jquery-version>
 		<tomcat.version>7.0.72</tomcat.version>
-		<phantomjs-version>1.9.7</phantomjs-version>
+		<maven.cargo.version>1.5.1</maven.cargo.version>
 	</properties>
 	<build>
 		<defaultGoal>install</defaultGoal>

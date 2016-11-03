@@ -169,7 +169,7 @@
 			<plugin>
 				<groupId>org.codehaus.cargo</groupId>
 				<artifactId>cargo-maven2-plugin</artifactId>
-				<version>1.4.10</version>
+				<version>${maven.cargo.version}</version>
 				<configuration>
 					<wait>false</wait>
 					<warName>${finalName}.war</warName>

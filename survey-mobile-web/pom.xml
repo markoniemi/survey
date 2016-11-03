@@ -123,25 +123,9 @@
 				</configuration>
 			</plugin>
 			<plugin>
-				<groupId>com.github.klieber</groupId>
-				<artifactId>phantomjs-maven-plugin</artifactId>
-				<version>0.5</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>install</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<outputDirectory>${appsDir}</outputDirectory>
-					<version>${phantomjs-version}</version>
-				</configuration>
-			</plugin>
-			<plugin>
 				<groupId>org.codehaus.cargo</groupId>
 				<artifactId>cargo-maven2-plugin</artifactId>
-				<version>1.4.10</version>
+				<version>${maven.cargo.version}</version>
 				<configuration>
 					<wait>false</wait>
 					<warName>${finalName}.war</warName>
@@ -220,7 +204,6 @@
 				</executions>
 				<configuration>
 					<systemPropertyVariables>
-						<phantomjs.binary.path>${phantomjs.binary}</phantomjs.binary.path>
 						<http.port>${http.port}</http.port>
 						<http.protocol>${http.protocol}</http.protocol>
 					</systemPropertyVariables>
