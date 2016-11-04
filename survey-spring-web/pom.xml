@@ -98,16 +98,6 @@
 			<artifactId>selenium-java</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-firefox-driver</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.github.detro</groupId>
-			<artifactId>phantomjsdriver</artifactId>
-			<scope>test</scope>
-		</dependency>
 		<!-- selenium-test-rule -->
 		<dependency>
 			<groupId>org.selenium</groupId>
@@ -183,16 +173,17 @@
 								<id>start-container</id>
 								<phase>pre-integration-test</phase>
 								<goals>
-									<goal>start</goal>
+<!-- 									<goal>start</goal> -->
+									<goal>run</goal>
 								</goals>
 							</execution>
-							<execution>
-								<id>stop-container</id>
-								<phase>post-integration-test</phase>
-								<goals>
-									<goal>stop</goal>
-								</goals>
-							</execution>
+<!-- 							<execution> -->
+<!-- 								<id>stop-container</id> -->
+<!-- 								<phase>post-integration-test</phase> -->
+<!-- 								<goals> -->
+<!-- 									<goal>stop</goal> -->
+<!-- 								</goals> -->
+<!-- 							</execution> -->
 						</executions>
 					</plugin>					
 				</plugins>
