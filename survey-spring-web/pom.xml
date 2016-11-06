@@ -154,12 +154,12 @@
 							<warName>${finalName}.war</warName>
 							<container>
 								<containerId>jetty9x</containerId>
-<!-- 								<zipUrlInstaller> -->
-<!-- 									<url>http://repo1.maven.org/maven2/org/eclipse/jetty/jetty-distribution/9.3.12.v20160915/jetty-distribution-9.3.12.v20160915.tar.gz</url> -->
-<!-- 									<downloadDir>${appsDir}</downloadDir> -->
-<!-- 									<extractDir>${appsDir}</extractDir> -->
-<!-- 								</zipUrlInstaller> -->
-<!-- 								<timeout>120000</timeout> -->
+								<zipUrlInstaller>
+									<url>http://repo1.maven.org/maven2/org/eclipse/jetty/jetty-distribution/${jetty.version}/jetty-distribution-${jetty.version}.tar.gz</url>
+									<downloadDir>${appsDir}</downloadDir>
+									<extractDir>${appsDir}</extractDir>
+								</zipUrlInstaller>
+								<timeout>120000</timeout>
 							</container>
 							<configuration>
 								<properties>
@@ -173,17 +173,16 @@
 								<id>start-container</id>
 								<phase>pre-integration-test</phase>
 								<goals>
-<!-- 									<goal>start</goal> -->
-									<goal>run</goal>
+									<goal>start</goal>
 								</goals>
 							</execution>
-<!-- 							<execution> -->
-<!-- 								<id>stop-container</id> -->
-<!-- 								<phase>post-integration-test</phase> -->
-<!-- 								<goals> -->
-<!-- 									<goal>stop</goal> -->
-<!-- 								</goals> -->
-<!-- 							</execution> -->
+							<execution>
+								<id>stop-container</id>
+								<phase>post-integration-test</phase>
+								<goals>
+									<goal>stop</goal>
+								</goals>
+							</execution>
 						</executions>
 					</plugin>					
 				</plugins>

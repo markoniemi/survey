@@ -49,6 +49,7 @@
 		<bootstrap-version>3.3.6</bootstrap-version>
 		<jquery-version>2.1.1</jquery-version>
 		<tomcat.version>7.0.72</tomcat.version>
+		<jetty.version>9.3.12.v20160915</jetty.version>
 		<maven.cargo.version>1.5.1</maven.cargo.version>
 	</properties>
 	<build>
