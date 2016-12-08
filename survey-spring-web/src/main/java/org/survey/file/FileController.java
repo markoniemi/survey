@@ -52,10 +52,9 @@ public class FileController {
     }
 
     @RequestMapping(value = "/file/{id}", method = RequestMethod.GET)
-    public String downloadFile(@PathVariable Long id, HttpServletResponse response) {
+    public void downloadFile(@PathVariable Long id, HttpServletResponse response) {
         File file = fileService.findOne(id);
         writeFileToResponse(response, file);
-        return "redirect:/file/files";
     }
 
     private void writeFileToResponse(HttpServletResponse response, File file) {
