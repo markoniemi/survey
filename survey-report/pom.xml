@@ -23,22 +23,22 @@
 		<dependency>
 			<groupId>org.survey</groupId>
 			<artifactId>survey-web</artifactId>
-			<version>${project.version}</version>
+			<type>war</type>
 		</dependency>
 		<dependency>
 			<groupId>org.survey</groupId>
 			<artifactId>survey-mobile-web</artifactId>
-			<version>${project.version}</version>
+			<type>war</type>
 		</dependency>
 		<dependency>
 			<groupId>org.survey</groupId>
 			<artifactId>survey-backend</artifactId>
-			<version>${project.version}</version>
+			<type>war</type>
 		</dependency>
 		<dependency>
 			<groupId>org.survey</groupId>
 			<artifactId>survey-spring-web</artifactId>
-			<version>${project.version}</version>
+			<type>war</type>
 		</dependency>
 	</dependencies>
 	<build>
