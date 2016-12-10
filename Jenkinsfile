@@ -9,7 +9,7 @@ node {
 //		env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
 		sh 'java -version'
 		// skip survey-report module in build
-		sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore clean package -DskipTests=true -P hsqldb,tomcat -pl !:survey-report"
+		sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore clean package -DskipTests=true -P hsqldb,tomcat -pl -:survey-report"
 	}
 	stage ('Test') {
 		sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore package -DskipITs=true -P hsqldb,tomcat"
