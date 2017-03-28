@@ -6,7 +6,7 @@ node {
 	}
 	stage ('Build') {
 		env.JAVA_HOME="${tool 'JDK 1.8'}"
-//		env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
+		env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
 		sh 'java -version'
 		// skip survey-report module in build
 		sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore clean package -DskipTests=true -P hsqldb,tomcat"
@@ -31,6 +31,6 @@ node {
 		])
 	}
 	stage ('Sonar') {
-		sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore sonar:sonar -DskipTests=true -Dsonar.host.url=${env.SONAR_URL}"
+        sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore org.sonarsource.scanner.maven:sonar-maven-plugin:3.0.2:sonar -DskipTests=true -Dsonar.host.url=${env.SONAR_URL}"
 	}
 }
