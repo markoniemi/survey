@@ -8,7 +8,6 @@ import javax.annotation.Resource;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.GrantedAuthorityImpl;
 import org.survey.model.user.User;
@@ -34,7 +33,7 @@ public class UserRepositoryAuthenticationProvider implements AuthenticationProvi
      * Authenticate using UserRepository.
      */
     @Override
-    public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+    public Authentication authenticate(Authentication authentication) {
         log.debug("authenticate");
         User user = userService.findOne(authentication.getName());
         return UserRepositoryAuthenticationProvider.authenticateUser(user, authentication);
