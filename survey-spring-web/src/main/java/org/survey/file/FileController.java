@@ -30,7 +30,7 @@ public class FileController {
     private UserService userService;
 
     @RequestMapping(value = "/file/save", method = RequestMethod.POST)
-    public String handleFileUpload(@RequestParam("file") MultipartFile file) throws IOException {
+    public String fileUpload(@RequestParam("file") MultipartFile file) throws IOException {
         byte[] bytes = file.getBytes();
         fileService.create(createFile(file, file.getOriginalFilename(), bytes));
         return "redirect:/file/files";
@@ -87,7 +87,7 @@ public class FileController {
         file.setCreateTime(System.currentTimeMillis());
         file.setSize(uploadedFile.getSize());
         // TODO change files rest to files/:user/:filename
-        file.setUrl("/survery-web/api/rest/files/");
+        file.setUrl("/survey-web/api/rest/files/");
         return file;
     }
 }
