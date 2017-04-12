@@ -55,7 +55,13 @@ public class JwtToken {
 
     public void verifyToken() throws NoSuchAlgorithmException, InvalidKeyException,
             IOException, SignatureException, JWTVerifyException {
-        new JWTVerifier(secret).verify(token);
+        try {
+            new JWTVerifier(secret).verify(token);
+        } catch (InvalidKeyException | NoSuchAlgorithmException | IllegalStateException | SignatureException
+                | IOException | JWTVerifyException e) {
+            log.error(e.getMessage(), e);
+            throw new JWTVerifyException(e.getMessage());
+        }
     }
 
     /**
