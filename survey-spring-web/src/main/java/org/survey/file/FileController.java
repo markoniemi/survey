@@ -30,7 +30,7 @@ public class FileController {
     private UserService userService;
 
     @RequestMapping(value = "/file/save", method = RequestMethod.POST)
-    public String fileUpload(@RequestParam("file") MultipartFile file) throws IOException {
+    public String uploadFile(@RequestParam("file") MultipartFile file) throws IOException {
         byte[] bytes = file.getBytes();
         fileService.create(createFile(file, file.getOriginalFilename(), bytes));
         return "redirect:/file/files";
@@ -64,7 +64,7 @@ public class FileController {
         try {
             IOUtils.copy(new ByteArrayInputStream(file.getContent()), response.getOutputStream());
             response.setHeader("Content-Disposition", "attachment; filename=" + file.getFilename());
-            response.setContentLength(file.getSize().intValue());
+            response.setContentLength(file.getContent().length);
             // for in-browser handling use
             // String mimeType =
             // URLConnection.guessContentTypeFromName(file.getFilename());
@@ -85,7 +85,6 @@ public class FileController {
         file.setContent(fileContent);
          file.setOwner(userService.findOne(SecurityUtil.getUsername()));
         file.setCreateTime(System.currentTimeMillis());
-        file.setSize(uploadedFile.getSize());
         // TODO change files rest to files/:user/:filename
         file.setUrl("/survey-web/api/rest/files/");
         return file;

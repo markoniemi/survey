@@ -20,7 +20,6 @@ public class FileComparator extends EntityComparator<File, Long> {
 				.append(file1.getFilename(), file2.getFilename())
 				.append(file1.getMimeType(), file2.getMimeType())
 				.append(file1.getCreateTime(), file2.getCreateTime())
-				.append(file1.getSize(), file2.getSize())
 				.append(file1.getContent(), file2.getContent())
 //				.append(file1.getOwner(), file2.getOwner())
 				.append(file1.getUrl(), file2.getUrl())

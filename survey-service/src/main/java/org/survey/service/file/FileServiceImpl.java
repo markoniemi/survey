@@ -90,7 +90,7 @@ public class FileServiceImpl implements FileService {
                     outputStream.flush();
                     outputStream.close();
                     // TODO for some reason there is an extra file with 0 size
-                    if (file.getSize() > 0) {
+                    if (file.getContent().length > 0) {
                         fileRepository.save(file);
                     }
                 }
@@ -119,7 +119,6 @@ public class FileServiceImpl implements FileService {
         file.setContent(fileContent);
 //        file.setOwner(owner);
         file.setCreateTime(System.currentTimeMillis());
-        file.setSize(Long.valueOf(fileContent.length));
         // TODO change files rest to files/:user/:filename
         file.setUrl("/survey-web/api/rest/files/");
         return file;

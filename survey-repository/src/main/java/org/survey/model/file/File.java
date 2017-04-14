@@ -43,7 +43,6 @@ public class File {
     @NonNull
     private String mimeType;
     private Long createTime;
-    private Long size;
     @ManyToOne(optional = true)
     @JoinColumn(name = "user_id")
 //    @XmlTransient

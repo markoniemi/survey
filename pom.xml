@@ -155,11 +155,11 @@
 						</goals>
 					</execution>
 				</executions>
-			<configuration>
-				<excludes>
-					<exclude>**com.steadystate*</exclude>
-				</excludes>
-			</configuration>
+				<configuration>
+					<excludes>
+						<exclude>**com.steadystate*</exclude>
+					</excludes>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -171,10 +171,10 @@
 					<systemPropertyVariables>
 						<http.port>${http.port}</http.port>
 						<http.protocol>${http.protocol}</http.protocol>
-<!-- 						<jacoco-agent.excludes>org.jacoco*</jacoco-agent.excludes> -->
+						<!-- <jacoco-agent.excludes>org.jacoco*</jacoco-agent.excludes> -->
 						<jacoco-agent.destfile>target/jacoco.exec</jacoco-agent.destfile>
 					</systemPropertyVariables>
-<!-- 					<argLine>${argLine}</argLine> -->
+					<!-- <argLine>${argLine}</argLine> -->
 				</configuration>
 			</plugin>
 			<plugin>
@@ -425,9 +425,9 @@
 				</exclusions>
 			</dependency>
 			<dependency>
-			  <groupId>xml-apis</groupId>
-			  <artifactId>xml-apis</artifactId>
-			  <version>1.4.01</version>
+				<groupId>xml-apis</groupId>
+				<artifactId>xml-apis</artifactId>
+				<version>1.4.01</version>
 			</dependency>
 			<!-- databases -->
 			<dependency>
@@ -629,7 +629,7 @@
 			<dependency>
 				<groupId>org.dbunit</groupId>
 				<artifactId>dbunit</artifactId>
-				<version>2.4.8</version>
+				<version>2.5.1</version>
 				<scope>test</scope>
 				<exclusions>
 					<exclusion>
@@ -637,6 +637,12 @@
 						<groupId>org.slf4j</groupId>
 					</exclusion>
 				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>com.github.springtestdbunit</groupId>
+				<artifactId>spring-test-dbunit</artifactId>
+				<version>1.2.1</version>
+				<scope>test</scope>
 			</dependency>
 			<!-- Selenium -->
 			<dependency>

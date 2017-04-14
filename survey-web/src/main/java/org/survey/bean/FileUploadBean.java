@@ -88,7 +88,6 @@ public class FileUploadBean {
         file.setContent(fileContent);
         file.setOwner(getUser());
         file.setCreateTime(System.currentTimeMillis());
-        file.setSize(uploadedFile.getSize());
         // TODO change files rest to files/:user/:filename
         file.setUrl("/survery-web/api/rest/files/");
         return file;

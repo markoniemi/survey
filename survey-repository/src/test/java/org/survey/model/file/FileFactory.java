@@ -21,7 +21,6 @@ public class FileFactory implements EntityFactory<File, Long> {
         List<File> entities = new ArrayList<File>();
         for (int i = 0; i < count; i++) {
             File file = new File("filename" + i, MediaType.PLAIN_TEXT_UTF_8.toString(), FILE_CONTENT.getBytes());
-            file.setSize(Long.valueOf(FILE_CONTENT.length()));
             file.setCreateTime(Long.valueOf(i));
             file.setOwner(user);
             file.setUrl("url" + i);
@@ -38,7 +37,6 @@ public class FileFactory implements EntityFactory<File, Long> {
         entity.setMimeType(MediaType.HTML_UTF_8.toString());
         entity.setContent((entity.getContent() + "updated").getBytes());
         entity.setCreateTime(entity.getCreateTime() + 1);
-        entity.setSize(entity.getSize() + 1);
         entity.setOwner(entity.getOwner());
         entity.setUrl(entity.getUrl() + "_updated");
         return entity;
