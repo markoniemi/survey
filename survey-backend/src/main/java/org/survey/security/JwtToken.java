@@ -13,6 +13,7 @@ import lombok.extern.log4j.Log4j2;
 import org.survey.model.user.User;
 
 import com.auth0.jwt.Algorithm;
+import com.auth0.jwt.JWTExpiredException;
 import com.auth0.jwt.JWTSigner;
 import com.auth0.jwt.JWTSigner.Options;
 import com.auth0.jwt.JWTVerifier;
@@ -57,6 +58,8 @@ public class JwtToken {
             IOException, SignatureException, JWTVerifyException {
         try {
             new JWTVerifier(secret).verify(token);
+        } catch (JWTExpiredException e) {
+            throw e;
         } catch (InvalidKeyException | NoSuchAlgorithmException | IllegalStateException | SignatureException
                 | IOException | JWTVerifyException e) {
             log.error(e.getMessage(), e);
