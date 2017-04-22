@@ -31,7 +31,7 @@ import com.github.springtestdbunit.annotation.DatabaseSetup;
 @ContextConfiguration(locations = "classpath:mvc-dispatcher-servlet-test.xml")
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, TransactionalTestExecutionListener.class,
         DbUnitTestExecutionListener.class })
-@DatabaseSetup("FileControllerTest.xml")
+@DatabaseSetup("/FileControllerTest.xml")
 @WebAppConfiguration
 public class FileControllerTest {
     private MockMvc mockMvc;
