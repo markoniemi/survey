@@ -27,7 +27,7 @@ import org.survey.service.user.UserService;
 @SuppressWarnings("squid:S2925")
 public class SpringWebIT {
     private static final int SLEEP_TIME = 1000;
-    @PhantomJsDriver
+    @PhantomJsDriver(version="1.9.7")
     public WebDriver webDriver;
     @Rule
     public SeleniumTestRule seleniumTestRule = new SeleniumTestRule();

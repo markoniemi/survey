@@ -27,7 +27,7 @@ import org.survey.service.user.UserService;
 @ContextConfiguration(locations = "classpath:spring-config-test.xml")
 @SuppressWarnings("squid:S2925")
 public class SurveyWebIT {
-    @PhantomJsDriver
+    @PhantomJsDriver(version="1.9.7")
     public WebDriver webDriver;
     @Rule
     public SeleniumTestRule seleniumTestRule = new SeleniumTestRule();

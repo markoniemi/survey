@@ -615,6 +615,12 @@
 				<type>test-jar</type>
 			</dependency>
 			<dependency>
+				<groupId>org.selenium</groupId>
+				<artifactId>selenium-test-rule</artifactId>
+				<version>0.3-SNAPSHOT</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
 				<version>4.11</version>
