@@ -18,9 +18,9 @@
 				<form name="loginForm" action="#{request.contextPath}/j_spring_security_check" method="post">
 					<h:panelGrid columns="2">
 						<h:outputText value="#{messages.username}" styleClass="required" />
-						<h:inputText id="j_username" styleClass="required" />
+						<h:inputText name="j_username" id="j_username" styleClass="required" />
 						<h:outputText value="#{messages.password}" styleClass="required" />
-						<h:inputSecret id="j_password" styleClass="required" />
+						<h:inputSecret name="j_password" id="j_password" styleClass="required" />
 					</h:panelGrid>
 					<h:commandButton id="loginButton" type="submit"
 						value="#{messages.login}"  />

@@ -20,7 +20,7 @@
             <li><a href="<c:url value="/about" />"><spring:message code="about"/></a></li>
           </ul>
         <form class="navbar-form navbar-right">
-            <button id="logout" class="btn btn-default" formaction="<c:url value='/j_spring_security_check' />">
+            <button id="logout" class="btn btn-default" formaction="<c:url value='/j_spring_security_logout' />">
                 <span class="glyphicon glyphicon-log-out" title="<spring:message code="logout"/>" ></span>
             </button>
         </form>

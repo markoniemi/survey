@@ -35,9 +35,9 @@
 		<!-- <http.protocol>https</http.protocol> -->
 		<ajp.port>8019</ajp.port>
 		<rmi.port>8206</rmi.port>
-		<spring.version>4.0.9.RELEASE</spring.version>
-		<spring.security.version>3.2.9.RELEASE</spring.security.version>
-		<spring.jpa.version>1.7.4.RELEASE</spring.jpa.version>
+		<spring.version>4.3.10.RELEASE</spring.version>
+		<spring.security.version>4.2.3.RELEASE</spring.security.version>
+		<spring.jpa.version>1.11.5.RELEASE</spring.jpa.version>
 		<selenium.version>2.53.1</selenium.version>
 		<cxf.version>3.0.2</cxf.version>
 		<hibernate.version>4.3.11.Final</hibernate.version>
@@ -623,7 +623,7 @@
 			<dependency>
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
-				<version>4.11</version>
+				<version>4.12</version>
 				<scope>test</scope>
 			</dependency>
 			<dependency>

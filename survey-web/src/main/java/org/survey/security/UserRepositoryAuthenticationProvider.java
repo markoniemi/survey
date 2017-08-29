@@ -9,7 +9,7 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.GrantedAuthorityImpl;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.survey.model.user.User;
 import org.survey.service.user.UserService;
 
@@ -34,7 +34,7 @@ public class UserRepositoryAuthenticationProvider implements AuthenticationProvi
      */
     @Override
     public Authentication authenticate(Authentication authentication) {
-        log.debug("authenticate");
+        log.debug("authenticate:" + authentication.getName());
         User user = userService.findOne(authentication.getName());
         return UserRepositoryAuthenticationProvider.authenticateUser(user, authentication);
     }
@@ -42,7 +42,7 @@ public class UserRepositoryAuthenticationProvider implements AuthenticationProvi
     private static Authentication authenticateUser(User user, Authentication authentication) {
         if (user != null && authentication.getCredentials().equals(user.getPassword())) {
             List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-            authorities.add(new GrantedAuthorityImpl(user.getRole().name()));
+            authorities.add(new SimpleGrantedAuthority(user.getRole().name()));
             return new UsernamePasswordAuthenticationToken(authentication.getName(), authentication.getCredentials(),
                     authorities);
         } else {

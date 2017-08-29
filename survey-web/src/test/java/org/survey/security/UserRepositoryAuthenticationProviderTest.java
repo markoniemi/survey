@@ -9,7 +9,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.authority.GrantedAuthorityImpl;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.survey.model.user.Role;
@@ -51,7 +51,7 @@ public class UserRepositoryAuthenticationProviderTest {
 		Assert.assertEquals(1, authenticationFromProvider.getAuthorities()
 				.size());
 		Assert.assertTrue(authenticationFromProvider.getAuthorities().contains(
-				new GrantedAuthorityImpl("ROLE_ADMIN")));
+				new SimpleGrantedAuthority("ROLE_ADMIN")));
 	}
 
 	@Test
