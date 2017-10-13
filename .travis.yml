@@ -1,0 +1,14 @@
+language: java
+jdk: oraclejdk8
+dist: trusty
+install: true
+addons:
+  sonarcloud:
+    organization: "markoniemi-github"
+    token: $SONAR_CLOUD_TOKEN
+script:
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package verify  sonar:sonar
+cache:
+  directories:
+    - '$HOME/.m2/repository'
+    - '$HOME/.sonar/cache'

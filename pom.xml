@@ -617,7 +617,7 @@
 			<dependency>
 				<groupId>org.selenium</groupId>
 				<artifactId>selenium-test-rule</artifactId>
-				<version>0.3-SNAPSHOT</version>
+				<version>0.3</version>
 				<scope>test</scope>
 			</dependency>
 			<dependency>
