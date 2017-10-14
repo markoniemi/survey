@@ -264,6 +264,10 @@
 			<id>org.primefaces</id>
 			<url>http://repository.primefaces.org/</url>
 		</repository>
+		<repository>
+			<id>bintray-markoniemi-maven-repo</id>
+			<url>https://dl.bintray.com/markoniemi/maven-repo</url>
+		</repository>
 	</repositories>
 	<profiles>
 		<profile>
