@@ -4,11 +4,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
+import org.apache.xpath.operations.String;
+import org.junit.*;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -64,6 +61,7 @@ public class SpringWebIT {
     }
 
     @Test
+    @Ignore
     public void integrationTest() throws InterruptedException {
         openBrowser();
 
