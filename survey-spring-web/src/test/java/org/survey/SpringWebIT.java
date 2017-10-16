@@ -1,10 +1,5 @@
 package org.survey;
 
-import java.util.List;
-
-import javax.annotation.Resource;
-
-import org.apache.xpath.operations.String;
 import org.junit.*;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
@@ -18,6 +13,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.survey.model.user.Role;
 import org.survey.service.poll.PollService;
 import org.survey.service.user.UserService;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:spring-config-test.xml")
