@@ -154,6 +154,9 @@
                 <configuration>
                     <!--<jettyXml>src/main/resources/jetty-app.xml</jettyXml>-->
                     <scanIntervalSeconds>10</scanIntervalSeconds>
+                    <httpConnector>
+                        <port>${http.port}</port>
+                    </httpConnector>
                     <webApp>
                         <contextPath>/survey-spring-web</contextPath>
                     </webApp>
