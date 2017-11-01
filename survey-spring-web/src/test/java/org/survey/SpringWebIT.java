@@ -59,6 +59,7 @@ public class SpringWebIT {
     }
 
     @Test
+    @Ignore
     public void integrationTest() throws InterruptedException {
         openBrowser();
 
