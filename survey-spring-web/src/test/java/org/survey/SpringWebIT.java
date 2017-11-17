@@ -22,7 +22,7 @@ import java.util.List;
 @SuppressWarnings("squid:S2925")
 public class SpringWebIT {
     private static final int SLEEP_TIME = 1000;
-    @PhantomJsDriver(version="1.9.7")
+    @PhantomJsDriver(version="2.1.1")
     public WebDriver webDriver;
     @Rule
     public SeleniumTestRule seleniumTestRule = new SeleniumTestRule();
@@ -59,7 +59,6 @@ public class SpringWebIT {
     }
 
     @Test
-    @Ignore
     public void integrationTest() throws InterruptedException {
         openBrowser();
 

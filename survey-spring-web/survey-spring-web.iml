@@ -130,7 +130,7 @@
     <orderEntry type="library" scope="TEST" name="Maven: xalan:xalan:2.7.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: xerces:xercesImpl:2.11.0" level="project" />
     <orderEntry type="library" name="Maven: xml-apis:xml-apis:1.4.01" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.markoniemi:selenium-test-rule:0.5" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.markoniemi:selenium-test-rule:0.6" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: com.machinepublishers:jbrowserdriver:0.17.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.apache.httpcomponents:httpclient-cache:4.5.2" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.2" level="project" />

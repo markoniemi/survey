@@ -174,7 +174,7 @@
                         <artifactId>cargo-maven2-plugin</artifactId>
                         <version>${maven.cargo.version}</version>
                         <configuration>
-                            <wait>false</wait>
+                            <wait>true</wait>
                             <warName>${finalName}.war</warName>
                             <container>
                                 <containerId>jetty9x</containerId>
