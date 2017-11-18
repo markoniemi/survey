@@ -7,7 +7,7 @@ addons:
     organization: "markoniemi-github"
     token: $SONAR_CLOUD_TOKEN
 script:
-  - mvn clean install site sonar:sonar -P hsqldb,tomcat
+  - mvn -B clean install site sonar:sonar -P hsqldb,tomcat
 cache:
   directories:
     - '$HOME/.m2/repository'
