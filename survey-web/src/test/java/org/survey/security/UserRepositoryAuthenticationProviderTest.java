@@ -11,7 +11,9 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.survey.ManagedBeanTestConfig;
 import org.survey.model.user.Role;
 import org.survey.model.user.User;
 import org.survey.service.user.UserService;
@@ -22,7 +24,7 @@ import org.survey.service.user.UserService;
  * ContextConfiguration.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:spring-config-test.xml")
+@ContextHierarchy(@ContextConfiguration(classes = ManagedBeanTestConfig.class))
 public class UserRepositoryAuthenticationProviderTest {
 	@Resource
 	UserService userService;

@@ -1,4 +1,4 @@
-package org.survey.service.poll;
+package org.survey.service.file;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -12,10 +12,12 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.survey.model.poll.Poll;
-import org.survey.model.poll.PollComparator;
-import org.survey.model.poll.PollFactory;
+import org.survey.ServiceConfig;
+import org.survey.model.file.File;
+import org.survey.model.file.FileComparator;
+import org.survey.model.file.FileFactory;
 import org.survey.model.user.User;
 import org.survey.model.user.UserFactory;
 import org.survey.service.user.UserService;
@@ -25,15 +27,15 @@ import org.survey.service.user.UserService;
  * injection. Loaded Spring configuration is defined by ContextConfiguration.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:spring-config-service-test.xml")
-public class PollServiceImplTest {
+//@ContextConfiguration(locations = "classpath:spring-config-service-test.xml")
+public class FileServiceTestBase {
     protected static int ENTITY_COUNT = 2;
-    protected List<Poll> orginalEntities = new ArrayList<Poll>();
-    protected List<Poll> savedEntities = new ArrayList<Poll>();
-    @Resource(name="pollService")
-    protected PollService entityService;
-    protected PollFactory entityFactory;
-    protected PollComparator entityComparator = new PollComparator();
+    protected List<File> orginalEntities = new ArrayList<File>();;
+    protected List<File> savedEntities = new ArrayList<File>();;
+    @Resource(name="fileService")
+    protected FileService entityService;
+    protected FileFactory entityFactory;
+    protected FileComparator entityComparator = new FileComparator();
     @Resource
     protected UserService userService;
     private User user;
@@ -42,17 +44,16 @@ public class PollServiceImplTest {
     public void setUp() {
         UserFactory userFactory = new UserFactory();
         user = userFactory.getEntities(1).get(0);
-//        user = userRepository.save(user);
         user = userService.create(user);
-        entityFactory = new PollFactory(user);
+        entityFactory = new FileFactory(user);
     }
 
     @After
     public void tearDown() throws SQLException {
-        Poll[] users = entityService.findAll();
+        File[] users = entityService.findAll();
         if (users != null) {
-            for (Poll pollToDelete : users) {
-                entityService.delete(pollToDelete.getName());
+            for (File fileToDelete : users) {
+                entityService.delete(fileToDelete.getId());
             }
         }
         userService.delete(user.getUsername());
@@ -62,21 +63,10 @@ public class PollServiceImplTest {
     public void create() {
         orginalEntities = entityFactory.getEntities(ENTITY_COUNT);
         for (int i = 0; i < ENTITY_COUNT; i++) {
-            Poll originalEntity = orginalEntities.get(i);
-            Poll savedEntity = entityService.create(originalEntity);
+            File originalEntity = orginalEntities.get(i);
+            File savedEntity = entityService.create(originalEntity);
             savedEntities.add(savedEntity);
             assertEntity(originalEntity, savedEntity);
-        }
-    }
-
-    @Test
-    public void createWithError() {
-        try {
-            create();
-            entityService.create(orginalEntities.get(0));
-        } catch (IllegalArgumentException e) {
-            Assert.assertTrue(e.getMessage()
-                    .startsWith("Poll already exists: "));
         }
     }
 
@@ -84,12 +74,12 @@ public class PollServiceImplTest {
     public void update() {
         create();
         for (int i = 0; i < ENTITY_COUNT; i++) {
-            Poll foundEntity = entityService.findOne(savedEntities.get(i)
-                    .getName());
-            Poll updatedEntity = entityFactory.getUpdatedEntity(foundEntity);
+            File foundEntity = entityService.findOne(savedEntities.get(i)
+                    .getId());
+            File updatedEntity = entityFactory.getUpdatedEntity(foundEntity);
             updatedEntity.setId(foundEntity.getId());
             entityService.update(updatedEntity);
-            foundEntity = entityService.findOne(savedEntities.get(i).getName());
+            foundEntity = entityService.findOne(savedEntities.get(i).getId());
             assertEntity(updatedEntity, foundEntity);
         }
     }
@@ -101,21 +91,12 @@ public class PollServiceImplTest {
     }
 
     @Test
-    public void findByOwner() {
-        create();
-        Assert.assertEquals(
-                ENTITY_COUNT,
-                entityService.findByOwner(savedEntities.get(0).getOwner()
-                        .getUsername()).length);
-    }
-
-    @Test
     public void findOne() {
         create();
         for (int i = 0; i < ENTITY_COUNT; i++) {
-            Poll originalEntity = orginalEntities.get(i);
-            Poll foundEntity = entityService.findOne(originalEntity.getName());
-            assertEntity(orginalEntities.get(i), foundEntity);
+            File savedEntity = savedEntities.get(i);
+            File foundEntity = entityService.findOne(savedEntity.getId());
+            assertEntity(savedEntities.get(i), foundEntity);
         }
         // TODO how to test a non-existent entity?
     }
@@ -124,8 +105,8 @@ public class PollServiceImplTest {
     public void exists() {
         create();
         for (int i = 0; i < ENTITY_COUNT; i++) {
-            Poll entity = orginalEntities.get(i);
-            entityService.exists(entity.getName());
+            File entity = savedEntities.get(i);
+            entityService.exists(entity.getId());
         }
         // TODO how to test if exists fails?
         // Assert.assertFalse(entityRepository.exists((ID) new Object()));
@@ -134,7 +115,7 @@ public class PollServiceImplTest {
     @Test
     public void existsWithNull() {
         // try with non-existent id
-        Assert.assertFalse(entityService.exists("nonexistent"));
+        Assert.assertFalse(entityService.exists(123L));
     }
 
     @Test
@@ -147,9 +128,9 @@ public class PollServiceImplTest {
     public void delete() {
         create();
         for (int i = 0; i < ENTITY_COUNT; i++) {
-            Poll entity = orginalEntities.get(i);
-            entityService.delete(entity.getName());
-            Assert.assertFalse(entityService.exists(entity.getName()));
+            File entity = savedEntities.get(i);
+            entityService.delete(entity.getId());
+            Assert.assertFalse(entityService.exists(entity.getId()));
         }
         Assert.assertEquals(0, entityService.count());
     }
@@ -157,17 +138,11 @@ public class PollServiceImplTest {
     @Test
     public void deleteNonexistent() {
         create();
-        entityService.delete("nonexistent");
+        entityService.delete(0);
     }
 
-    public void assertEntity(Poll originalEntity, Poll entity) {
+    public void assertEntity(File originalEntity, File entity) {
         Assert.assertEquals("originalEntity: " + originalEntity + " entity: "
                 + entity, 0, entityComparator.compare(originalEntity, entity));
-        Assert.assertNotNull(originalEntity.getQuestions());
-        Assert.assertNotNull(entity.getQuestions());
-        Assert.assertEquals(originalEntity.getQuestions().size(),
-                entity.getQuestions().size());
-        Assert.assertEquals(originalEntity.getQuestions().get(0).getType(),
-                entity.getQuestions().get(0).getType());
     }
 }

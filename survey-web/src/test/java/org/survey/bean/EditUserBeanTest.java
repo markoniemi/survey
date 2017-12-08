@@ -11,7 +11,9 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.survey.ManagedBeanTestConfig;
 import org.survey.model.user.Role;
 import org.survey.model.user.User;
 import org.survey.repository.user.UserRepository;
@@ -22,7 +24,7 @@ import org.survey.service.user.UserService;
  * injection. Loaded Spring configuration is defined by ContextConfiguration.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:spring-config-test.xml")
+@ContextHierarchy(@ContextConfiguration(classes = ManagedBeanTestConfig.class))
 public class EditUserBeanTest {
     EditUserBean editUserBean;
     @Resource

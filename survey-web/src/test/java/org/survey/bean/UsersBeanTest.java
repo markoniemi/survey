@@ -10,7 +10,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.survey.ManagedBeanTestConfig;
 import org.survey.model.user.Role;
 import org.survey.model.user.User;
 import org.survey.service.user.UserService;
@@ -20,7 +22,7 @@ import org.survey.service.user.UserService;
  * Loaded Spring configuration is defined by ContextConfiguration.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:spring-config-test.xml")
+@ContextHierarchy(@ContextConfiguration(classes = ManagedBeanTestConfig.class))
 public class UsersBeanTest {
 	UsersBean usersBean;
 	@Resource

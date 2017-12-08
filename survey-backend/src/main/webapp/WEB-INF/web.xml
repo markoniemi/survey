@@ -21,16 +21,36 @@
 <!-- 		<url-pattern>/api/rest/*</url-pattern> -->
 <!-- 	</filter-mapping> -->
 	<!-- spring-core -->
+	<!-- TODO replace with WebAppInitializer -->
+	<!-- Configure ContextLoaderListener to use AnnotationConfigWebApplicationContext
+         instead of the default XmlWebApplicationContext -->
+	<context-param>
+		<param-name>contextClass</param-name>
+		<param-value>
+			org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+		</param-value>
+	</context-param>
+	<!-- Configuration locations must consist of one or more comma- or space-delimited
+         fully-qualified @Configuration classes. Fully-qualified packages may also be
+         specified for component-scanning -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/classes/spring-config.xml</param-value>
+		<param-value>org.survey.SurveyBackendConfig</param-value>
 	</context-param>
+	<!-- Bootstrap the root application context as usual using ContextLoaderListener -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-	<listener>
-		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
-	</listener>	
+	<!--<context-param>-->
+		<!--<param-name>contextConfigLocation</param-name>-->
+		<!--<param-value>/WEB-INF/classes/spring-config.xml</param-value>-->
+	<!--</context-param>-->
+	<!--<listener>-->
+		<!--<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>-->
+	<!--</listener>-->
+	<!--<listener>-->
+		<!--<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>-->
+	<!--</listener>	-->
 	<!-- spring-security -->
 	<!-- TODO enable security -->
 <!-- 	<filter> -->

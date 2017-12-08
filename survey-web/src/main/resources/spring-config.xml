@@ -10,9 +10,10 @@
            http://www.springframework.org/schema/data/jpa 
            http://www.springframework.org/schema/data/jpa/spring-jpa-1.0.xsd">
 <!--     <import resource="classpath:spring-config-service-client.xml"/> -->
-    <import resource="classpath:spring-config-service.xml"/>
-    <import resource="classpath:spring-security.xml"/>
+    <!--<import resource="classpath:spring-config-service.xml"/>-->
+    <!--<import resource="classpath:spring-security.xml"/>-->
+	<!-- TODO remove xml configs -->
 	<context:component-scan base-package="org.survey" />
-	<context:annotation-config />
+	<!--<context:annotation-config />-->
 	<bean id="databaseInitializer" class="org.survey.DatabaseInitializer" />
 </beans>

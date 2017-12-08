@@ -3,18 +3,21 @@ package org.survey.user;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.survey.service.user.UserServiceImplTest;
+import org.survey.ServiceTestConfig;
+import org.survey.service.user.UserServiceTestBase;
 
 /**
  * Test PersonManagement using WebService. Spring injects userService with
  * WebService. Must use SpringJUnit4ClassRunner to enable spring injection.
  * Loaded Spring configuration is defined by ContextConfiguration.
- * inheritLocations prevents UserServiceImplTest from loading spring config.
+ * inheritLocations prevents UserServiceTestBase from loading spring config.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:spring-config-service-test.xml", inheritLocations=false)
-public class UserServiceIT extends UserServiceImplTest {
+//@ContextConfiguration(locations = "classpath:spring-config-service-test.xml", inheritLocations=false)
+@ContextHierarchy(@ContextConfiguration(classes = ServiceTestConfig.class))
+public class UserServiceIT extends UserServiceTestBase {
     /**
      * Override method because expected exception is wrapped in
      * SOAPFaultException in WebService.

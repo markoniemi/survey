@@ -20,7 +20,7 @@
     <orderEntry type="library" name="Maven: org.webjars:ngStorage:0.3.0" level="project" />
     <orderEntry type="library" name="Maven: org.webjars:angular-jwt:0.0.6" level="project" />
     <orderEntry type="library" name="Maven: org.webjars.bower:ng-file-upload:9.0.8" level="project" />
-    <orderEntry type="library" name="Maven: org.webjars.bower:angular:1.6.6" level="project" />
+    <orderEntry type="library" name="Maven: org.webjars.bower:angular:1.6.7-1" level="project" />
     <orderEntry type="module" module-name="survey-service" scope="TEST" />
     <orderEntry type="module" module-name="survey-repository" scope="TEST" />
     <orderEntry type="module" module-name="crud-repository-stub" scope="TEST" />

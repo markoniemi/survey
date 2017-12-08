@@ -5,15 +5,17 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({ 
-//    RepositoryTestSuite.class, 
     UserServiceWebDriverIT.class,
     UserServiceIT.class,
     UserServiceRestIT.class,
     FileServiceWebDriverIT.class,
     PollServiceWebDriverIT.class,
-    FileServiceIT.class
-// need to re-write the service tests so that they do not use repositories
-//    PollServiceIT.class
+    FileServiceIT.class,
+    FileServiceRestIT.class,
+    PollServiceIT.class,
+    // TODO fix service and enable test case
+//    PollServiceRestIT.class
 })
+// TODO refactor IT tests to org.survey package
 public class BackendIntegrationTestSuite {
 }

@@ -13,7 +13,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.primefaces.model.StreamedContent;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.survey.ManagedBeanTestConfig;
 import org.survey.model.file.File;
 import org.survey.repository.file.FileRepository;
 import org.survey.service.file.FileService;
@@ -23,7 +25,7 @@ import org.survey.service.file.FileService;
  * Loaded Spring configuration is defined by ContextConfiguration.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:spring-config-test.xml")
+@ContextHierarchy(@ContextConfiguration(classes = ManagedBeanTestConfig.class))
 public class FilesBeanTest {
 //	@Resource
 	FilesBeanMock filesBean;

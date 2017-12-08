@@ -1,20 +1,7 @@
 package org.survey.bean;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Collection;
-
-import javax.annotation.Resource;
-import javax.servlet.http.Part;
-
-import lombok.Data;
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.Delegate;
-
 import org.apache.commons.collections.IteratorUtils;
 import org.junit.After;
 import org.junit.Assert;
@@ -22,7 +9,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.survey.ManagedBeanTestConfig;
 import org.survey.model.file.File;
 import org.survey.model.user.Role;
 import org.survey.model.user.User;
@@ -30,12 +19,19 @@ import org.survey.repository.file.FileRepository;
 import org.survey.repository.user.UserRepository;
 import org.survey.service.file.FileService;
 
+import javax.annotation.Resource;
+import javax.servlet.http.Part;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Collection;
+
 /**
  * Test FileUploadBean. Must use SpringJUnit4ClassRunner to enable spring
  * injection. Loaded Spring configuration is defined by ContextConfiguration.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:spring-config-test.xml")
+@ContextHierarchy(@ContextConfiguration(classes = ManagedBeanTestConfig.class))
 public class FileUploadBeanTest {
     private FileUploadBeanMock fileUploadBean;
     @Resource

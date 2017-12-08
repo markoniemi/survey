@@ -173,11 +173,6 @@
 				<configuration>
 					<wait>false</wait>
 					<warName>${finalName}.war</warName>
-					<configuration>
-						<properties>
-							<cargo.jvmargs>argLine</cargo.jvmargs>
-						</properties>
-					</configuration>
 					<container>
 						<containerId>tomcat7x</containerId>
 						<zipUrlInstaller>
@@ -188,6 +183,18 @@
 						<timeout>120000</timeout>
 					</container>
 					<configuration>
+						<properties>
+							<!--<cargo.jvmargs>-->
+								<!-- -Xmx2048m-->
+								<!-- -Xms512m-->
+								<!-- -Xdebug-->
+								<!-- -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005-->
+								<!-- -Xnoagent-->
+								<!-- -Djava.compiler=NONE-->
+								<!-- -argLine-->
+							<!--</cargo.jvmargs>-->
+							<cargo.jvmargs>argLine</cargo.jvmargs>
+						</properties>
 						<files>
 							<file>
 								<file>${project.basedir}/src/test/resources/survey.jks</file>

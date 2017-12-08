@@ -18,13 +18,14 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.selenium.SeleniumTestRule;
 import org.selenium.annotation.PhantomJsDriver;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.survey.model.user.Role;
 import org.survey.service.poll.PollService;
 import org.survey.service.user.UserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:spring-config-test.xml")
+@ContextHierarchy(@ContextConfiguration(classes = ServiceTestConfig.class))
 @SuppressWarnings("squid:S2925")
 public class SurveyWebIT {
     @PhantomJsDriver(version="1.9.7")

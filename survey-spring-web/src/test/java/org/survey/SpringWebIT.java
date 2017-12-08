@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.selenium.SeleniumTestRule;
 import org.selenium.annotation.PhantomJsDriver;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.survey.model.user.Role;
 import org.survey.service.poll.PollService;
@@ -18,7 +19,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:spring-config-test.xml")
+@ContextHierarchy(@ContextConfiguration(classes = ServiceTestConfig.class))
 @SuppressWarnings("squid:S2925")
 public class SpringWebIT {
     private static final int SLEEP_TIME = 1000;

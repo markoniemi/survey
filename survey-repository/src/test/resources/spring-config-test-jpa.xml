@@ -10,6 +10,7 @@
            http://www.springframework.org/schema/data/jpa 
            http://www.springframework.org/schema/data/jpa/spring-jpa-1.0.xsd">
     <import resource="classpath:spring-config-database.xml"/>
+	<!-- TODO remove xml configs -->
     <context:component-scan base-package="org.survey" />
     <context:annotation-config />
 	<jpa:repositories base-package="org.survey.repository.user" />

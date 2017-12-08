@@ -2,15 +2,16 @@ package org.survey;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
-import org.survey.service.file.FileServiceImplTest;
-import org.survey.service.poll.PollServiceImplTest;
-import org.survey.service.user.UserServiceImplTest;
+import org.survey.service.file.FileServiceTest;
+import org.survey.service.file.FileServiceTestBase;
+import org.survey.service.poll.PollServiceTest;
+import org.survey.service.user.UserServiceTest;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-    UserServiceImplTest.class,
-    FileServiceImplTest.class,
-    PollServiceImplTest.class
+    UserServiceTest.class,
+    FileServiceTest.class,
+    PollServiceTest.class
 })
 public class ServiceTestSuite {
 

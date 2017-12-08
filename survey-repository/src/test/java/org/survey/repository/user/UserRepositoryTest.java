@@ -8,7 +8,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.survey.RepositoryStubTestConfig;
 import org.survey.model.user.User;
 import org.survey.model.user.UserComparator;
 import org.survey.model.user.UserFactory;
@@ -19,7 +21,7 @@ import org.survey.repository.CrudRepositoryTest;
  * injection. Loaded Spring configuration is defined by ContextConfiguration.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:spring-config-test-stub.xml")
+@ContextHierarchy(@ContextConfiguration(classes = RepositoryStubTestConfig.class))
 public class UserRepositoryTest extends CrudRepositoryTest<User, Long> {
 	@Resource
 	protected UserRepository userRepository;

@@ -11,7 +11,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.survey.RepositoryStubTestConfig;
 import org.survey.model.file.File;
 import org.survey.model.file.FileComparator;
 import org.survey.model.file.FileFactory;
@@ -25,7 +27,7 @@ import org.survey.repository.user.UserRepository;
  * injection. Loaded Spring configuration is defined by ContextConfiguration.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:spring-config-test-stub.xml")
+@ContextHierarchy(@ContextConfiguration(classes = RepositoryStubTestConfig.class))
 public class FileRepositoryTest extends CrudRepositoryTest<File, Long> {
 	@Resource
 	protected FileRepository fileRepository;

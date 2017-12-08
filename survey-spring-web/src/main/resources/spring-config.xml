@@ -10,7 +10,7 @@
            http://www.springframework.org/schema/data/jpa 
            http://www.springframework.org/schema/data/jpa/spring-jpa-1.0.xsd">
 	<!-- SpringMVC definitions are loaded from mvc-dispatcher-servlet.xml -->
-    <import resource="classpath:spring-config-service.xml"/>
+    <!--<import resource="classpath:spring-config-service.xml"/>-->
     <import resource="classpath:spring-security.xml"/>
 	<context:component-scan base-package="org.survey" />
 	<context:annotation-config />
