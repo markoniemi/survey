@@ -147,11 +147,11 @@
 							<groupId>org.survey</groupId>
 						</deployable>
 					</deployables>
-					<configuration>
-						<properties>
-							<cargo.jvmargs>argLine</cargo.jvmargs>
-						</properties>
-					</configuration>
+					<!--<configuration>-->
+						<!--<properties>-->
+							<!--&lt;!&ndash;<cargo.jvmargs>argLine</cargo.jvmargs>&ndash;&gt;-->
+						<!--</properties>-->
+					<!--</configuration>-->
 					<container>
 						<containerId>tomcat7x</containerId>
 						<zipUrlInstaller>
@@ -170,6 +170,14 @@
 							</file>
 						</files>
 						<properties>
+							<cargo.jvmargs>
+								-Xmx2048m
+								-Xms512m
+								-Xdebug
+								-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005
+								-Xnoagent
+								-Djava.compiler=NONE
+							</cargo.jvmargs>
 							<cargo.servlet.users>admin:admin:User</cargo.servlet.users>
 							<!-- testing properties for ssl -->
 							<cargo.servlet.port>${http.port}</cargo.servlet.port>
