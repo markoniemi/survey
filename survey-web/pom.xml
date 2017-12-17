@@ -65,6 +65,14 @@
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
 		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>org.slf4j</groupId>-->
+			<!--<artifactId>slf4j-api</artifactId>-->
+		<!--</dependency>-->
+		<!--<dependency>-->
+			<!--<groupId>org.slf4j</groupId>-->
+			<!--<artifactId>slf4j-jdk14</artifactId>-->
+		<!--</dependency>		-->
 		<!-- test -->
 		<dependency>
 			<groupId>org.survey</groupId>
@@ -141,17 +149,17 @@
 				<configuration>
 					<wait>false</wait>
 					<warName>${finalName}.war</warName>
-					<deployables>
-						<deployable>
-							<artifactId>survey-backend</artifactId>
-							<groupId>org.survey</groupId>
-						</deployable>
-					</deployables>
-					<!--<configuration>-->
-						<!--<properties>-->
-							<!--&lt;!&ndash;<cargo.jvmargs>argLine</cargo.jvmargs>&ndash;&gt;-->
-						<!--</properties>-->
-					<!--</configuration>-->
+					<!--<deployables>-->
+						<!--<deployable>-->
+							<!--<artifactId>survey-backend</artifactId>-->
+							<!--<groupId>org.survey</groupId>-->
+						<!--</deployable>-->
+					<!--</deployables>-->
+					<configuration>
+						<properties>
+							<cargo.jvmargs>argLine</cargo.jvmargs>
+						</properties>
+					</configuration>
 					<container>
 						<containerId>tomcat7x</containerId>
 						<zipUrlInstaller>
@@ -170,14 +178,14 @@
 							</file>
 						</files>
 						<properties>
-							<cargo.jvmargs>
-								-Xmx2048m
-								-Xms512m
-								-Xdebug
-								-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005
-								-Xnoagent
-								-Djava.compiler=NONE
-							</cargo.jvmargs>
+							<!--<cargo.jvmargs>-->
+								<!-- -Xmx2048m-->
+								<!-- -Xms512m-->
+								<!-- -Xdebug-->
+								<!-- -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005-->
+								<!-- -Xnoagent-->
+								<!-- -Djava.compiler=NONE-->
+							<!--</cargo.jvmargs>-->
 							<cargo.servlet.users>admin:admin:User</cargo.servlet.users>
 							<!-- testing properties for ssl -->
 							<cargo.servlet.port>${http.port}</cargo.servlet.port>
@@ -233,6 +241,21 @@
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>${jetty.version}</version>
+				<configuration>
+					<!--<jettyXml>src/main/resources/jetty-app.xml</jettyXml>-->
+					<scanIntervalSeconds>10</scanIntervalSeconds>
+					<httpConnector>
+						<port>${http.port}</port>
+					</httpConnector>
+					<webApp>
+						<contextPath>/survey-web</contextPath>
+					</webApp>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

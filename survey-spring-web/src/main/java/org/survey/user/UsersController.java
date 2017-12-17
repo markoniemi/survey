@@ -19,7 +19,7 @@ public class UsersController {
 //    @Resource
     @Autowired
     private UserService userService;
-    @RequestMapping(value = "/user/users", method = RequestMethod.GET)
+    @RequestMapping(value = "/user/users")
     public ModelAndView users() {
         ModelAndView model = new ModelAndView();
         model.setViewName("/user/users");

@@ -23,11 +23,11 @@ import javax.annotation.Resource;
 //@RestControllerAdvice(basePackages="org.survey")
 @Import({ServiceConfig.class})
 public class RestConfig {
-    @Resource
+    @Resource(name="userServiceBean")
     private UserService userService;
-    @Resource
+    @Resource(name="fileServiceBean")
     private FileService fileService;
-    @Resource
+    @Resource(name="pollServiceBean")
     private PollService pollService;
 
     @Bean(destroyMethod = "shutdown")
