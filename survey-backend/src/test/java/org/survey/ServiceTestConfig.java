@@ -8,6 +8,7 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean;
 import org.survey.service.file.FileService;
+import org.survey.service.login.LoginService;
 import org.survey.service.poll.PollService;
 import org.survey.service.user.UserService;
 
@@ -36,7 +37,6 @@ public class ServiceTestConfig {
         proxyFactory.setAddress("http://localhost:8082/survey-backend/api/soap/pollService");
         return proxyFactory.create();
     }
-
 //    @Bean
 //    public JaxWsProxyFactoryBean proxyFactoryBean() {
 //        JaxWsProxyFactoryBean proxyFactory = new JaxWsProxyFactoryBean();

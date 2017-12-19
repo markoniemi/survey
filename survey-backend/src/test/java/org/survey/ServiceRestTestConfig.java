@@ -6,6 +6,7 @@ import org.codehaus.jackson.jaxrs.JacksonJaxbJsonProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.survey.service.file.FileService;
+import org.survey.service.login.LoginService;
 import org.survey.service.poll.PollService;
 import org.survey.service.user.UserService;
 
@@ -34,5 +35,9 @@ public class ServiceRestTestConfig {
     @Bean(name = "pollService")
     public Object getPollService() {
         return JAXRSClientFactory.create("http://localhost:8082/survey-backend/api/rest", PollService.class, getJsonProviders());
+    }
+    @Bean(name = "loginService")
+    public Object getLoginService() {
+        return JAXRSClientFactory.create("http://localhost:8082/survey-backend/api/rest", LoginService.class, getJsonProviders());
     }
 }

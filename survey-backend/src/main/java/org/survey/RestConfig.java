@@ -11,6 +11,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.context.annotation.Import;
 import org.survey.service.file.FileService;
+import org.survey.service.login.LoginService;
+import org.survey.service.login.LoginServiceImpl;
 import org.survey.service.poll.PollService;
 import org.survey.service.user.UserService;
 import org.survey.service.user.UserServiceImpl;
@@ -29,6 +31,10 @@ public class RestConfig {
     private FileService fileService;
     @Resource(name="pollServiceBean")
     private PollService pollService;
+    @Bean("loginServiceBean")
+    public LoginService getLoginService(){
+        return new LoginServiceImpl();
+    }
 
     @Bean(destroyMethod = "shutdown")
     public SpringBus cxf() {
@@ -39,7 +45,7 @@ public class RestConfig {
     @DependsOn("cxf")
     public Server jaxRsServer() {
         final JAXRSServerFactoryBean factory = new JAXRSServerFactoryBean();
-        factory.setServiceBeanObjects(userService,fileService,pollService);
+        factory.setServiceBeanObjects(userService,fileService,pollService,getLoginService());
         factory.setProvider(new JacksonJsonProvider());
         factory.setBus(cxf());
         factory.setAddress("/rest");

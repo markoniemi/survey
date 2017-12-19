@@ -18,7 +18,6 @@ import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
-@Path("/")
 public class LoginServiceImpl implements LoginService {
 // TODO use either userRepository or autowired
 //    @Resource
@@ -28,9 +27,6 @@ public class LoginServiceImpl implements LoginService {
     private UserService userService;
 
     @Override
-    @POST
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("/login")
     public String login(User userToLogin) {
         User user = userService.findOne(userToLogin.getUsername());
         if (user == null) {
@@ -45,8 +41,6 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
-    @POST
-    @Path("/logout")
     public void logout(@Context HttpServletRequest request) {
         String authenticationToken = (String) request.getHeader(JwtToken.AUTHORIZATION_HEADER);
         log.debug(authenticationToken);

@@ -62,7 +62,6 @@ public class MobileWebIT {
     }
 
     @Test
-    @Ignore
     public void integrationTest() throws InterruptedException {
         openBrowser();
 

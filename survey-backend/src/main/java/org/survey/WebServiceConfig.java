@@ -16,11 +16,11 @@ import javax.xml.ws.Endpoint;
 @Configuration
 @Import({ServiceConfig.class})
 public class WebServiceConfig {
-    @Resource
+    @Resource(name="userServiceBean")
     private UserService userService;
-    @Resource
+    @Resource(name="fileServiceBean")
     private FileService fileService;
-    @Resource
+    @Resource(name="pollServiceBean")
     private PollService pollService;
     @Resource
     private Bus bus;

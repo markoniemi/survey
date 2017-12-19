@@ -18,6 +18,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 @Data
 @NoArgsConstructor
@@ -47,5 +48,6 @@ public class Question {
             )
     @JoinColumn(name = "poll_id")
   @XmlTransient
+            @JsonIgnore
     Poll poll;
 }
