@@ -15,7 +15,6 @@ import org.survey.service.user.UserServiceTestBase;
  * inheritLocations prevents UserServiceTestBase from loading spring config.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-//@ContextConfiguration(locations = "classpath:spring-config-service-test.xml", inheritLocations=false)
 @ContextHierarchy(@ContextConfiguration(classes = ServiceTestConfig.class))
 public class UserServiceIT extends UserServiceTestBase {
     /**

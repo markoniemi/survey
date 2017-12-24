@@ -21,7 +21,6 @@ import javax.naming.AuthenticationException;
  * inheritLocations prevents UserServiceTestBase from loading spring config.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-//@ContextConfiguration(locations = "classpath:spring-config-service-test.xml", inheritLocations=false)
 @ContextHierarchy(@ContextConfiguration(classes = ServiceRestTestConfig.class))
 public class LoginServiceRestIT {
     @Resource

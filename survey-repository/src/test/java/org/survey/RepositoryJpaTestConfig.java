@@ -15,18 +15,4 @@ import org.survey.repository.user.UserRepositoryStub;
 @ComponentScan(basePackages = "org.survey")
 @Import({ JpaConfig.class})
 public class RepositoryJpaTestConfig {
-    @Bean
-    public UserRepository getUserRepository() {
-        return new UserRepositoryStub();
-    }
-
-    @Bean
-    public FileRepository getFileRepository() {
-        return new FileRepositoryStub();
-    }
-
-    @Bean
-    public PollRepository getPollRepository() {
-        return new PollRepositoryStub();
-    }
 }

@@ -18,7 +18,6 @@ import javax.xml.ws.soap.SOAPFaultException;
  */
 //@Ignore("re-write the service tests so that they do not use repositories")
 @RunWith(SpringJUnit4ClassRunner.class)
-//@ContextConfiguration(locations = "classpath:spring-config-service-test.xml", inheritLocations=false)
 @ContextHierarchy(@ContextConfiguration(classes = ServiceTestConfig.class))
 public class PollServiceIT extends PollServiceTestBase {
     /**

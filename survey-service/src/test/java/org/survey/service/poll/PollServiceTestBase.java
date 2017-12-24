@@ -15,6 +15,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.survey.ServiceConfig;
+import org.survey.ServiceTestConfig;
 import org.survey.model.poll.Poll;
 import org.survey.model.poll.PollComparator;
 import org.survey.model.poll.PollFactory;
@@ -27,7 +28,7 @@ import org.survey.service.user.UserService;
  * injection. Loaded Spring configuration is defined by ContextConfiguration.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-//@ContextConfiguration(locations = "classpath:spring-config-service-test.xml")
+@ContextHierarchy(@ContextConfiguration(classes = ServiceTestConfig.class))
 public class PollServiceTestBase {
     protected static int ENTITY_COUNT = 2;
     protected List<Poll> orginalEntities = new ArrayList<Poll>();

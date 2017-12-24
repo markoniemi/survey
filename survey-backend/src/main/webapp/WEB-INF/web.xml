@@ -41,17 +41,6 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-	<!--<context-param>-->
-		<!--<param-name>contextConfigLocation</param-name>-->
-		<!--<param-value>/WEB-INF/classes/spring-config.xml</param-value>-->
-	<!--</context-param>-->
-	<!--<listener>-->
-		<!--<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>-->
-	<!--</listener>-->
-	<!--<listener>-->
-		<!--<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>-->
-	<!--</listener>	-->
-	<!-- spring-security -->
 	<!-- TODO enable security -->
 <!-- 	<filter> -->
 <!-- 		<filter-name>springSecurityFilterChain</filter-name> -->

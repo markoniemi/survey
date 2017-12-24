@@ -1,7 +1,10 @@
 package org.survey;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -19,21 +22,26 @@ import java.util.Properties;
 ////@EnableTransactionManagement
 @EnableJpaRepositories(basePackages = "org.survey")
 //@EntityScan(basePackages = "org.survey")
+@PropertySource("classpath:database.properties")
 public class JpaConfig {
-    // TODO read settings from maven properties
+    @Value("${database.driver}")
+    private String databaseDriver;
+    @Value("${database.url}")
+    private String databaseUrl;
+    @Value("${database.username}")
+    private String databaseUsername;
+    @Value("${database.password}")
+    private String databasePassword;
+    @Value("${database.dialect}")
+    private String databaseDialect;
     @Bean
     public DataSource dataSource() {
+        // datasource is filled from database.properties, which is filled from survey/pom.xml
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        // H2
-//        dataSource.setDriverClassName("org.h2.Driver");
-//        dataSource.setUrl("jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;DATABASE_TO_UPPER=false");
-//        dataSource.setUsername("sa");
-//        dataSource.setPassword("");
-        // hsqldb
-         dataSource.setDriverClassName("org.hsqldb.jdbc.JDBCDriver");
-         dataSource.setUrl("jdbc:hsqldb:mem:mem:aname");
-         dataSource.setUsername("sa");
-         dataSource.setPassword("");
+        dataSource.setDriverClassName(databaseDriver);
+        dataSource.setUrl(databaseUrl);
+        dataSource.setUsername(databaseUsername);
+        dataSource.setPassword(databasePassword);
         return dataSource;
     }
 
@@ -53,17 +61,25 @@ public class JpaConfig {
         // em.setPackagesToScan("package.where.your.entites.like.CustSys.are.stored");
         return em;
     }
+
     Properties additionalProperties() {
         Properties properties = new Properties();
+        properties.setProperty("hibernate.dialect", databaseDialect);
         properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
-        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.HSQLDialect");
         properties.setProperty("spring.jpa.show-sql", "true");
         return properties;
-     }    
+    }
+
     @Bean
     public PlatformTransactionManager transactionManager() {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
         return transactionManager;
+    }
+
+    @Bean
+    public static PropertySourcesPlaceholderConfigurer
+    propertySourcesPlaceholderConfigurer() {
+        return new PropertySourcesPlaceholderConfigurer();
     }
 }

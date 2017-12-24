@@ -14,7 +14,6 @@ import org.survey.service.file.FileServiceTestBase;
  * Loaded Spring configuration is defined by ContextConfiguration.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-//@ContextConfiguration(locations = "classpath:spring-config-service-test.xml", inheritLocations=false)
 @ContextHierarchy(@ContextConfiguration(classes = ServiceTestConfig.class))
 public class FileServiceIT extends FileServiceTestBase {
     /**

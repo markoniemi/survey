@@ -1,7 +1,6 @@
 package org.survey;
 
 import org.apache.cxf.jaxrs.client.JAXRSClientFactory;
-import org.apache.cxf.jaxws.JaxWsProxyFactoryBean;
 import org.codehaus.jackson.jaxrs.JacksonJaxbJsonProvider;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -9,19 +8,16 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.survey.service.file.FileService;
-import org.survey.service.login.LoginService;
 import org.survey.service.poll.PollService;
 import org.survey.service.user.UserService;
 
-import javax.ws.rs.ext.Provider;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 @Configuration
 @PropertySource("classpath:server.properties")
 public class ServiceRestTestConfig {
-// TODO add security
+    // TODO add security
 //	<http:conduit name="*.http-conduit">
 //		<http:tlsClientParameters>
 //			<sec:trustManagers>
@@ -32,6 +28,7 @@ public class ServiceRestTestConfig {
 //	</http:conduit>
     @Value("${http.protocol}://localhost:${http.port}/survey-backend/api/rest/")
     private String baseAddress;
+
     @Bean
     public List<?> getJsonProviders() {
         return Arrays.asList(new JacksonJaxbJsonProvider());
@@ -51,10 +48,7 @@ public class ServiceRestTestConfig {
     public Object getPollService() {
         return JAXRSClientFactory.create(baseAddress, PollService.class, getJsonProviders());
     }
-    @Bean(name = "loginService")
-    public Object getLoginService() {
-        return JAXRSClientFactory.create(baseAddress, LoginService.class, getJsonProviders());
-    }
+
     @Bean
     public static PropertySourcesPlaceholderConfigurer
     propertySourcesPlaceholderConfigurer() {

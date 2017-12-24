@@ -9,7 +9,6 @@ import org.survey.ServiceRestTestConfig;
 import org.survey.service.user.UserServiceTestBase;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-//@ContextConfiguration(locations = "classpath:spring-config-rest-service-test.xml", inheritLocations=false)
 @ContextHierarchy(@ContextConfiguration(classes = ServiceRestTestConfig.class))
 public class UserServiceRestIT extends UserServiceTestBase {
     /**

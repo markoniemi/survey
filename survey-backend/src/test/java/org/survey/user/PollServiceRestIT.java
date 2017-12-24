@@ -12,7 +12,6 @@ import org.survey.service.poll.PollServiceTestBase;
 import javax.ws.rs.InternalServerErrorException;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-//@ContextConfiguration(locations = "classpath:spring-config-rest-service-test.xml", inheritLocations=false)
 @ContextHierarchy(@ContextConfiguration(classes = ServiceRestTestConfig.class))
 public class PollServiceRestIT extends PollServiceTestBase {
     /**

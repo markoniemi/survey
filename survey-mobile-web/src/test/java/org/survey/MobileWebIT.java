@@ -13,13 +13,15 @@ import org.openqa.selenium.WebElement;
 import org.selenium.SeleniumTestRule;
 import org.selenium.annotation.PhantomJsDriver;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.survey.model.user.Role;
 import org.survey.service.poll.PollService;
 import org.survey.service.user.UserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:spring-config-rest-service-test.xml")
+@ContextConfiguration(classes = ServiceRestTestConfig.class)
+//@ContextConfiguration(locations = "classpath:spring-config-rest-service-test.xml")
 @SuppressWarnings("squid:S2925")
 public class MobileWebIT {
     private static final int SLEEP_TIME = 1000;

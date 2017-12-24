@@ -271,10 +271,6 @@
     </reporting>
     <repositories>
         <repository>
-            <id>org.primefaces</id>
-            <url>http://repository.primefaces.org/</url>
-        </repository>
-        <repository>
             <id>markoniemi-maven-repo</id>
             <url>https://packagecloud.io/markoniemi/maven-repo/maven2</url>
         </repository>

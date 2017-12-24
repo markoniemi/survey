@@ -10,8 +10,7 @@ import org.survey.model.user.User;
 /**
  * UserRepository reads and writes Users to database. Uses Spring-JPA and
  * CrudRepository to create a UserRepositoryImpl which contains CRUD methods for
- * reading and writing users to database. See
- * /user-repository/src/test/resources/spring-config-database.xml for Spring
+ * reading and writing users to database. See JpaConfig for Spring
  * configuration.
  */
 @Repository

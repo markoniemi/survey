@@ -14,7 +14,9 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.survey.RepositoryJpaTestConfig;
 import org.survey.ServiceConfig;
+import org.survey.ServiceTestConfig;
 import org.survey.model.file.File;
 import org.survey.model.file.FileComparator;
 import org.survey.model.file.FileFactory;
@@ -27,7 +29,7 @@ import org.survey.service.user.UserService;
  * injection. Loaded Spring configuration is defined by ContextConfiguration.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-//@ContextConfiguration(locations = "classpath:spring-config-service-test.xml")
+@ContextHierarchy(@ContextConfiguration(classes = ServiceTestConfig.class))
 public class FileServiceTestBase {
     protected static int ENTITY_COUNT = 2;
     protected List<File> orginalEntities = new ArrayList<File>();;

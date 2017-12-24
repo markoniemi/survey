@@ -1,55 +1,48 @@
 package org.survey;
 
-import org.apache.cxf.jaxws.JaxWsClientFactoryBean;
 import org.apache.cxf.jaxws.JaxWsProxyFactoryBean;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean;
 import org.survey.service.file.FileService;
-import org.survey.service.login.LoginService;
 import org.survey.service.poll.PollService;
 import org.survey.service.user.UserService;
 
-import java.net.URL;
-
 @Configuration
+@PropertySource("classpath:server.properties")
 public class ServiceTestConfig {
+    @Value("${http.protocol}://localhost:${http.port}/survey-backend/api/soap/")
+    private String baseAddress;
+
     @Bean(name = "userService")
     public Object getUserService() {
         JaxWsProxyFactoryBean proxyFactory = new JaxWsProxyFactoryBean();
         proxyFactory.setServiceClass(UserService.class);
-        proxyFactory.setAddress("http://localhost:8082/survey-backend/api/soap/userService");
+        proxyFactory.setAddress(baseAddress + "userService");
         return proxyFactory.create();
     }
+
     @Bean(name = "fileService")
     public Object getFileService() {
         JaxWsProxyFactoryBean proxyFactory = new JaxWsProxyFactoryBean();
         proxyFactory.setServiceClass(FileService.class);
-        proxyFactory.setAddress("http://localhost:8082/survey-backend/api/soap/fileService");
+        proxyFactory.setAddress(baseAddress + "fileService");
         return proxyFactory.create();
     }
+
     @Bean(name = "pollService")
     public Object getPollService() {
         JaxWsProxyFactoryBean proxyFactory = new JaxWsProxyFactoryBean();
         proxyFactory.setServiceClass(PollService.class);
-        proxyFactory.setAddress("http://localhost:8082/survey-backend/api/soap/pollService");
+        proxyFactory.setAddress(baseAddress + "pollService");
         return proxyFactory.create();
     }
-//    @Bean
-//    public JaxWsProxyFactoryBean proxyFactoryBean() {
-//        JaxWsProxyFactoryBean proxyFactory = new JaxWsProxyFactoryBean();
-//        proxyFactory.setServiceClass(UserService.class);
-//        proxyFactory.setAddress("http://localhost:8082/survey-backend/api/soap/userService");
-//        return proxyFactory;
-//    }
 
     @Bean
-    public static PropertySourcesPlaceholderConfigurer properties() {
-        PropertySourcesPlaceholderConfigurer ret = new PropertySourcesPlaceholderConfigurer();
-//        ret.setLocation(new ClassPathResource("application.properties"));
-        ret.setLocation(new ClassPathResource("server.properties"));
-        return ret;
+    public static PropertySourcesPlaceholderConfigurer
+    propertySourcesPlaceholderConfigurer() {
+        return new PropertySourcesPlaceholderConfigurer();
     }
 }
