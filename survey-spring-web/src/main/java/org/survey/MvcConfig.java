@@ -35,6 +35,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
     public ReloadableResourceBundleMessageSource getMessageSource() {
         ReloadableResourceBundleMessageSource resource = new ReloadableResourceBundleMessageSource();
         resource.setBasenames("MessageResources", "server");
+        resource.setUseCodeAsDefaultMessage(true);
         resource.setDefaultEncoding("UTF-8");
         return resource;
     }

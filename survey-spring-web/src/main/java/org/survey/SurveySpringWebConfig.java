@@ -7,7 +7,9 @@ import org.springframework.context.annotation.Import;
 @Configuration
 @Import({
         ServiceConfig.class,
-        SecurityConfig.class})
+        SecurityConfig.class,
+        MvcConfig.class
+})
 public class SurveySpringWebConfig {
     @Bean
     public DatabaseInitializer getDatabaseInitializer() {
