@@ -9,8 +9,11 @@ import org.springframework.web.servlet.config.annotation.DefaultServletHandlerCo
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
+
+import java.util.Locale;
 
 @EnableWebMvc
 @Configuration
@@ -34,10 +37,18 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
     @Bean(name = "messageSource")
     public ReloadableResourceBundleMessageSource getMessageSource() {
         ReloadableResourceBundleMessageSource resource = new ReloadableResourceBundleMessageSource();
-        resource.setBasenames("MessageResources", "server");
+        resource.setBasenames("classpath:MessageResources", "classpath:server");
         resource.setUseCodeAsDefaultMessage(true);
         resource.setDefaultEncoding("UTF-8");
         return resource;
+    }
+    @Bean
+    public CookieLocaleResolver localeResolver(){
+        CookieLocaleResolver localeResolver = new CookieLocaleResolver();
+        localeResolver.setDefaultLocale(Locale.ENGLISH);
+//        localeResolver.setCookieName("my-locale-cookie");
+//        localeResolver.setCookieMaxAge(3600);
+        return localeResolver;
     }
 
     @Override

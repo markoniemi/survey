@@ -2,6 +2,7 @@ package org.survey;
 
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
+import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.DispatcherServlet;
 
 import javax.servlet.ServletContext;
@@ -10,15 +11,23 @@ import javax.servlet.ServletRegistration;
 
 public class SurveySpringWebInitializer implements WebApplicationInitializer {
 
-        public void onStartup(ServletContext container) throws ServletException {
+    public void onStartup(ServletContext container) throws ServletException {
+        registerDispatcherServlet(container);
+        registerSecurityFilter(container);
+    }
 
-            AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
-            ctx.register(MvcConfig.class);
-            ctx.setServletContext(container);
+    private void registerSecurityFilter(ServletContext container) {
+        container.addFilter("springSecurityFilterChain", new DelegatingFilterProxy("springSecurityFilterChain"))
+                .addMappingForUrlPatterns(null, false, "/*");
+    }
 
-            ServletRegistration.Dynamic servlet = container.addServlet("dispatcher", new DispatcherServlet(ctx));
+    private void registerDispatcherServlet(ServletContext container) {
+        AnnotationConfigWebApplicationContext applicationContext = new AnnotationConfigWebApplicationContext();
+        applicationContext.register(MvcConfig.class);
+        applicationContext.setServletContext(container);
 
-            servlet.setLoadOnStartup(1);
-            servlet.addMapping("/");
-        }
+        ServletRegistration.Dynamic servlet = container.addServlet("dispatcher", new DispatcherServlet(applicationContext));
+        servlet.setLoadOnStartup(1);
+        servlet.addMapping("/");
+    }
 }
