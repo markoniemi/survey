@@ -13,7 +13,7 @@ jobs:
           - v1-dependencies-{{ checksum "pom.xml" }}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
-      - run: mvn -B install verify -P hsqldb,tomcat
+      - run: mvn -B clean install verify -P hsqldb,tomcat
       - save_cache:
           paths:
             - ~/.m2
