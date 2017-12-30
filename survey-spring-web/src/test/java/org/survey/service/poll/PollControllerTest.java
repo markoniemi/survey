@@ -1,4 +1,4 @@
-package org.survey.poll;
+package org.survey.service.poll;
 
 import org.junit.Assert;
 import org.junit.Before;

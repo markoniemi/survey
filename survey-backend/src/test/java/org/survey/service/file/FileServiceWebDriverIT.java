@@ -1,4 +1,4 @@
-package org.survey.user;
+package org.survey.service.file;
 
 import org.junit.After;
 import org.junit.Assert;

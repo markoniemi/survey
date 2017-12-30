@@ -1,18 +1,11 @@
-package org.survey.user;
+package org.survey.service.user;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.survey.ServiceRestTestConfig;
 import org.survey.ServiceTestConfig;
-import org.survey.model.user.Role;
-import org.survey.model.user.User;
-import org.survey.service.login.LoginService;
-
-import javax.annotation.Resource;
-import javax.naming.AuthenticationException;
 
 /**
  * Test PersonManagement using WebService. Spring injects userService with
@@ -21,13 +14,14 @@ import javax.naming.AuthenticationException;
  * inheritLocations prevents UserServiceTestBase from loading spring config.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextHierarchy(@ContextConfiguration(classes = ServiceRestTestConfig.class))
-public class LoginServiceRestIT {
-    @Resource
-    LoginService loginService;
-
+@ContextHierarchy(@ContextConfiguration(classes = ServiceTestConfig.class))
+public class UserServiceIT extends UserServiceTestBase {
+    /**
+     * Override method because expected exception is wrapped in
+     * SOAPFaultException in WebService.
+     */
     @Test
-    public void login() throws AuthenticationException {
-        loginService.login(new User("admin", "admin", "admin@email", Role.ROLE_ADMIN));
+    public void existsWithNull() {
+        super.existsWithNull();
     }
 }

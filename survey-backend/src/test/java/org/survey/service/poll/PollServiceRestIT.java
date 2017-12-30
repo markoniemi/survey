@@ -1,4 +1,4 @@
-package org.survey.user;
+package org.survey.service.poll;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -7,7 +7,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.survey.ServiceRestTestConfig;
-import org.survey.service.poll.PollServiceTestBase;
 
 import javax.ws.rs.InternalServerErrorException;
 
