@@ -5,14 +5,15 @@
 <html lang="en">
 <head>
 <title><spring:message code="users" /></title>
-<link rel='stylesheet' href='/survey-spring-web/webjars/bootstrap/3.3.6/css/bootstrap.min.css'></link>
+<base href="${pageContext.request.contextPath}/"/>
+<link rel='stylesheet' href='webjars/bootstrap/3.3.6/css/bootstrap.min.css'></link>
 <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet" />
 </head>
 <body>
-    <script type="text/javascript" src="/survey-spring-web/webjars/jquery/2.1.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/survey-spring-web/webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="webjars/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <div class="content">
-        <c:import url="/WEB-INF/pages/common/menu.jsp"></c:import>
+    <c:import url="../common/menu.jsp"></c:import>
 
         <table class="table table-striped">
             <thead>
@@ -30,10 +31,10 @@
                         <td id="role"><spring:message code="${user.role}" /></td>
                         <td>
                             <form:form class="form-horizontal" method="POST">
-                                <a id="edit" class="btn btn-primary" href="/survey-spring-web/user/${user.username}"><span
+                                <a id="edit" class="btn btn-primary" href="user/${user.username}"><span
                                         class="glyphicon glyphicon-pencil"></span></a>
                                 <button id="delete" class="btn btn-primary" type="submit"
-                                    formaction="/survey-spring-web/user/delete/${user.username}">
+                                    formaction="user/delete/${user.username}">
                                     <span class="glyphicon glyphicon-remove"></span>
                                 </button>
                             </form:form>
@@ -42,10 +43,10 @@
                 </c:forEach>
             </tbody>
         </table>
-        <form:form action="/survey-spring-web/user/new" method="GET">
+        <form:form action="user/new" method="GET">
             <input id="addUser" class="btn btn-primary" type="submit" value="<spring:message code="addUser"/>" />
         </form:form>
     </div>
-    <c:import url="/WEB-INF/pages/common/footer.jsp"></c:import>
+    <c:import url="../common/footer.jsp"></c:import>
 </body>
 </html>

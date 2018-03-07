@@ -5,17 +5,18 @@
 <html lang="en">
 <head>
 <title><spring:message code="poll"/></title>
+<base href="${pageContext.request.contextPath}/"/>
 <link rel='stylesheet'
-	href='/survey-spring-web/webjars/bootstrap/3.3.6/css/bootstrap.min.css'></link>
+	href='webjars/bootstrap/3.3.6/css/bootstrap.min.css'></link>
 </head>
 <body>
-	<script type="text/javascript" src="/survey-spring-web/webjars/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="webjars/jquery/2.1.1/jquery.min.js"></script>
     <script type="text/javascript"
-        src="/survey-spring-web/webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
-    <c:import url="/WEB-INF/pages/common/menu.jsp"></c:import>
+    <c:import url="../common/menu.jsp"></c:import>
     
-	<form:form class="form-horizontal" action="save"
+	<form:form class="form-horizontal" action="poll/save"
 		modelAttribute="poll" method="post">
 			<input name="id" type="hidden" value="${poll.id}"/>
 <!-- 		<fieldset> -->
@@ -49,7 +50,7 @@
 			<div class="form-group">
 				<label class="col-md-4 control-label" for=""></label>
 				<div class="col-md-4">
-					<button id="addQuestion" name="" formaction="/survey-spring-web/poll/addQuestion" class="btn btn-primary"><spring:message code="addQuestion"/></button>
+					<button id="addQuestion" name="" formaction="poll/addQuestion" class="btn btn-primary"><spring:message code="addQuestion"/></button>
 				</div>
 			</div>
 			</fieldset>

@@ -5,12 +5,13 @@
 <html lang="en">
 <head>
 <title><spring:message code="login"/></title>
-<link rel='stylesheet' href='/survey-spring-web/webjars/bootstrap/3.3.6/css/bootstrap.min.css'></link>
+<base href="${pageContext.request.contextPath}/"/>
+<link rel='stylesheet' href='webjars/bootstrap/3.3.6/css/bootstrap.min.css'></link>
 </head>
 <body>
     <script type="text/javascript" src="webjars/jquery/2.1.1/jquery.min.js"></script>
     <script type="text/javascript"
-        src="/survey-spring-web/webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <div class="col-sm-6 col-md-4 col-md-offset-4">
     <div class="panel panel-default">
         <div class="panel-body">
@@ -41,7 +42,8 @@
                                 class="btn btn-lg btn-primary btn-block"><spring:message code="login"/></button>
                         </div>
                         <div class="form-group">
-                            <div class="alert alert-danger" role="alert">{{errorMessage}}</div>
+<!--                             <div class="alert alert-danger" role="alert">{{errorMessage}}</div> -->
+                            <form:errors path="*" class="alert alert-danger" role="alert"/>
                         </div>
                     </div>
                 </fieldset>
