@@ -1,6 +1,5 @@
 package org.survey.config;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.survey.ServiceConfig;
@@ -12,8 +11,4 @@ import org.survey.ServiceConfig;
         MvcConfig.class
 })
 public class SurveySpringWebConfig {
-    @Bean
-    public DatabaseInitializer getDatabaseInitializer() {
-        return new DatabaseInitializer();
-    }
 }
