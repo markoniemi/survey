@@ -1,4 +1,4 @@
-package org.survey;
+package org.survey.config;
 
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;

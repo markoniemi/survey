@@ -1,4 +1,4 @@
-package org.survey.service;
+package org.survey.controller;
 
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;

@@ -1,4 +1,4 @@
-package org.survey;
+package org.survey.config;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;

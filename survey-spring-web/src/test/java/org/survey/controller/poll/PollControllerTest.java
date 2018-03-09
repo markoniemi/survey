@@ -1,4 +1,4 @@
-package org.survey.service.poll;
+package org.survey.controller.poll;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -20,7 +20,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
-import org.survey.MvcConfig;
+import org.survey.config.MvcConfig;
 import org.survey.model.poll.Poll;
 import org.survey.model.poll.QuestionType;
 import org.survey.repository.poll.PollRepository;

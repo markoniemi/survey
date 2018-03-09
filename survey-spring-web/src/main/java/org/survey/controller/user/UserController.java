@@ -1,4 +1,4 @@
-package org.survey.service.user;
+package org.survey.controller.user;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import org.survey.service.UserValidator;
+import org.survey.controller.UserValidator;
 import org.survey.model.user.Role;
 import org.survey.model.user.User;
 import org.survey.service.user.UserService;

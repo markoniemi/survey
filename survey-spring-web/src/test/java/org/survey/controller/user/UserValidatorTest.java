@@ -1,9 +1,10 @@
-package org.survey.service;
+package org.survey.controller.user;
 
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.validation.BindException;
 import org.springframework.validation.Errors;
+import org.survey.controller.UserValidator;
 import org.survey.model.user.Role;
 import org.survey.model.user.User;
 

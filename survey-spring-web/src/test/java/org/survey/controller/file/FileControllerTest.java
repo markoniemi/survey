@@ -1,4 +1,4 @@
-package org.survey.service.file;
+package org.survey.controller.file;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -21,7 +21,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
-import org.survey.MvcConfig;
+import org.survey.config.MvcConfig;
 import org.survey.model.file.File;
 
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
