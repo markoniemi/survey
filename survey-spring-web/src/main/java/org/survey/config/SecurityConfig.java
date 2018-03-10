@@ -19,6 +19,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public AuthenticationProvider getAuthenticationProvider() {
         return new UserRepositoryAuthenticationProvider();
     }
+
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(getAuthenticationProvider());
@@ -32,14 +33,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
-        http.authorizeRequests().antMatchers("/user/**", "/file/**", "/poll/**", "/about/**")
-                .hasAnyRole("USER", "ADMIN");
-        http.authorizeRequests().antMatchers("/admin/**")
-                .hasAnyRole("ADMIN");
-        http.authorizeRequests().and().formLogin()
-                .loginPage("/login").loginProcessingUrl("/j_spring_security_check")
-                .usernameParameter("j_username").passwordParameter("j_password")
-                .failureUrl("/login?loginError=true").successForwardUrl("/user/users");
+        http.authorizeRequests().antMatchers("/user/**", "/file/**", "/poll/**", "/about/**").hasAnyRole("USER",
+                "ADMIN");
+        http.authorizeRequests().antMatchers("/admin/**").hasAnyRole("ADMIN");
+        http.authorizeRequests().and().formLogin().loginPage("/login").loginProcessingUrl("/j_spring_security_check")
+                .defaultSuccessUrl("/user/users").usernameParameter("j_username").passwordParameter("j_password")
+                .failureUrl("/login?error=true").successForwardUrl("/user/users");
         http.logout().logoutUrl("/j_spring_security_logout").logoutSuccessUrl("/user/users");
     }
 }

@@ -42,8 +42,9 @@
                                 class="btn btn-lg btn-primary btn-block"><spring:message code="login"/></button>
                         </div>
                         <div class="form-group">
-<!--                             <div class="alert alert-danger" role="alert">{{errorMessage}}</div> -->
-                            <form:errors path="*" class="alert alert-danger" role="alert"/>
+                            <c:if test="${not empty param.error}">
+                                <span class="alert alert-danger" role="alert"><spring:message code="login.error" /></span>
+                            </c:if>
                         </div>
                     </div>
                 </fieldset>
