@@ -18,7 +18,7 @@ import java.util.Locale;
 @EnableWebMvc
 @Configuration
 @ComponentScan(basePackages = {"org.survey"})
-public class MvcConfig extends WebMvcConfigurerAdapter {
+public class WebMvcConfig extends WebMvcConfigurerAdapter {
     @Bean
     public InternalResourceViewResolver jspViewResolver() {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();

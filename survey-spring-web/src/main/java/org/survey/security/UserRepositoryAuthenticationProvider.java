@@ -10,6 +10,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.stereotype.Component;
 import org.survey.model.user.User;
 import org.survey.service.user.UserService;
 
@@ -24,6 +25,7 @@ import lombok.extern.log4j.Log4j2;
  *      ://samerabdelkafi.wordpress.com/2011/01/16/secure-your-web-application
  *      -with-spring-security/
  */
+@Component
 @Log4j2
 public class UserRepositoryAuthenticationProvider implements
         AuthenticationProvider {

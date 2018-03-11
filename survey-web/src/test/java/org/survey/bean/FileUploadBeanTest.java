@@ -129,5 +129,11 @@ public class FileUploadBeanTest {
         @Override
         public void write(String fileName) throws IOException {
         }
+
+        @Override
+        public String getSubmittedFileName() {
+            // TODO Auto-generated method stub
+            return null;
+        }
     }
 }

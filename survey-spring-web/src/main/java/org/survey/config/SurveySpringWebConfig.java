@@ -8,7 +8,7 @@ import org.survey.ServiceConfig;
 @Import({
         ServiceConfig.class,
         SecurityConfig.class,
-        MvcConfig.class
+        WebMvcConfig.class
 })
 public class SurveySpringWebConfig {
 }

@@ -14,7 +14,7 @@ import javax.servlet.ServletRegistration;
 public class SurveySpringWebInitializer implements WebApplicationInitializer {
 
     public void onStartup(ServletContext container) throws ServletException {
-        registerDispatcherServlet(container, createApplicationContext(container, MvcConfig.class));
+        registerDispatcherServlet(container, createApplicationContext(container, WebMvcConfig.class));
         registerSecurityFilter(container);
     }
 
