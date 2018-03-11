@@ -50,7 +50,7 @@
         <jsf.version>2.2.8-04</jsf.version>
         <bootstrap-version>3.3.6</bootstrap-version>
         <jquery-version>2.1.1</jquery-version>
-        <tomcat.version>7.0.76</tomcat.version>
+        <tomcat.version>8.5.16</tomcat.version>
         <jetty.version>9.3.12.v20160915</jetty.version>
         <maven.cargo.version>1.6.5</maven.cargo.version>
     </properties>
@@ -518,11 +518,11 @@
                 <artifactId>jsf-impl</artifactId>
                 <version>${jsf.version}</version>
             </dependency>
-            <dependency>
-                <groupId>javax.servlet</groupId>
-                <artifactId>javax.servlet-api</artifactId>
-                <version>3.0.1</version>
-            </dependency>
+<!--             <dependency> -->
+<!--                 <groupId>javax.servlet</groupId> -->
+<!--                 <artifactId>javax.servlet-api</artifactId> -->
+<!--                 <version>3.1</version> -->
+<!--             </dependency> -->
             <!-- PrimeFaces -->
             <dependency>
                 <groupId>org.primefaces</groupId>
@@ -688,6 +688,55 @@
                 <version>${selenium.version}</version>
                 <scope>test</scope>
             </dependency>
+            <!-- TODO remove these when spring boot is updated -->
+			<dependency>
+				<groupId>org.seleniumhq.selenium</groupId>
+			    <artifactId>htmlunit</artifactId>
+			    <version>2.26</version>
+                <scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.seleniumhq.selenium</groupId>
+				<artifactId>htmlunit-driver</artifactId>
+			    <version>2.26</version>
+                <scope>test</scope>
+			</dependency>
+            <dependency>
+			    <groupId>net.sourceforge.htmlunit</groupId>
+			    <artifactId>htmlunit</artifactId>
+			    <version>2.26</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+			    <groupId>net.sourceforge.htmlunit</groupId>
+			    <artifactId>htmlunit-driver</artifactId>
+			    <version>2.26</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.seleniumhq.selenium</groupId>
+                <artifactId>selenium-api</artifactId>
+                <version>${selenium.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.seleniumhq.selenium</groupId>
+                <artifactId>selenium-remote-driver</artifactId>
+                <version>${selenium.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.seleniumhq.selenium</groupId>
+                <artifactId>selenium-safari-driver</artifactId>
+                <version>${selenium.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.seleniumhq.selenium</groupId>
+                <artifactId>selenium-support</artifactId>
+                <version>${selenium.version}</version>
+                <scope>test</scope>
+            </dependency>
             <dependency>
                 <groupId>org.apache.httpcomponents</groupId>
                 <artifactId>httpclient</artifactId>
@@ -697,7 +746,7 @@
             <dependency>
                 <groupId>com.github.detro</groupId>
                 <artifactId>phantomjsdriver</artifactId>
-                <version>1.2.0</version>
+                <version>1.4.0</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
@@ -712,6 +761,13 @@
                 <version>${selenium.version}</version>
                 <scope>test</scope>
             </dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>1.5.6.RELEASE</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
         </dependencies>
     </dependencyManagement>
 </project>

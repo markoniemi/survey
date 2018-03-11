@@ -13,6 +13,16 @@
             <groupId>org.survey</groupId>
             <artifactId>survey-service</artifactId>
         </dependency>
+        <!-- spring boot -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <!-- tomcat -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
@@ -255,10 +265,10 @@
                                 </properties>
                             </configuration>
                             <container>
-                                <containerId>tomcat7x</containerId>
+                                <containerId>tomcat8x</containerId>
                                 <zipUrlInstaller>
                                     <url>
-                                        https://archive.apache.org/dist/tomcat/tomcat-7/v${tomcat.version}/bin/apache-tomcat-${tomcat.version}.zip
+                                        https://archive.apache.org/dist/tomcat/tomcat-8/v${tomcat.version}/bin/apache-tomcat-${tomcat.version}.zip
                                     </url>
                                     <downloadDir>${appsDir}</downloadDir>
                                     <extractDir>${appsDir}</extractDir>
