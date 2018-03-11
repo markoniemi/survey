@@ -15,7 +15,7 @@
 		</layout>
 	</appender>
 	<logger name="org.springmvc">
-		<level value="debug" />
+		<level value="info" />
 	</logger>
 	<logger name="DefaultCssErrorHandler">
 		<level value="off" />
