@@ -24,7 +24,8 @@ public class SurveySpringWebInitializer implements WebApplicationInitializer {
     }
 
     private void registerDispatcherServlet(ServletContext container, WebApplicationContext applicationContext) {
-        ServletRegistration.Dynamic servlet = container.addServlet("dispatcher", new DispatcherServlet(applicationContext));
+        ServletRegistration.Dynamic servlet = container.addServlet("dispatcher",
+                new DispatcherServlet(applicationContext));
         servlet.setLoadOnStartup(1);
         servlet.addMapping("/");
     }

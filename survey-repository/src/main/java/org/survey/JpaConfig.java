@@ -66,7 +66,7 @@ public class JpaConfig {
         Properties properties = new Properties();
         properties.setProperty("hibernate.dialect", databaseDialect);
         properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
-        properties.setProperty("spring.jpa.show-sql", "true");
+//        properties.setProperty("spring.jpa.show-sql", "true");
         return properties;
     }
 

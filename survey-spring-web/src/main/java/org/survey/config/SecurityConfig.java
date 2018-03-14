@@ -32,15 +32,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/user/users").usernameParameter("j_username").passwordParameter("j_password")
                 .failureUrl("/login?error=true").successForwardUrl("/user/users");
         http.logout().logoutUrl("/j_spring_security_logout").logoutSuccessUrl("/user/users");
-
-//        http.formLogin().loginPage("/login").loginProcessingUrl("/j_spring_security_check")
-//        .defaultSuccessUrl("/user/users").usernameParameter("j_username").passwordParameter("j_password")
-//        .failureUrl("/login?error=true").permitAll();
-//        http.logout().logoutUrl("/j_spring_security_logout").logoutSuccessUrl("/login").permitAll();
-//        http.authorizeRequests().antMatchers("/", "/home", "/api/**", "/static/**", "/webjars/**").permitAll()
-//                .anyRequest().authenticated();
-        
     }
+    
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(userRepositoryAuthenticationProvider);
