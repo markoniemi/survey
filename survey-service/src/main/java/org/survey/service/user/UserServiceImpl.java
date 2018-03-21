@@ -3,10 +3,8 @@ package org.survey.service.user;
 import java.util.List;
 
 import javax.annotation.Resource;
-import javax.jws.WebService;
 
 import org.apache.commons.lang3.Validate;
-import org.springframework.stereotype.Service;
 import org.survey.model.file.File;
 import org.survey.model.user.User;
 import org.survey.repository.file.FileRepository;
@@ -14,7 +12,7 @@ import org.survey.repository.user.UserRepository;
 
 import com.google.common.collect.Iterables;
 
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * WebService implementation of UserService. Can not use delegate design
@@ -26,7 +24,7 @@ import lombok.extern.log4j.Log4j2;
  * are probably unneccessary.
  */
 //@Service
-@Log4j2
+@Slf4j
 //@WebService(endpointInterface = "org.survey.service.user.UserService", serviceName = "userService")
 public class UserServiceImpl implements UserService {
     @Resource

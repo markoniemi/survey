@@ -19,9 +19,9 @@ import org.survey.security.SecurityUtil;
 import org.survey.service.file.FileService;
 import org.survey.service.user.UserService;
 
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 
-@Log4j2
+@Slf4j
 @Controller
 public class FileController {
     @Autowired

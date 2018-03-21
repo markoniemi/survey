@@ -13,7 +13,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.survey.model.user.User;
 import org.survey.service.user.UserService;
 
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Spring security AuthenticationProvider which authenticates using
@@ -24,7 +24,7 @@ import lombok.extern.log4j.Log4j2;
  *      ://samerabdelkafi.wordpress.com/2011/01/16/secure-your-web-application
  *      -with-spring-security/
  */
-@Log4j2
+@Slf4j
 public class UserRepositoryAuthenticationProvider implements AuthenticationProvider {
     @Resource(name="userServiceBean")
     UserService userService;

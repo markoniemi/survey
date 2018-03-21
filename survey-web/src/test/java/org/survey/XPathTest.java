@@ -11,8 +11,6 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
-import lombok.extern.log4j.Log4j2;
-
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -23,7 +21,9 @@ import org.w3c.dom.ls.DOMImplementationLS;
 import org.w3c.dom.ls.LSSerializer;
 import org.xml.sax.SAXException;
 
-@Log4j2
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Ignore
 public class XPathTest {
     private XPath xpath;

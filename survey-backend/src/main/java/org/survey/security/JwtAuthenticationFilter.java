@@ -14,11 +14,11 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import lombok.extern.log4j.Log4j2;
-
 import com.auth0.jwt.JWTVerifyException;
 
-@Log4j2
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class JwtAuthenticationFilter implements Filter {
     protected String loginUrl;
 

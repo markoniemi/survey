@@ -8,13 +8,13 @@ import org.survey.model.user.User;
 import org.survey.service.user.UserService;
 
 import lombok.Setter;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 
-@Log4j2
+@Slf4j
 public class DatabaseInitializer {
 
     @Setter
-    @Resource(name="userServiceBean")
+    @Resource(name = "userServiceBean")
     private UserService userService;
 
     @PostConstruct
@@ -23,7 +23,7 @@ public class DatabaseInitializer {
         try {
             userService.create(new User("admin", "admin", "admin@test.com", Role.ROLE_ADMIN));
         } catch (Exception e) {
-            log.error(e);
+            log.error(e.getMessage(), e);
         }
     }
 }

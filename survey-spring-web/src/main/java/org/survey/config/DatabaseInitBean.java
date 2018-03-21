@@ -8,10 +8,10 @@ import org.survey.model.user.Role;
 import org.survey.model.user.User;
 import org.survey.repository.user.UserRepository;
 
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 
 @Component
-@Log4j2
+@Slf4j
 public class DatabaseInitBean implements InitializingBean {
     @Resource
     private UserRepository userRepository;

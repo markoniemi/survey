@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 import org.survey.model.user.User;
 import org.survey.service.user.UserService;
 
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Spring security AuthenticationProvider which authenticates using
@@ -26,7 +26,7 @@ import lombok.extern.log4j.Log4j2;
  *      -with-spring-security/
  */
 @Component
-@Log4j2
+@Slf4j
 public class UserRepositoryAuthenticationProvider implements
         AuthenticationProvider {
     @Resource

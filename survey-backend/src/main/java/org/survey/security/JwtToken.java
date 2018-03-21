@@ -7,9 +7,6 @@ import java.security.SignatureException;
 import java.util.HashMap;
 import java.util.Map;
 
-import lombok.Getter;
-import lombok.extern.log4j.Log4j2;
-
 import org.survey.model.user.User;
 
 import com.auth0.jwt.Algorithm;
@@ -19,10 +16,13 @@ import com.auth0.jwt.JWTSigner.Options;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.JWTVerifyException;
 
+import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * Utility class for handling JWT tokens.
  */
-@Log4j2
+@Slf4j
 public class JwtToken {
     public static final String AUTHORIZATION_HEADER = "Authorization";
     protected static int expirySeconds = 600;

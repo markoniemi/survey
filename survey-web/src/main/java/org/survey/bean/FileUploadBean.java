@@ -17,12 +17,12 @@ import org.survey.service.user.UserService;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * FileUpload uses JSF 2.2 h:inputFile component.
  */
-@Log4j2
+@Slf4j
 @Component
 @Scope("request")
 @SuppressWarnings("PMD.UnusedPrivateField")

@@ -22,10 +22,10 @@ import org.survey.repository.file.FileRepository;
 
 import com.google.common.collect.Iterables;
 
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 
 @WebService(endpointInterface = "org.survey.service.file.FileService", serviceName = "fileService")
-@Log4j2
+@Slf4j
 public class FileServiceImpl implements FileService {
     @Context
     HttpServletRequest request;
@@ -46,7 +46,7 @@ public class FileServiceImpl implements FileService {
 
     @Override
     public File create(@WebParam(name = "file") File file) {
-        log.debug(file);
+        log.debug(file.getFilename());
         return fileRepository.save(file);
     }
 
@@ -61,9 +61,9 @@ public class FileServiceImpl implements FileService {
     // @Produces("application/pdf")
     public Response downloadFile(Long id) {
         File file = fileRepository.findOne(id);
-//        java.io.File file = new java.io.File("test.pdf");
+        // java.io.File file = new java.io.File("test.pdf");
         ResponseBuilder response = Response.ok((Object) file, file.getMimeType());
-        response.header("Content-Disposition", "attachment; filename="+file.getFilename());
+        response.header("Content-Disposition", "attachment; filename=" + file.getFilename());
         return response.build();
     }
 
@@ -95,10 +95,10 @@ public class FileServiceImpl implements FileService {
                     }
                 }
             } catch (Exception e) {
-                log.error(e);
+                log.error(e.getMessage(), e);
             }
         }
-//        return Response.ok("file uploaded").build();
+        // return Response.ok("file uploaded").build();
     }
 
     private String getFileName(MultivaluedMap<String, String> header) {
@@ -112,17 +112,19 @@ public class FileServiceImpl implements FileService {
         }
         return null;
     }
+
     private File createFile(String filename, String mimeType, String owner, byte[] fileContent) {
         File file = new File();
         file.setFilename(filename);
         file.setMimeType(mimeType);
         file.setContent(fileContent);
-//        file.setOwner(owner);
+        // file.setOwner(owner);
         file.setCreateTime(System.currentTimeMillis());
         // TODO change files rest to files/:user/:filename
         file.setUrl("/survey-web/api/rest/files/");
         return file;
     }
+
     @Override
     public File findOne(@WebParam(name = "id") long id) {
         return fileRepository.findOne(id);

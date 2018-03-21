@@ -3,19 +3,19 @@ package org.survey.bean;
 import javax.annotation.Resource;
 import javax.faces.bean.ViewScoped;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.extern.log4j.Log4j2;
-
 import org.springframework.stereotype.Component;
 import org.survey.FacesUtil;
 import org.survey.model.user.Role;
 import org.survey.model.user.User;
 import org.survey.service.user.UserService;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
+
 @Component
 @ViewScoped
-@Log4j2
+@Slf4j
 @SuppressWarnings("PMD.UnusedPrivateField")
 public class EditUserBean {
     @Getter

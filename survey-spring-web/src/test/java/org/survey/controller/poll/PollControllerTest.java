@@ -25,12 +25,9 @@ import org.survey.model.poll.Poll;
 import org.survey.model.poll.QuestionType;
 import org.survey.repository.poll.PollRepository;
 
-import lombok.extern.log4j.Log4j2;
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = WebMvcConfig.class)
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, TransactionalTestExecutionListener.class})
-@Log4j2
 @WebAppConfiguration
 public class PollControllerTest {
     private MockMvc mockMvc;
