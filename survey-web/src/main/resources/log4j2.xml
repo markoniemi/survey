@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="ERROR">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%msg%n" />
+<!--             <PatternLayout pattern="%-5level %logger{36} - %msg%n" /> -->
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Root level="INFO">
+            <AppenderRef ref="Console" />
+        </Root>
+		<Logger name="org.survey" level="DEBUG"/>
+		<Logger name="org.springframework" level="WARN"/>
+		<Logger name="org.springmvc" level="WARN"/>
+		<Logger name="DefaultCssErrorHandler" level="OFF" />
+		<Logger name="com.gargoylesoftware" level="OFF" />
+		<Logger name="org.hibernate" level="ERROR" />
+		<Logger name="org.apache.logging" level="ERROR" />
+    </Loggers>
+</Configuration>
