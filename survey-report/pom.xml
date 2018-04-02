@@ -27,11 +27,6 @@
 		</dependency>
 		<dependency>
 			<groupId>org.survey</groupId>
-			<artifactId>survey-mobile-web</artifactId>
-			<type>war</type>
-		</dependency>
-		<dependency>
-			<groupId>org.survey</groupId>
 			<artifactId>survey-backend</artifactId>
 			<type>war</type>
 		</dependency>
