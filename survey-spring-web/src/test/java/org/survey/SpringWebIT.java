@@ -22,7 +22,7 @@ import java.util.List;
 @ContextHierarchy(@ContextConfiguration(classes = ServiceTestConfig.class))
 @SuppressWarnings("squid:S2925")
 public class SpringWebIT {
-    private static final int SLEEP_TIME = 1000;
+    private static final int SLEEP_TIME = 100;
     @PhantomJsDriver(version="2.1.1")
     public WebDriver webDriver;
     @Rule
