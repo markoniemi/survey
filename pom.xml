@@ -306,7 +306,7 @@
                 <database.driver>org.h2.Driver</database.driver>
                 <database.url>jdbc:h2:mem:foo_db</database.url>
                 <database.username>sa</database.username>
-                <database.password></database.password>
+                <database.password/>
                 <database.dialect>org.hibernate.dialect.H2Dialect</database.dialect>
             </properties>
         </profile>
@@ -317,7 +317,7 @@
                 <database.driver>org.hsqldb.jdbcDriver</database.driver>
                 <database.url>jdbc:hsqldb:mem:mem:aname</database.url>
                 <database.username>sa</database.username>
-                <database.password></database.password>
+                <database.password/>
                 <database.dialect>org.hibernate.dialect.HSQLDialect</database.dialect>
             </properties>
         </profile>
@@ -477,7 +477,7 @@
             <dependency>
                 <groupId>commons-collections</groupId>
                 <artifactId>commons-collections</artifactId>
-                <version>3.2.1</version>
+                <version>3.2.2</version>
             </dependency>
             <!-- file upload support -->
             <dependency>
