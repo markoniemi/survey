@@ -306,7 +306,7 @@
                 <database.driver>org.h2.Driver</database.driver>
                 <database.url>jdbc:h2:mem:foo_db</database.url>
                 <database.username>sa</database.username>
-                <database.password></database.password>
+                <database.password/>
                 <database.dialect>org.hibernate.dialect.H2Dialect</database.dialect>
             </properties>
         </profile>
@@ -317,7 +317,7 @@
                 <database.driver>org.hsqldb.jdbcDriver</database.driver>
                 <database.url>jdbc:hsqldb:mem:mem:aname</database.url>
                 <database.username>sa</database.username>
-                <database.password></database.password>
+                <database.password/>
                 <database.dialect>org.hibernate.dialect.HSQLDialect</database.dialect>
             </properties>
         </profile>
@@ -457,7 +457,7 @@
             <dependency>
                 <groupId>org.primefaces</groupId>
                 <artifactId>primefaces</artifactId>
-                <version>5.0</version>
+                <version>6.2</version>
             </dependency>
             <dependency>
                 <groupId>org.primefaces.themes</groupId>
