@@ -35,7 +35,7 @@
         <ajp.port>8019</ajp.port>
         <rmi.port>8206</rmi.port>
         <selenium.version>3.4.0</selenium.version>
-        <cxf.version>3.1.14</cxf.version>
+        <cxf.version>3.1.16</cxf.version>
         <jacoco.maven.plugin.version>0.7.7.201606060606</jacoco.maven.plugin.version>
         <jsf.version>2.2.8-04</jsf.version>
         <bootstrap-version>3.3.6</bootstrap-version>
@@ -306,7 +306,7 @@
                 <database.driver>org.h2.Driver</database.driver>
                 <database.url>jdbc:h2:mem:foo_db</database.url>
                 <database.username>sa</database.username>
-                <database.password></database.password>
+                <database.password/>
                 <database.dialect>org.hibernate.dialect.H2Dialect</database.dialect>
             </properties>
         </profile>
@@ -317,7 +317,7 @@
                 <database.driver>org.hsqldb.jdbcDriver</database.driver>
                 <database.url>jdbc:hsqldb:mem:mem:aname</database.url>
                 <database.username>sa</database.username>
-                <database.password></database.password>
+                <database.password/>
                 <database.dialect>org.hibernate.dialect.HSQLDialect</database.dialect>
             </properties>
         </profile>
