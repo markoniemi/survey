@@ -4,7 +4,7 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.survey.RepositoryJpaTestConfig;
+import org.survey.config.RepositoryJpaTestConfig;
 
 /**
  * Test PollRepository using database. Must use SpringJUnit4ClassRunner to

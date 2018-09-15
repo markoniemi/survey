@@ -13,7 +13,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.survey.ManagedBeanTestConfig;
+import org.survey.config.ManagedBeanTestConfig;
 import org.survey.model.user.Role;
 import org.survey.model.user.User;
 import org.survey.service.user.UserService;

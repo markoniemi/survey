@@ -15,7 +15,7 @@ import org.primefaces.model.StreamedContent;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.survey.ManagedBeanTestConfig;
+import org.survey.config.ManagedBeanTestConfig;
 import org.survey.model.file.File;
 import org.survey.repository.file.FileRepository;
 import org.survey.service.file.FileService;

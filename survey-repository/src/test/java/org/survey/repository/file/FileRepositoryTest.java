@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.survey.RepositoryStubTestConfig;
+import org.survey.config.RepositoryStubTestConfig;
 import org.survey.model.file.File;
 import org.survey.model.file.FileComparator;
 import org.survey.model.file.FileFactory;

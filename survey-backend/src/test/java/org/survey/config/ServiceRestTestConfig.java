@@ -1,4 +1,4 @@
-package org.survey;
+package org.survey.config;
 
 import org.apache.cxf.jaxrs.client.JAXRSClientFactory;
 import org.apache.cxf.jaxws.JaxWsProxyFactoryBean;

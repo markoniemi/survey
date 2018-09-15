@@ -10,7 +10,6 @@ import org.springframework.context.annotation.Import;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
-import org.survey.JpaConfig;
 
 //@EnableAutoConfiguration
 @Configuration

@@ -57,7 +57,7 @@
          specified for component-scanning -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>org.survey.SurveyWebConfig</param-value>
+        <param-value>org.survey.config.SurveyWebConfig</param-value>
     </context-param>
     <!-- Bootstrap the root application context as usual using ContextLoaderListener -->
     <listener>

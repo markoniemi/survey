@@ -20,6 +20,7 @@ import org.selenium.annotation.PhantomJsDriver;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.survey.config.ServiceTestConfig;
 import org.survey.model.user.Role;
 import org.survey.service.poll.PollService;
 import org.survey.service.user.UserService;

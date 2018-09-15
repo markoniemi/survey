@@ -1,4 +1,4 @@
-package org.survey;
+package org.survey.config;
 
 import org.apache.cxf.bus.spring.SpringBus;
 import org.apache.cxf.endpoint.Server;

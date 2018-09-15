@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.survey.RepositoryStubTestConfig;
+import org.survey.config.RepositoryStubTestConfig;
 import org.survey.model.user.User;
 import org.survey.model.user.UserComparator;
 import org.survey.model.user.UserFactory;

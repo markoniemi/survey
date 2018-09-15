@@ -1,4 +1,4 @@
-package org.survey;
+package org.survey.config;
 
 import org.apache.cxf.Bus;
 import org.apache.cxf.jaxws.EndpointImpl;

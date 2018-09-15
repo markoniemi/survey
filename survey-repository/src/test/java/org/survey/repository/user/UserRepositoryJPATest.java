@@ -6,7 +6,7 @@ import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
-import org.survey.RepositoryJpaTestConfig;
+import org.survey.config.RepositoryJpaTestConfig;
 
 /**
  * Test UserRepository using database. Must use SpringJUnit4ClassRunner to enable spring
