@@ -1,13 +1,21 @@
 package org.survey;
 
-import org.junit.*;
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Rule;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.selenium.SeleniumTestRule;
-import org.selenium.annotation.PhantomJsDriver;
+import org.selenium.annotation.ChromeDriver;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -16,15 +24,12 @@ import org.survey.model.user.Role;
 import org.survey.service.poll.PollService;
 import org.survey.service.user.UserService;
 
-import javax.annotation.Resource;
-import java.util.List;
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextHierarchy(@ContextConfiguration(classes = ServiceTestConfig.class))
 @SuppressWarnings("squid:S2925")
 public class SpringWebIT {
     private static final int SLEEP_TIME = 100;
-    @PhantomJsDriver(version="2.1.1")
+    @ChromeDriver
     public WebDriver webDriver;
     @Rule
     public SeleniumTestRule seleniumTestRule = new SeleniumTestRule();

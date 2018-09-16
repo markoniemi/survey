@@ -4,6 +4,7 @@ dist: trusty
 install: true
 sudo: required
 addons:
+  chrome: stable
   sonarcloud:
     organization: "markoniemi-github"
     token: $SONAR_CLOUD_TOKEN

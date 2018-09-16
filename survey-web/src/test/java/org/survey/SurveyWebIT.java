@@ -14,9 +14,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.selenium.SeleniumTestRule;
-import org.selenium.annotation.PhantomJsDriver;
+import org.selenium.annotation.ChromeDriver;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -29,7 +28,7 @@ import org.survey.service.user.UserService;
 @ContextHierarchy(@ContextConfiguration(classes = ServiceTestConfig.class))
 @SuppressWarnings("squid:S2925")
 public class SurveyWebIT {
-    @PhantomJsDriver(version="1.9.7")
+    @ChromeDriver
     public WebDriver webDriver;
     @Rule
     public SeleniumTestRule seleniumTestRule = new SeleniumTestRule();

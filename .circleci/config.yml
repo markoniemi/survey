@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/survey
     docker:
-      - image: circleci/openjdk:8-jdk
+      - image: circleci/openjdk:8-jdk-node-browsers
     environment:
       MAVEN_OPTS: -Xmx3200m
     steps:
