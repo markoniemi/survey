@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.survey</groupId>
     <artifactId>survey</artifactId>
@@ -43,6 +44,9 @@
         <tomcat.version>8.5.34</tomcat.version>
         <jetty.version>9.3.12.v20160915</jetty.version>
         <maven.cargo.version>1.6.5</maven.cargo.version>
+        <sonar.language>java</sonar.language>
+        <sonar.organization>markoniemi-github</sonar.organization>
+        <sonar.coverage.exclusions>**/config/*</sonar.coverage.exclusions>
     </properties>
     <build>
         <defaultGoal>install</defaultGoal>
@@ -149,6 +153,7 @@
                 <configuration>
                     <excludes>
                         <exclude>**com.steadystate*</exclude>
+                        <exclude>**/config/*</exclude>
                     </excludes>
                 </configuration>
             </plugin>
@@ -157,8 +162,8 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.12</version>
                 <configuration>
-                    <!-- surefire forks a JVM, therefore it is necessary to pass a system
-                        property that is used in test cases -->
+                    <!-- surefire forks a JVM, therefore it is necessary to pass a system property that 
+                        is used in test cases -->
                     <systemPropertyVariables>
                         <http.port>${http.port}</http.port>
                         <http.protocol>${http.protocol}</http.protocol>
@@ -184,9 +189,9 @@
                     <includes>
                         <include>**/*IntegrationTestSuite.java</include>
                     </includes>
-                <configuration>
-                    <argLine>argLine</argLine>
-                </configuration>
+                    <configuration>
+                        <argLine>argLine</argLine>
+                    </configuration>
                     <systemPropertyVariables>
                         <http.port>${http.port}</http.port>
                         <http.protocol>${http.protocol}</http.protocol>
@@ -215,11 +220,11 @@
                     <skip>true</skip>
                 </configuration>
             </plugin>
-            <!--<plugin>-->
-            <!--<groupId>org.codehaus.mojo</groupId>-->
-            <!--<artifactId>taglist-maven-plugin</artifactId>-->
-            <!--<version>2.4</version>-->
-            <!--</plugin>-->
+            <!--<plugin> -->
+            <!--<groupId>org.codehaus.mojo</groupId> -->
+            <!--<artifactId>taglist-maven-plugin</artifactId> -->
+            <!--<version>2.4</version> -->
+            <!--</plugin> -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>versions-maven-plugin</artifactId>
@@ -377,13 +382,13 @@
                 <type>war</type>
             </dependency>
             <!-- Spring -->
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-dependencies</artifactId>
-				<version>1.5.6.RELEASE</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>1.5.6.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
             <dependency>
                 <groupId>javax.el</groupId>
                 <artifactId>javax.el-api</artifactId>
@@ -396,16 +401,16 @@
                 <version>1.4.01</version>
             </dependency>
             <!-- Apache CXF dependencies -->
-			<dependency>
-				<groupId>org.apache.cxf</groupId>
-				<artifactId>cxf-spring-boot-starter-jaxws</artifactId>
-				<version>${cxf.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.cxf</groupId>
-				<artifactId>cxf-spring-boot-starter-jaxrs</artifactId>
-				<version>${cxf.version}</version>
-			</dependency>
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-spring-boot-starter-jaxws</artifactId>
+                <version>${cxf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-spring-boot-starter-jaxrs</artifactId>
+                <version>${cxf.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.apache.cxf</groupId>
                 <artifactId>cxf-rt-frontend-jaxws</artifactId>
@@ -496,11 +501,11 @@
                 <artifactId>jquery</artifactId>
                 <version>${jquery-version}</version>
             </dependency>
-			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-api</artifactId>
-				<version>1.7.25</version>
-			</dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>1.7.25</version>
+            </dependency>
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
@@ -577,28 +582,28 @@
                 <scope>test</scope>
             </dependency>
             <!-- TODO remove these when spring boot is updated -->
-			<dependency>
-				<groupId>org.seleniumhq.selenium</groupId>
-			    <artifactId>htmlunit</artifactId>
-			    <version>2.26</version>
-                <scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.seleniumhq.selenium</groupId>
-				<artifactId>htmlunit-driver</artifactId>
-			    <version>2.26</version>
-                <scope>test</scope>
-			</dependency>
             <dependency>
-			    <groupId>net.sourceforge.htmlunit</groupId>
-			    <artifactId>htmlunit</artifactId>
-			    <version>2.26</version>
+                <groupId>org.seleniumhq.selenium</groupId>
+                <artifactId>htmlunit</artifactId>
+                <version>2.26</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
-			    <groupId>net.sourceforge.htmlunit</groupId>
-			    <artifactId>htmlunit-driver</artifactId>
-			    <version>2.26</version>
+                <groupId>org.seleniumhq.selenium</groupId>
+                <artifactId>htmlunit-driver</artifactId>
+                <version>2.26</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>net.sourceforge.htmlunit</groupId>
+                <artifactId>htmlunit</artifactId>
+                <version>2.26</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>net.sourceforge.htmlunit</groupId>
+                <artifactId>htmlunit-driver</artifactId>
+                <version>2.26</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
