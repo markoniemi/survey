@@ -35,7 +35,7 @@
         <!-- <http.protocol>https</http.protocol> -->
         <ajp.port>8019</ajp.port>
         <rmi.port>8206</rmi.port>
-        <selenium.version>3.4.0</selenium.version>
+        <selenium.version>3.10.0</selenium.version>
         <cxf.version>3.1.14</cxf.version>
         <jacoco.maven.plugin.version>0.7.7.201606060606</jacoco.maven.plugin.version>
         <jsf.version>2.2.8-04</jsf.version>
@@ -514,7 +514,12 @@
             <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
-                <version>21.0</version>
+                <version>23.6-jre</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>2.8.2</version>
             </dependency>
             <!-- test -->
             <dependency>
@@ -541,7 +546,7 @@
             <dependency>
                 <groupId>org.markoniemi</groupId>
                 <artifactId>selenium-test-rule</artifactId>
-                <version>0.7</version>
+                <version>0.8-SNAPSHOT</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
@@ -584,26 +589,14 @@
             <!-- TODO remove these when spring boot is updated -->
             <dependency>
                 <groupId>org.seleniumhq.selenium</groupId>
-                <artifactId>htmlunit</artifactId>
-                <version>2.26</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.seleniumhq.selenium</groupId>
                 <artifactId>htmlunit-driver</artifactId>
-                <version>2.26</version>
+                <version>2.32.1</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>net.sourceforge.htmlunit</groupId>
                 <artifactId>htmlunit</artifactId>
-                <version>2.26</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>net.sourceforge.htmlunit</groupId>
-                <artifactId>htmlunit-driver</artifactId>
-                <version>2.26</version>
+                <version>2.32</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
@@ -634,12 +627,6 @@
                 <groupId>org.apache.httpcomponents</groupId>
                 <artifactId>httpclient</artifactId>
                 <version>4.5.2</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>com.github.detro</groupId>
-                <artifactId>phantomjsdriver</artifactId>
-                <version>1.4.0</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
