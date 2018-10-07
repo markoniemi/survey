@@ -35,7 +35,6 @@
         <!-- <http.protocol>https</http.protocol> -->
         <ajp.port>8019</ajp.port>
         <rmi.port>8206</rmi.port>
-        <selenium.version>3.10.0</selenium.version>
         <cxf.version>3.1.14</cxf.version>
         <jacoco.maven.plugin.version>0.7.7.201606060606</jacoco.maven.plugin.version>
         <jsf.version>2.2.8-04</jsf.version>
@@ -44,6 +43,8 @@
         <tomcat.version>8.5.34</tomcat.version>
         <jetty.version>9.3.12.v20160915</jetty.version>
         <maven.cargo.version>1.6.5</maven.cargo.version>
+        <selenium.version>3.11.0</selenium.version>
+        <spring.boot.version>1.5.16.RELEASE</spring.boot.version>
         <sonar.language>java</sonar.language>
         <sonar.organization>markoniemi-github</sonar.organization>
         <sonar.coverage.exclusions>**/config/*</sonar.coverage.exclusions>
@@ -381,13 +382,42 @@
                 <version>${project.version}</version>
                 <type>war</type>
             </dependency>
+            <dependency>
+                <groupId>org.seleniumhq.selenium</groupId>
+                <artifactId>htmlunit-driver</artifactId>
+                <version>2.32.1</version>
+            </dependency>
+            <dependency>
+                <groupId>net.sourceforge.htmlunit</groupId>
+                <artifactId>htmlunit</artifactId>
+                <version>2.33</version>
+            </dependency>
+            <dependency>
+                <groupId>org.markoniemi</groupId>
+                <artifactId>selenium-test-rule</artifactId>
+                <version>0.8</version>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.arquillian.selenium</groupId>
+                <artifactId>selenium-bom</artifactId>
+                <version>${selenium.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
             <!-- Spring -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>1.5.6.RELEASE</version>
+                <version>${spring.boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-starter-logging</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>javax.el</groupId>
@@ -544,12 +574,6 @@
                 <type>test-jar</type>
             </dependency>
             <dependency>
-                <groupId>org.markoniemi</groupId>
-                <artifactId>selenium-test-rule</artifactId>
-                <version>0.8-SNAPSHOT</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
                 <version>4.12</version>
@@ -577,68 +601,6 @@
                 <groupId>com.github.springtestdbunit</groupId>
                 <artifactId>spring-test-dbunit</artifactId>
                 <version>1.2.1</version>
-                <scope>test</scope>
-            </dependency>
-            <!-- Selenium -->
-            <dependency>
-                <groupId>org.seleniumhq.selenium</groupId>
-                <artifactId>selenium-java</artifactId>
-                <version>${selenium.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <!-- TODO remove these when spring boot is updated -->
-            <dependency>
-                <groupId>org.seleniumhq.selenium</groupId>
-                <artifactId>htmlunit-driver</artifactId>
-                <version>2.32.1</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>net.sourceforge.htmlunit</groupId>
-                <artifactId>htmlunit</artifactId>
-                <version>2.32</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.seleniumhq.selenium</groupId>
-                <artifactId>selenium-api</artifactId>
-                <version>${selenium.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.seleniumhq.selenium</groupId>
-                <artifactId>selenium-remote-driver</artifactId>
-                <version>${selenium.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.seleniumhq.selenium</groupId>
-                <artifactId>selenium-safari-driver</artifactId>
-                <version>${selenium.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.seleniumhq.selenium</groupId>
-                <artifactId>selenium-support</artifactId>
-                <version>${selenium.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.httpcomponents</groupId>
-                <artifactId>httpclient</artifactId>
-                <version>4.5.2</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.seleniumhq.selenium</groupId>
-                <artifactId>selenium-chrome-driver</artifactId>
-                <version>${selenium.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.seleniumhq.selenium</groupId>
-                <artifactId>selenium-firefox-driver</artifactId>
-                <version>${selenium.version}</version>
                 <scope>test</scope>
             </dependency>
         </dependencies>
