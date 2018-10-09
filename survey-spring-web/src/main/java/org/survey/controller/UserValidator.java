@@ -6,8 +6,8 @@ import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 import org.survey.model.user.User;
 
-import lombok.extern.slf4j.Slf4j;
-@Slf4j
+import lombok.extern.log4j.Log4j2;
+@Log4j2
 @Component
 public class UserValidator implements Validator {
     @Override

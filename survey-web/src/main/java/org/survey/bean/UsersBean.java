@@ -6,14 +6,14 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.survey.FacesUtil;
 import org.survey.model.user.User;
 import org.survey.service.user.UserService;
+
+import lombok.Getter;
+import lombok.Setter;
 
 @Component
 @Scope("request")

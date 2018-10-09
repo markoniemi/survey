@@ -22,10 +22,10 @@ import org.survey.repository.file.FileRepository;
 
 import com.google.common.collect.Iterables;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 
 @WebService(endpointInterface = "org.survey.service.file.FileService", serviceName = "fileService")
-@Slf4j
+@Log4j2
 public class FileServiceImpl implements FileService {
     @Context
     HttpServletRequest request;

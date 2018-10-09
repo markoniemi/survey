@@ -11,9 +11,9 @@ import org.survey.service.user.UserService;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 
-@Slf4j
+@Log4j2
 public class LoginServiceImpl implements LoginService {
 // TODO use either userRepository or autowired
 //    @Resource

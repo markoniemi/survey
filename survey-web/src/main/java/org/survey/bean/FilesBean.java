@@ -10,9 +10,6 @@ import javax.annotation.Resource;
 import javax.faces.context.FacesContext;
 import javax.faces.event.PhaseId;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import org.apache.commons.lang3.StringUtils;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
@@ -21,6 +18,9 @@ import org.springframework.stereotype.Component;
 import org.survey.FacesUtil;
 import org.survey.model.file.File;
 import org.survey.service.file.FileService;
+
+import lombok.Getter;
+import lombok.Setter;
 
 @Component
 @Scope("request")

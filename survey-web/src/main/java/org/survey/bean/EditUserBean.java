@@ -11,11 +11,11 @@ import org.survey.service.user.UserService;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 
 @Component
 @ViewScoped
-@Slf4j
+@Log4j2
 @SuppressWarnings("PMD.UnusedPrivateField")
 public class EditUserBean {
     @Getter

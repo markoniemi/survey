@@ -16,9 +16,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.auth0.jwt.JWTVerifyException;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 
-@Slf4j
+@Log4j2
 public class JwtAuthenticationFilter implements Filter {
     protected String loginUrl;
 

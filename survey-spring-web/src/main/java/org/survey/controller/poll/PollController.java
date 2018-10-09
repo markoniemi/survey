@@ -17,9 +17,9 @@ import org.survey.model.poll.Question;
 import org.survey.model.user.Role;
 import org.survey.service.poll.PollService;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 
-@Slf4j
+@Log4j2
 @Controller
 public class PollController {
     @Autowired

@@ -12,7 +12,7 @@ import org.survey.repository.user.UserRepository;
 
 import com.google.common.collect.Iterables;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 
 /**
  * WebService implementation of UserService. Can not use delegate design
@@ -24,7 +24,7 @@ import lombok.extern.slf4j.Slf4j;
  * are probably unneccessary.
  */
 //@Service
-@Slf4j
+@Log4j2
 //@WebService(endpointInterface = "org.survey.service.user.UserService", serviceName = "userService")
 public class UserServiceImpl implements UserService {
     @Resource
