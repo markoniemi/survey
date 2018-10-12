@@ -15,7 +15,6 @@
     </scm>
     <url>https://github.com/markoniemi/survey/wiki</url>
     <modules>
-        <module>crud-repository-stub</module>
         <module>survey-repository</module>
         <module>survey-service</module>
         <module>survey-web</module>
@@ -333,11 +332,6 @@
             <!-- survey -->
             <dependency>
                 <groupId>org.survey</groupId>
-                <artifactId>crud-repository-stub</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.survey</groupId>
                 <artifactId>survey-repository</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -548,11 +542,10 @@
             </dependency>
             <!-- test -->
             <dependency>
-                <groupId>org.survey</groupId>
-                <artifactId>crud-repository-stub</artifactId>
-                <version>${project.version}</version>
+                <groupId>org.repository</groupId>
+                <artifactId>crud-repository-test</artifactId>
+                <version>0.2-SNAPSHOT</version>
                 <scope>test</scope>
-                <type>test-jar</type>
             </dependency>
             <dependency>
                 <groupId>org.survey</groupId>

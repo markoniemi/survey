@@ -10,10 +10,6 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.survey</groupId>
-			<artifactId>crud-repository-stub</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.survey</groupId>
 			<artifactId>survey-repository</artifactId>
 		</dependency>
 		<dependency>

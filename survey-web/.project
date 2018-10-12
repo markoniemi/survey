@@ -6,7 +6,6 @@
 		<project>user-repository</project>
 		<project>user-service</project>
 		<project>file-repository</project>
-		<project>crud-repository-stub</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
