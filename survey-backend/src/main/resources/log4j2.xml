@@ -12,6 +12,7 @@
         </Root>
 		<Logger name="org.survey" level="DEBUG"/>
 		<Logger name="org.springframework" level="WARN"/>
+        <Logger name="org.springframework.web.servlet.mvc" level="WARN"/>
 		<Logger name="org.springmvc" level="WARN"/>
 		<Logger name="DefaultCssErrorHandler" level="OFF" />
 		<Logger name="com.gargoylesoftware" level="OFF" />

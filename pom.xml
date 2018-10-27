@@ -544,7 +544,7 @@
             <dependency>
                 <groupId>org.repository</groupId>
                 <artifactId>crud-repository-test</artifactId>
-                <version>0.2</version>
+                <version>0.3-SNAPSHOT</version>
                 <scope>test</scope>
             </dependency>
             <dependency>

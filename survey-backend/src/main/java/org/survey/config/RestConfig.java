@@ -6,10 +6,16 @@ import org.apache.cxf.jaxrs.JAXRSServerFactoryBean;
 import org.apache.cxf.jaxrs.lifecycle.SingletonResourceProvider;
 import org.apache.cxf.transport.servlet.CXFServlet;
 import org.codehaus.jackson.jaxrs.JacksonJsonProvider;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.context.annotation.Import;
+import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
+import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
+import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurerAdapter;
+import org.springframework.http.MediaType;
+import org.survey.service.user.UserService;
 import org.survey.service.file.FileService;
 import org.survey.service.login.LoginService;
 import org.survey.service.login.LoginServiceImpl;
@@ -51,22 +57,22 @@ public class RestConfig {
         factory.setAddress("/rest");
         return factory.create();
     }
-//    @Bean
-//    public RepositoryRestConfigurer repositoryRestConfigurer() {
-//        return new RepositoryRestConfigurerAdapter() {
-//            @Override
-//            public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
-//                config.setDefaultMediaType(MediaType.APPLICATION_JSON);
-//                config.useHalAsDefaultJsonMediaType(false);
-//                config.getMetadataConfiguration().setAlpsEnabled(false);
-//            }
-//        };
-//    }
+    @Bean
+    public RepositoryRestConfigurer repositoryRestConfigurer() {
+        return new RepositoryRestConfigurerAdapter() {
+            @Override
+            public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
+                config.setDefaultMediaType(MediaType.APPLICATION_JSON);
+                config.useHalAsDefaultJsonMediaType(false);
+                config.getMetadataConfiguration().setAlpsEnabled(false);
+            }
+        };
+    }
 
-//    @Bean
-//    public ServletRegistrationBean cxfServlet() {
-//        final ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean(new CXFServlet(), "/api/*");
-//        servletRegistrationBean.setLoadOnStartup(1);
-//        return servletRegistrationBean;
-//    }
+    @Bean
+    public ServletRegistrationBean cxfServlet() {
+        final ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean(new CXFServlet(), "/api/*");
+        servletRegistrationBean.setLoadOnStartup(1);
+        return servletRegistrationBean;
+    }
 }

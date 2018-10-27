@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Import;
 @Configuration
 @Import({
         ServiceConfig.class,
-        SecurityConfig.class,
+        WebSecurityConfig.class,
         WebMvcConfig.class
 })
 public class SurveySpringWebConfig {
