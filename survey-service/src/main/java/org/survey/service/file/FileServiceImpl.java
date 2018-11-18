@@ -49,23 +49,14 @@ public class FileServiceImpl implements FileService {
     }
 
     @Override
-    // @GET
-    // @Path("/downloadFile")
-    // @Produces("application/pdf")
     public Response downloadFile(Long id) {
         File file = fileRepository.findOne(id);
-        // java.io.File file = new java.io.File("test.pdf");
         ResponseBuilder response = Response.ok((Object) file, file.getMimeType());
         response.header("Content-Disposition", "attachment; filename=" + file.getFilename());
         return response.build();
     }
 
     @Override
-    // @POST
-    // @Path("/uploadFile")
-    // @Consumes(MediaType.MULTIPART_FORM_DATA)
-    // public Response uploadFile(List<Attachment> attachments, @Context
-    // HttpServletRequest request) {
     public void uploadFile(List<Attachment> attachments) {
         for (Attachment attachment : attachments) {
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -91,7 +82,6 @@ public class FileServiceImpl implements FileService {
                 log.error(e.getMessage(), e);
             }
         }
-        // return Response.ok("file uploaded").build();
     }
 
     private String getFileName(MultivaluedMap<String, String> header) {
