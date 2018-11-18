@@ -27,13 +27,7 @@ public class PollServiceImpl implements PollService {
 
     @Override
     public Poll[] findAll() {
-        Iterable<Poll> polls = pollRepository.findAll();
-        // return empty list instead of null
-        if (Iterables.isEmpty(polls)) {
-            return EMPTY_POLL_ARRAY;
-        } else {
-            return Iterables.toArray(polls, Poll.class);
-        }
+        return Iterables.toArray(pollRepository.findAll(), Poll.class);
     }
 
     public Poll[] findByOwner(String username) {
@@ -41,13 +35,7 @@ public class PollServiceImpl implements PollService {
         if (user == null) {
             return EMPTY_POLL_ARRAY;
         }
-        Iterable<Poll> polls = pollRepository.findAllByOwner(user);
-        // return empty list instead of null
-        if (Iterables.isEmpty(polls)) {
-            return EMPTY_POLL_ARRAY;
-        } else {
-            return Iterables.toArray(polls, Poll.class);
-        }
+        return Iterables.toArray(pollRepository.findAllByOwner(user), Poll.class);
     }
 
     @Override
@@ -65,8 +53,7 @@ public class PollServiceImpl implements PollService {
                 question.setPoll(poll);
             }
         }
-        Poll savedPoll = pollRepository.save(poll);
-        return savedPoll;
+        return pollRepository.save(poll);
     }
 
     @Override

@@ -31,13 +31,13 @@ public class FileUploadBean {
     private String acceptedTypes = "jpg, gif, png, bmp";
     @Setter
     @Resource
-    private transient FileService fileService;
+    private FileService fileService;
     @Setter
     @Resource
-    private transient UserService userService;
+    private UserService userService;
     @Setter
     @Resource
-    transient UserBean userBean;
+    private UserBean userBean;
     @Getter
     @Setter
     private Part file;
@@ -56,9 +56,7 @@ public class FileUploadBean {
      */
     public String upload() {
         try {
-            byte[] fileContent = getFileContent();
-            File createdFile = createFile(file, getFilename(file), fileContent);
-            fileService.create(createdFile);
+            fileService.create(createFile(file, getFilename(file), getFileContent()));
         } catch (IOException e) {
             showMessage(null, "fileUploadError", e);
         }
@@ -98,6 +96,6 @@ public class FileUploadBean {
      */
     void showMessage(String id, String messageKey, Exception e) {
         log.error(messageKey, e);
-        FacesUtil.showMessage(id, messageKey);
+        FacesUtil.showMessage(messageKey);
     }
 }

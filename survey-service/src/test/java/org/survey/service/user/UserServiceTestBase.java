@@ -13,7 +13,6 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.survey.config.ServiceConfig;
 import org.survey.config.ServiceTestConfig;
 import org.survey.model.user.User;
 import org.survey.model.user.UserComparator;
@@ -70,7 +69,6 @@ public class UserServiceTestBase {
 
     @Test
     public void findAll() {
-//        Assert.assertNotNull(entityService.findAll());
         create();
         Assert.assertEquals(ENTITY_COUNT, entityService.findAll().length);
     }

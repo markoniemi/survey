@@ -28,10 +28,8 @@ import lombok.extern.log4j.Log4j2;
 //@WebService(endpointInterface = "org.survey.service.user.UserService", serviceName = "userService")
 public class UserServiceImpl implements UserService {
     @Resource
-//    @Autowired
     private UserRepository userRepository;
     @Resource
-//    @Autowired
     private FileRepository fileRepository;
     
     @Override

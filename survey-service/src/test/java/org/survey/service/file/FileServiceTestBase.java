@@ -14,8 +14,6 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.survey.config.RepositoryJpaTestConfig;
-import org.survey.config.ServiceConfig;
 import org.survey.config.ServiceTestConfig;
 import org.survey.model.file.File;
 import org.survey.model.file.FileComparator;
@@ -34,7 +32,7 @@ public class FileServiceTestBase {
     protected static int ENTITY_COUNT = 2;
     protected List<File> orginalEntities = new ArrayList<File>();;
     protected List<File> savedEntities = new ArrayList<File>();;
-    @Resource(name="fileService")
+    @Resource(name = "fileService")
     protected FileService entityService;
     protected FileFactory entityFactory;
     protected FileComparator entityComparator = new FileComparator();
@@ -76,8 +74,7 @@ public class FileServiceTestBase {
     public void update() {
         create();
         for (int i = 0; i < ENTITY_COUNT; i++) {
-            File foundEntity = entityService.findOne(savedEntities.get(i)
-                    .getId());
+            File foundEntity = entityService.findOne(savedEntities.get(i).getId());
             File updatedEntity = entityFactory.getUpdatedEntity(foundEntity);
             updatedEntity.setId(foundEntity.getId());
             entityService.update(updatedEntity);
@@ -144,7 +141,7 @@ public class FileServiceTestBase {
     }
 
     public void assertEntity(File originalEntity, File entity) {
-        Assert.assertEquals("originalEntity: " + originalEntity + " entity: "
-                + entity, 0, entityComparator.compare(originalEntity, entity));
+        Assert.assertEquals("originalEntity: " + originalEntity + " entity: " + entity, 0,
+                entityComparator.compare(originalEntity, entity));
     }
 }

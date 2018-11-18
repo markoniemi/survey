@@ -1,24 +1,20 @@
 package org.survey.service.login;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.NotAuthorizedException;
 import javax.ws.rs.core.Context;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.survey.model.user.User;
 import org.survey.security.JwtToken;
 import org.survey.service.user.UserService;
 
-import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 public class LoginServiceImpl implements LoginService {
-// TODO use either userRepository or autowired
-//    @Resource
-    @Autowired
-    @Getter
+    @Resource
     @Setter
     private UserService userService;
 

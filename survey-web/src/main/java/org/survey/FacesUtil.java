@@ -18,13 +18,11 @@ public class FacesUtil {
     private FacesUtil() {
     }
 
-    public static String showMessage(String id, String messageKey) {
+    public static String showMessage(String messageKey) {
         FacesContext facesContext = FacesContext.getCurrentInstance();
-        ResourceBundle resourceBundle = facesContext.getApplication()
-                .getResourceBundle(facesContext, "messages");
+        ResourceBundle resourceBundle = facesContext.getApplication().getResourceBundle(facesContext, "messages");
         String message = resourceBundle.getString(messageKey);
-        FacesContext.getCurrentInstance().addMessage(null,
-                new FacesMessage(message));
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(message));
         return null;
     }
 
@@ -37,6 +35,6 @@ public class FacesUtil {
         if (map == null) {
             return null;
         }
-        return (String) map.get(parameterName);
+        return map.get(parameterName);
     }
 }

@@ -13,7 +13,8 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
+
+import org.survey.model.user.User;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -21,8 +22,6 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
-
-import org.survey.model.user.User;
 
 @Data
 @NoArgsConstructor

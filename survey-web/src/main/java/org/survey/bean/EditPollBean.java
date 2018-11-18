@@ -121,6 +121,6 @@ public class EditPollBean {
      */
     void showMessage(String id, String messageKey, Exception e) {
         log.error(messageKey, e);
-        FacesUtil.showMessage(id, messageKey);
+        FacesUtil.showMessage(messageKey);
     }
 }

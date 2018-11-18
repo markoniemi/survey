@@ -5,18 +5,17 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.survey.controller.UserValidator;
 import org.survey.model.user.Role;
@@ -28,7 +27,7 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 @Controller
 public class UserController {
-    @Autowired
+    @Resource
     private MessageSource messageSource;
     @Resource
     private UserService userService;
@@ -40,7 +39,7 @@ public class UserController {
         binder.setValidator(userValidator);
     }
 
-    @RequestMapping(value = "/user/save", method = RequestMethod.POST)
+    @PostMapping(value = "/user/save")
     public String saveUser(@ModelAttribute @Validated User user, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "/user/user";
@@ -60,12 +59,12 @@ public class UserController {
         return "redirect:/user/users";
     }
 
-    @RequestMapping(value = "/user/new", method = RequestMethod.GET)
+    @GetMapping(value = "/user/new")
     public ModelAndView newUser() {
         return editUser(null);
     }
 
-    @RequestMapping(value = "/user/{username}", method = RequestMethod.GET)
+    @GetMapping(value = "/user/{username}")
     public ModelAndView editUser(@PathVariable String username) {
         User user = userService.findOne(username);
         log.debug("editUser() - found user: " + user);
@@ -79,7 +78,7 @@ public class UserController {
         return model;
     }
 
-    @RequestMapping(value = "/user/delete/{username}", method = RequestMethod.POST)
+    @PostMapping(value = "/user/delete/{username}")
     public String deleteUser(@PathVariable String username) {
         userService.delete(username);
         return "redirect:/user/users";

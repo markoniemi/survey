@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
+
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.survey.model.poll.Poll;
 import org.survey.model.poll.Question;
@@ -22,13 +23,12 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 @Controller
 public class PollController {
-    @Autowired
+    @Resource
     private MessageSource messageSource;
-    @Autowired
-    // @Qualifier("pollServiceBean")
+    @Resource
     private PollService pollService;
 
-    @RequestMapping(value = "/poll/save", method = RequestMethod.POST)
+    @PostMapping(value = "/poll/save")
     public String savePoll(@ModelAttribute Poll poll) {
         log.debug("savePoll - saving poll:" + poll);
         if (poll.getId() != null) {
@@ -39,12 +39,12 @@ public class PollController {
         return "redirect:/poll/polls";
     }
 
-    @RequestMapping(value = "/poll/new", method = RequestMethod.GET)
+    @GetMapping(value = "/poll/new")
     public ModelAndView newPoll() {
         return editPoll(null);
     }
 
-    @RequestMapping(value = "/poll/{name}", method = RequestMethod.GET)
+    @GetMapping(value = "/poll/{name}")
     public ModelAndView editPoll(@PathVariable String name) {
         Poll poll = pollService.findOne(name);
         log.debug("editPoll() - found poll: " + poll);
@@ -57,15 +57,16 @@ public class PollController {
         return model;
     }
 
-    @RequestMapping(value = "/poll/delete/{name}", method = RequestMethod.POST)
+    @PostMapping(value = "/poll/delete/{name}")
     public String deletePoll(@PathVariable String name) {
         pollService.delete(name);
         return "redirect:/poll/polls";
     }
+
     // TODO use GET
-    @RequestMapping(value = "/poll/addQuestion", method = RequestMethod.POST)
+    @PostMapping(value = "/poll/addQuestion")
     public ModelAndView addQuestion(@ModelAttribute Poll poll) {
-//        Poll poll = pollService.findOne(name);
+        // Poll poll = pollService.findOne(name);
         log.debug("editPoll() - found poll: " + poll);
         if (poll != null) {
             if (poll.getQuestions() == null) {
@@ -78,7 +79,7 @@ public class PollController {
         ModelAndView model = new ModelAndView();
         model.setViewName("/poll/poll");
         model.addObject("poll", poll);
-//        model.addObject("roles", getRolesAsMap());
+        // model.addObject("roles", getRolesAsMap());
         return model;
     }
 

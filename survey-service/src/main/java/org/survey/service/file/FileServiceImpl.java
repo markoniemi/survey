@@ -31,17 +31,10 @@ public class FileServiceImpl implements FileService {
     HttpServletRequest request;
     @Resource
     FileRepository fileRepository;
-    private static final File[] EMPTY_FILE_ARRAY = new File[0];
 
     @Override
     public File[] findAll() {
-        Iterable<File> files = fileRepository.findAll();
-        // return empty list instead of null
-        if (Iterables.isEmpty(files)) {
-            return EMPTY_FILE_ARRAY;
-        } else {
-            return Iterables.toArray(files, File.class);
-        }
+        return Iterables.toArray(fileRepository.findAll(), File.class);
     }
 
     @Override
