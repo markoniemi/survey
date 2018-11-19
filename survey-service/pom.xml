@@ -21,6 +21,10 @@
             <groupId>commons-collections</groupId>
             <artifactId>commons-collections</artifactId>
         </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+        </dependency>
         <!-- Apache CXF dependencies -->
         <dependency>
             <groupId>org.apache.cxf</groupId>

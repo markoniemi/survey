@@ -4,7 +4,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.util.List;
 
-import javax.activation.DataHandler;
 import javax.annotation.Resource;
 import javax.jws.WebParam;
 import javax.jws.WebService;
@@ -14,8 +13,8 @@ import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.cxf.helpers.IOUtils;
 import org.apache.cxf.jaxrs.ext.multipart.Attachment;
 import org.survey.model.file.File;
 import org.survey.repository.file.FileRepository;
@@ -59,29 +58,34 @@ public class FileServiceImpl implements FileService {
     @Override
     public void uploadFile(List<Attachment> attachments) {
         for (Attachment attachment : attachments) {
-            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-            try {
-                MultivaluedMap<String, String> map = attachment.getHeaders();
-                String fileName = getFileName(map);
-                log.debug("uploadFile: {}", fileName);
-                if (StringUtils.isNotEmpty(fileName)) {
-                    DataHandler handler = attachment.getDataHandler();
-                    InputStream inputStream = handler.getInputStream();
-                    IOUtils.copy(inputStream, outputStream);
-                    File file = createFile(fileName, "mimeType", "owner", outputStream.toByteArray());
-                    // TODO move to finally block
-                    inputStream.close();
-                    outputStream.flush();
-                    outputStream.close();
-                    // TODO for some reason there is an extra file with 0 size
-                    if (file.getContent().length > 0) {
-                        fileRepository.save(file);
-                    }
-                }
-            } catch (Exception e) {
-                log.error(e.getMessage(), e);
-            }
+            uploadFile(attachment);
         }
+    }
+
+    private Long uploadFile(Attachment attachment) {
+        InputStream inputStream = null;
+        ByteArrayOutputStream outputStream = null;
+        try {
+            String fileName = getFileName(attachment.getHeaders());
+            log.debug("uploadFile: {}", fileName);
+            if (StringUtils.isNotEmpty(fileName)) {
+                inputStream = attachment.getDataHandler().getInputStream();
+                outputStream = new ByteArrayOutputStream();
+                IOUtils.copy(inputStream, outputStream);
+                File file = createFile(fileName, "mimeType", "owner", outputStream.toByteArray());
+                outputStream.flush();
+                // for some reason there is an extra file with 0 size
+                if (file.getContent().length > 0) {
+                    return fileRepository.save(file).getId();
+                }
+            }
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        } finally {
+            IOUtils.closeQuietly(inputStream);
+            IOUtils.closeQuietly(outputStream);
+        }
+        return null;
     }
 
     private String getFileName(MultivaluedMap<String, String> header) {

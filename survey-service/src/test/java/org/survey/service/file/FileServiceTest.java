@@ -24,8 +24,8 @@ public class FileServiceTest extends FileServiceTestBase {
         create();
         Response response = entityService.downloadFile(savedEntities.get(0).getId());
         MultivaluedMap<String, Object> metadata = response.getMetadata();
-        Assert.assertEquals("text/plain; charset=utf-8", metadata.get("Content-Type").get(0));
-        Assert.assertEquals("attachment; filename=filename0", metadata.get("Content-Disposition").get(0));
+        Assert.assertEquals("text/plain; charset=utf-8", metadata.getFirst("Content-Type"));
+        Assert.assertEquals("attachment; filename=filename0", metadata.getFirst("Content-Disposition"));
         assertEntity(savedEntities.get(0), (File) response.getEntity());
     }
 
