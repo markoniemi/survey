@@ -137,10 +137,9 @@
             <artifactId>selenium-java</artifactId>
             <scope>test</scope>
         </dependency>
-        <!-- selenium-test-rule -->
         <dependency>
-            <groupId>org.markoniemi</groupId>
-            <artifactId>selenium-test-rule</artifactId>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
