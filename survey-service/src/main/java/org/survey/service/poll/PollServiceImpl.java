@@ -4,7 +4,6 @@ import javax.annotation.Resource;
 import javax.jws.WebService;
 
 import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.lang3.Validate;
 import org.survey.model.poll.Poll;
 import org.survey.model.poll.Question;
 import org.survey.model.user.User;
@@ -40,8 +39,6 @@ public class PollServiceImpl implements PollService {
 
     @Override
     public Poll create(Poll poll) {
-        Validate.notNull(poll);
-        Validate.isTrue(!exists(poll.getName()), "Poll already exists: {}", poll.getName());
         return update(poll);
     }
 
@@ -57,19 +54,23 @@ public class PollServiceImpl implements PollService {
     }
 
     @Override
-    // TODO change to id
-    public Poll findOne(String name) {
+    public Poll findOne(Long id) {
+        return pollRepository.findOne(id);
+    }
+
+    @Override
+    public Poll findByName(String name) {
         return pollRepository.findByName(name);
     }
 
     @Override
-    public boolean exists(String username) {
-        return pollRepository.findByName(username) != null;
+    public boolean exists(Long id) {
+        return pollRepository.findOne(id) != null;
     }
 
     @Override
-    public void delete(String name) {
-        Poll poll = pollRepository.findByName(name);
+    public void delete(Long id) {
+        Poll poll = pollRepository.findOne(id);
         if (poll == null) {
             return;
         }

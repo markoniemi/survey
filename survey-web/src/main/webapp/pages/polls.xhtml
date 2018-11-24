@@ -28,11 +28,11 @@
 						<p:column>
 							<h:commandButton id="delete" value="#{messages.delete}"
 								action="#{pollsBean.deletePoll}">
-								<f:param name="name" value="#{poll.name}" />
+								<f:param name="id" value="#{poll.id}" />
 							</h:commandButton>
 							<h:commandButton id="edit" value="#{messages.editPoll}"
 								action="#{editPollBean.editPoll}">
-								<f:param name="name" value="#{poll.name}" />
+								<f:param name="id" value="#{poll.id}" />
 							</h:commandButton>
 						</p:column>
 					</p:dataTable>

@@ -38,7 +38,7 @@ public class PollsBean {
      * Called from polls.xhtml when user pressed Delete in pollTable.
      */
     public void deletePoll() {
-        pollService.delete(getRequestParameter("name"));
+        pollService.delete(Long.valueOf(getRequestParameter("id")));
         initialize();
     }
 

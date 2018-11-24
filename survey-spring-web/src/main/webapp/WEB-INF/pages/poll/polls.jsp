@@ -30,8 +30,8 @@
 <%-- 					<td>${poll.owner}</td> --%>
 					<td>
 						<form:form class="form-horizontal" method="POST"> 
-							<a id="edit" class="btn btn-primary" href="poll/${poll.name}"><span class="glyphicon glyphicon-pencil" ></span></a>
-                            <button id="delete" class="btn btn-primary" type="submit" formaction="poll/delete/${poll.name}">
+							<a id="edit" class="btn btn-primary" href="poll/${poll.id}"><span class="glyphicon glyphicon-pencil" ></span></a>
+                            <button id="delete" class="btn btn-primary" type="submit" formaction="poll/delete/${poll.id}">
                             <span class="glyphicon glyphicon-remove" ></span>
                             </button>
 						</form:form>

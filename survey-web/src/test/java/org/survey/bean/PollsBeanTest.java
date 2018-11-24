@@ -39,7 +39,7 @@ public class PollsBeanTest {
 	@After
 	public void tearDown() {
 		for (Poll poll : pollService.findAll()) {
-            pollService.delete(poll.getName());
+            pollService.delete(poll.getId());
         }
 	}
 
@@ -70,7 +70,7 @@ public class PollsBeanTest {
 	public void deletePoll() throws Exception {
 		Poll createdPoll = new Poll("poll2");
 		pollsBean.getPollService().create(createdPoll);
-		((PollsBeanMock)pollsBean).setRequestParameter("poll2");
+		((PollsBeanMock)pollsBean).setRequestParameter(Long.toString(createdPoll.getId()));
 		pollsBean.deletePoll();
 		Assert.assertEquals(1, pollsBean.getPollService().count());
 	}

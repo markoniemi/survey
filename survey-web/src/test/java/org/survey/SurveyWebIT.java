@@ -12,6 +12,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.survey.config.ServiceTestConfig;
+import org.survey.model.poll.Poll;
 import org.survey.model.user.Role;
 import org.survey.selenium.LoginPage;
 import org.survey.selenium.PollPage;
@@ -54,10 +55,15 @@ public class SurveyWebIT {
         deleteUserFromRepository("registered_user");
         deleteUserFromRepository("admin_user");
         deleteUserFromRepository("user_user");
+        webDriver.close();
+        webDriver.quit();
     }
 
-    private void deletePollFromRepository(String pollName) {
-        pollService.delete(pollName);
+    private void deletePollFromRepository(String name) {
+        Poll poll = pollService.findByName(name);
+        if (poll != null) {
+            pollService.delete(poll.getId());
+        }
     }
 
     private void deleteUserFromRepository(String username) {

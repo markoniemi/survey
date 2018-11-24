@@ -44,9 +44,12 @@ public class PollController {
         return editPoll(null);
     }
 
-    @GetMapping(value = "/poll/{name}")
-    public ModelAndView editPoll(@PathVariable String name) {
-        Poll poll = pollService.findOne(name);
+    @GetMapping(value = "/poll/{id}")
+    public ModelAndView editPoll(@PathVariable Long id) {
+        Poll poll=null;
+        if (id!=null) {
+            poll = pollService.findOne(id);
+        }
         log.debug("editPoll() - found poll: " + poll);
         if (poll == null) {
             poll = new Poll();
@@ -57,9 +60,9 @@ public class PollController {
         return model;
     }
 
-    @PostMapping(value = "/poll/delete/{name}")
-    public String deletePoll(@PathVariable String name) {
-        pollService.delete(name);
+    @PostMapping(value = "/poll/delete/{id}")
+    public String deletePoll(@PathVariable Long id) {
+        pollService.delete(id);
         return "redirect:/poll/polls";
     }
 

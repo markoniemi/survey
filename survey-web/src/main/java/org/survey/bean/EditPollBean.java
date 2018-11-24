@@ -24,10 +24,9 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 @SuppressWarnings("PMD.UnusedPrivateField")
 public class EditPollBean {
-    // TODO: change to id
     @Getter
     @Setter
-    private String name;
+    private Long id;
     @Getter
     @Setter
     private Poll poll;
@@ -50,9 +49,9 @@ public class EditPollBean {
      * Called from polls.xhtml when user pressed Edit in pollTable.
      */
     public String editPoll() {
-        name = getRequestParameter("name");
-        if (name != null) {
-            poll = pollService.findOne(name);
+        id = Long.valueOf(getRequestParameter("id"));
+        if (id != null) {
+            poll = pollService.findOne(id);
         }
         return "editPoll";
     }

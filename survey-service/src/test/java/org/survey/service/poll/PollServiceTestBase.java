@@ -54,7 +54,7 @@ public class PollServiceTestBase {
         Poll[] users = entityService.findAll();
         if (users != null) {
             for (Poll pollToDelete : users) {
-                entityService.delete(pollToDelete.getName());
+                entityService.delete(pollToDelete.getId());
             }
         }
         userService.delete(user.getUsername());
@@ -87,11 +87,11 @@ public class PollServiceTestBase {
         create();
         for (int i = 0; i < ENTITY_COUNT; i++) {
             Poll foundEntity = entityService.findOne(savedEntities.get(i)
-                    .getName());
+                    .getId());
             Poll updatedEntity = entityFactory.getUpdatedEntity(foundEntity);
             updatedEntity.setId(foundEntity.getId());
             entityService.update(updatedEntity);
-            foundEntity = entityService.findOne(savedEntities.get(i).getName());
+            foundEntity = entityService.findOne(savedEntities.get(i).getId());
             assertEntity(updatedEntity, foundEntity);
         }
     }
@@ -116,8 +116,8 @@ public class PollServiceTestBase {
         create();
         for (int i = 0; i < ENTITY_COUNT; i++) {
             Poll originalEntity = orginalEntities.get(i);
-            Poll foundEntity = entityService.findOne(originalEntity.getName());
-            assertEntity(orginalEntities.get(i), foundEntity);
+            Poll foundEntity = entityService.findOne(savedEntities.get(i).getId());
+            assertEntity(originalEntity, foundEntity);
         }
         // TODO how to test a non-existent entity?
     }
@@ -126,8 +126,7 @@ public class PollServiceTestBase {
     public void exists() {
         create();
         for (int i = 0; i < ENTITY_COUNT; i++) {
-            Poll entity = orginalEntities.get(i);
-            entityService.exists(entity.getName());
+            entityService.exists(savedEntities.get(i).getId());
         }
         // TODO how to test if exists fails?
         // Assert.assertFalse(entityRepository.exists((ID) new Object()));
@@ -136,7 +135,7 @@ public class PollServiceTestBase {
     @Test
     public void existsWithNull() {
         // try with non-existent id
-        Assert.assertFalse(entityService.exists("nonexistent"));
+        Assert.assertFalse(entityService.exists(666L));
     }
 
     @Test
@@ -149,9 +148,9 @@ public class PollServiceTestBase {
     public void delete() {
         create();
         for (int i = 0; i < ENTITY_COUNT; i++) {
-            Poll entity = orginalEntities.get(i);
-            entityService.delete(entity.getName());
-            Assert.assertFalse(entityService.exists(entity.getName()));
+            Poll entity = savedEntities.get(i);
+            entityService.delete(entity.getId());
+            Assert.assertFalse(entityService.exists(entity.getId()));
         }
         Assert.assertEquals(0, entityService.count());
     }
@@ -159,7 +158,7 @@ public class PollServiceTestBase {
     @Test
     public void deleteNonexistent() {
         create();
-        entityService.delete("nonexistent");
+        entityService.delete(666L);
     }
 
     public void assertEntity(Poll originalEntity, Poll entity) {

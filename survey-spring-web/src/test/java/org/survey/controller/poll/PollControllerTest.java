@@ -42,32 +42,29 @@ public class PollControllerTest {
 
     @Test
     public void newPoll() throws Exception {
+        // new poll
         MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("/poll/new");
         ResultActions resultActions = mockMvc.perform(request);
-
         resultActions.andExpect(MockMvcResultMatchers.status().isOk());
         resultActions.andExpect(MockMvcResultMatchers.forwardedUrl("/WEB-INF/pages/poll/poll.jsp"));
         ModelAndView modelAndView = resultActions.andReturn().getModelAndView();
         Poll poll = (Poll) modelAndView.getModel().get("poll");
         Assert.assertNotNull(poll);
         // fill poll form
-        poll.setName("name");
+        poll.setName("pollName");
         request = MockMvcRequestBuilders.post("/poll/save").contentType(MediaType.APPLICATION_FORM_URLENCODED)
                 .flashAttr("poll", poll);
         resultActions = mockMvc.perform(request);
         resultActions.andExpect(MockMvcResultMatchers.redirectedUrl("/poll/polls"));
-        Poll savedPoll = pollRepository.findByName("name");
-//    }
-//    @Test
-//    public void editUser() throws Exception {
-        request = MockMvcRequestBuilders.get("/poll/name");
+        Poll savedPoll = pollRepository.findByName("pollName");
+        // edit poll
+        request = MockMvcRequestBuilders.get("/poll/"+savedPoll.getId());
         resultActions = mockMvc.perform(request);
         resultActions.andExpect(MockMvcResultMatchers.status().isOk());
         resultActions.andExpect(MockMvcResultMatchers.forwardedUrl("/WEB-INF/pages/poll/poll.jsp"));
         modelAndView = resultActions.andReturn().getModelAndView();
         poll = (Poll) modelAndView.getModel().get("poll");
         Assert.assertNotNull(poll);
-        
         // add question
         request = MockMvcRequestBuilders.post("/poll/addQuestion").contentType(MediaType.APPLICATION_FORM_URLENCODED)
                 .flashAttr("poll", poll);
@@ -77,7 +74,6 @@ public class PollControllerTest {
         Assert.assertNotNull(poll.getQuestions());
         Assert.assertEquals(1, poll.getQuestions().size());
         poll.getQuestions().get(0).setType(QuestionType.BOOLEAN);
-
         // add question
         request = MockMvcRequestBuilders.post("/poll/addQuestion").contentType(MediaType.APPLICATION_FORM_URLENCODED)
                 .flashAttr("poll", poll);
@@ -87,7 +83,6 @@ public class PollControllerTest {
         Assert.assertNotNull(poll.getQuestions());
         Assert.assertEquals(2, poll.getQuestions().size());
         poll.getQuestions().get(1).setType(QuestionType.TEXT);
-
         // add question
         request = MockMvcRequestBuilders.post("/poll/addQuestion").contentType(MediaType.APPLICATION_FORM_URLENCODED)
                 .flashAttr("poll", poll);
@@ -97,18 +92,16 @@ public class PollControllerTest {
         Assert.assertNotNull(poll.getQuestions());
         Assert.assertEquals(3, poll.getQuestions().size());
         poll.getQuestions().get(2).setType(QuestionType.TEXT);
-        
         // save poll
         request = MockMvcRequestBuilders.post("/poll/save").contentType(MediaType.APPLICATION_FORM_URLENCODED)
                 .flashAttr("poll", poll);
         resultActions = mockMvc.perform(request);
         resultActions.andExpect(MockMvcResultMatchers.redirectedUrl("/poll/polls"));
-        savedPoll = pollRepository.findByName("name");
+        savedPoll = pollRepository.findByName("pollName");
         Assert.assertNotNull(savedPoll.getQuestions());
         Assert.assertEquals(3, savedPoll.getQuestions().size());
-
         // edit poll
-        request = MockMvcRequestBuilders.get("/poll/name");
+        request = MockMvcRequestBuilders.get("/poll/"+savedPoll.getId());
         resultActions = mockMvc.perform(request);
         resultActions.andExpect(MockMvcResultMatchers.status().isOk());
         resultActions.andExpect(MockMvcResultMatchers.forwardedUrl("/WEB-INF/pages/poll/poll.jsp"));
