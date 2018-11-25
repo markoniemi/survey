@@ -1,5 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.survey</groupId>
@@ -18,10 +19,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
             <exclusions>
-            	<exclusion>
-            		<groupId>ch.qos.logback</groupId>
-            		<artifactId>logback-classic</artifactId>
-            	</exclusion>
+                <exclusion>
+                    <groupId>ch.qos.logback</groupId>
+                    <artifactId>logback-classic</artifactId>
+                </exclusion>
             </exclusions>
         </dependency>
         <!-- tomcat -->
@@ -100,11 +101,11 @@
             <artifactId>jquery</artifactId>
         </dependency>
         <!-- test -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>org.survey</groupId>
             <artifactId>survey-service</artifactId>
@@ -188,7 +189,7 @@
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>${jetty.version}</version>
                 <configuration>
-                    <!--<jettyXml>src/main/resources/jetty-app.xml</jettyXml>-->
+                    <!--<jettyXml>src/main/resources/jetty-app.xml</jettyXml> -->
                     <scanIntervalSeconds>10</scanIntervalSeconds>
                     <httpConnector>
                         <port>${http.port}</port>
@@ -279,13 +280,13 @@
                                 <timeout>120000</timeout>
                             </container>
                             <configuration>
-                                <!-- 								<files> -->
-                                <!-- 									<file> -->
-                                <!-- 										<file>${project.basedir}/src/test/resources/survey.jks</file> -->
-                                <!-- 										<todir>conf</todir> -->
-                                <!-- 										<overwrite>true</overwrite> -->
-                                <!-- 									</file> -->
-                                <!-- 								</files> -->
+                                <!-- <files> -->
+                                <!-- <file> -->
+                                <!-- <file>${project.basedir}/src/test/resources/survey.jks</file> -->
+                                <!-- <todir>conf</todir> -->
+                                <!-- <overwrite>true</overwrite> -->
+                                <!-- </file> -->
+                                <!-- </files> -->
                                 <properties>
                                     <cargo.jvmargs>${argLine}</cargo.jvmargs>
                                     <cargo.servlet.users>admin:admin:User</cargo.servlet.users>
@@ -293,13 +294,13 @@
                                     <cargo.protocol>${http.protocol}</cargo.protocol>
                                     <cargo.tomcat.ajp.port>${ajp.port}</cargo.tomcat.ajp.port>
                                     <cargo.container.rmi.port>${rmi.port}</cargo.container.rmi.port>
-                                    <!-- 									testing properties for ssl -->
-                                    <!-- 									<cargo.tomcat.connector.clientAuth>false</cargo.tomcat.connector.clientAuth> -->
-                                    <!-- 									<cargo.tomcat.connector.keyAlias>survey</cargo.tomcat.connector.keyAlias> -->
-                                    <!-- 									<cargo.tomcat.connector.keystoreFile>conf/survey.jks</cargo.tomcat.connector.keystoreFile> -->
-                                    <!-- 									<cargo.tomcat.connector.keystorePass>changeit</cargo.tomcat.connector.keystorePass> -->
-                                    <!-- 									<cargo.tomcat.connector.sslProtocol>TLS</cargo.tomcat.connector.sslProtocol> -->
-                                    <!-- 									<cargo.tomcat.httpSecure>true</cargo.tomcat.httpSecure> -->
+                                    <!-- testing properties for ssl -->
+                                    <!-- <cargo.tomcat.connector.clientAuth>false</cargo.tomcat.connector.clientAuth> -->
+                                    <!-- <cargo.tomcat.connector.keyAlias>survey</cargo.tomcat.connector.keyAlias> -->
+                                    <!-- <cargo.tomcat.connector.keystoreFile>conf/survey.jks</cargo.tomcat.connector.keystoreFile> -->
+                                    <!-- <cargo.tomcat.connector.keystorePass>changeit</cargo.tomcat.connector.keystorePass> -->
+                                    <!-- <cargo.tomcat.connector.sslProtocol>TLS</cargo.tomcat.connector.sslProtocol> -->
+                                    <!-- <cargo.tomcat.httpSecure>true</cargo.tomcat.httpSecure> -->
                                 </properties>
                             </configuration>
                         </configuration>

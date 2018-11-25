@@ -13,6 +13,8 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 
+import lombok.extern.log4j.Log4j2;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
@@ -23,6 +25,7 @@ import java.util.Properties;
 @EnableJpaRepositories(basePackages = "org.survey")
 //@EntityScan(basePackages = "org.survey")
 @PropertySource("classpath:database.properties")
+@Log4j2
 public class JpaConfig {
     @Value("${database.driver}")
     private String databaseDriver;
@@ -38,6 +41,7 @@ public class JpaConfig {
     public DataSource dataSource() {
         // datasource is filled from database.properties, which is filled from survey/pom.xml
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        log.debug("{}/{}/{}/{}", databaseDriver, databaseUrl, databaseDialect, databaseUsername);
         dataSource.setDriverClassName(databaseDriver);
         dataSource.setUrl(databaseUrl);
         dataSource.setUsername(databaseUsername);

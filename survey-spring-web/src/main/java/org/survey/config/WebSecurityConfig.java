@@ -23,8 +23,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/user/users").usernameParameter("j_username").passwordParameter("j_password")
                 .failureUrl("/login?error=true").permitAll();
         http.logout().logoutUrl("/j_spring_security_logout").logoutSuccessUrl("/login").permitAll();
-        http.authorizeRequests().antMatchers("/", "/home", "/api/**", "/static/**", "/webjars/**").permitAll()
-                .anyRequest().authenticated();
+        http.authorizeRequests().antMatchers("/", "/home", "/api/**", "/static/**", "/webjars/**", "/console/**")
+                .permitAll().anyRequest().authenticated();
+        enableH2Console(http);
+    }
+
+    private void enableH2Console(HttpSecurity http) throws Exception {
+        http.headers().frameOptions().sameOrigin();
+        http.authorizeRequests().antMatchers("/console/**").permitAll();
     }
 
     @Autowired

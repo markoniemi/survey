@@ -60,7 +60,7 @@ public class SpringWebIT {
     @Test
     public void integrationTest() throws InterruptedException {
         loginPage.open(loginUrl);
-        loginPage.login("admin", "admin");
+        loginPage.login("admin1", "admin");
         usersPage.clickAddUser();
         userPage.addUser("admin_user", "admin_user@test.com", "another", Role.ROLE_ADMIN);
         usersPage.assertUserRole("admin_user", "Admin");

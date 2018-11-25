@@ -2,6 +2,7 @@ package org.survey.config;
 
 import java.util.Locale;
 
+import org.h2.server.web.WebServlet;
 import org.springframework.boot.autoconfigure.web.DispatcherServletAutoConfiguration;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -73,5 +74,10 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     @Bean(name = "multipartResolver")
     public CommonsMultipartResolver getMultipartResolver() {
         return new CommonsMultipartResolver();
+    }
+
+    @Bean
+    ServletRegistrationBean h2servletRegistration() {
+        return new ServletRegistrationBean(new WebServlet(), "/console/*");
     }
 }
