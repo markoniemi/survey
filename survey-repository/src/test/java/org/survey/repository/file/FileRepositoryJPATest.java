@@ -3,8 +3,11 @@ package org.survey.repository.file;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextHierarchy;
+import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.transaction.TransactionConfiguration;
+import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
+import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
+import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 import org.springframework.transaction.annotation.Transactional;
 import org.survey.config.RepositoryJpaTestConfig;
 
@@ -17,7 +20,8 @@ import org.survey.config.RepositoryJpaTestConfig;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextHierarchy(@ContextConfiguration(classes = RepositoryJpaTestConfig.class))
+@TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, DirtiesContextTestExecutionListener.class,
+        TransactionalTestExecutionListener.class })
 @Transactional
-@TransactionConfiguration(defaultRollback=false)
 public class FileRepositoryJPATest extends FileRepositoryTest {
 }

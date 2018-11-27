@@ -16,16 +16,14 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.survey.model.user.User;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
-
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-import org.survey.model.user.User;
 
 @Data
 @NoArgsConstructor
@@ -56,28 +54,7 @@ public class Poll {
      * <a href=
      * "http://en.wikibooks.org/wiki/Java_Persistence/ManyToMany#Duplicate_rows_inserted_into_the_join_table"
      * />
-     * <p>
-     * Apparently the Spring JPA does not work with cascades.
-     * </p>
-     * <a href=
-     * "http://stackoverflow.com/questions/16326916/spring-data-jpa-causes-entityexistsexception-with-cascading-save"
-     * />
      */
-    @OneToMany(fetch = FetchType.EAGER, 
-            mappedBy = "poll", 
-            orphanRemoval=true, 
-            cascade = {
-     CascadeType.ALL,
-//     CascadeType.PERSIST,
-//     CascadeType.MERGE,
-//     CascadeType.REMOVE,
-//     CascadeType.REFRESH,
-//     CascadeType.DETACH
-    })
-//     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-//     @Cascade({org.hibernate.annotations.CascadeType.ALL})
-//    @OnDelete(action = OnDeleteAction.CASCADE)
-//    @XmlTransient
-    // TODO init questions
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "poll", orphanRemoval = true, cascade = CascadeType.ALL)
     private List<Question> questions;
 }

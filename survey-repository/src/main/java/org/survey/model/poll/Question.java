@@ -22,8 +22,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 
 @Data
 @NoArgsConstructor
-//@RequiredArgsConstructor
-@ToString(exclude="poll")
+@ToString(exclude = "poll")
 @EqualsAndHashCode(of = "id")
 @Entity
 @Table(name = "question")
@@ -34,20 +33,17 @@ public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-//    @NonNull
     private String text;
     private String description;
     @Enumerated(EnumType.STRING)
     protected QuestionType type;
-    
+
     /**
      * Poll that owns this question.
      */
-    @ManyToOne( 
-//            fetch = FetchType.EAGER 
-            )
+    @ManyToOne
     @JoinColumn(name = "poll_id")
-  @XmlTransient
-            @JsonIgnore
+    @XmlTransient
+    @JsonIgnore
     Poll poll;
 }

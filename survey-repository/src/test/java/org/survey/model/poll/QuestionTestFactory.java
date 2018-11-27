@@ -6,7 +6,7 @@ import java.util.List;
 import org.survey.repository.EntityFactory;
 
 public class QuestionTestFactory implements EntityFactory<Question, Long> {
-private Poll poll;
+    private Poll poll;
 
     public QuestionTestFactory(Poll poll) {
         this.poll = poll;
@@ -40,14 +40,6 @@ private Poll poll;
 
     @Override
     public Question getUpdatedEntity(Question entity) {
-//        Question question = null;
-//        if (entity instanceof BooleanQuestion) {
-//            question = new BooleanQuestion();
-//        } else if (entity instanceof TextQuestion) {
-//            question = new TextQuestion();
-//        } else if (entity instanceof Question) {
-//            question = new Question();
-//        }
         entity.setType(QuestionType.BOOLEAN);
         entity.setText(entity.getText() + "_updated");
         entity.setDescription(entity.getDescription() + "_updated");

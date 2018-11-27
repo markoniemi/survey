@@ -19,14 +19,7 @@ public class PollFactory implements EntityFactory<Poll, Long> {
         for (int i = 0; i < count; i++) {
             Poll poll = new Poll("poll name " + i);
             poll.setOwner(user);
-            poll.setQuestions(new ArrayList<Question>());
-            for (int j = 0; j < count; j++) {
-                Question question = new Question();
-                question.setType(QuestionType.LABEL);
-                question.setText("text");
-                question.setPoll(poll);
-                poll.getQuestions().add(question);
-            }
+            poll.setQuestions(new QuestionTestFactory(poll).getEntities(count));
             entities.add(poll);
         }
         return entities;
@@ -34,14 +27,13 @@ public class PollFactory implements EntityFactory<Poll, Long> {
 
     @Override
     public Poll getUpdatedEntity(Poll entity) {
-        // cannot update name, since it is the the natural id
-//        Poll poll = new Poll(entity.getName());
+        entity.setName(entity.getName() + "_updated");
+        entity.setId(entity.getId());
         entity.setOwner(entity.getOwner());
+        QuestionTestFactory questionTestFactory = new QuestionTestFactory(entity);
         for (Question question : entity.getQuestions()) {
-            question.setType(QuestionType.BOOLEAN);
-            question.setText(question.getText() + "_updated");
+            questionTestFactory.getUpdatedEntity(question);
         }
-//        entity.setQuestions(entity.getQuestions());
         return entity;
     }
 }
