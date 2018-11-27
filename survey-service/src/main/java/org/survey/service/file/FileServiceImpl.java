@@ -62,6 +62,28 @@ public class FileServiceImpl implements FileService {
         }
     }
 
+    @Override
+    public File findOne(@WebParam(name = "id") long id) {
+        return fileRepository.findOne(id);
+    }
+
+    @Override
+    public boolean exists(@WebParam(name = "id") long id) {
+        return fileRepository.exists(id);
+    }
+
+    @Override
+    public void delete(@WebParam(name = "id") long id) {
+        if (fileRepository.exists(id)) {
+            fileRepository.delete(id);
+        }
+    }
+
+    @Override
+    public long count() {
+        return fileRepository.count();
+    }
+
     private Long uploadFile(Attachment attachment) {
         InputStream inputStream = null;
         ByteArrayOutputStream outputStream = null;
@@ -110,27 +132,5 @@ public class FileServiceImpl implements FileService {
         // TODO change files rest to files/:user/:filename
         file.setUrl("/survey-web/api/rest/files/");
         return file;
-    }
-
-    @Override
-    public File findOne(@WebParam(name = "id") long id) {
-        return fileRepository.findOne(id);
-    }
-
-    @Override
-    public boolean exists(@WebParam(name = "id") long id) {
-        return fileRepository.exists(id);
-    }
-
-    @Override
-    public void delete(@WebParam(name = "id") long id) {
-        if (fileRepository.exists(id)) {
-            fileRepository.delete(id);
-        }
-    }
-
-    @Override
-    public long count() {
-        return fileRepository.count();
     }
 }

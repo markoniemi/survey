@@ -13,10 +13,8 @@ import javax.ws.rs.core.MediaType;
 
 import org.survey.model.user.User;
 
-//@WebService
-@WebService(serviceName = "userService")
-//@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-@Produces({MediaType.APPLICATION_JSON})
+@WebService
+@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 @Path("/users")
 public interface UserService {
     /**

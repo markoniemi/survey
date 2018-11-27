@@ -42,7 +42,6 @@ public class PollServiceImpl implements PollService {
         return update(poll);
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     public Poll update(Poll poll) {
         if (CollectionUtils.isNotEmpty(poll.getQuestions())) {
@@ -70,13 +69,9 @@ public class PollServiceImpl implements PollService {
 
     @Override
     public void delete(Long id) {
-        Poll poll = pollRepository.findOne(id);
-        if (poll == null) {
-            return;
+        if (exists(id)) {
+            pollRepository.delete(id);
         }
-        poll.getQuestions().clear();
-        pollRepository.save(poll);
-        pollRepository.delete(poll.getId());
     }
 
     @Override

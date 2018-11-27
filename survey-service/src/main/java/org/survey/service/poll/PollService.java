@@ -22,8 +22,7 @@ import org.survey.model.poll.Poll;
  * are not necessary, but adds proper names to parameters in WSDL.
  */
 @WebService
-//@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-@Produces({MediaType.APPLICATION_JSON})
+@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 @Path("/polls")
 public interface PollService {
     /**

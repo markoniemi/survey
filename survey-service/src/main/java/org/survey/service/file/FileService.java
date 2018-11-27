@@ -19,7 +19,7 @@ import org.apache.cxf.jaxrs.ext.multipart.Attachment;
 import org.survey.model.file.File;
 
 @WebService
-@Produces({MediaType.APPLICATION_JSON})
+@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 @Path("/files")
 public interface FileService {
     /**

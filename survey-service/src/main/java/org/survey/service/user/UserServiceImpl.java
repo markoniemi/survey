@@ -3,6 +3,7 @@ package org.survey.service.user;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.jws.WebService;
 
 import org.apache.commons.lang3.Validate;
 import org.survey.model.file.File;
@@ -23,9 +24,8 @@ import lombok.extern.log4j.Log4j2;
  * adds proper names to parameters in WSDL. endpointInterface and serviceName
  * are probably unneccessary.
  */
-//@Service
 @Log4j2
-//@WebService(endpointInterface = "org.survey.service.user.UserService", serviceName = "userService")
+@WebService(endpointInterface = "org.survey.service.user.UserService", serviceName = "userService")
 public class UserServiceImpl implements UserService {
     @Resource
     private UserRepository userRepository;
