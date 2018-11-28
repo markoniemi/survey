@@ -83,7 +83,7 @@ public class FileController {
         file.setFilename(filename);
         file.setMimeType(uploadedFile.getContentType());
         file.setContent(fileContent);
-         file.setOwner(userService.findOne(SecurityUtil.getUsername()));
+        file.setOwner(userService.findByUsername(SecurityUtil.getUsername()));
         file.setCreateTime(System.currentTimeMillis());
         // TODO change files rest to files/:user/:filename
         file.setUrl("/survey-web/api/rest/files/");

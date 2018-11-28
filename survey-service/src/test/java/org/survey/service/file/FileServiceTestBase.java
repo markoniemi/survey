@@ -56,7 +56,7 @@ public class FileServiceTestBase {
                 entityService.delete(fileToDelete.getId());
             }
         }
-        userService.delete(user.getUsername());
+        userService.delete(user.getId());
     }
 
     @Test

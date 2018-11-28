@@ -50,7 +50,7 @@ public class EditPollBeanTest {
         for (Poll poll : polls) {
             pollService.delete(poll.getId());
         }
-        userService.delete(this.user.getUsername());
+        userService.delete(this.user.getId());
     }
 
     @Test

@@ -49,8 +49,12 @@ public interface UserService {
      * @return user by username, or null if user does not exist
      */
     @GET
-    @Path("/{username}")
-    User findOne(@PathParam("username") @WebParam(name = "username") String username);
+    @Path("/username/{username}")
+    User findByUsername(@PathParam("username") @WebParam(name = "username") String username);
+
+    @GET
+    @Path("/{id}")
+    User findOne(@PathParam("id") @WebParam(name = "id") Long id);
 
     /**
      * @return user by email, or null if user does not exist
@@ -63,15 +67,15 @@ public interface UserService {
      * @return true if a user by username exists.
      */
     @GET
-    @Path("/exists/{username}")
-    boolean exists(@PathParam("username") @WebParam(name = "username") String username);
+    @Path("/exists/{id}")
+    boolean exists(@PathParam("id") @WebParam(name = "id") Long id);
 
     /**
-     * Deletes a user by username.
+     * Deletes a user by id.
      */
     @DELETE
-    @Path("/{username}")
-    void delete(@PathParam("username") @WebParam(name = "username") String username);
+    @Path("/{id}")
+    void delete(@PathParam("id") @WebParam(name = "id") Long id);
 
     /**
      * @return the count of users in repository.

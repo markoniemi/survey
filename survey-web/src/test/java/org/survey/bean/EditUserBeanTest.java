@@ -42,7 +42,7 @@ public class EditUserBeanTest {
     public void tearDown() {
         User[] users = userService.findAll();
         for (User user : users) {
-            userService.delete(user.getUsername());
+            userService.delete(user.getId());
         }
     }
 

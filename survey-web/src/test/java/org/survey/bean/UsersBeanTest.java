@@ -40,7 +40,7 @@ public class UsersBeanTest {
 	@After
 	public void tearDown() {
 		for (User user : userService.findAll()) {
-            userService.delete(user.getUsername());
+            userService.delete(user.getId());
         }
 	}
 

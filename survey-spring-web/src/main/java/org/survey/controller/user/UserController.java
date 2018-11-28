@@ -66,7 +66,7 @@ public class UserController {
 
     @GetMapping(value = "/user/{username}")
     public ModelAndView editUser(@PathVariable String username) {
-        User user = userService.findOne(username);
+        User user = userService.findByUsername(username);
         log.debug("editUser() - found user: " + user);
         if (user == null) {
             user = new User();
@@ -80,7 +80,7 @@ public class UserController {
 
     @PostMapping(value = "/user/delete/{username}")
     public String deleteUser(@PathVariable String username) {
-        userService.delete(username);
+        userService.delete(userService.findByUsername(username).getId());
         return "redirect:/user/users";
     }
 

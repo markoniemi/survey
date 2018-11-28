@@ -38,7 +38,7 @@ public class UserServiceTestBase {
         User[] users = entityService.findAll();
         if (users != null) {
             for (User user : users) {
-                entityService.delete(user.getUsername());
+                entityService.delete(user.getId());
             }
         }
     }
@@ -58,11 +58,11 @@ public class UserServiceTestBase {
     public void update() {
         create();
         for (int i = 0; i < ENTITY_COUNT; i++) {
-            User foundEntity = entityService.findOne(savedEntities.get(i).getUsername());
+            User foundEntity = entityService.findOne(savedEntities.get(i).getId());
             User updatedEntity = entityFactory.getUpdatedEntity(foundEntity);
             updatedEntity.setId(foundEntity.getId());
             entityService.update(updatedEntity);
-            foundEntity = entityService.findOne(savedEntities.get(i).getUsername());
+            foundEntity = entityService.findOne(savedEntities.get(i).getId());
             assertEntity(updatedEntity, foundEntity);
         }
     }
@@ -77,8 +77,8 @@ public class UserServiceTestBase {
     public void findOne() {
         create();
         for (int i = 0; i < ENTITY_COUNT; i++) {
-            User originalEntity = orginalEntities.get(i);
-            User foundEntity = entityService.findOne(originalEntity.getUsername());
+            User originalEntity = savedEntities.get(i);
+            User foundEntity = entityService.findOne(originalEntity.getId());
             assertEntity(orginalEntities.get(i), foundEntity);
         }
         // TODO how to test a non-existent entity?
@@ -88,8 +88,8 @@ public class UserServiceTestBase {
     public void exists() {
         create();
         for (int i = 0; i < ENTITY_COUNT; i++) {
-            User entity = orginalEntities.get(i);
-            entityService.exists(entity.getUsername());
+            User entity = savedEntities.get(i);
+            entityService.exists(entity.getId());
         }
         // TODO how to test if exists fails?
         // Assert.assertFalse(entityRepository.exists((ID) new Object()));
@@ -98,7 +98,7 @@ public class UserServiceTestBase {
     @Test
     public void existsWithNull() {
         // try with non-existent id
-        Assert.assertFalse(entityService.exists("nonexistent"));
+        Assert.assertFalse(entityService.exists(666L));
     }
 
     @Test
@@ -111,9 +111,9 @@ public class UserServiceTestBase {
     public void delete() {
         create();
         for (int i = 0; i < ENTITY_COUNT; i++) {
-            User entity = orginalEntities.get(i);
-            entityService.delete(entity.getUsername());
-            Assert.assertFalse(entityService.exists(entity.getUsername()));
+            User entity = savedEntities.get(i);
+            entityService.delete(entity.getId());
+            Assert.assertFalse(entityService.exists(entity.getId()));
         }
         Assert.assertEquals(0, entityService.count());
     }
@@ -121,7 +121,7 @@ public class UserServiceTestBase {
     @Test
     public void deleteNonexistent() {
         create();
-        entityService.delete("nonexistent");
+        entityService.delete(666L);
     }
 
     public void assertEntity(User originalEntity, User entity) {

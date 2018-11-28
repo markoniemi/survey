@@ -73,7 +73,7 @@ public class FileUploadBean {
     }
 
     protected User getUser() {
-        return userService.findOne(userBean.getUsername());
+        return userService.findByUsername(userBean.getUsername());
     }
 
     /**

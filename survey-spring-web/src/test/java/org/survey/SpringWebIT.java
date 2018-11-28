@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.survey.config.ServiceTestConfig;
 import org.survey.model.poll.Poll;
 import org.survey.model.user.Role;
+import org.survey.model.user.User;
 import org.survey.selenium.LoginPage;
 import org.survey.selenium.PollPage;
 import org.survey.selenium.PollsPage;
@@ -91,6 +92,9 @@ public class SpringWebIT {
     }
 
     private void deleteUserFromRepository(String username) {
-        userService.delete(username);
+        User user = userService.findByUsername(username);
+        if (user != null) {
+            userService.delete(user.getId());
+        }
     }
 }

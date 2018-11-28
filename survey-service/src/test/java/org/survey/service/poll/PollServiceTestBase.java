@@ -57,7 +57,7 @@ public class PollServiceTestBase {
                 entityService.delete(pollToDelete.getId());
             }
         }
-        userService.delete(user.getUsername());
+        userService.delete(user.getId());
     }
 
     @Test

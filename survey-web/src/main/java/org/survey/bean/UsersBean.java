@@ -40,7 +40,8 @@ public class UsersBean {
     // @RolesAllowed({"ROLE_ADMIN"})
     // @PreAuthorize("hasRole('ROLE_ADMIN')")
     public void deleteUser() {
-        userService.delete(getRequestParameter("username"));
+        // TODO change request parameter to id
+        userService.delete(userService.findByUsername(getRequestParameter("username")).getId());
         initialize();
     }
 

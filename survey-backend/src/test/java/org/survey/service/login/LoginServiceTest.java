@@ -28,7 +28,7 @@ public class LoginServiceTest {
         loginService = new LoginServiceImpl();
         loginService.setUserService(userService);
         User user = new User("username", "password", "email", Role.ROLE_USER);
-        Mockito.when(userService.findOne(Mockito.anyString())).thenReturn(user);
+        Mockito.when(userService.findByUsername(Mockito.anyString())).thenReturn(user);
         Mockito.when(request.getHeader(JwtToken.AUTHORIZATION_HEADER)).thenReturn("token");
     }
 
@@ -41,7 +41,7 @@ public class LoginServiceTest {
 
     @Test(expected = NotAuthorizedException.class)
     public void loginNoUser() throws AuthenticationException {
-        Mockito.when(userService.findOne(Mockito.anyString())).thenReturn(null);
+        Mockito.when(userService.findByUsername(Mockito.anyString())).thenReturn(null);
         User user = new User("no_user", "password", "email", Role.ROLE_USER);
         String token = loginService.login(user);
         Assert.assertNotNull(token);

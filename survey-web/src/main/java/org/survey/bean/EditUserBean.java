@@ -38,10 +38,11 @@ public class EditUserBean {
     }
     
     public String editUser() {
+        // TODO change request parameter to id
         username = getRequestParameter("username");
         log.debug("editUser(): username: {}", username);
         if (username != null) {
-            user = userService.findOne(username);
+            user = userService.findByUsername(username);
             repeatedPassword = user.getPassword();
             log.debug("editUser(): user: {}", user);
         }

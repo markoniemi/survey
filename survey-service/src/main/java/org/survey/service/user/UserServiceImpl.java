@@ -62,34 +62,29 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    // TODO rename to findByUsername
-    public User findOne(String username) {
-        log.trace("findByUsername: {}", username);
+    public User findOne(Long id) {
+        return userRepository.findOne(id);
+    }
+    @Override
+    public User findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
 
     @Override
     public User findByEmail(String email) {
-        log.trace("findByEmail: {}", email);
         return userRepository.findByEmail(email);
     }
 
     @Override
-    public boolean exists(String username) {
-        return userRepository.findByUsername(username) != null;
+    public boolean exists(Long id) {
+        return userRepository.findOne(id) != null;
     }
 
     @Override
-    public void delete(String username) {
-        log.trace("delete: {}", username);
-        User user = userRepository.findByUsername(username);
-        // Validate.notNull(user, "User does not exist.");
-        if (user == null) {
-            return;
+    public void delete(Long id) {
+        if (userRepository.exists(id)) {
+            userRepository.delete(id);
         }
-        List<File> files = fileRepository.findAllByOwner(user);
-        fileRepository.delete(files);
-        userRepository.delete(user.getId());
     }
 
     @Override

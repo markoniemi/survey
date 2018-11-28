@@ -37,7 +37,7 @@ public class UserRepositoryAuthenticationProviderTest {
 
 	@After
 	public void tearDown() {
-		userService.delete("test");
+		userService.delete(userService.findByUsername("test").getId());
 	}
 
 	@Test

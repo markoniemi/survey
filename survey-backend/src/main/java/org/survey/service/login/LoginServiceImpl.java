@@ -20,7 +20,7 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public String login(User userToLogin) {
-        User user = userService.findOne(userToLogin.getUsername());
+        User user = userService.findByUsername(userToLogin.getUsername());
         if (user == null) {
             throw new NotAuthorizedException("Login error");
         }

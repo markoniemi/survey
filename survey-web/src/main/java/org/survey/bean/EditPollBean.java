@@ -108,7 +108,7 @@ public class EditPollBean {
     }
 
     protected User getCurrentUser() {
-        return userService.findOne(SecurityContextHolder.getContext().getAuthentication().getName());
+        return userService.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
     }
 
     protected String getRequestParameter(String parameterName) {
