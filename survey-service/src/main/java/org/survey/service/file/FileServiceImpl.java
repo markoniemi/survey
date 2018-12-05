@@ -49,7 +49,7 @@ public class FileServiceImpl implements FileService {
 
     @Override
     public Response downloadFile(Long id) {
-        File file = fileRepository.findOne(id);
+        File file = fileRepository.findById(id).get();
         ResponseBuilder response = Response.ok((Object) file, file.getMimeType());
         response.header("Content-Disposition", "attachment; filename=" + file.getFilename());
         return response.build();
@@ -64,18 +64,18 @@ public class FileServiceImpl implements FileService {
 
     @Override
     public File findOne(@WebParam(name = "id") long id) {
-        return fileRepository.findOne(id);
+        return fileRepository.findById(id).get();
     }
 
     @Override
     public boolean exists(@WebParam(name = "id") long id) {
-        return fileRepository.exists(id);
+        return fileRepository.existsById(id);
     }
 
     @Override
     public void delete(@WebParam(name = "id") long id) {
-        if (fileRepository.exists(id)) {
-            fileRepository.delete(id);
+        if (fileRepository.existsById(id)) {
+            fileRepository.deleteById(id);
         }
     }
 

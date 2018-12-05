@@ -3,8 +3,7 @@ package org.survey.config;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.embedded.EmbeddedServletContainerFactory;
-import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
+import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
@@ -24,8 +23,8 @@ public class TomcatConfig {
 
     @Bean
     @DependsOn("contextPath")
-    public EmbeddedServletContainerFactory servletContainer() {
-        TomcatEmbeddedServletContainerFactory factory = new TomcatEmbeddedServletContainerFactory();
+    public TomcatServletWebServerFactory servletContainer() {
+        TomcatServletWebServerFactory factory = new TomcatServletWebServerFactory();
         factory.setPort(port);
         factory.setContextPath(contextPath());
         // https://stackoverflow.com/questions/43264890/after-upgrade-from-spring-boot-1-2-to-1-5-2-filenotfoundexception-during-tomcat
@@ -34,7 +33,23 @@ public class TomcatConfig {
         factory.setTldSkipPatterns(Arrays.asList(tldSkipPatterns));
         return factory;
     }
+//    @Bean
+//    public TomcatServletWebServerFactory containerFactory() {
+//        return new TomcatServletWebServerFactory() {
+//            protected void customizeConnector(Connector connector) {
+//                int maxSize = 50000000;
+//                super.customizeConnector(connector);
+//                connector.setMaxPostSize(maxSize);
+//                connector.setMaxSavePostSize(maxSize);
+//                if (connector.getProtocolHandler() instanceof AbstractHttp11Protocol) {
+//
+//                    ((AbstractHttp11Protocol <?>) connector.getProtocolHandler()).setMaxSwallowSize(maxSize);
+//                    logger.info("Set MaxSwallowSize "+ maxSize);
+//                }
+//            }
+//        };
 
+//    }
     // TODO move to some test config?
     // TODO read contextPath from config
     @Bean

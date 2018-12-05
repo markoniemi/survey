@@ -63,7 +63,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findOne(Long id) {
-        return userRepository.findOne(id);
+        return userRepository.findById(id).get();
     }
     @Override
     public User findByUsername(String username) {
@@ -77,13 +77,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean exists(Long id) {
-        return userRepository.findOne(id) != null;
+        return userRepository.existsById(id);
     }
 
     @Override
     public void delete(Long id) {
-        if (userRepository.exists(id)) {
-            userRepository.delete(id);
+        if (userRepository.existsById(id)) {
+            userRepository.deleteById(id);
         }
     }
 

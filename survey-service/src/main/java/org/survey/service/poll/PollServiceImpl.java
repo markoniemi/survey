@@ -54,7 +54,7 @@ public class PollServiceImpl implements PollService {
 
     @Override
     public Poll findOne(Long id) {
-        return pollRepository.findOne(id);
+        return pollRepository.findById(id).get();
     }
 
     @Override
@@ -64,13 +64,13 @@ public class PollServiceImpl implements PollService {
 
     @Override
     public boolean exists(Long id) {
-        return pollRepository.findOne(id) != null;
+        return pollRepository.existsById(id);
     }
 
     @Override
     public void delete(Long id) {
         if (exists(id)) {
-            pollRepository.delete(id);
+            pollRepository.deleteById(id);
         }
     }
 
