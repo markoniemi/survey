@@ -1,9 +1,10 @@
 package org.survey.model.file;
 
-import org.apache.commons.lang3.builder.CompareToBuilder;
-import org.survey.repository.EntityComparator;
+import java.util.Comparator;
 
-public class FileComparator extends EntityComparator<File, Long> {
+import org.apache.commons.lang3.builder.CompareToBuilder;
+
+public class FileComparator implements Comparator<File> {
 
 	@Override
 	public int compare(File file1, File file2) {

@@ -1,9 +1,10 @@
 package org.survey.model.user;
 
-import org.apache.commons.lang3.builder.CompareToBuilder;
-import org.survey.repository.EntityComparator;
+import java.util.Comparator;
 
-public class UserComparator extends EntityComparator<User, Long> {
+import org.apache.commons.lang3.builder.CompareToBuilder;
+
+public class UserComparator implements Comparator<User> {
     @Override
     public int compare(User user1, User user2) {
         if (user1 == user2) {
@@ -15,10 +16,8 @@ public class UserComparator extends EntityComparator<User, Long> {
         if (user2 == null) {
             return 1;
         }
-        return new CompareToBuilder()
-                .append(user1.getUsername(), user2.getUsername())
-                .append(user1.getPassword(), user2.getPassword())
-                .append(user1.getEmail(), user2.getEmail())
+        return new CompareToBuilder().append(user1.getUsername(), user2.getUsername())
+                .append(user1.getPassword(), user2.getPassword()).append(user1.getEmail(), user2.getEmail())
                 .append(user1.getRole(), user2.getRole()).toComparison();
     }
 }

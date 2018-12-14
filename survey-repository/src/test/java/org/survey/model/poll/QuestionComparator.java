@@ -1,9 +1,10 @@
 package org.survey.model.poll;
 
-import org.apache.commons.lang3.builder.CompareToBuilder;
-import org.survey.repository.EntityComparator;
+import java.util.Comparator;
 
-public class QuestionComparator extends EntityComparator<Question, Long> {
+import org.apache.commons.lang3.builder.CompareToBuilder;
+
+public class QuestionComparator implements Comparator<Question> {
 
     @Override
     public int compare(Question question1, Question question2) {
@@ -16,10 +17,8 @@ public class QuestionComparator extends EntityComparator<Question, Long> {
         if (question2 == null) {
             return 1;
         }
-        return new CompareToBuilder()
-                .append(question1.getType(), question2.getType())
+        return new CompareToBuilder().append(question1.getType(), question2.getType())
                 .append(question1.getText(), question2.getText())
-                .append(question1.getDescription(), question2.getDescription())
-                .toComparison();
+                .append(question1.getDescription(), question2.getDescription()).toComparison();
     }
 }

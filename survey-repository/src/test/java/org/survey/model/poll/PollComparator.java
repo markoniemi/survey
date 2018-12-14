@@ -1,9 +1,10 @@
 package org.survey.model.poll;
 
-import org.apache.commons.lang3.builder.CompareToBuilder;
-import org.survey.repository.EntityComparator;
+import java.util.Comparator;
 
-public class PollComparator extends EntityComparator<Poll, Long> {
+import org.apache.commons.lang3.builder.CompareToBuilder;
+
+public class PollComparator implements Comparator<Poll> {
 
     @Override
     public int compare(Poll poll1, Poll poll2) {

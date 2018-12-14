@@ -84,6 +84,8 @@ public class JpaConfig {
     @Bean
     public static PropertySourcesPlaceholderConfigurer
     propertySourcesPlaceholderConfigurer() {
-        return new PropertySourcesPlaceholderConfigurer();
+        PropertySourcesPlaceholderConfigurer placeholderConfigurer = new PropertySourcesPlaceholderConfigurer();
+        placeholderConfigurer.setIgnoreUnresolvablePlaceholders(true);
+        return placeholderConfigurer;
     }
 }
