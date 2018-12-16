@@ -68,7 +68,7 @@ public interface FileService {
      */
     @GET
     @Path("/{id}")
-    File findOne(@PathParam("id") @WebParam(name = "id") long id);
+    File findById(@PathParam("id") @WebParam(name = "id") long id);
 
     /**
      * Returns true if a file by id exists.

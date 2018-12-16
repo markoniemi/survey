@@ -50,7 +50,7 @@ public class FilesBean {
             // render phase.
             String id = getRequestParameter("id");
             if (!StringUtils.isEmpty(id)) {
-                File file = fileService.findOne(Long.valueOf(id));
+                File file = fileService.findById(Long.valueOf(id));
                 streamedContent = new DefaultStreamedContent(new ByteArrayInputStream(file.getContent()));
             }
         }

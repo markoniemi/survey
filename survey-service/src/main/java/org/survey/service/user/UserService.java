@@ -54,7 +54,7 @@ public interface UserService {
 
     @GET
     @Path("/{id}")
-    User findOne(@PathParam("id") @WebParam(name = "id") Long id);
+    User findById(@PathParam("id") @WebParam(name = "id") Long id);
 
     /**
      * @return user by email, or null if user does not exist

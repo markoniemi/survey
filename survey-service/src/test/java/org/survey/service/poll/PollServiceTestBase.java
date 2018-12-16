@@ -86,12 +86,12 @@ public class PollServiceTestBase {
     public void update() {
         create();
         for (int i = 0; i < ENTITY_COUNT; i++) {
-            Poll foundEntity = entityService.findOne(savedEntities.get(i)
+            Poll foundEntity = entityService.findById(savedEntities.get(i)
                     .getId());
             Poll updatedEntity = entityFactory.getUpdatedEntity(foundEntity);
             updatedEntity.setId(foundEntity.getId());
             entityService.update(updatedEntity);
-            foundEntity = entityService.findOne(savedEntities.get(i).getId());
+            foundEntity = entityService.findById(savedEntities.get(i).getId());
             assertEntity(updatedEntity, foundEntity);
         }
     }
@@ -116,7 +116,7 @@ public class PollServiceTestBase {
         create();
         for (int i = 0; i < ENTITY_COUNT; i++) {
             Poll originalEntity = orginalEntities.get(i);
-            Poll foundEntity = entityService.findOne(savedEntities.get(i).getId());
+            Poll foundEntity = entityService.findById(savedEntities.get(i).getId());
             assertEntity(originalEntity, foundEntity);
         }
         // TODO how to test a non-existent entity?

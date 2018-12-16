@@ -109,7 +109,7 @@ public class EditPollBeanTest {
         editPollBean.setPoll(createdPoll);
         result = editPollBean.savePoll();
         Assert.assertEquals("editPollBean.savePoll returned an unexpected value", "pollSaved", result);
-        Poll pollFromDatabase = pollService.findOne(createdPoll.getId());
+        Poll pollFromDatabase = pollService.findById(createdPoll.getId());
         Assert.assertNotNull("registered poll was not added to database", pollFromDatabase);
         Assert.assertEquals("poll", pollFromDatabase.getName());
         result = editPollBean.addPoll();

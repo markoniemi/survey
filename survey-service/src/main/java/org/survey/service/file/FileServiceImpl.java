@@ -49,7 +49,10 @@ public class FileServiceImpl implements FileService {
 
     @Override
     public Response downloadFile(Long id) {
-        File file = fileRepository.findById(id).get();
+        File file = fileRepository.findById(id).orElse(null);
+        if (file == null) {
+            return Response.noContent().build();
+        }
         ResponseBuilder response = Response.ok((Object) file, file.getMimeType());
         response.header("Content-Disposition", "attachment; filename=" + file.getFilename());
         return response.build();
@@ -63,8 +66,8 @@ public class FileServiceImpl implements FileService {
     }
 
     @Override
-    public File findOne(@WebParam(name = "id") long id) {
-        return fileRepository.findById(id).get();
+    public File findById(@WebParam(name = "id") long id) {
+        return fileRepository.findById(id).orElse(null);
     }
 
     @Override

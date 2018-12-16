@@ -53,8 +53,8 @@ public class PollServiceImpl implements PollService {
     }
 
     @Override
-    public Poll findOne(Long id) {
-        return pollRepository.findById(id).get();
+    public Poll findById(Long id) {
+        return pollRepository.findById(id).orElse(null);
     }
 
     @Override

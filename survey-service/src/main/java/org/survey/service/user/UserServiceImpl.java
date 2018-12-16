@@ -1,12 +1,9 @@
 package org.survey.service.user;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 import javax.jws.WebService;
 
 import org.apache.commons.lang3.Validate;
-import org.survey.model.file.File;
 import org.survey.model.user.User;
 import org.survey.repository.file.FileRepository;
 import org.survey.repository.user.UserRepository;
@@ -31,7 +28,7 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
     @Resource
     private FileRepository fileRepository;
-    
+
     @Override
     public User[] findAll() {
         log.trace("findAll");
@@ -39,7 +36,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-//    @Transactional(readOnly=false)
+    // @Transactional(readOnly=false)
     public User create(User user) {
         Validate.notNull(user, "Tried to create null user.");
         Validate.notBlank(user.getUsername(), "Username must not be blank.");
@@ -62,9 +59,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findOne(Long id) {
-        return userRepository.findById(id).get();
+    public User findById(Long id) {
+        return userRepository.findById(id).orElse(null);
     }
+
     @Override
     public User findByUsername(String username) {
         return userRepository.findByUsername(username);

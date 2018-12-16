@@ -53,7 +53,7 @@ public class FileController {
 
     @GetMapping(value = "/file/{id}")
     public void downloadFile(@PathVariable Long id, HttpServletResponse response) {
-        File file = fileService.findOne(id);
+        File file = fileService.findById(id);
         writeFileToResponse(response, file);
     }
 

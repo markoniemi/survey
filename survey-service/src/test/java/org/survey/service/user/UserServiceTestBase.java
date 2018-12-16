@@ -58,11 +58,11 @@ public class UserServiceTestBase {
     public void update() {
         create();
         for (int i = 0; i < ENTITY_COUNT; i++) {
-            User foundEntity = entityService.findOne(savedEntities.get(i).getId());
+            User foundEntity = entityService.findById(savedEntities.get(i).getId());
             User updatedEntity = entityFactory.getUpdatedEntity(foundEntity);
             updatedEntity.setId(foundEntity.getId());
             entityService.update(updatedEntity);
-            foundEntity = entityService.findOne(savedEntities.get(i).getId());
+            foundEntity = entityService.findById(savedEntities.get(i).getId());
             assertEntity(updatedEntity, foundEntity);
         }
     }
@@ -78,7 +78,7 @@ public class UserServiceTestBase {
         create();
         for (int i = 0; i < ENTITY_COUNT; i++) {
             User originalEntity = savedEntities.get(i);
-            User foundEntity = entityService.findOne(originalEntity.getId());
+            User foundEntity = entityService.findById(originalEntity.getId());
             assertEntity(orginalEntities.get(i), foundEntity);
         }
         // TODO how to test a non-existent entity?

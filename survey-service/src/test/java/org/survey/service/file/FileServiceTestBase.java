@@ -74,11 +74,11 @@ public class FileServiceTestBase {
     public void update() {
         create();
         for (int i = 0; i < ENTITY_COUNT; i++) {
-            File foundEntity = entityService.findOne(savedEntities.get(i).getId());
+            File foundEntity = entityService.findById(savedEntities.get(i).getId());
             File updatedEntity = entityFactory.getUpdatedEntity(foundEntity);
             updatedEntity.setId(foundEntity.getId());
             entityService.update(updatedEntity);
-            foundEntity = entityService.findOne(savedEntities.get(i).getId());
+            foundEntity = entityService.findById(savedEntities.get(i).getId());
             assertEntity(updatedEntity, foundEntity);
         }
     }
@@ -94,7 +94,7 @@ public class FileServiceTestBase {
         create();
         for (int i = 0; i < ENTITY_COUNT; i++) {
             File savedEntity = savedEntities.get(i);
-            File foundEntity = entityService.findOne(savedEntity.getId());
+            File foundEntity = entityService.findById(savedEntity.getId());
             assertEntity(savedEntities.get(i), foundEntity);
         }
         // TODO how to test a non-existent entity?

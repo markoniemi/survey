@@ -48,7 +48,7 @@ public class PollController {
     public ModelAndView editPoll(@PathVariable Long id) {
         Poll poll=null;
         if (id!=null) {
-            poll = pollService.findOne(id);
+            poll = pollService.findById(id);
         }
         log.debug("editPoll() - found poll: " + poll);
         if (poll == null) {

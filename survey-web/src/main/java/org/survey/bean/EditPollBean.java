@@ -51,7 +51,7 @@ public class EditPollBean {
     public String editPoll() {
         id = Long.valueOf(getRequestParameter("id"));
         if (id != null) {
-            poll = pollService.findOne(id);
+            poll = pollService.findById(id);
         }
         return "editPoll";
     }

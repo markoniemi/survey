@@ -53,7 +53,7 @@ public interface PollService {
      */
     @GET
     @Path("/{id}")
-    Poll findOne(@PathParam("id") @WebParam(name = "id") Long id);
+    Poll findById(@PathParam("id") @WebParam(name = "id") Long id);
     /**
      * Returns a poll by name.
      */
