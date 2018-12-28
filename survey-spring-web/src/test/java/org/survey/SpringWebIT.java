@@ -12,6 +12,7 @@ import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.survey.config.ServiceTestConfig;
 import org.survey.model.poll.Poll;
+import org.survey.model.poll.QuestionType;
 import org.survey.model.user.Role;
 import org.survey.model.user.User;
 import org.survey.selenium.LoginPage;
@@ -40,15 +41,6 @@ public class SpringWebIT {
     private PollsPage pollsPage;
     private PollPage pollPage;
 
-    @Before
-    public void setUp() {
-        loginPage = new LoginPage(webDriver);
-        usersPage = new UsersPage(webDriver);
-        userPage = new UserPage(webDriver);
-        pollsPage = new PollsPage(webDriver);
-        pollPage = new PollPage(webDriver);
-    }
-
     @After
     public void tearDown() {
         deleteUserFromRepository("admin_user");
@@ -60,28 +52,31 @@ public class SpringWebIT {
 
     @Test
     public void integrationTest() throws InterruptedException {
-        loginPage.open(loginUrl);
-        loginPage.login("admin1", "admin");
-        usersPage.clickAddUser();
-        userPage.addUser("admin_user", "admin_user@test.com", "another", Role.ROLE_ADMIN);
+        webDriver.get(loginUrl);
+        loginPage = new LoginPage(webDriver);
+        usersPage = loginPage.login("admin1", "admin");
+        userPage = usersPage.clickAddUser();
+        usersPage = userPage.addUser("admin_user", "admin_user@test.com", "another", Role.ROLE_ADMIN);
         usersPage.assertUserRole("admin_user", "Admin");
-        usersPage.clickAddUser();
-        userPage.addUser("user_user", "user_user@test.com", "another", Role.ROLE_USER);
+        userPage = usersPage.clickAddUser();
+        usersPage = userPage.addUser("user_user", "user_user@test.com", "another", Role.ROLE_USER);
         usersPage.assertUserRole("user_user", "User");
-        usersPage.deleteUser("user_user");
-        usersPage.logout();
-        loginPage.login("admin_user", "another");
-        usersPage.editUser("admin_user");
-        userPage.editUser("admin_user", "newpassword");
-        usersPage.logout();
-        loginPage.login("admin_user", "newpassword");
-        usersPage.deleteUser("admin_user");
-        pollsPage.clickAddPoll();
-        pollPage.addPoll("poll");
-        pollsPage.editPoll("poll");
-        pollPage.addQuestion("question1");
-        pollsPage.deletePoll("poll");
-        pollsPage.logout();
+        usersPage = usersPage.deleteUser("user_user");
+        loginPage = usersPage.logout();
+        usersPage = loginPage.login("admin_user", "another");
+        userPage = usersPage.editUser("admin_user");
+        usersPage = userPage.editUser("admin_user", "newpassword");
+        loginPage = usersPage.logout();
+        usersPage = loginPage.login("admin_user", "newpassword");
+        usersPage = usersPage.deleteUser("admin_user");
+        pollsPage = userPage.polls();
+        pollPage = pollsPage.clickAddPoll();
+        pollsPage = pollPage.addPoll("poll");
+        pollPage = pollsPage.editPoll("poll");
+        pollPage = pollPage.clickAddQuestion();
+        pollsPage = pollPage.addQuestion("question1", QuestionType.LABEL);
+        pollsPage = pollsPage.deletePoll("poll");
+        loginPage = pollsPage.logout();
     }
 
     private void deletePollFromRepository(String name) {

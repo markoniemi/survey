@@ -1,41 +1,30 @@
 package org.survey.selenium;
 
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
-public class PollsPage extends WebDriverTest {
+public class PollsPage extends AbstractPage {
+    @FindBy(id = "addPoll")
+    private WebElement addPollButton;
+
     public PollsPage(WebDriver webDriver) {
-        super(webDriver);
+        super(webDriver, "Polls");
     }
 
-    public void clickAddPoll() throws InterruptedException {
-        webDriver.findElement(By.id("menu-polls")).click();
-        Assert.assertEquals(webDriver.getPageSource(), "Polls", webDriver.getTitle());
-        // TODO find a fix for click not working with maven build
-        webDriver.findElement(By.id("addPoll")).click();
-        // webDriver.get(serverURL + "/" + appName + "/#/polls/poll");
-        Thread.sleep(SLEEP_TIME);
-        Assert.assertEquals(webDriver.getPageSource(), "Poll", webDriver.getTitle());
+    public PollPage clickAddPoll() {
+        addPollButton.click();
+        return new PollPage(webDriver);
     }
 
-    public void editPoll(String pollName) {
-        WebElement button = webDriver.findElement(By.xpath("//tr[td='" + pollName + "']//a[@id='edit']"));
-        Assert.assertNotNull(webDriver.getPageSource(), button);
-        button.click();
-        Assert.assertEquals(webDriver.getPageSource(), "Poll", webDriver.getTitle());
-        // TODO remove when addQuestion works
-        // webDriver.findElement(By.id("savePoll")).click();
-        // Assert.assertEquals(webDriver.getPageSource(), "Polls",
-        // webDriver.getTitle());
+    public PollPage editPoll(String pollName) {
+        webDriver.findElement(By.xpath("//tr[td='" + pollName + "']//a[@id='edit']")).click();
+        return new PollPage(webDriver);
     }
 
-    public void deletePoll(String pollName) throws InterruptedException {
-        WebElement button = webDriver.findElement(By.xpath("//tr[td='" + pollName + "']//button[@id='delete']"));
-        Assert.assertNotNull(webDriver.getPageSource(), button);
-        button.click();
-        Thread.sleep(SLEEP_TIME);
-        Assert.assertEquals(webDriver.getPageSource(), "Polls", webDriver.getTitle());
+    public PollsPage deletePoll(String pollName) {
+        webDriver.findElement(By.xpath("//tr[td='" + pollName + "']//button[@id='delete']")).click();
+        return new PollsPage(webDriver);
     }
 }

@@ -1,28 +1,27 @@
 package org.survey.selenium;
 
-import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
-public class LoginPage extends WebDriverTest {
-    
+public class LoginPage extends AbstractPage {
+    @FindBy(id = "j_username")
+    private WebElement usernameInput;
+    @FindBy(id = "j_password")
+    private WebElement passwordInput;
+    @FindBy(id = "loginButton")
+    private WebElement loginButton;
+
     public LoginPage(WebDriver webDriver) {
-        super(webDriver);
+        super(webDriver, "Login");
     }
 
-    public void open(String loginUrl) throws InterruptedException {
-        webDriver.get(loginUrl);
-        Thread.sleep(SLEEP_TIME);
-        Assert.assertEquals(webDriver.getPageSource(), "Login", webDriver.getTitle());
-    }
-
-    public void login(String username, String password) throws InterruptedException {
-        webDriver.findElement(By.id("j_username")).clear();
-        webDriver.findElement(By.id("j_username")).sendKeys(username);
-        webDriver.findElement(By.id("j_password")).clear();
-        webDriver.findElement(By.id("j_password")).sendKeys(password);
-        webDriver.findElement(By.id("loginButton")).click();
-        Thread.sleep(SLEEP_TIME);
-        Assert.assertEquals(webDriver.getPageSource(), "Users", webDriver.getTitle());
+    public UsersPage login(String username, String password) {
+        usernameInput.clear();
+        usernameInput.sendKeys(username);
+        passwordInput.clear();
+        passwordInput.sendKeys(password);
+        loginButton.click();
+        return new UsersPage(webDriver);
     }
 }

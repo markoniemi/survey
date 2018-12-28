@@ -1,5 +1,7 @@
 package org.survey.selenium;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -33,7 +35,9 @@ public class SeleniumConfig {
         options.addArguments("no-sandbox");
         options.addArguments("proxy-server='direct://'");
         options.addArguments("proxy-bypass-list=*");
-        return new ChromeDriver(options);
+        ChromeDriver chromeDriver = new ChromeDriver(options);
+        chromeDriver.manage().timeouts().implicitlyWait(100, TimeUnit.MILLISECONDS);
+        return chromeDriver;
     }
 
     @Bean

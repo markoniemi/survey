@@ -1,39 +1,42 @@
 package org.survey.selenium;
 
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
 import org.survey.model.user.Role;
 
-public class UserPage extends WebDriverTest {
+public class UserPage extends AbstractPage {
+    @FindBy(id = "username")
+    private WebElement usernameInput;
+    @FindBy(id = "password")
+    private WebElement passwordInput;
+    @FindBy(id = "email")
+    private WebElement emailInput;
+    @FindBy(id = "submit")
+    private WebElement submitButton;
+    private Select roleSelect;
+
     public UserPage(WebDriver webDriver) {
-        super(webDriver);
+        super(webDriver, "User");
+        roleSelect = new Select(webDriver.findElement(By.id("role")));
     }
 
-    public void addUser(String username, String email, String password, Role role) throws InterruptedException {
-        webDriver.findElement(By.id("username")).sendKeys(username);
-        webDriver.findElement(By.id("password")).sendKeys(password);
-        // webDriver.findElement(By.id("repeatPassword")).sendKeys(
-        // password);
-        webDriver.findElement(By.id("email")).sendKeys(email);
-        selectItemInList("role", role.name());
-        webDriver.findElement(By.id("submit")).click();
-        Thread.sleep(SLEEP_TIME);
-        Assert.assertEquals(/* webDriver.getPageSource(), */ "Users", webDriver.getTitle());
+    public UsersPage addUser(String username, String email, String password, Role role) {
+        usernameInput.sendKeys(username);
+        passwordInput.sendKeys(password);
+        emailInput.sendKeys(email);
+        roleSelect.selectByValue(role.name());
+        submitButton.click();
+        return new UsersPage(webDriver);
     }
 
-    public void editUser(String username, String password) throws InterruptedException {
-        WebElement passwordElement = webDriver.findElement(By.id("password"));
-        passwordElement.clear();
-        passwordElement.sendKeys(password);
-        // WebElement repeatPasswordElement =
-        // webDriver.findElement(By.id("repeatPassword"));
-        // repeatPasswordElement.clear();
-        // repeatPasswordElement.sendKeys(password);
-        selectItemInList("role", Role.ROLE_USER.name());
-        webDriver.findElement(By.id("submit")).click();
-        Thread.sleep(SLEEP_TIME);
-        Assert.assertEquals(/* webDriver.getPageSource(), */ "Users", webDriver.getTitle());
+    public UsersPage editUser(String username, String password) {
+        passwordInput.clear();
+        passwordInput.sendKeys(password);
+        roleSelect.selectByValue(Role.ROLE_USER.name());
+        submitButton.click();
+        return new UsersPage(webDriver);
     }
 }

@@ -41,7 +41,7 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="type"><spring:message code="questionType"/></label>
 					<div class="col-md-4">
-						<form:select path="questions[${status.index}].type" class="form-control input-md">
+						<form:select id="questionType" path="questions[${status.index}].type" class="form-control input-md">
 							<form:options items="${questionTypes}"/>
 						</form:select>
 					</div>

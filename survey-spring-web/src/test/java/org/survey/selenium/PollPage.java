@@ -1,27 +1,42 @@
 package org.survey.selenium;
 
-import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
+import org.survey.model.poll.QuestionType;
 
-public class PollPage extends WebDriverTest {
+public class PollPage extends AbstractPage {
+    @FindBy(id = "pollName")
+    private WebElement pollNameInput;
+    @FindBy(id = "addQuestion")
+    private WebElement addQuestionButton;
+    @FindBy(id = "questionText")
+    private WebElement questionTextInput;
+    @FindBy(id = "savePoll")
+    private WebElement savePollButton;
+    @FindBy(id = "questionType")
+    private WebElement questionTypeInput;
+
     public PollPage(WebDriver webDriver) {
-        super(webDriver);
+        super(webDriver, "Poll");
     }
-    public void addPoll(String pollName) throws InterruptedException {
-        webDriver.findElement(By.id("pollName")).sendKeys(pollName);
-        webDriver.findElement(By.id("savePoll")).click();
-        Thread.sleep(SLEEP_TIME);
-        Assert.assertEquals(webDriver.getPageSource(), "Polls", webDriver.getTitle());
+
+    public PollsPage addPoll(String pollName) {
+        pollNameInput.sendKeys(pollName);
+        savePollButton.click();
+        return new PollsPage(webDriver);
     }
-    public void addQuestion(String questionText) {
-        webDriver.findElement(By.id("addQuestion")).click();
-        Assert.assertEquals(webDriver.getPageSource(), "Poll",
-                webDriver.getTitle());
-        webDriver.findElement(By.id("questionText"))
-                .sendKeys(questionText);
-        webDriver.findElement(By.id("savePoll")).click();
-        Assert.assertEquals(webDriver.getPageSource(), "Polls",
-                webDriver.getTitle());
+
+    public PollPage clickAddQuestion() {
+        addQuestionButton.click();
+        return new PollPage(webDriver);
+    }
+
+    public PollsPage addQuestion(String questionText, QuestionType questionType) {
+        questionTextInput.sendKeys(questionText);
+        new Select(questionTypeInput).selectByValue(questionType.name());
+        savePollButton.click();
+        return new PollsPage(webDriver);
     }
 }
