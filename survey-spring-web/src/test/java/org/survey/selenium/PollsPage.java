@@ -2,29 +2,24 @@ package org.survey.selenium;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 public class PollsPage extends AbstractPage {
-    @FindBy(id = "addPoll")
-    private WebElement addPollButton;
-
     public PollsPage(WebDriver webDriver) {
-        super(webDriver, "Polls");
+        super(webDriver);
     }
 
-    public PollPage clickAddPoll() {
-        addPollButton.click();
-        return new PollPage(webDriver);
+    public void clickAddPoll() {
+        click(By.id("addPoll"));
+        assertTitle("Poll");
     }
 
-    public PollPage editPoll(String pollName) {
-        webDriver.findElement(By.xpath("//tr[td='" + pollName + "']//a[@id='edit']")).click();
-        return new PollPage(webDriver);
+    public void editPoll(String pollName) {
+        click(By.xpath("//tr[td='" + pollName + "']//a[@id='edit']"));
+        assertTitle("Poll");
     }
 
-    public PollsPage deletePoll(String pollName) {
-        webDriver.findElement(By.xpath("//tr[td='" + pollName + "']//button[@id='delete']")).click();
-        return new PollsPage(webDriver);
+    public void deletePoll(String pollName) {
+        click(By.xpath("//tr[td='" + pollName + "']//button[@id='delete']"));
+        assertTitle("Polls");
     }
 }
