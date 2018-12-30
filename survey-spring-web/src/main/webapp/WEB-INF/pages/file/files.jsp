@@ -41,7 +41,7 @@
         </tbody>
     </table>
     <form:form action="file/new" method="GET">
-        <input class="btn btn-primary" type="submit" value="<spring:message code="addFile" />" />
+        <input id="addFile" class="btn btn-primary" type="submit" value="<spring:message code="addFile" />" />
     </form:form>
 </body>
 </html>

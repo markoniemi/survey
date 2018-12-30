@@ -1,5 +1,8 @@
 package org.survey;
 
+import java.util.Arrays;
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.junit.After;
@@ -11,16 +14,20 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.survey.config.ServiceTestConfig;
+import org.survey.model.file.File;
 import org.survey.model.poll.Poll;
 import org.survey.model.poll.QuestionType;
 import org.survey.model.user.Role;
 import org.survey.model.user.User;
+import org.survey.selenium.FilePage;
+import org.survey.selenium.FilesPage;
 import org.survey.selenium.LoginPage;
 import org.survey.selenium.PollPage;
 import org.survey.selenium.PollsPage;
 import org.survey.selenium.SeleniumConfig;
 import org.survey.selenium.UserPage;
 import org.survey.selenium.UsersPage;
+import org.survey.service.file.FileService;
 import org.survey.service.poll.PollService;
 import org.survey.service.user.UserService;
 
@@ -31,6 +38,8 @@ public class SpringWebIT {
     protected UserService userService;
     @Resource
     protected PollService pollService;
+    @Resource
+    protected FileService fileService;
     @Resource(name = "loginUrl")
     private String loginUrl;
     @Resource
@@ -40,6 +49,8 @@ public class SpringWebIT {
     private UserPage userPage;
     private PollsPage pollsPage;
     private PollPage pollPage;
+    private FilesPage filesPage;
+    private FilePage filePage;
 
     @Before
     public void setUp() {
@@ -48,6 +59,8 @@ public class SpringWebIT {
         userPage = new UserPage(webDriver);
         pollsPage = new PollsPage(webDriver);
         pollPage = new PollPage(webDriver);
+        filesPage = new FilesPage(webDriver);
+        filePage = new FilePage(webDriver);
     }
 
     @After
@@ -55,6 +68,7 @@ public class SpringWebIT {
         deleteUserFromRepository("admin_user");
         deleteUserFromRepository("user_user");
         deletePollFromRepository("poll");
+        deleteFileFromRepository("dummy.txt");
         webDriver.close();
         webDriver.quit();
     }
@@ -84,6 +98,10 @@ public class SpringWebIT {
         pollPage.clickAddQuestion();
         pollPage.addQuestion("question1", QuestionType.LABEL);
         pollsPage.deletePoll("poll");
+        pollsPage.files();
+        filesPage.clickAddFile();
+        filePage.addFile("dummy.txt");
+        filesPage.assertFile("dummy.txt");
         pollsPage.logout();
     }
 
@@ -91,6 +109,15 @@ public class SpringWebIT {
         Poll poll = pollService.findByName(name);
         if (poll != null) {
             pollService.delete(poll.getId());
+        }
+    }
+
+    private void deleteFileFromRepository(String filename) {
+        List<File> files = Arrays.asList(fileService.findAll());
+        for (File file : files) {
+            if (file != null && filename.equals(file.getFilename())) {
+                fileService.delete(file.getId());
+            }
         }
     }
 

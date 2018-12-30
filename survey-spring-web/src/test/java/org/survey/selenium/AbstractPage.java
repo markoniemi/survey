@@ -22,6 +22,10 @@ public abstract class AbstractPage {
         click(By.id("menu-polls"));
         assertTitle("Polls");
     }
+    public void files() {
+        click(By.id("menu-files"));
+        assertTitle("Files");
+    }
 
     protected void setText(By by, String value) {
         webDriver.findElement(by).clear();
