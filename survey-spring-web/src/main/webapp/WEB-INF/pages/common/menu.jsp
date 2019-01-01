@@ -22,7 +22,7 @@
                         code="about" /></a></li>
         </ul>
         <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link" href="<c:url value="/j_spring_security_logout" />"><span
+            <li class="nav-item"><a id="logout" class="nav-link" href="<c:url value="/j_spring_security_logout" />"><span
                         class="fas fa-sign-out-alt" title="<spring:message code="logout"/>"></span></a></li>
         </ul>
     </div>
