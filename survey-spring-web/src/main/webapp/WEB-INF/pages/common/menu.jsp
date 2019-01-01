@@ -1,29 +1,29 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<div class="navbar navbar-default">
-  <div class="container">
-    <div class="navbar-header">                                   
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#"><spring:message code="survey"/></a>
-        </div>
-        <div class="navbar-collapse collapse">  
-          <ul class="nav navbar-nav">
-            <li ><a href="<c:url value="/user/users"/>" id="menu-users"><spring:message code="users"/></a></li>
-            <li><a href="<c:url value="/file/files"/>" id="menu-files"><spring:message code="files"/></a></li>
-            <li><a href="<c:url value="/poll/polls"/>" id="menu-polls"><spring:message code="polls"/></a></li>
+
+
+<nav class="navbar navbar-light navbar-expand-lg">
+    <a class="navbar-brand"><spring:message code="survey" /></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse container" id="navbarResponsive">
+        <ul class="navbar-nav lr-auto">
+            <li class="nav-item"><a class="nav-link" href="<c:url value="/user/users"/>" id="menu-users"><spring:message
+                        code="users" /></a></li>
+            <li class="nav-item"><a class="nav-link" href="<c:url value="/file/files"/>" id="menu-files"><spring:message
+                        code="files" /></a></li>
+            <li class="nav-item"><a class="nav-link" href="<c:url value="/poll/polls"/>" id="menu-polls"><spring:message
+                        code="polls" /></a></li>
             <li class="divider"></li>
-            <li><a href="<c:url value="/about" />"><spring:message code="about"/></a></li>
-          </ul>
-        <form class="navbar-form navbar-right">
-            <button id="logout" class="btn btn-default" formaction="<c:url value='/j_spring_security_logout' />">
-                <span class="glyphicon glyphicon-log-out" title="<spring:message code="logout"/>" ></span>
-            </button>
-        </form>
-        </div>                           
-  </div>
-</div>    
+            <li class="nav-item"><a class="nav-link" href="<c:url value="/about" />"><spring:message
+                        code="about" /></a></li>
+        </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="<c:url value="/j_spring_security_logout" />"><span
+                        class="fas fa-sign-out-alt" title="<spring:message code="logout"/>"></span></a></li>
+        </ul>
+    </div>
+</nav>

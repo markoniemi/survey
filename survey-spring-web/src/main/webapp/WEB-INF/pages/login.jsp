@@ -6,12 +6,12 @@
 <head>
 <title><spring:message code="login"/></title>
 <base href="${pageContext.request.contextPath}/"/>
-<link rel='stylesheet' href='webjars/bootstrap/3.3.6/css/bootstrap.min.css'></link>
+<link rel='stylesheet' type="text/css" href='webjars/bootstrap/4.1.3/css/bootstrap.min.css'></link>
+<link rel='stylesheet' type="text/css" href='webjars/font-awesome/5.6.1/css/all.min.css'></link>
 </head>
 <body>
-    <script type="text/javascript" src="webjars/jquery/2.1.1/jquery.min.js"></script>
-    <script type="text/javascript"
-        src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="webjars/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="webjars/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
 <div class="col-sm-6 col-md-4 col-md-offset-4">
     <div class="panel panel-default">
         <div class="panel-body">

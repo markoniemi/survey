@@ -4,14 +4,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title><spring:message code="file"/></title>
-<base href="${pageContext.request.contextPath}/"/>
-<link rel='stylesheet' href='webjars/bootstrap/3.3.6/css/bootstrap.min.css'></link>
+<title><spring:message code="file" /></title>
+<base href="${pageContext.request.contextPath}/" />
+<link rel='stylesheet' type="text/css" href='webjars/bootstrap/4.1.3/css/bootstrap.min.css'></link>
+<link rel='stylesheet' type="text/css" href='webjars/font-awesome/5.6.1/css/all.min.css'></link>
 </head>
 <body>
-	<script type="text/javascript" src="webjars/jquery/2.1.1/jquery.min.js"></script>
-    <script type="text/javascript"
-        src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="webjars/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="webjars/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
 
     <c:import url="../common/menu.jsp"></c:import>
 
