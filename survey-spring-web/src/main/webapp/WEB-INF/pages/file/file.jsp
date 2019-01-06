@@ -15,9 +15,29 @@
 
     <c:import url="../common/menu.jsp"></c:import>
 
-    <form method="POST" enctype="multipart/form-data" action="file/save">
-        <spring:message code="fileToUpload" /> <input id="file" type="file" name="file" /> <input id="submit" type="submit">
-        <spring:message code="fileUpload" />
+    <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="file/save">
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="file"><spring:message code="fileUpload" /></label>
+            <div class="input-group md-4">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="file" name="file"><label class="custom-file-label btn"
+                        for="file"><spring:message code="fileToUpload" /></label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button id="submit" name="" class="btn btn-primary">
+                <span class="fas fa-check"></span>
+            </button>
+        </div>
     </form>
+    <script>
+          $('#file').on('change', function() {
+            //get the file name
+            var fileName = $(this).val();
+            //replace the "Choose a file" label
+            $(this).next('.custom-file-label').html(fileName);
+          });
+        </script>
 </body>
 </html>
