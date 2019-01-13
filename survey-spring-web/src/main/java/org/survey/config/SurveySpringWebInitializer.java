@@ -30,7 +30,7 @@ public class SurveySpringWebInitializer implements WebApplicationInitializer {
         servlet.addMapping("/");
     }
 
-    private WebApplicationContext createApplicationContext(ServletContext container, Class configClass) {
+    private WebApplicationContext createApplicationContext(ServletContext container, Class<WebMvcConfig> configClass) {
         AnnotationConfigWebApplicationContext applicationContext = new AnnotationConfigWebApplicationContext();
         applicationContext.register(configClass);
         applicationContext.setServletContext(container);

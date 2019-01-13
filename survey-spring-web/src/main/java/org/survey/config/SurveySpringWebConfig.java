@@ -11,6 +11,7 @@ import lombok.extern.log4j.Log4j2;
 
 @Configuration
 @Import({ ServiceConfig.class, WebSecurityConfig.class, WebMvcConfig.class })
+// read values from classpath or file, or override them from environment variables
 @PropertySource(ignoreResourceNotFound = true, value = {"file:target/classes/test.properties","classpath:default.properties"})
 @Log4j2
 public class SurveySpringWebConfig {
@@ -19,6 +20,6 @@ public class SurveySpringWebConfig {
 
     @PostConstruct
     public void init() {
-        log.debug(value);
+        log.trace(value);
     }
 }

@@ -15,18 +15,14 @@ import org.springframework.web.util.UriComponentsBuilder;
 public class TomcatConfig {
     @Value("${http.port}")
     private int port;
+    @Value("${context.path}")
+    private String contextPath;
 
     @Bean
-    public String contextPath() {
-        return "/survey-spring-web";
-    }
-
-    @Bean
-    @DependsOn("contextPath")
     public TomcatServletWebServerFactory servletContainer() {
         TomcatServletWebServerFactory factory = new TomcatServletWebServerFactory();
         factory.setPort(port);
-        factory.setContextPath(contextPath());
+        factory.setContextPath(contextPath);
         // https://stackoverflow.com/questions/43264890/after-upgrade-from-spring-boot-1-2-to-1-5-2-filenotfoundexception-during-tomcat
         String[] tldSkipPatterns = { "jaxb-core.jar", "jaxb-api.jar", "xml-apis.jar", "xercesImpl.jar", "xml-apis.jar",
                 "serializer.jar" };
@@ -34,12 +30,10 @@ public class TomcatConfig {
         return factory;
     }
 
-    // TODO move to some test config?
-    // TODO read contextPath from config
     @Bean
     @DependsOn("servletContainer")
     public String url() {
-        return UriComponentsBuilder.newInstance().scheme("http").host("localhost").port(port).path(contextPath())
+        return UriComponentsBuilder.newInstance().scheme("http").host("localhost").port(port).path(contextPath)
                 .build().toString();
     }
 }
