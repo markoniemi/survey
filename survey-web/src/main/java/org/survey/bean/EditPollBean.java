@@ -78,10 +78,6 @@ public class EditPollBean {
         log.debug("index: {}", index);
         Question question = poll.getQuestions().get(index);
         log.debug("oldQuestion.type: {}", question.getType());
-//        QuestionType questionType = QuestionType.valueOf(QuestionType.class, question.getType());
-//        log.debug("questionType: {}", questionType);
-//        Question newQuestion = QuestionFactory.createQuestionFrom(question, questionType, poll);
-//        poll.getQuestions().set(index, newQuestion);
     }
 
     /**
