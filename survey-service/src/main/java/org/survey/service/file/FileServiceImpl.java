@@ -130,7 +130,6 @@ public class FileServiceImpl implements FileService {
         file.setFilename(filename);
         file.setMimeType(mimeType);
         file.setContent(fileContent);
-        // file.setOwner(owner);
         file.setCreateTime(System.currentTimeMillis());
         // TODO change files rest to files/:user/:filename
         file.setUrl("/survey-web/api/rest/files/");
