@@ -1,8 +1,3 @@
-# Maven
-# Build your Java project and run tests with Apache Maven.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/java
-
 trigger:
 - master
 
@@ -19,4 +14,5 @@ steps:
     jdkArchitectureOption: 'x64'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: '-B clean install verify -P hsqldb,tomcat'
+    goals: '-B clean org.jacoco:jacoco-maven-plugin:prepare-agent install verify sonar:sonar -P hsqldb,tomcat -Dsonar.login=$(SONAR_CLOUD_TOKEN) -Dsonar.organization=markoniemi-github -Dsonar.host.url=https://sonarcloud.io'
+    
