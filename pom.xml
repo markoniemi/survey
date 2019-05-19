@@ -396,7 +396,7 @@
             <dependency>
                 <groupId>io.github.bonigarcia</groupId>
                 <artifactId>webdrivermanager</artifactId>
-                <version>3.0.0</version>
+                <version>3.6.0</version>
                 <exclusions>
                     <exclusion>
                         <groupId>ch.qos.logback</groupId>
