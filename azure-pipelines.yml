@@ -4,6 +4,9 @@ trigger:
 pool:
   vmImage: 'Ubuntu-16.04'
 
+variables:
+- group: tokens
+
 steps:
 - task: Maven@3
   inputs:
