@@ -43,7 +43,7 @@
         <jetty.version>9.3.12.v20160915</jetty.version>
         <maven.cargo.version>1.6.5</maven.cargo.version>
         <selenium.version>3.11.0</selenium.version>
-        <spring.boot.version>2.1.1.RELEASE</spring.boot.version>
+        <spring.boot.version>2.1.8.RELEASE</spring.boot.version>
         <sonar.language>java</sonar.language>
         <sonar.organization>markoniemi-github</sonar.organization>
         <sonar.coverage.exclusions>**/config/*</sonar.coverage.exclusions>
