@@ -34,7 +34,7 @@
         <!-- <http.protocol>https</http.protocol> -->
         <ajp.port>8019</ajp.port>
         <rmi.port>8206</rmi.port>
-        <cxf.version>3.1.14</cxf.version>
+        <cxf.version>3.3.3</cxf.version>
         <jacoco.maven.plugin.version>0.8.2</jacoco.maven.plugin.version>
         <jsf.version>2.2.8-04</jsf.version>
         <bootstrap.version>4.1.3</bootstrap.version>
