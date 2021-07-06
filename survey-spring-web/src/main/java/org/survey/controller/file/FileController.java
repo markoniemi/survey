@@ -67,7 +67,6 @@ public class FileController {
             response.setContentLength(file.getContent().length);
             // for in-browser handling use
             // String mimeType =
-            // URLConnection.guessContentTypeFromName(file.getFilename());
             response.setContentType("application/octet-stream");
             response.flushBuffer();
         } catch (IOException e) {
